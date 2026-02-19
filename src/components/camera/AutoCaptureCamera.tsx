@@ -192,6 +192,31 @@ export function AutoCaptureCamera({
        onCapture(capturedBlob);
      }
    };
+
+  // Manual capture: captures current video frame regardless of face validation
+  const handleManualCapture = useCallback(() => {
+    if (!videoRef.current || !canvasRef.current) return;
+    const video = videoRef.current;
+    if (video.videoWidth === 0 || video.videoHeight === 0) return;
+
+    const canvas = canvasRef.current;
+    canvas.width = video.videoWidth;
+    canvas.height = video.videoHeight;
+    const ctx = canvas.getContext('2d');
+    if (!ctx) return;
+
+    ctx.drawImage(video, 0, 0);
+    canvas.toBlob(
+      (blob) => {
+        if (blob) {
+          setCapturedImage(canvas.toDataURL('image/jpeg', 0.9));
+          setCapturedBlob(blob);
+        }
+      },
+      'image/jpeg',
+      0.9
+    );
+  }, []);
  
   const retakePhoto = useCallback(() => {
     setCapturedImage(null);
@@ -366,7 +391,7 @@ export function AutoCaptureCamera({
                      </span>
                    </div>
                  </div>
- 
+
                  {/* Loading overlay */}
                  {!stream && (
                    <div className="absolute inset-0 flex items-center justify-center bg-black">
@@ -396,6 +421,22 @@ export function AutoCaptureCamera({
            </div>
  
            <canvas ref={canvasRef} className="hidden" />
+
+           {/* Manual Capture Button */}
+           {!capturedImage && stream && (
+             <div className="flex flex-col items-center gap-1">
+               <button
+                 onClick={handleManualCapture}
+                 className="w-16 h-16 sm:w-18 sm:h-18 rounded-full bg-primary border-4 border-primary/30 flex items-center justify-center hover:bg-primary/90 active:scale-95 transition-all shadow-lg"
+                 aria-label="Capture photo manually"
+               >
+                 <Camera className="w-7 h-7 text-white" />
+               </button>
+               <span className="text-muted-foreground text-[11px] sm:text-xs">
+                 Can't auto-capture? Tap to capture manually
+               </span>
+             </div>
+           )}
  
            {/* Action Buttons */}
            <div className="flex gap-3">
