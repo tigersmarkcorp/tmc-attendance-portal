@@ -71,9 +71,9 @@ export default function SAOLogin() {
 
   if (authLoading) {
     return (
-      <div style={{ minHeight: '100vh', display: 'flex', alignItems: 'center', justifyContent: 'center', background: 'linear-gradient(135deg, #051a12, #0a3020, #051a12)' }}>
+      <div style={{ minHeight: '100vh', display: 'flex', alignItems: 'center', justifyContent: 'center', background: 'linear-gradient(135deg, #0f0c29, #302b63, #24243e)' }}>
         <div style={{ textAlign: 'center' }}>
-          <Loader2 className="w-8 h-8 animate-spin" style={{ color: '#6ee7b7', margin: '0 auto 12px' }} />
+          <Loader2 className="w-8 h-8 animate-spin" style={{ color: '#93b4ff', margin: '0 auto 12px' }} />
           <p style={{ fontSize: 12, color: 'rgba(110,231,183,0.6)', letterSpacing: '0.15em', textTransform: 'uppercase' }}>Loading authentication...</p>
         </div>
       </div>
@@ -81,23 +81,23 @@ export default function SAOLogin() {
   }
 
   const slides = [
-    { icon: <Clock className="w-4 h-4" style={{ color: '#6ee7b7' }} />, bg: 'rgba(16,185,129,0.18)', border: 'rgba(16,185,129,0.3)', title: 'Clock In / Out', desc: 'Selfie-verified time tracking for secure attendance' },
-    { icon: <MapPin className="w-4 h-4" style={{ color: '#5eead4' }} />, bg: 'rgba(20,184,166,0.18)', border: 'rgba(20,184,166,0.3)', title: 'Site Management', desc: 'Oversee operations and attendance compliance' },
-    { icon: <FileText className="w-4 h-4" style={{ color: '#a7f3d0' }} />, bg: 'rgba(16,185,129,0.15)', border: 'rgba(16,185,129,0.25)', title: 'Timesheets', desc: 'Work hours, overtime and earnings history' },
-    { icon: <Calendar className="w-4 h-4" style={{ color: '#34d399' }} />, bg: 'rgba(52,211,153,0.15)', border: 'rgba(52,211,153,0.28)', title: 'Leave Requests', desc: 'Submit and track leave applications easily' },
-    { icon: <Users className="w-4 h-4" style={{ color: '#6ee7b7' }} />, bg: 'rgba(16,185,129,0.18)', border: 'rgba(16,185,129,0.3)', title: 'Workforce View', desc: 'Monitor and coordinate on-site personnel' },
-    { icon: <BarChart3 className="w-4 h-4" style={{ color: '#5eead4' }} />, bg: 'rgba(20,184,166,0.18)', border: 'rgba(20,184,166,0.3)', title: 'Site Analytics', desc: 'Real-time field operation insights' },
+    { icon: <Clock className="w-4 h-4" style={{ color: '#93b4ff' }} />, bg: 'rgba(59,110,248,0.18)', border: 'rgba(59,110,248,0.3)', title: 'Clock In / Out', desc: 'Selfie-verified time tracking for secure attendance' },
+    { icon: <MapPin className="w-4 h-4" style={{ color: '#c4b5fd' }} />, bg: 'rgba(99,102,241,0.18)', border: 'rgba(99,102,241,0.3)', title: 'Site Management', desc: 'Oversee operations and attendance compliance' },
+    { icon: <FileText className="w-4 h-4" style={{ color: '#a5b4fc' }} />, bg: 'rgba(59,110,248,0.15)', border: 'rgba(59,110,248,0.25)', title: 'Timesheets', desc: 'Work hours, overtime and earnings history' },
+    { icon: <Calendar className="w-4 h-4" style={{ color: '#93b4ff' }} />, bg: 'rgba(139,92,246,0.15)', border: 'rgba(139,92,246,0.28)', title: 'Leave Requests', desc: 'Submit and track leave applications easily' },
+    { icon: <Users className="w-4 h-4" style={{ color: '#93b4ff' }} />, bg: 'rgba(59,110,248,0.18)', border: 'rgba(59,110,248,0.3)', title: 'Workforce View', desc: 'Monitor and coordinate on-site personnel' },
+    { icon: <BarChart3 className="w-4 h-4" style={{ color: '#c4b5fd' }} />, bg: 'rgba(99,102,241,0.18)', border: 'rgba(99,102,241,0.3)', title: 'Site Analytics', desc: 'Real-time field operation insights' },
   ];
 
   const tickers = [
-    { label: 'Real-Time Clock In/Out', color: '#6ee7b7' },
-    { label: 'Selfie Verification', color: '#5eead4' },
-    { label: 'Multi-Site Monitoring', color: '#34d399' },
-    { label: 'Leave Management', color: '#a7f3d0' },
-    { label: 'Timesheet Access', color: '#6ee7b7' },
-    { label: 'Compliance Auditing', color: '#5eead4' },
-    { label: 'Field Operation Reports', color: '#34d399' },
-    { label: 'Attendance Sync', color: '#a7f3d0' },
+    { label: 'Real-Time Clock In/Out', color: '#93b4ff' },
+    { label: 'Selfie Verification', color: '#c4b5fd' },
+    { label: 'Multi-Site Monitoring', color: '#93b4ff' },
+    { label: 'Leave Management', color: '#a5b4fc' },
+    { label: 'Timesheet Access', color: '#93b4ff' },
+    { label: 'Compliance Auditing', color: '#c4b5fd' },
+    { label: 'Field Operation Reports', color: '#93b4ff' },
+    { label: 'Attendance Sync', color: '#a5b4fc' },
   ];
 
   return (
@@ -121,7 +121,7 @@ export default function SAOLogin() {
         }
         .sl-bg::after {
           content: ''; position: absolute; inset: 0;
-          background: linear-gradient(135deg, rgba(4,18,12,0.94) 0%, rgba(5,20,15,0.90) 50%, rgba(4,15,12,0.94) 100%);
+          background: linear-gradient(135deg, rgba(4,7,20,0.94) 0%, rgba(8,13,38,0.90) 50%, rgba(12,8,30,0.94) 100%);
         }
 
         .sl-grid {
@@ -133,8 +133,8 @@ export default function SAOLogin() {
         }
 
         .sl-orb { position: fixed; border-radius: 50%; pointer-events: none; z-index: 1; filter: blur(100px); opacity: 0.13; }
-        .sl-orb-1 { width: 600px; height: 600px; top: -200px; left: -150px; background: radial-gradient(circle, #10b981, transparent); }
-        .sl-orb-2 { width: 450px; height: 450px; bottom: -150px; right: -100px; background: radial-gradient(circle, #14b8a6, transparent); }
+        .sl-orb-1 { width: 600px; height: 600px; top: -200px; left: -150px; background: radial-gradient(circle, #3b6ef8, transparent); }
+        .sl-orb-2 { width: 450px; height: 450px; bottom: -150px; right: -100px; background: radial-gradient(circle, #7c3bf8, transparent); }
 
         /* ── LEFT ── */
         .sl-left {
@@ -143,7 +143,7 @@ export default function SAOLogin() {
           display: none; flex-direction: column; justify-content: center;
           padding: 40px 48px;
           border-right: 1px solid rgba(255,255,255,0.07);
-          background: linear-gradient(160deg, rgba(16,185,129,0.06) 0%, rgba(255,255,255,0.02) 50%, rgba(20,184,166,0.05) 100%);
+          background: linear-gradient(160deg, rgba(59,110,248,0.06) 0%, rgba(255,255,255,0.02) 50%, rgba(124,59,248,0.05) 100%);
           backdrop-filter: blur(8px);
           overflow-y: auto; gap: 0;
         }
@@ -152,16 +152,16 @@ export default function SAOLogin() {
         .sl-brand { display: flex; align-items: center; gap: 12px; margin-bottom: 32px; }
         .sl-brand-icon {
           width: 42px; height: 42px; border-radius: 11px;
-          background: rgba(16,185,129,0.18); border: 1px solid rgba(16,185,129,0.32);
+          background: rgba(59,110,248,0.18); border: 1px solid rgba(59,110,248,0.32);
           display: flex; align-items: center; justify-content: center;
-          box-shadow: 0 0 20px rgba(16,185,129,0.15);
+          box-shadow: 0 0 20px rgba(59,110,248,0.15);
         }
         .sl-brand-name { font-family: 'Syne', sans-serif; font-size: 17px; font-weight: 700; color: #fff; }
         .sl-brand-sub  { font-size: 9px; font-weight: 700; letter-spacing: 0.13em; text-transform: uppercase; color: rgba(255,255,255,0.35); margin-top: 2px; }
 
         .sl-headline { font-family: 'Syne', sans-serif; font-size: 28px; font-weight: 700; color: #fff; line-height: 1.22; margin-bottom: 8px; }
         .sl-headline span {
-          background: linear-gradient(90deg, #6ee7b7, #5eead4, #34d399);
+          background: linear-gradient(90deg, #93b4ff, #c4b5fd, #6ee7b7);
           -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
         }
         .sl-desc { font-size: 13px; font-weight: 300; color: rgba(255,255,255,0.4); line-height: 1.65; margin-bottom: 28px; }
@@ -181,8 +181,8 @@ export default function SAOLogin() {
         .sl-carousel::before, .sl-carousel::after {
           content: ''; position: absolute; top: 0; bottom: 0; width: 60px; z-index: 2; pointer-events: none;
         }
-        .sl-carousel::before { left: 0;  background: linear-gradient(to right, rgba(4,18,12,0.9), transparent); }
-        .sl-carousel::after  { right: 0; background: linear-gradient(to left,  rgba(4,18,12,0.9), transparent); }
+        .sl-carousel::before { left: 0;  background: linear-gradient(to right, rgba(8,13,50,0.9), transparent); }
+        .sl-carousel::after  { right: 0; background: linear-gradient(to left,  rgba(8,13,50,0.9), transparent); }
 
         .sl-slide {
           flex-shrink: 0; width: 200px; padding: 16px; border-radius: 14px;
@@ -191,7 +191,7 @@ export default function SAOLogin() {
           display: flex; flex-direction: column; gap: 10px;
           transition: all 0.2s ease;
         }
-        .sl-slide:hover { border-color: rgba(16,185,129,0.35); background: rgba(16,185,129,0.06); }
+        .sl-slide:hover { border-color: rgba(59,110,248,0.35); background: rgba(59,110,248,0.06); }
         .sl-slide-icon  { width: 36px; height: 36px; border-radius: 9px; display: flex; align-items: center; justify-content: center; }
         .sl-slide-title { font-size: 13px; font-weight: 600; color: rgba(255,255,255,0.88); }
         .sl-slide-desc  { font-size: 11px; color: rgba(255,255,255,0.38); line-height: 1.45; }
@@ -211,8 +211,8 @@ export default function SAOLogin() {
         .sl-ticker::before, .sl-ticker::after {
           content: ''; position: absolute; top: 0; bottom: 0; width: 40px; z-index: 2; pointer-events: none;
         }
-        .sl-ticker::before { left: 0;  background: linear-gradient(to right, rgba(4,18,12,0.95), transparent); }
-        .sl-ticker::after  { right: 0; background: linear-gradient(to left,  rgba(4,18,12,0.95), transparent); }
+        .sl-ticker::before { left: 0;  background: linear-gradient(to right, rgba(8,13,50,0.95), transparent); }
+        .sl-ticker::after  { right: 0; background: linear-gradient(to left,  rgba(8,13,50,0.95), transparent); }
         .sl-ticker-track {
           display: flex; gap: 0;
           animation: sl-ticker-scroll 22s linear infinite;
@@ -233,10 +233,10 @@ export default function SAOLogin() {
         /* ── Info note ── */
         .sl-note {
           display: flex; align-items: flex-start; gap: 10px; padding: 13px;
-          border-radius: 11px; background: rgba(16,185,129,0.07); border: 1px solid rgba(16,185,129,0.2);
+          border-radius: 11px; background: rgba(59,110,248,0.07); border: 1px solid rgba(59,110,248,0.2);
           backdrop-filter: blur(10px);
         }
-        .sl-note-title { font-size: 12px; font-weight: 600; color: #6ee7b7; margin-bottom: 3px; }
+        .sl-note-title { font-size: 12px; font-weight: 600; color: #93b4ff; margin-bottom: 3px; }
         .sl-note-desc  { font-size: 11px; color: rgba(255,255,255,0.4); line-height: 1.5; }
 
         .sl-footer {
@@ -251,7 +251,7 @@ export default function SAOLogin() {
           flex: 1; height: 100vh;
           display: flex; flex-direction: column; justify-content: center;
           padding: 36px 44px; overflow-y: auto;
-          background: linear-gradient(160deg, rgba(5,100,60,0.10) 0%, rgba(16,185,129,0.07) 40%, rgba(20,184,166,0.08) 100%);
+          background: linear-gradient(160deg, rgba(37,80,220,0.10) 0%, rgba(59,110,248,0.07) 40%, rgba(109,40,217,0.08) 100%);
           backdrop-filter: blur(12px);
           border-left: 1px solid rgba(255,255,255,0.06);
         }
@@ -265,11 +265,11 @@ export default function SAOLogin() {
         .sl-form-header { text-align: center; margin-bottom: 26px; }
         .sl-icon-wrap {
           width: 62px; height: 62px; border-radius: 16px;
-          background: linear-gradient(135deg, rgba(16,185,129,0.25), rgba(20,184,166,0.15));
-          border: 1px solid rgba(16,185,129,0.35);
+          background: linear-gradient(135deg, rgba(59,110,248,0.22), rgba(37,80,220,0.14));
+          border: 1px solid rgba(59,110,248,0.35);
           display: flex; align-items: center; justify-content: center;
           margin: 0 auto 14px;
-          box-shadow: 0 0 44px rgba(16,185,129,0.18);
+          box-shadow: 0 0 44px rgba(59,110,248,0.16);
         }
         .sl-title    { font-family: 'Syne', sans-serif; font-size: 23px; font-weight: 700; color: #fff; margin-bottom: 5px; }
         .sl-subtitle { font-size: 13px; color: rgba(255,255,255,0.36); font-weight: 300; }
@@ -287,23 +287,23 @@ export default function SAOLogin() {
         }
         .sl-input {
           width: 100%; height: 46px; padding: 0 14px 0 38px;
-          background: rgba(16,185,129,0.08); border: 1px solid rgba(16,185,129,0.2);
+          background: rgba(59,110,248,0.08); border: 1px solid rgba(59,110,248,0.18);
           border-radius: 10px; color: #fff; font-size: 14px; font-family: 'DM Sans', sans-serif;
           outline: none; transition: all 0.2s ease;
         }
         .sl-input::placeholder { color: rgba(255,255,255,0.22); }
         .sl-input:focus {
-          background: rgba(16,185,129,0.13); border-color: rgba(16,185,129,0.55);
-          box-shadow: 0 0 0 3px rgba(16,185,129,0.12);
+          background: rgba(59,110,248,0.13); border-color: rgba(59,110,248,0.55);
+          box-shadow: 0 0 0 3px rgba(59,110,248,0.12);
         }
 
         .sl-btn {
           width: 100%; height: 47px; border-radius: 10px; border: none; cursor: pointer;
-          background: linear-gradient(135deg, #10b981, #059669);
+          background: linear-gradient(135deg, #3b6ef8, #2550dc);
           color: #fff; font-size: 14px; font-weight: 600; font-family: 'DM Sans', sans-serif;
           display: flex; align-items: center; justify-content: center; gap: 8px;
           margin-top: 18px; transition: all 0.25s ease;
-          box-shadow: 0 6px 26px rgba(16,185,129,0.32);
+          box-shadow: 0 6px 26px rgba(59,110,248,0.32);
           position: relative; overflow: hidden;
         }
         .sl-btn::after {
@@ -311,7 +311,7 @@ export default function SAOLogin() {
           background: linear-gradient(135deg, rgba(255,255,255,0.1), transparent);
           opacity: 0; transition: opacity 0.25s;
         }
-        .sl-btn:hover { transform: translateY(-1px); box-shadow: 0 10px 34px rgba(16,185,129,0.48); }
+        .sl-btn:hover { transform: translateY(-1px); box-shadow: 0 10px 34px rgba(59,110,248,0.48); }
         .sl-btn:hover::after { opacity: 1; }
         .sl-btn:disabled { opacity: 0.55; cursor: not-allowed; transform: none; }
 
@@ -338,9 +338,9 @@ export default function SAOLogin() {
         }
         .sl-portal-admin:hover { background: rgba(239,68,68,0.14); border-color: rgba(239,68,68,0.38); }
         .sl-portal-emp {
-          background: rgba(16,185,129,0.08); border-color: rgba(16,185,129,0.22); color: #6ee7b7;
+          background: rgba(59,110,248,0.08); border-color: rgba(59,110,248,0.22); color: #93b4ff;
         }
-        .sl-portal-emp:hover { background: rgba(16,185,129,0.14); border-color: rgba(16,185,129,0.38); }
+        .sl-portal-emp:hover { background: rgba(59,110,248,0.14); border-color: rgba(59,110,248,0.38); }
 
         .sl-note-box {
           padding: 11px 14px; border-radius: 10px; margin-bottom: 14px;
@@ -377,7 +377,7 @@ export default function SAOLogin() {
             {/* Brand */}
             <div className="sl-brand">
               <div className="sl-brand-icon">
-                <ShieldCheck className="w-5 h-5" style={{ color: '#6ee7b7' }} />
+                <ShieldCheck className="w-5 h-5" style={{ color: '#93b4ff' }} />
               </div>
               <div>
                 <div className="sl-brand-name">TimeTrack Pro</div>
@@ -406,15 +406,15 @@ export default function SAOLogin() {
             {/* Stats */}
             <div className="sl-stats">
               <div className="sl-stat">
-                <div className="sl-stat-num" style={{ color: '#6ee7b7' }}>Live</div>
+                <div className="sl-stat-num" style={{ color: '#93b4ff' }}>Live</div>
                 <div className="sl-stat-label">Site Sync</div>
               </div>
               <div className="sl-stat">
-                <div className="sl-stat-num" style={{ color: '#5eead4' }}>GPS</div>
+                <div className="sl-stat-num" style={{ color: '#c4b5fd' }}>GPS</div>
                 <div className="sl-stat-label">Verified</div>
               </div>
               <div className="sl-stat">
-                <div className="sl-stat-num" style={{ color: '#34d399' }}>L3</div>
+                <div className="sl-stat-num" style={{ color: '#93b4ff' }}>L3</div>
                 <div className="sl-stat-label">Access Level</div>
               </div>
             </div>
@@ -433,7 +433,7 @@ export default function SAOLogin() {
 
             {/* Info note */}
             <div className="sl-note">
-              <ShieldCheck className="w-4 h-4" style={{ color: '#6ee7b7', flexShrink: 0, marginTop: 1 }} />
+              <ShieldCheck className="w-4 h-4" style={{ color: '#93b4ff', flexShrink: 0, marginTop: 1 }} />
               <div>
                 <div className="sl-note-title">Site Administration Access</div>
                 <div className="sl-note-desc">Your credentials were provided by your administrator. Contact HR if you have any login issues.</div>
@@ -442,7 +442,7 @@ export default function SAOLogin() {
           </div>
 
           <div className="sl-footer">
-            <CheckCircle2 className="w-3.5 h-3.5" style={{ color: '#6ee7b7', flexShrink: 0 }} />
+            <CheckCircle2 className="w-3.5 h-3.5" style={{ color: '#93b4ff', flexShrink: 0 }} />
             <span>Secure Connection Established</span>
             <span style={{ opacity: 0.4 }}>·</span>
             <span>TLS 1.3 Encrypted</span>
@@ -454,7 +454,7 @@ export default function SAOLogin() {
           {/* Mobile brand */}
           <div className="sl-mobile-brand">
             <div className="sl-brand-icon">
-              <ShieldCheck className="w-5 h-5" style={{ color: '#6ee7b7' }} />
+              <ShieldCheck className="w-5 h-5" style={{ color: '#93b4ff' }} />
             </div>
             <div>
               <div className="sl-brand-name">TimeTrack Pro</div>
@@ -465,7 +465,7 @@ export default function SAOLogin() {
           {/* Header */}
           <div className="sl-form-header">
             <div className="sl-icon-wrap">
-              <ShieldCheck className="w-7 h-7" style={{ color: '#6ee7b7' }} />
+              <ShieldCheck className="w-7 h-7" style={{ color: '#93b4ff' }} />
             </div>
             <h1 className="sl-title">SAO Login</h1>
             <p className="sl-subtitle">Sign in with your site officer credentials</p>
@@ -536,7 +536,7 @@ export default function SAOLogin() {
           </Link>
 
           <div className="sl-secure">
-            <CheckCircle2 className="w-3 h-3" style={{ color: '#6ee7b7' }} />
+            <CheckCircle2 className="w-3 h-3" style={{ color: '#93b4ff' }} />
             Secure · Encrypted · Monitored
           </div>
         </div>
