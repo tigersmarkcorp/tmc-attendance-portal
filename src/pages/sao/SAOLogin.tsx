@@ -71,33 +71,33 @@ export default function SAOLogin() {
 
   if (authLoading) {
     return (
-      <div style={{ minHeight: '100vh', display: 'flex', alignItems: 'center', justifyContent: 'center', background: 'linear-gradient(135deg, #0f0c29, #302b63, #24243e)' }}>
+      <div style={{ minHeight: '100vh', display: 'flex', alignItems: 'center', justifyContent: 'center', background: '#f0f4ff' }}>
         <div style={{ textAlign: 'center' }}>
-          <Loader2 className="w-8 h-8 animate-spin" style={{ color: '#93b4ff', margin: '0 auto 12px' }} />
-          <p style={{ fontSize: 12, color: 'rgba(110,231,183,0.6)', letterSpacing: '0.15em', textTransform: 'uppercase' }}>Loading authentication...</p>
+          <Loader2 className="w-8 h-8 animate-spin" style={{ color: '#3b6ef8', margin: '0 auto 12px' }} />
+          <p style={{ fontSize: 12, color: '#6b7eb8', letterSpacing: '0.15em', textTransform: 'uppercase' }}>Loading authentication...</p>
         </div>
       </div>
     );
   }
 
   const slides = [
-    { icon: <Clock className="w-4 h-4" style={{ color: '#93b4ff' }} />, bg: 'rgba(59,110,248,0.18)', border: 'rgba(59,110,248,0.3)', title: 'Clock In / Out', desc: 'Selfie-verified time tracking for secure attendance' },
-    { icon: <MapPin className="w-4 h-4" style={{ color: '#c4b5fd' }} />, bg: 'rgba(99,102,241,0.18)', border: 'rgba(99,102,241,0.3)', title: 'Site Management', desc: 'Oversee operations and attendance compliance' },
-    { icon: <FileText className="w-4 h-4" style={{ color: '#a5b4fc' }} />, bg: 'rgba(59,110,248,0.15)', border: 'rgba(59,110,248,0.25)', title: 'Timesheets', desc: 'Work hours, overtime and earnings history' },
-    { icon: <Calendar className="w-4 h-4" style={{ color: '#93b4ff' }} />, bg: 'rgba(139,92,246,0.15)', border: 'rgba(139,92,246,0.28)', title: 'Leave Requests', desc: 'Submit and track leave applications easily' },
-    { icon: <Users className="w-4 h-4" style={{ color: '#93b4ff' }} />, bg: 'rgba(59,110,248,0.18)', border: 'rgba(59,110,248,0.3)', title: 'Workforce View', desc: 'Monitor and coordinate on-site personnel' },
-    { icon: <BarChart3 className="w-4 h-4" style={{ color: '#c4b5fd' }} />, bg: 'rgba(99,102,241,0.18)', border: 'rgba(99,102,241,0.3)', title: 'Site Analytics', desc: 'Real-time field operation insights' },
+    { icon: <Clock className="w-4 h-4" style={{ color: '#3b6ef8' }} />, bg: 'rgba(59,110,248,0.1)', border: 'rgba(59,110,248,0.22)', title: 'Clock In / Out', desc: 'Selfie-verified time tracking for secure attendance' },
+    { icon: <MapPin className="w-4 h-4" style={{ color: '#7c3bf8' }} />, bg: 'rgba(99,102,241,0.1)', border: 'rgba(99,102,241,0.22)', title: 'Site Management', desc: 'Oversee operations and attendance compliance' },
+    { icon: <FileText className="w-4 h-4" style={{ color: '#6366f1' }} />, bg: 'rgba(59,110,248,0.08)', border: 'rgba(59,110,248,0.18)', title: 'Timesheets', desc: 'Work hours, overtime and earnings history' },
+    { icon: <Calendar className="w-4 h-4" style={{ color: '#3b6ef8' }} />, bg: 'rgba(139,92,246,0.08)', border: 'rgba(139,92,246,0.2)', title: 'Leave Requests', desc: 'Submit and track leave applications easily' },
+    { icon: <Users className="w-4 h-4" style={{ color: '#3b6ef8' }} />, bg: 'rgba(59,110,248,0.1)', border: 'rgba(59,110,248,0.22)', title: 'Workforce View', desc: 'Monitor and coordinate on-site personnel' },
+    { icon: <BarChart3 className="w-4 h-4" style={{ color: '#7c3bf8' }} />, bg: 'rgba(99,102,241,0.1)', border: 'rgba(99,102,241,0.22)', title: 'Site Analytics', desc: 'Real-time field operation insights' },
   ];
 
   const tickers = [
-    { label: 'Real-Time Clock In/Out', color: '#93b4ff' },
-    { label: 'Selfie Verification', color: '#c4b5fd' },
-    { label: 'Multi-Site Monitoring', color: '#93b4ff' },
-    { label: 'Leave Management', color: '#a5b4fc' },
-    { label: 'Timesheet Access', color: '#93b4ff' },
-    { label: 'Compliance Auditing', color: '#c4b5fd' },
-    { label: 'Field Operation Reports', color: '#93b4ff' },
-    { label: 'Attendance Sync', color: '#a5b4fc' },
+    { label: 'Real-Time Clock In/Out', color: '#3b6ef8' },
+    { label: 'Selfie Verification', color: '#7c3bf8' },
+    { label: 'Multi-Site Monitoring', color: '#3b6ef8' },
+    { label: 'Leave Management', color: '#6366f1' },
+    { label: 'Timesheet Access', color: '#3b6ef8' },
+    { label: 'Compliance Auditing', color: '#7c3bf8' },
+    { label: 'Field Operation Reports', color: '#3b6ef8' },
+    { label: 'Attendance Sync', color: '#6366f1' },
   ];
 
   return (
@@ -111,7 +111,7 @@ export default function SAOLogin() {
           font-family: 'DM Sans', sans-serif;
           height: 100vh; width: 100vw;
           display: flex; overflow: hidden;
-          position: relative; background: #050814;
+          position: relative; background: #f5f7ff;
         }
 
         .sl-bg {
@@ -121,20 +121,20 @@ export default function SAOLogin() {
         }
         .sl-bg::after {
           content: ''; position: absolute; inset: 0;
-          background: linear-gradient(135deg, rgba(4,7,20,0.94) 0%, rgba(8,13,38,0.90) 50%, rgba(12,8,30,0.94) 100%);
+          background: linear-gradient(135deg, rgba(240,245,255,0.96) 0%, rgba(235,242,255,0.94) 50%, rgba(242,238,255,0.96) 100%);
         }
 
         .sl-grid {
           position: fixed; inset: 0; z-index: 1; pointer-events: none;
           background-image:
-            linear-gradient(rgba(255,255,255,0.014) 1px, transparent 1px),
-            linear-gradient(90deg, rgba(255,255,255,0.014) 1px, transparent 1px);
+            linear-gradient(rgba(59,110,248,0.04) 1px, transparent 1px),
+            linear-gradient(90deg, rgba(59,110,248,0.04) 1px, transparent 1px);
           background-size: 56px 56px;
         }
 
-        .sl-orb { position: fixed; border-radius: 50%; pointer-events: none; z-index: 1; filter: blur(100px); opacity: 0.13; }
-        .sl-orb-1 { width: 600px; height: 600px; top: -200px; left: -150px; background: radial-gradient(circle, #3b6ef8, transparent); }
-        .sl-orb-2 { width: 450px; height: 450px; bottom: -150px; right: -100px; background: radial-gradient(circle, #7c3bf8, transparent); }
+        .sl-orb { position: fixed; border-radius: 50%; pointer-events: none; z-index: 1; filter: blur(100px); opacity: 0.18; }
+        .sl-orb-1 { width: 600px; height: 600px; top: -200px; left: -150px; background: radial-gradient(circle, #93b4ff, transparent); }
+        .sl-orb-2 { width: 450px; height: 450px; bottom: -150px; right: -100px; background: radial-gradient(circle, #c4b5fd, transparent); }
 
         /* ── LEFT ── */
         .sl-left {
@@ -142,8 +142,8 @@ export default function SAOLogin() {
           width: 55%; height: 100vh;
           display: none; flex-direction: column; justify-content: center;
           padding: 40px 48px;
-          border-right: 1px solid rgba(255,255,255,0.07);
-          background: linear-gradient(160deg, rgba(59,110,248,0.06) 0%, rgba(255,255,255,0.02) 50%, rgba(124,59,248,0.05) 100%);
+          border-right: 1px solid rgba(59,110,248,0.12);
+          background: linear-gradient(160deg, rgba(59,110,248,0.06) 0%, rgba(255,255,255,0.5) 50%, rgba(124,59,248,0.04) 100%);
           backdrop-filter: blur(8px);
           overflow-y: auto; gap: 0;
         }
@@ -152,19 +152,19 @@ export default function SAOLogin() {
         .sl-brand { display: flex; align-items: center; gap: 12px; margin-bottom: 32px; }
         .sl-brand-icon {
           width: 42px; height: 42px; border-radius: 11px;
-          background: rgba(59,110,248,0.18); border: 1px solid rgba(59,110,248,0.32);
+          background: rgba(59,110,248,0.12); border: 1px solid rgba(59,110,248,0.25);
           display: flex; align-items: center; justify-content: center;
-          box-shadow: 0 0 20px rgba(59,110,248,0.15);
+          box-shadow: 0 0 20px rgba(59,110,248,0.12);
         }
-        .sl-brand-name { font-family: 'Syne', sans-serif; font-size: 17px; font-weight: 700; color: #fff; }
-        .sl-brand-sub  { font-size: 9px; font-weight: 700; letter-spacing: 0.13em; text-transform: uppercase; color: rgba(255,255,255,0.35); margin-top: 2px; }
+        .sl-brand-name { font-family: 'Syne', sans-serif; font-size: 17px; font-weight: 700; color: #1a2563; }
+        .sl-brand-sub  { font-size: 9px; font-weight: 700; letter-spacing: 0.13em; text-transform: uppercase; color: #7b8cc4; margin-top: 2px; }
 
-        .sl-headline { font-family: 'Syne', sans-serif; font-size: 28px; font-weight: 700; color: #fff; line-height: 1.22; margin-bottom: 8px; }
+        .sl-headline { font-family: 'Syne', sans-serif; font-size: 28px; font-weight: 700; color: #1a2563; line-height: 1.22; margin-bottom: 8px; }
         .sl-headline span {
-          background: linear-gradient(90deg, #93b4ff, #c4b5fd, #6ee7b7);
+          background: linear-gradient(90deg, #3b6ef8, #7c3bf8, #059669);
           -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
         }
-        .sl-desc { font-size: 13px; font-weight: 300; color: rgba(255,255,255,0.4); line-height: 1.65; margin-bottom: 28px; }
+        .sl-desc { font-size: 13px; font-weight: 300; color: #6b7eb8; line-height: 1.65; margin-bottom: 28px; }
 
         /* ── Carousel ── */
         .sl-carousel { position: relative; width: 100%; overflow: hidden; margin-bottom: 24px; }
@@ -181,38 +181,40 @@ export default function SAOLogin() {
         .sl-carousel::before, .sl-carousel::after {
           content: ''; position: absolute; top: 0; bottom: 0; width: 60px; z-index: 2; pointer-events: none;
         }
-        .sl-carousel::before { left: 0;  background: linear-gradient(to right, rgba(8,13,50,0.9), transparent); }
-        .sl-carousel::after  { right: 0; background: linear-gradient(to left,  rgba(8,13,50,0.9), transparent); }
+        .sl-carousel::before { left: 0;  background: linear-gradient(to right, rgba(240,244,255,0.9), transparent); }
+        .sl-carousel::after  { right: 0; background: linear-gradient(to left,  rgba(240,244,255,0.9), transparent); }
 
         .sl-slide {
           flex-shrink: 0; width: 200px; padding: 16px; border-radius: 14px;
-          background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.09);
+          background: rgba(255,255,255,0.7); border: 1px solid rgba(59,110,248,0.12);
           backdrop-filter: blur(12px);
           display: flex; flex-direction: column; gap: 10px;
           transition: all 0.2s ease;
+          box-shadow: 0 2px 12px rgba(59,110,248,0.06);
         }
-        .sl-slide:hover { border-color: rgba(59,110,248,0.35); background: rgba(59,110,248,0.06); }
+        .sl-slide:hover { border-color: rgba(59,110,248,0.28); background: rgba(255,255,255,0.9); box-shadow: 0 4px 20px rgba(59,110,248,0.1); }
         .sl-slide-icon  { width: 36px; height: 36px; border-radius: 9px; display: flex; align-items: center; justify-content: center; }
-        .sl-slide-title { font-size: 13px; font-weight: 600; color: rgba(255,255,255,0.88); }
-        .sl-slide-desc  { font-size: 11px; color: rgba(255,255,255,0.38); line-height: 1.45; }
+        .sl-slide-title { font-size: 13px; font-weight: 600; color: #1a2563; }
+        .sl-slide-desc  { font-size: 11px; color: #7b8cc4; line-height: 1.45; }
 
         /* ── Stats ── */
         .sl-stats { display: flex; gap: 10px; margin-bottom: 22px; }
         .sl-stat {
           flex: 1; padding: 12px 14px; border-radius: 12px;
-          background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08);
+          background: rgba(255,255,255,0.7); border: 1px solid rgba(59,110,248,0.1);
           backdrop-filter: blur(10px); text-align: center;
+          box-shadow: 0 2px 8px rgba(59,110,248,0.05);
         }
-        .sl-stat-num   { font-family: 'Syne', sans-serif; font-size: 20px; font-weight: 700; color: #fff; line-height: 1; }
-        .sl-stat-label { font-size: 10px; color: rgba(255,255,255,0.35); margin-top: 4px; letter-spacing: 0.06em; text-transform: uppercase; }
+        .sl-stat-num   { font-family: 'Syne', sans-serif; font-size: 20px; font-weight: 700; color: #1a2563; line-height: 1; }
+        .sl-stat-label { font-size: 10px; color: #7b8cc4; margin-top: 4px; letter-spacing: 0.06em; text-transform: uppercase; }
 
         /* ── Ticker ── */
-        .sl-ticker { overflow: hidden; border-top: 1px solid rgba(255,255,255,0.07); border-bottom: 1px solid rgba(255,255,255,0.07); padding: 9px 0; margin-bottom: 20px; position: relative; }
+        .sl-ticker { overflow: hidden; border-top: 1px solid rgba(59,110,248,0.1); border-bottom: 1px solid rgba(59,110,248,0.1); padding: 9px 0; margin-bottom: 20px; position: relative; }
         .sl-ticker::before, .sl-ticker::after {
           content: ''; position: absolute; top: 0; bottom: 0; width: 40px; z-index: 2; pointer-events: none;
         }
-        .sl-ticker::before { left: 0;  background: linear-gradient(to right, rgba(8,13,50,0.95), transparent); }
-        .sl-ticker::after  { right: 0; background: linear-gradient(to left,  rgba(8,13,50,0.95), transparent); }
+        .sl-ticker::before { left: 0;  background: linear-gradient(to right, rgba(240,244,255,0.95), transparent); }
+        .sl-ticker::after  { right: 0; background: linear-gradient(to left,  rgba(240,244,255,0.95), transparent); }
         .sl-ticker-track {
           display: flex; gap: 0;
           animation: sl-ticker-scroll 22s linear infinite;
@@ -226,23 +228,23 @@ export default function SAOLogin() {
         .sl-ticker-item {
           display: inline-flex; align-items: center; gap: 6px;
           padding: 0 20px; font-size: 11px; font-weight: 500;
-          color: rgba(255,255,255,0.45); white-space: nowrap;
+          color: #7b8cc4; white-space: nowrap;
         }
         .sl-ticker-dot { width: 4px; height: 4px; border-radius: 50%; flex-shrink: 0; }
 
         /* ── Info note ── */
         .sl-note {
           display: flex; align-items: flex-start; gap: 10px; padding: 13px;
-          border-radius: 11px; background: rgba(59,110,248,0.07); border: 1px solid rgba(59,110,248,0.2);
+          border-radius: 11px; background: rgba(59,110,248,0.06); border: 1px solid rgba(59,110,248,0.16);
           backdrop-filter: blur(10px);
         }
-        .sl-note-title { font-size: 12px; font-weight: 600; color: #93b4ff; margin-bottom: 3px; }
-        .sl-note-desc  { font-size: 11px; color: rgba(255,255,255,0.4); line-height: 1.5; }
+        .sl-note-title { font-size: 12px; font-weight: 600; color: #3b6ef8; margin-bottom: 3px; }
+        .sl-note-desc  { font-size: 11px; color: #6b7eb8; line-height: 1.5; }
 
         .sl-footer {
           display: flex; align-items: center; gap: 7px;
-          padding-top: 16px; border-top: 1px solid rgba(255,255,255,0.08);
-          font-size: 11px; color: rgba(255,255,255,0.32); margin-top: 16px;
+          padding-top: 16px; border-top: 1px solid rgba(59,110,248,0.1);
+          font-size: 11px; color: #7b8cc4; margin-top: 16px;
         }
 
         /* ── RIGHT ── */
@@ -251,9 +253,9 @@ export default function SAOLogin() {
           flex: 1; height: 100vh;
           display: flex; flex-direction: column; justify-content: center;
           padding: 36px 44px; overflow-y: auto;
-          background: linear-gradient(160deg, rgba(37,80,220,0.10) 0%, rgba(59,110,248,0.07) 40%, rgba(109,40,217,0.08) 100%);
-          backdrop-filter: blur(12px);
-          border-left: 1px solid rgba(255,255,255,0.06);
+          background: linear-gradient(160deg, rgba(255,255,255,0.85) 0%, rgba(248,250,255,0.9) 40%, rgba(252,248,255,0.85) 100%);
+          backdrop-filter: blur(16px);
+          border-left: 1px solid rgba(59,110,248,0.1);
         }
 
         .sl-mobile-brand {
@@ -265,36 +267,37 @@ export default function SAOLogin() {
         .sl-form-header { text-align: center; margin-bottom: 26px; }
         .sl-icon-wrap {
           width: 62px; height: 62px; border-radius: 16px;
-          background: linear-gradient(135deg, rgba(59,110,248,0.22), rgba(37,80,220,0.14));
-          border: 1px solid rgba(59,110,248,0.35);
+          background: linear-gradient(135deg, rgba(59,110,248,0.14), rgba(37,80,220,0.08));
+          border: 1px solid rgba(59,110,248,0.22);
           display: flex; align-items: center; justify-content: center;
           margin: 0 auto 14px;
-          box-shadow: 0 0 44px rgba(59,110,248,0.16);
+          box-shadow: 0 4px 24px rgba(59,110,248,0.14);
         }
-        .sl-title    { font-family: 'Syne', sans-serif; font-size: 23px; font-weight: 700; color: #fff; margin-bottom: 5px; }
-        .sl-subtitle { font-size: 13px; color: rgba(255,255,255,0.36); font-weight: 300; }
+        .sl-title    { font-family: 'Syne', sans-serif; font-size: 23px; font-weight: 700; color: #1a2563; margin-bottom: 5px; }
+        .sl-subtitle { font-size: 13px; color: #7b8cc4; font-weight: 300; }
 
         .sl-field { margin-bottom: 14px; }
         .sl-label {
           display: block; font-size: 10px; font-weight: 600;
           letter-spacing: 0.09em; text-transform: uppercase;
-          color: rgba(255,255,255,0.42); margin-bottom: 6px;
+          color: #7b8cc4; margin-bottom: 6px;
         }
         .sl-input-wrap { position: relative; }
         .sl-input-wrap svg {
           position: absolute; left: 13px; top: 50%; transform: translateY(-50%);
-          width: 14px; height: 14px; color: rgba(255,255,255,0.26); pointer-events: none;
+          width: 14px; height: 14px; color: #a0b0d8; pointer-events: none;
         }
         .sl-input {
           width: 100%; height: 46px; padding: 0 14px 0 38px;
-          background: rgba(59,110,248,0.08); border: 1px solid rgba(59,110,248,0.18);
-          border-radius: 10px; color: #fff; font-size: 14px; font-family: 'DM Sans', sans-serif;
+          background: rgba(255,255,255,0.9); border: 1px solid rgba(59,110,248,0.18);
+          border-radius: 10px; color: #1a2563; font-size: 14px; font-family: 'DM Sans', sans-serif;
           outline: none; transition: all 0.2s ease;
+          box-shadow: 0 1px 4px rgba(59,110,248,0.06);
         }
-        .sl-input::placeholder { color: rgba(255,255,255,0.22); }
+        .sl-input::placeholder { color: #b0bedd; }
         .sl-input:focus {
-          background: rgba(59,110,248,0.13); border-color: rgba(59,110,248,0.55);
-          box-shadow: 0 0 0 3px rgba(59,110,248,0.12);
+          background: #fff; border-color: rgba(59,110,248,0.5);
+          box-shadow: 0 0 0 3px rgba(59,110,248,0.1);
         }
 
         .sl-btn {
@@ -303,26 +306,27 @@ export default function SAOLogin() {
           color: #fff; font-size: 14px; font-weight: 600; font-family: 'DM Sans', sans-serif;
           display: flex; align-items: center; justify-content: center; gap: 8px;
           margin-top: 18px; transition: all 0.25s ease;
-          box-shadow: 0 6px 26px rgba(59,110,248,0.32);
+          box-shadow: 0 6px 26px rgba(59,110,248,0.28);
           position: relative; overflow: hidden;
         }
         .sl-btn::after {
           content: ''; position: absolute; inset: 0;
-          background: linear-gradient(135deg, rgba(255,255,255,0.1), transparent);
+          background: linear-gradient(135deg, rgba(255,255,255,0.15), transparent);
           opacity: 0; transition: opacity 0.25s;
         }
-        .sl-btn:hover { transform: translateY(-1px); box-shadow: 0 10px 34px rgba(59,110,248,0.48); }
+        .sl-btn:hover { transform: translateY(-1px); box-shadow: 0 10px 34px rgba(59,110,248,0.38); }
         .sl-btn:hover::after { opacity: 1; }
         .sl-btn:disabled { opacity: 0.55; cursor: not-allowed; transform: none; }
 
         .sl-divider { position: relative; margin: 20px 0; text-align: center; }
         .sl-divider::before {
           content: ''; position: absolute; top: 50%; left: 0; right: 0;
-          height: 1px; background: rgba(255,255,255,0.07);
+          height: 1px; background: rgba(59,110,248,0.1);
         }
         .sl-divider span {
           position: relative; padding: 0 12px;
-          font-size: 10px; color: rgba(255,255,255,0.2); text-transform: uppercase; letter-spacing: 0.1em;
+          font-size: 10px; color: #a0b0d8; text-transform: uppercase; letter-spacing: 0.1em;
+          background: rgba(248,250,255,0.9);
         }
 
         /* Portal switch links */
@@ -334,34 +338,34 @@ export default function SAOLogin() {
           border: 1px solid; backdrop-filter: blur(8px);
         }
         .sl-portal-admin {
-          background: rgba(239,68,68,0.08); border-color: rgba(239,68,68,0.22); color: #fca5a5;
+          background: rgba(239,68,68,0.06); border-color: rgba(239,68,68,0.18); color: #dc2626;
         }
-        .sl-portal-admin:hover { background: rgba(239,68,68,0.14); border-color: rgba(239,68,68,0.38); }
+        .sl-portal-admin:hover { background: rgba(239,68,68,0.1); border-color: rgba(239,68,68,0.3); }
         .sl-portal-emp {
-          background: rgba(59,110,248,0.08); border-color: rgba(59,110,248,0.22); color: #93b4ff;
+          background: rgba(59,110,248,0.06); border-color: rgba(59,110,248,0.18); color: #3b6ef8;
         }
-        .sl-portal-emp:hover { background: rgba(59,110,248,0.14); border-color: rgba(59,110,248,0.38); }
+        .sl-portal-emp:hover { background: rgba(59,110,248,0.1); border-color: rgba(59,110,248,0.3); }
 
         .sl-note-box {
           padding: 11px 14px; border-radius: 10px; margin-bottom: 14px;
-          background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08);
-          font-size: 12px; color: rgba(255,255,255,0.36); text-align: center; line-height: 1.5;
+          background: rgba(255,255,255,0.6); border: 1px solid rgba(59,110,248,0.1);
+          font-size: 12px; color: #7b8cc4; text-align: center; line-height: 1.5;
         }
 
         .sl-back {
           display: flex; align-items: center; justify-content: center; gap: 6px;
-          font-size: 12px; color: rgba(255,255,255,0.28); text-decoration: none;
+          font-size: 12px; color: #7b8cc4; text-decoration: none;
           padding: 8px 16px; border-radius: 9px; width: fit-content; margin: 0 auto;
-          border: 1px solid rgba(255,255,255,0.07); background: rgba(255,255,255,0.03);
+          border: 1px solid rgba(59,110,248,0.14); background: rgba(255,255,255,0.6);
           transition: all 0.2s ease;
         }
-        .sl-back:hover { color: rgba(255,255,255,0.52); background: rgba(255,255,255,0.06); border-color: rgba(255,255,255,0.12); }
+        .sl-back:hover { color: #3b6ef8; background: rgba(59,110,248,0.06); border-color: rgba(59,110,248,0.25); }
 
         .sl-secure {
           display: flex; align-items: center; justify-content: center; gap: 6px;
           margin: 14px auto 0; padding: 4px 14px; border-radius: 50px; width: fit-content;
-          background: rgba(16,185,129,0.08); border: 1px solid rgba(16,185,129,0.16);
-          font-size: 11px; color: rgba(110,231,183,0.7); font-weight: 500;
+          background: rgba(16,185,129,0.07); border: 1px solid rgba(16,185,129,0.18);
+          font-size: 11px; color: #059669; font-weight: 500;
         }
       `}</style>
 
@@ -377,10 +381,10 @@ export default function SAOLogin() {
             {/* Brand */}
             <div className="sl-brand">
               <div className="sl-brand-icon">
-                <ShieldCheck className="w-5 h-5" style={{ color: '#93b4ff' }} />
+                <ShieldCheck className="w-5 h-5" style={{ color: '#3b6ef8' }} />
               </div>
               <div>
-                <div className="sl-brand-name">TimeTrack Pro</div>
+                <div className="sl-brand-name">TMC TimeTrack Pro</div>
                 <div className="sl-brand-sub">Site Admin Officer Portal</div>
               </div>
             </div>
@@ -406,15 +410,15 @@ export default function SAOLogin() {
             {/* Stats */}
             <div className="sl-stats">
               <div className="sl-stat">
-                <div className="sl-stat-num" style={{ color: '#93b4ff' }}>Live</div>
+                <div className="sl-stat-num" style={{ color: '#3b6ef8' }}>Live</div>
                 <div className="sl-stat-label">Site Sync</div>
               </div>
               <div className="sl-stat">
-                <div className="sl-stat-num" style={{ color: '#c4b5fd' }}>GPS</div>
+                <div className="sl-stat-num" style={{ color: '#7c3bf8' }}>GPS</div>
                 <div className="sl-stat-label">Verified</div>
               </div>
               <div className="sl-stat">
-                <div className="sl-stat-num" style={{ color: '#93b4ff' }}>L3</div>
+                <div className="sl-stat-num" style={{ color: '#3b6ef8' }}>L3</div>
                 <div className="sl-stat-label">Access Level</div>
               </div>
             </div>
@@ -433,7 +437,7 @@ export default function SAOLogin() {
 
             {/* Info note */}
             <div className="sl-note">
-              <ShieldCheck className="w-4 h-4" style={{ color: '#93b4ff', flexShrink: 0, marginTop: 1 }} />
+              <ShieldCheck className="w-4 h-4" style={{ color: '#3b6ef8', flexShrink: 0, marginTop: 1 }} />
               <div>
                 <div className="sl-note-title">Site Administration Access</div>
                 <div className="sl-note-desc">Your credentials were provided by your administrator. Contact HR if you have any login issues.</div>
@@ -442,7 +446,7 @@ export default function SAOLogin() {
           </div>
 
           <div className="sl-footer">
-            <CheckCircle2 className="w-3.5 h-3.5" style={{ color: '#93b4ff', flexShrink: 0 }} />
+            <CheckCircle2 className="w-3.5 h-3.5" style={{ color: '#059669', flexShrink: 0 }} />
             <span>Secure Connection Established</span>
             <span style={{ opacity: 0.4 }}>·</span>
             <span>TLS 1.3 Encrypted</span>
@@ -454,7 +458,7 @@ export default function SAOLogin() {
           {/* Mobile brand */}
           <div className="sl-mobile-brand">
             <div className="sl-brand-icon">
-              <ShieldCheck className="w-5 h-5" style={{ color: '#93b4ff' }} />
+              <ShieldCheck className="w-5 h-5" style={{ color: '#3b6ef8' }} />
             </div>
             <div>
               <div className="sl-brand-name">TimeTrack Pro</div>
@@ -465,7 +469,7 @@ export default function SAOLogin() {
           {/* Header */}
           <div className="sl-form-header">
             <div className="sl-icon-wrap">
-              <ShieldCheck className="w-7 h-7" style={{ color: '#93b4ff' }} />
+              <ShieldCheck className="w-7 h-7" style={{ color: '#3b6ef8' }} />
             </div>
             <h1 className="sl-title">SAO Login</h1>
             <p className="sl-subtitle">Sign in with your site officer credentials</p>
@@ -536,7 +540,7 @@ export default function SAOLogin() {
           </Link>
 
           <div className="sl-secure">
-            <CheckCircle2 className="w-3 h-3" style={{ color: '#93b4ff' }} />
+            <CheckCircle2 className="w-3 h-3" style={{ color: '#059669' }} />
             Secure · Encrypted · Monitored
           </div>
         </div>
