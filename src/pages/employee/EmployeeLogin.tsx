@@ -65,33 +65,33 @@ export default function EmployeeLogin() {
 
   if (authLoading) {
     return (
-      <div style={{ minHeight: '100vh', display: 'flex', alignItems: 'center', justifyContent: 'center', background: 'linear-gradient(135deg, #0f0c29, #302b63, #24243e)' }}>
+      <div style={{ minHeight: '100vh', display: 'flex', alignItems: 'center', justifyContent: 'center', background: '#f0f4ff' }}>
         <div style={{ textAlign: 'center' }}>
-          <Loader2 className="w-8 h-8 animate-spin" style={{ color: '#93b4ff', margin: '0 auto 12px' }} />
-          <p style={{ fontSize: 12, color: 'rgba(147,180,255,0.6)', letterSpacing: '0.15em', textTransform: 'uppercase' }}>Loading authentication...</p>
+          <Loader2 className="w-8 h-8 animate-spin" style={{ color: '#3b6ef8', margin: '0 auto 12px' }} />
+          <p style={{ fontSize: 12, color: '#6b7eb8', letterSpacing: '0.15em', textTransform: 'uppercase' }}>Loading authentication...</p>
         </div>
       </div>
     );
   }
 
   const slides = [
-    { icon: <Clock className="w-4 h-4" style={{ color: '#93b4ff' }} />,     bg: 'rgba(59,110,248,0.18)',  border: 'rgba(59,110,248,0.32)',  title: 'Clock In / Out',    desc: 'Selfie-verified time tracking for secure attendance' },
-    { icon: <FileText className="w-4 h-4" style={{ color: '#c4b5fd' }} />,   bg: 'rgba(147,180,255,0.15)',  border: 'rgba(147,180,255,0.28)',  title: 'View Timesheets',   desc: 'Work hours, overtime and earnings history' },
-    { icon: <Calendar className="w-4 h-4" style={{ color: '#a5b4fc' }} />,   bg: 'rgba(196,181,253,0.15)', border: 'rgba(196,181,253,0.28)', title: 'Leave Requests',    desc: 'Submit and track leave applications easily' },
-    { icon: <Wallet className="w-4 h-4" style={{ color: '#93b4ff' }} />,     bg: 'rgba(59,110,248,0.18)',  border: 'rgba(59,110,248,0.32)',  title: 'Payslip Access',    desc: 'View and download your monthly payslips' },
-    { icon: <BarChart3 className="w-4 h-4" style={{ color: '#c4b5fd' }} />,  bg: 'rgba(147,180,255,0.15)',  border: 'rgba(147,180,255,0.28)',  title: 'Attendance Report', desc: 'Personal attendance summary and analytics' },
-    { icon: <UserCircle className="w-4 h-4" style={{ color: '#a5b4fc' }} />, bg: 'rgba(196,181,253,0.15)', border: 'rgba(196,181,253,0.28)', title: 'My Profile',        desc: 'Update personal info and preferences' },
+    { icon: <Clock className="w-4 h-4" style={{ color: '#3b6ef8' }} />,     bg: 'rgba(59,110,248,0.1)',  border: 'rgba(59,110,248,0.22)',  title: 'Clock In / Out',    desc: 'Selfie-verified time tracking for secure attendance' },
+    { icon: <FileText className="w-4 h-4" style={{ color: '#7c3bf8' }} />,   bg: 'rgba(124,59,248,0.1)',  border: 'rgba(124,59,248,0.22)',  title: 'View Timesheets',   desc: 'Work hours, overtime and earnings history' },
+    { icon: <Calendar className="w-4 h-4" style={{ color: '#6366f1' }} />,   bg: 'rgba(99,102,241,0.1)', border: 'rgba(99,102,241,0.22)', title: 'Leave Requests',    desc: 'Submit and track leave applications easily' },
+    { icon: <Wallet className="w-4 h-4" style={{ color: '#3b6ef8' }} />,     bg: 'rgba(59,110,248,0.1)',  border: 'rgba(59,110,248,0.22)',  title: 'Payslip Access',    desc: 'View and download your monthly payslips' },
+    { icon: <BarChart3 className="w-4 h-4" style={{ color: '#7c3bf8' }} />,  bg: 'rgba(124,59,248,0.1)',  border: 'rgba(124,59,248,0.22)',  title: 'Attendance Report', desc: 'Personal attendance summary and analytics' },
+    { icon: <UserCircle className="w-4 h-4" style={{ color: '#6366f1' }} />, bg: 'rgba(99,102,241,0.1)', border: 'rgba(99,102,241,0.22)', title: 'My Profile',        desc: 'Update personal info and preferences' },
   ];
 
   const tickers = [
-    { label: 'Real-Time Clock In/Out',      color: '#93b4ff' },
-    { label: 'Selfie Verification',          color: '#c4b5fd' },
-    { label: 'Leave Management',             color: '#a5b4fc' },
-    { label: 'Timesheet Access',             color: '#93b4ff' },
-    { label: 'Payslip Downloads',            color: '#c4b5fd' },
-    { label: 'Overtime Tracking',            color: '#a5b4fc' },
-    { label: 'Attendance Summary',           color: '#93b4ff' },
-    { label: 'Personal Document Vault',      color: '#c4b5fd' },
+    { label: 'Real-Time Clock In/Out',      color: '#3b6ef8' },
+    { label: 'Selfie Verification',          color: '#7c3bf8' },
+    { label: 'Leave Management',             color: '#6366f1' },
+    { label: 'Timesheet Access',             color: '#3b6ef8' },
+    { label: 'Payslip Downloads',            color: '#7c3bf8' },
+    { label: 'Overtime Tracking',            color: '#6366f1' },
+    { label: 'Attendance Summary',           color: '#3b6ef8' },
+    { label: 'Personal Document Vault',      color: '#7c3bf8' },
   ];
 
   return (
@@ -105,7 +105,7 @@ export default function EmployeeLogin() {
           font-family: 'DM Sans', sans-serif;
           height: 100vh; width: 100vw;
           display: flex; overflow: hidden;
-          position: relative; background: #050814;
+          position: relative; background: #f5f7ff;
         }
 
         .el-bg {
@@ -115,21 +115,21 @@ export default function EmployeeLogin() {
         }
         .el-bg::after {
           content: ''; position: absolute; inset: 0;
-          background: linear-gradient(135deg, rgba(8,13,38,0.95) 0%, rgba(4,7,20,0.91) 50%, rgba(12,8,30,0.95) 100%);
+          background: linear-gradient(135deg, rgba(240,245,255,0.96) 0%, rgba(235,242,255,0.94) 50%, rgba(242,238,255,0.96) 100%);
         }
 
         .el-grid {
           position: fixed; inset: 0; z-index: 1; pointer-events: none;
           background-image:
-            linear-gradient(rgba(255,255,255,0.014) 1px, transparent 1px),
-            linear-gradient(90deg, rgba(255,255,255,0.014) 1px, transparent 1px);
+            linear-gradient(rgba(59,110,248,0.04) 1px, transparent 1px),
+            linear-gradient(90deg, rgba(59,110,248,0.04) 1px, transparent 1px);
           background-size: 56px 56px;
         }
 
-        .el-orb { position: fixed; border-radius: 50%; pointer-events: none; z-index: 1; filter: blur(100px); opacity: 0.14; }
-        .el-orb-1 { width: 600px; height: 600px; top: -200px; left: -150px; background: radial-gradient(circle, #3b6ef8, transparent); }
-        .el-orb-2 { width: 450px; height: 450px; bottom: -150px; right: -100px; background: radial-gradient(circle, #7c3bf8, transparent); }
-        .el-orb-3 { width: 350px; height: 350px; top: 40%; right: 20%; background: radial-gradient(circle, #7c3bf8, transparent); opacity: 0.07; }
+        .el-orb { position: fixed; border-radius: 50%; pointer-events: none; z-index: 1; filter: blur(100px); opacity: 0.18; }
+        .el-orb-1 { width: 600px; height: 600px; top: -200px; left: -150px; background: radial-gradient(circle, #93b4ff, transparent); }
+        .el-orb-2 { width: 450px; height: 450px; bottom: -150px; right: -100px; background: radial-gradient(circle, #c4b5fd, transparent); }
+        .el-orb-3 { width: 350px; height: 350px; top: 40%; right: 20%; background: radial-gradient(circle, #a5b4fc, transparent); opacity: 0.12; }
 
         /* ── LEFT ── */
         .el-left {
@@ -137,8 +137,8 @@ export default function EmployeeLogin() {
           width: 55%; height: 100vh;
           display: none; flex-direction: column; justify-content: center;
           padding: 40px 48px;
-          border-right: 1px solid rgba(255,255,255,0.06);
-          background: linear-gradient(160deg, rgba(59,110,248,0.06) 0%, rgba(255,255,255,0.02) 50%, rgba(124,59,248,0.05) 100%);
+          border-right: 1px solid rgba(59,110,248,0.12);
+          background: linear-gradient(160deg, rgba(59,110,248,0.06) 0%, rgba(255,255,255,0.5) 50%, rgba(124,59,248,0.04) 100%);
           backdrop-filter: blur(8px);
           overflow-y: auto; gap: 0;
         }
@@ -147,19 +147,19 @@ export default function EmployeeLogin() {
         .el-brand { display: flex; align-items: center; gap: 12px; margin-bottom: 32px; }
         .el-brand-icon {
           width: 42px; height: 42px; border-radius: 11px;
-          background: rgba(59,110,248,0.2); border: 1px solid rgba(59,110,248,0.35);
+          background: rgba(59,110,248,0.12); border: 1px solid rgba(59,110,248,0.25);
           display: flex; align-items: center; justify-content: center;
-          box-shadow: 0 0 22px rgba(59,110,248,0.18);
+          box-shadow: 0 0 22px rgba(59,110,248,0.12);
         }
-        .el-brand-name { font-family: 'Syne', sans-serif; font-size: 17px; font-weight: 700; color: #fff; }
-        .el-brand-sub  { font-size: 9px; font-weight: 700; letter-spacing: 0.13em; text-transform: uppercase; color: rgba(255,255,255,0.35); margin-top: 2px; }
+        .el-brand-name { font-family: 'Syne', sans-serif; font-size: 17px; font-weight: 700; color: #1a2563; }
+        .el-brand-sub  { font-size: 9px; font-weight: 700; letter-spacing: 0.13em; text-transform: uppercase; color: #7b8cc4; margin-top: 2px; }
 
-        .el-headline { font-family: 'Syne', sans-serif; font-size: 28px; font-weight: 700; color: #fff; line-height: 1.22; margin-bottom: 8px; }
+        .el-headline { font-family: 'Syne', sans-serif; font-size: 28px; font-weight: 700; color: #1a2563; line-height: 1.22; margin-bottom: 8px; }
         .el-headline span {
-          background: linear-gradient(90deg, #93b4ff, #c4b5fd, #6ee7b7);
+          background: linear-gradient(90deg, #3b6ef8, #7c3bf8, #059669);
           -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
         }
-        .el-desc { font-size: 13px; font-weight: 300; color: rgba(255,255,255,0.4); line-height: 1.65; margin-bottom: 28px; }
+        .el-desc { font-size: 13px; font-weight: 300; color: #6b7eb8; line-height: 1.65; margin-bottom: 28px; }
 
         /* ── Carousel ── */
         .el-carousel { position: relative; width: 100%; overflow: hidden; margin-bottom: 24px; }
@@ -176,38 +176,40 @@ export default function EmployeeLogin() {
         .el-carousel::before, .el-carousel::after {
           content: ''; position: absolute; top: 0; bottom: 0; width: 60px; z-index: 2; pointer-events: none;
         }
-        .el-carousel::before { left: 0;  background: linear-gradient(to right, rgba(8,13,38,0.92), transparent); }
-        .el-carousel::after  { right: 0; background: linear-gradient(to left,  rgba(8,13,38,0.92), transparent); }
+        .el-carousel::before { left: 0;  background: linear-gradient(to right, rgba(240,244,255,0.9), transparent); }
+        .el-carousel::after  { right: 0; background: linear-gradient(to left,  rgba(240,244,255,0.9), transparent); }
 
         .el-slide {
           flex-shrink: 0; width: 200px; padding: 16px; border-radius: 14px;
-          background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.08);
+          background: rgba(255,255,255,0.7); border: 1px solid rgba(59,110,248,0.12);
           backdrop-filter: blur(12px);
           display: flex; flex-direction: column; gap: 10px;
           transition: all 0.2s ease;
+          box-shadow: 0 2px 12px rgba(59,110,248,0.06);
         }
-        .el-slide:hover { border-color: rgba(59,110,248,0.38); background: rgba(59,110,248,0.06); }
+        .el-slide:hover { border-color: rgba(59,110,248,0.28); background: rgba(255,255,255,0.9); box-shadow: 0 4px 20px rgba(59,110,248,0.1); }
         .el-slide-icon  { width: 36px; height: 36px; border-radius: 9px; display: flex; align-items: center; justify-content: center; }
-        .el-slide-title { font-size: 13px; font-weight: 600; color: rgba(255,255,255,0.88); }
-        .el-slide-desc  { font-size: 11px; color: rgba(255,255,255,0.38); line-height: 1.45; }
+        .el-slide-title { font-size: 13px; font-weight: 600; color: #1a2563; }
+        .el-slide-desc  { font-size: 11px; color: #7b8cc4; line-height: 1.45; }
 
         /* ── Stats ── */
         .el-stats { display: flex; gap: 10px; margin-bottom: 22px; }
         .el-stat {
           flex: 1; padding: 12px 14px; border-radius: 12px;
-          background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08);
+          background: rgba(255,255,255,0.7); border: 1px solid rgba(59,110,248,0.1);
           backdrop-filter: blur(10px); text-align: center;
+          box-shadow: 0 2px 8px rgba(59,110,248,0.05);
         }
-        .el-stat-num   { font-family: 'Syne', sans-serif; font-size: 20px; font-weight: 700; color: #fff; line-height: 1; }
-        .el-stat-label { font-size: 10px; color: rgba(255,255,255,0.35); margin-top: 4px; letter-spacing: 0.06em; text-transform: uppercase; }
+        .el-stat-num   { font-family: 'Syne', sans-serif; font-size: 20px; font-weight: 700; color: #1a2563; line-height: 1; }
+        .el-stat-label { font-size: 10px; color: #7b8cc4; margin-top: 4px; letter-spacing: 0.06em; text-transform: uppercase; }
 
         /* ── Ticker ── */
-        .el-ticker { overflow: hidden; border-top: 1px solid rgba(255,255,255,0.07); border-bottom: 1px solid rgba(255,255,255,0.07); padding: 9px 0; margin-bottom: 20px; position: relative; }
+        .el-ticker { overflow: hidden; border-top: 1px solid rgba(59,110,248,0.1); border-bottom: 1px solid rgba(59,110,248,0.1); padding: 9px 0; margin-bottom: 20px; position: relative; }
         .el-ticker::before, .el-ticker::after {
           content: ''; position: absolute; top: 0; bottom: 0; width: 40px; z-index: 2; pointer-events: none;
         }
-        .el-ticker::before { left: 0;  background: linear-gradient(to right, rgba(8,13,38,0.95), transparent); }
-        .el-ticker::after  { right: 0; background: linear-gradient(to left,  rgba(8,13,38,0.95), transparent); }
+        .el-ticker::before { left: 0;  background: linear-gradient(to right, rgba(240,244,255,0.95), transparent); }
+        .el-ticker::after  { right: 0; background: linear-gradient(to left,  rgba(240,244,255,0.95), transparent); }
         .el-ticker-track {
           display: flex; gap: 0;
           animation: el-ticker-scroll 22s linear infinite;
@@ -221,7 +223,7 @@ export default function EmployeeLogin() {
         .el-ticker-item {
           display: inline-flex; align-items: center; gap: 6px;
           padding: 0 20px; font-size: 11px; font-weight: 500;
-          color: rgba(255,255,255,0.45); white-space: nowrap;
+          color: #7b8cc4; white-space: nowrap;
         }
         .el-ticker-dot { width: 4px; height: 4px; border-radius: 50%; flex-shrink: 0; }
 
@@ -229,16 +231,16 @@ export default function EmployeeLogin() {
         .el-note {
           display: flex; align-items: flex-start; gap: 10px; padding: 13px;
           border-radius: 11px;
-          background: rgba(59,110,248,0.08); border: 1px solid rgba(59,110,248,0.22);
+          background: rgba(59,110,248,0.06); border: 1px solid rgba(59,110,248,0.16);
           backdrop-filter: blur(10px);
         }
-        .el-note-title { font-size: 12px; font-weight: 600; color: #c4b5fd; margin-bottom: 3px; }
-        .el-note-desc  { font-size: 11px; color: rgba(255,255,255,0.4); line-height: 1.5; }
+        .el-note-title { font-size: 12px; font-weight: 600; color: #7c3bf8; margin-bottom: 3px; }
+        .el-note-desc  { font-size: 11px; color: #6b7eb8; line-height: 1.5; }
 
         .el-footer {
           display: flex; align-items: center; gap: 7px;
-          padding-top: 16px; border-top: 1px solid rgba(255,255,255,0.08);
-          font-size: 11px; color: rgba(255,255,255,0.32); margin-top: 16px;
+          padding-top: 16px; border-top: 1px solid rgba(59,110,248,0.1);
+          font-size: 11px; color: #7b8cc4; margin-top: 16px;
         }
 
         /* ── RIGHT ── */
@@ -247,9 +249,9 @@ export default function EmployeeLogin() {
           flex: 1; height: 100vh;
           display: flex; flex-direction: column; justify-content: center;
           padding: 36px 44px; overflow-y: auto;
-          background: linear-gradient(160deg, rgba(37,80,220,0.12) 0%, rgba(59,110,248,0.08) 40%, rgba(109,40,217,0.10) 100%);
-          backdrop-filter: blur(12px);
-          border-left: 1px solid rgba(255,255,255,0.06);
+          background: linear-gradient(160deg, rgba(255,255,255,0.85) 0%, rgba(248,250,255,0.9) 40%, rgba(252,248,255,0.85) 100%);
+          backdrop-filter: blur(16px);
+          border-left: 1px solid rgba(59,110,248,0.1);
         }
 
         .el-mobile-brand {
@@ -261,36 +263,37 @@ export default function EmployeeLogin() {
         .el-form-header { text-align: center; margin-bottom: 26px; }
         .el-icon-wrap {
           width: 62px; height: 62px; border-radius: 16px;
-          background: linear-gradient(135deg, rgba(59,110,248,0.28), rgba(37,80,220,0.18));
-          border: 1px solid rgba(59,110,248,0.38);
+          background: linear-gradient(135deg, rgba(59,110,248,0.14), rgba(37,80,220,0.08));
+          border: 1px solid rgba(59,110,248,0.22);
           display: flex; align-items: center; justify-content: center;
           margin: 0 auto 14px;
-          box-shadow: 0 0 44px rgba(59,110,248,0.2);
+          box-shadow: 0 4px 24px rgba(59,110,248,0.14);
         }
-        .el-title    { font-family: 'Syne', sans-serif; font-size: 23px; font-weight: 700; color: #fff; margin-bottom: 5px; }
-        .el-subtitle { font-size: 13px; color: rgba(255,255,255,0.36); font-weight: 300; }
+        .el-title    { font-family: 'Syne', sans-serif; font-size: 23px; font-weight: 700; color: #1a2563; margin-bottom: 5px; }
+        .el-subtitle { font-size: 13px; color: #7b8cc4; font-weight: 300; }
 
         .el-field { margin-bottom: 14px; }
         .el-label {
           display: block; font-size: 10px; font-weight: 600;
           letter-spacing: 0.09em; text-transform: uppercase;
-          color: rgba(255,255,255,0.42); margin-bottom: 6px;
+          color: #7b8cc4; margin-bottom: 6px;
         }
         .el-input-wrap { position: relative; }
         .el-input-wrap svg {
           position: absolute; left: 13px; top: 50%; transform: translateY(-50%);
-          width: 14px; height: 14px; color: rgba(255,255,255,0.26); pointer-events: none;
+          width: 14px; height: 14px; color: #a0b0d8; pointer-events: none;
         }
         .el-input {
           width: 100%; height: 46px; padding: 0 14px 0 38px;
-          background: rgba(59,110,248,0.08); border: 1px solid rgba(59,110,248,0.22);
-          border-radius: 10px; color: #fff; font-size: 14px; font-family: 'DM Sans', sans-serif;
+          background: rgba(255,255,255,0.9); border: 1px solid rgba(59,110,248,0.18);
+          border-radius: 10px; color: #1a2563; font-size: 14px; font-family: 'DM Sans', sans-serif;
           outline: none; transition: all 0.2s ease;
+          box-shadow: 0 1px 4px rgba(59,110,248,0.06);
         }
-        .el-input::placeholder { color: rgba(255,255,255,0.22); }
+        .el-input::placeholder { color: #b0bedd; }
         .el-input:focus {
-          background: rgba(59,110,248,0.13); border-color: rgba(59,110,248,0.58);
-          box-shadow: 0 0 0 3px rgba(59,110,248,0.12);
+          background: #fff; border-color: rgba(59,110,248,0.5);
+          box-shadow: 0 0 0 3px rgba(59,110,248,0.1);
         }
 
         .el-btn {
@@ -299,61 +302,62 @@ export default function EmployeeLogin() {
           color: #fff; font-size: 14px; font-weight: 600; font-family: 'DM Sans', sans-serif;
           display: flex; align-items: center; justify-content: center; gap: 8px;
           margin-top: 18px; transition: all 0.25s ease;
-          box-shadow: 0 6px 26px rgba(37,80,220,0.35);
+          box-shadow: 0 6px 26px rgba(37,80,220,0.28);
           position: relative; overflow: hidden;
         }
         .el-btn::after {
           content: ''; position: absolute; inset: 0;
-          background: linear-gradient(135deg, rgba(255,255,255,0.12), transparent);
+          background: linear-gradient(135deg, rgba(255,255,255,0.15), transparent);
           opacity: 0; transition: opacity 0.25s;
         }
-        .el-btn:hover { transform: translateY(-1px); box-shadow: 0 10px 34px rgba(37,80,220,0.52); }
+        .el-btn:hover { transform: translateY(-1px); box-shadow: 0 10px 34px rgba(37,80,220,0.38); }
         .el-btn:hover::after { opacity: 1; }
         .el-btn:disabled { opacity: 0.55; cursor: not-allowed; transform: none; }
 
         .el-divider { position: relative; margin: 20px 0; text-align: center; }
         .el-divider::before {
           content: ''; position: absolute; top: 50%; left: 0; right: 0;
-          height: 1px; background: rgba(255,255,255,0.07);
+          height: 1px; background: rgba(59,110,248,0.1);
         }
         .el-divider span {
           position: relative; padding: 0 12px;
-          font-size: 10px; color: rgba(255,255,255,0.2); text-transform: uppercase; letter-spacing: 0.1em;
+          font-size: 10px; color: #a0b0d8; text-transform: uppercase; letter-spacing: 0.1em;
+          background: rgba(248,250,255,0.9);
         }
 
         .el-note-box {
           padding: 11px 14px; border-radius: 10px; margin-bottom: 14px;
-          background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08);
-          font-size: 12px; color: rgba(255,255,255,0.36); text-align: center; line-height: 1.5;
+          background: rgba(255,255,255,0.6); border: 1px solid rgba(59,110,248,0.1);
+          font-size: 12px; color: #7b8cc4; text-align: center; line-height: 1.5;
         }
 
         .el-admin-box {
           padding: 11px 14px; border-radius: 10px; margin-bottom: 14px;
-          background: rgba(59,110,248,0.07); border: 1px solid rgba(59,110,248,0.2);
+          background: rgba(59,110,248,0.05); border: 1px solid rgba(59,110,248,0.14);
           font-size: 12px; text-align: center; line-height: 1.5;
         }
-        .el-admin-box span { color: #c4b5fd; font-weight: 600; }
-        .el-admin-box a { color: #93b4ff; font-weight: 600; text-decoration: none; }
-        .el-admin-box a:hover { color: #c4b5fd; text-decoration: underline; }
+        .el-admin-box span { color: #7c3bf8; font-weight: 600; }
+        .el-admin-box a { color: #3b6ef8; font-weight: 600; text-decoration: none; }
+        .el-admin-box a:hover { color: #2550dc; text-decoration: underline; }
 
         .el-back {
           display: flex; align-items: center; justify-content: center; gap: 6px;
-          font-size: 12px; color: rgba(255,255,255,0.28); text-decoration: none;
+          font-size: 12px; color: #7b8cc4; text-decoration: none;
           padding: 8px 16px; border-radius: 9px; width: fit-content; margin: 0 auto;
-          border: 1px solid rgba(255,255,255,0.07); background: rgba(255,255,255,0.03);
+          border: 1px solid rgba(59,110,248,0.14); background: rgba(255,255,255,0.6);
           transition: all 0.2s ease;
         }
-        .el-back:hover { color: rgba(255,255,255,0.52); background: rgba(255,255,255,0.06); border-color: rgba(255,255,255,0.12); }
+        .el-back:hover { color: #3b6ef8; background: rgba(59,110,248,0.06); border-color: rgba(59,110,248,0.25); }
 
         .el-secure {
           display: flex; align-items: center; justify-content: center; gap: 6px;
           margin: 14px auto 0; padding: 4px 14px; border-radius: 50px; width: fit-content;
-          background: rgba(59,110,248,0.08); border: 1px solid rgba(59,110,248,0.18);
-          font-size: 11px; color: rgba(196,181,253,0.75); font-weight: 500;
+          background: rgba(59,110,248,0.06); border: 1px solid rgba(59,110,248,0.16);
+          font-size: 11px; color: #6366f1; font-weight: 500;
         }
 
         .el-copyright {
-          text-align: center; font-size: 11px; color: rgba(255,255,255,0.2); margin-top: 14px;
+          text-align: center; font-size: 11px; color: #a0b0d8; margin-top: 14px;
         }
       `}</style>
 
@@ -370,10 +374,10 @@ export default function EmployeeLogin() {
             {/* Brand */}
             <div className="el-brand">
               <div className="el-brand-icon">
-                <Clock className="w-5 h-5" style={{ color: '#93b4ff' }} />
+                <Clock className="w-5 h-5" style={{ color: '#3b6ef8' }} />
               </div>
               <div>
-                <div className="el-brand-name">TimeTrack Pro</div>
+                <div className="el-brand-name">TMC TimeTrack Pro</div>
                 <div className="el-brand-sub">Employee Self-Service Portal</div>
               </div>
             </div>
@@ -399,15 +403,15 @@ export default function EmployeeLogin() {
             {/* Stats */}
             <div className="el-stats">
               <div className="el-stat">
-                <div className="el-stat-num" style={{ color: '#93b4ff' }}>Live</div>
+                <div className="el-stat-num" style={{ color: '#3b6ef8' }}>Live</div>
                 <div className="el-stat-label">Attendance</div>
               </div>
               <div className="el-stat">
-                <div className="el-stat-num" style={{ color: '#c4b5fd' }}>24/7</div>
+                <div className="el-stat-num" style={{ color: '#7c3bf8' }}>24/7</div>
                 <div className="el-stat-label">Access</div>
               </div>
               <div className="el-stat">
-                <div className="el-stat-num" style={{ color: '#6ee7b7' }}>L2</div>
+                <div className="el-stat-num" style={{ color: '#059669' }}>L2</div>
                 <div className="el-stat-label">Access Level</div>
               </div>
             </div>
@@ -426,7 +430,7 @@ export default function EmployeeLogin() {
 
             {/* Info note */}
             <div className="el-note">
-              <UserCircle className="w-4 h-4" style={{ color: '#c4b5fd', flexShrink: 0, marginTop: 1 }} />
+              <UserCircle className="w-4 h-4" style={{ color: '#7c3bf8', flexShrink: 0, marginTop: 1 }} />
               <div>
                 <div className="el-note-title">Employee Self-Service</div>
                 <div className="el-note-desc">Your credentials were provided by your administrator. Contact HR if you have any login issues.</div>
@@ -435,7 +439,7 @@ export default function EmployeeLogin() {
           </div>
 
           <div className="el-footer">
-            <CheckCircle2 className="w-3.5 h-3.5" style={{ color: '#93b4ff', flexShrink: 0 }} />
+            <CheckCircle2 className="w-3.5 h-3.5" style={{ color: '#059669', flexShrink: 0 }} />
             <span>Secure Connection Established</span>
             <span style={{ opacity: 0.4 }}>·</span>
             <span>TLS 1.3 Encrypted</span>
@@ -447,7 +451,7 @@ export default function EmployeeLogin() {
           {/* Mobile brand */}
           <div className="el-mobile-brand">
             <div className="el-brand-icon">
-              <Clock className="w-5 h-5" style={{ color: '#93b4ff' }} />
+              <Clock className="w-5 h-5" style={{ color: '#3b6ef8' }} />
             </div>
             <div>
               <div className="el-brand-name">TimeTrack Pro</div>
@@ -458,7 +462,7 @@ export default function EmployeeLogin() {
           {/* Header */}
           <div className="el-form-header">
             <div className="el-icon-wrap">
-              <UserCircle className="w-7 h-7" style={{ color: '#93b4ff' }} />
+              <UserCircle className="w-7 h-7" style={{ color: '#3b6ef8' }} />
             </div>
             <h1 className="el-title">Employee Login</h1>
             <p className="el-subtitle">Sign in with your company credentials</p>
@@ -525,7 +529,7 @@ export default function EmployeeLogin() {
           </Link>
 
           <div className="el-secure">
-            <CheckCircle2 className="w-3 h-3" style={{ color: '#93b4ff' }} />
+            <CheckCircle2 className="w-3 h-3" style={{ color: '#059669' }} />
             Secure · Encrypted · Monitored
           </div>
 
