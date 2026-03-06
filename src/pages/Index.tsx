@@ -574,9 +574,6 @@ export default function Index() {
                   Tiger's Mark Corp Portal
                 </span>
               </h2>
-              <p className="text-base text-white/45 max-w-lg mx-auto leading-relaxed font-light">
-                Securely access your role-specific environment with enterprise-grade governance and compliance controls
-              </p>
             </div>
 
             {/* ── CAROUSEL / 3-up grid ─────────────────────────────────────── */}
