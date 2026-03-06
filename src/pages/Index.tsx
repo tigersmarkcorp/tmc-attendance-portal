@@ -72,10 +72,10 @@ export default function Index() {
 
   if (loading) {
     return (
-      <div style={{ minHeight: '100vh', display: 'flex', alignItems: 'center', justifyContent: 'center', background: '#0a0500' }}>
+      <div style={{ minHeight: '100vh', display: 'flex', alignItems: 'center', justifyContent: 'center', background: '#fff7ed' }}>
         <div style={{ textAlign: 'center' }}>
           <Loader2 style={{ width: 32, height: 32, color: '#f97316', animation: 'spin 1s linear infinite', margin: '0 auto 12px' }} />
-          <p style={{ fontSize: 11, color: 'rgba(253,186,116,0.6)', letterSpacing: '0.15em', textTransform: 'uppercase', fontFamily: 'sans-serif' }}>
+          <p style={{ fontSize: 11, color: '#c2410c', letterSpacing: '0.15em', textTransform: 'uppercase', fontFamily: 'sans-serif' }}>
             Establishing secure session...
           </p>
         </div>
@@ -87,20 +87,20 @@ export default function Index() {
     {
       role: 'System Administrator',
       level: 'L4 ACCESS',
-      levelBg: 'rgba(239,68,68,0.15)', levelBorder: 'rgba(239,68,68,0.3)', levelText: '#fca5a5',
-      accent: '#f97316', accentDim: 'rgba(249,115,22,0.18)', accentBorder: 'rgba(249,115,22,0.3)',
-      accentText: '#fdba74',
+      levelBg: 'rgba(239,68,68,0.10)', levelBorder: 'rgba(239,68,68,0.30)', levelText: '#dc2626',
+      accent: '#f97316', accentDim: 'rgba(249,115,22,0.10)', accentBorder: 'rgba(249,115,22,0.35)',
+      accentText: '#c2410c',
       image: adminPortalIcon, imageAlt: 'Administrator',
       label: 'TMC System Control',
-      labelIcon: <Shield size={15} color="#fdba74" />,
-      headerIcon: <Shield size={15} color="#fdba74" />,
+      labelIcon: <Shield size={15} color="#ea580c" />,
+      headerIcon: <Shield size={15} color="#ea580c" />,
       description: 'Enterprise-wide governance, security policy enforcement, and organizational oversight',
       features: [
-        { icon: <UserCog size={13} color="#fdba74" />, title: 'User & Permission Management', sub: 'Global directory administration' },
-        { icon: <Database size={13} color="#fdba74" />, title: 'System Analytics Dashboard', sub: 'Real-time operational intelligence' },
-        { icon: <FileText size={13} color="#fdba74" />, title: 'Compliance Reporting', sub: 'Audit-ready documentation' },
+        { icon: <UserCog size={13} color="#ea580c" />, title: 'User & Permission Management', sub: 'Global directory administration' },
+        { icon: <Database size={13} color="#ea580c" />, title: 'System Analytics Dashboard', sub: 'Real-time operational intelligence' },
+        { icon: <FileText size={13} color="#ea580c" />, title: 'Compliance Reporting', sub: 'Audit-ready documentation' },
       ],
-      btnFrom: '#f97316', btnTo: '#ea580c', btnShadow: 'rgba(249,115,22,0.4)',
+      btnFrom: '#f97316', btnTo: '#ea580c', btnShadow: 'rgba(249,115,22,0.35)',
       btnLabel: 'Access Administrator Portal',
       to: '/admin/login',
       isAdmin: true,
@@ -108,20 +108,20 @@ export default function Index() {
     {
       role: 'TMC Site Admin Officer',
       level: 'L3 ACCESS',
-      levelBg: 'rgba(249,115,22,0.15)', levelBorder: 'rgba(249,115,22,0.3)', levelText: '#fdba74',
-      accent: '#ea580c', accentDim: 'rgba(234,88,12,0.18)', accentBorder: 'rgba(234,88,12,0.3)',
-      accentText: '#fb923c',
+      levelBg: 'rgba(249,115,22,0.10)', levelBorder: 'rgba(249,115,22,0.35)', levelText: '#ea580c',
+      accent: '#ea580c', accentDim: 'rgba(234,88,12,0.10)', accentBorder: 'rgba(234,88,12,0.35)',
+      accentText: '#c2410c',
       image: saoPortalIcon, imageAlt: 'Site Operations',
       label: 'TMC Site Operations Hub',
-      labelIcon: <MapPin size={15} color="#fb923c" />,
-      headerIcon: <MapPin size={15} color="#fb923c" />,
+      labelIcon: <MapPin size={15} color="#f97316" />,
+      headerIcon: <MapPin size={15} color="#f97316" />,
       description: 'Multi-site management, workforce coordination, and field compliance oversight',
       features: [
-        { icon: <MapPin size={13} color="#fb923c" />, title: 'Multi-Site Dashboard', sub: 'Real-time location monitoring' },
-        { icon: <Users size={13} color="#fb923c" />, title: 'Workforce Allocation', sub: 'Resource optimization tools' },
-        { icon: <CalendarCheck size={13} color="#fb923c" />, title: 'Compliance Auditing', sub: 'Field operation verification' },
+        { icon: <MapPin size={13} color="#f97316" />, title: 'Multi-Site Dashboard', sub: 'Real-time location monitoring' },
+        { icon: <Users size={13} color="#f97316" />, title: 'Workforce Allocation', sub: 'Resource optimization tools' },
+        { icon: <CalendarCheck size={13} color="#f97316" />, title: 'Compliance Auditing', sub: 'Field operation verification' },
       ],
-      btnFrom: '#ea580c', btnTo: '#c2410c', btnShadow: 'rgba(234,88,12,0.4)',
+      btnFrom: '#ea580c', btnTo: '#c2410c', btnShadow: 'rgba(234,88,12,0.35)',
       btnLabel: 'Access Site Operations Portal',
       to: '/sao/login',
       isAdmin: false,
@@ -129,20 +129,20 @@ export default function Index() {
     {
       role: 'Employee Self-Service',
       level: 'L2 ACCESS',
-      levelBg: 'rgba(249,115,22,0.15)', levelBorder: 'rgba(249,115,22,0.3)', levelText: '#fed7aa',
-      accent: '#fb923c', accentDim: 'rgba(251,146,60,0.18)', accentBorder: 'rgba(251,146,60,0.3)',
-      accentText: '#fed7aa',
+      levelBg: 'rgba(251,146,60,0.10)', levelBorder: 'rgba(251,146,60,0.35)', levelText: '#ea580c',
+      accent: '#fb923c', accentDim: 'rgba(251,146,60,0.10)', accentBorder: 'rgba(251,146,60,0.35)',
+      accentText: '#c2410c',
       image: employeePortalIcon, imageAlt: 'Employee',
       label: 'TMC Personal Workspace',
-      labelIcon: <UserCheck size={15} color="#fed7aa" />,
-      headerIcon: <UserCheck size={15} color="#fed7aa" />,
+      labelIcon: <UserCheck size={15} color="#fb923c" />,
+      headerIcon: <UserCheck size={15} color="#fb923c" />,
       description: 'Attendance management, leave requests, and personal records access',
       features: [
-        { icon: <CalendarCheck size={13} color="#fed7aa" />, title: 'Attendance Tracking', sub: 'Biometric & mobile check-in' },
-        { icon: <FileText size={13} color="#fed7aa" />, title: 'Leave Management', sub: 'Digital request workflow' },
-        { icon: <Database size={13} color="#fed7aa" />, title: 'Personal Document Vault', sub: 'Secure record storage' },
+        { icon: <CalendarCheck size={13} color="#fb923c" />, title: 'Attendance Tracking', sub: 'Biometric & mobile check-in' },
+        { icon: <FileText size={13} color="#fb923c" />, title: 'Leave Management', sub: 'Digital request workflow' },
+        { icon: <Database size={13} color="#fb923c" />, title: 'Personal Document Vault', sub: 'Secure record storage' },
       ],
-      btnFrom: '#fb923c', btnTo: '#f97316', btnShadow: 'rgba(251,146,60,0.4)',
+      btnFrom: '#fb923c', btnTo: '#f97316', btnShadow: 'rgba(251,146,60,0.35)',
       btnLabel: 'Access Employee Portal',
       to: '/employee/login',
       isAdmin: false,
@@ -158,8 +158,8 @@ export default function Index() {
 
         @keyframes spin { to { transform: rotate(360deg); } }
         @keyframes orb-pulse {
-          0%, 100% { opacity: 0.13; transform: scale(1) translateZ(0); }
-          50%       { opacity: 0.21; transform: scale(1.07) translateZ(0); }
+          0%, 100% { opacity: 0.18; transform: scale(1) translateZ(0); }
+          50%       { opacity: 0.28; transform: scale(1.07) translateZ(0); }
         }
         @keyframes pulse-dot {
           0%, 100% { opacity: 1; transform: scale(1); }
@@ -174,23 +174,21 @@ export default function Index() {
         .pr-root {
           font-family: 'DM Sans', sans-serif;
           min-height: 100vh;
-          background: #080501;
+          background: #fff7ed;
           position: relative;
           overflow-x: hidden;
           display: flex;
           flex-direction: column;
-          /* Establish stacking context once */
           isolation: isolate;
         }
 
-        /* ── STATIC BG — no background-attachment:fixed (destroys mobile perf) ── */
+        /* ── BG ── */
         .pr-bg {
           position: fixed;
           inset: 0;
           background-image: url('https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=1400&q=55');
           background-size: cover;
           background-position: center;
-          /* Single GPU-composited layer */
           transform: translateZ(0);
           z-index: -3;
         }
@@ -198,22 +196,27 @@ export default function Index() {
           content: '';
           position: absolute;
           inset: 0;
-          background: linear-gradient(160deg, rgba(8,5,1,0.93) 0%, rgba(14,8,2,0.87) 50%, rgba(8,5,1,0.94) 100%);
+          background: linear-gradient(
+            160deg,
+            rgba(255,252,248,0.97) 0%,
+            rgba(255,248,240,0.97) 50%,
+            rgba(255,244,232,0.97) 100%
+          );
         }
 
-        /* ── GRID — opacity only, no blur ── */
+        /* ── GRID ── */
         .pr-grid {
           position: fixed;
           inset: 0;
           background-image:
-            linear-gradient(rgba(249,115,22,0.03) 1px, transparent 1px),
-            linear-gradient(90deg, rgba(249,115,22,0.03) 1px, transparent 1px);
+            linear-gradient(rgba(249,115,22,0.07) 1px, transparent 1px),
+            linear-gradient(90deg, rgba(249,115,22,0.07) 1px, transparent 1px);
           background-size: 56px 56px;
           pointer-events: none;
           z-index: -2;
         }
 
-        /* ── ORBS — radial gradient only (no filter:blur = no repaint) ── */
+        /* ── ORBS ── */
         .pr-orb {
           position: fixed;
           border-radius: 50%;
@@ -224,12 +227,12 @@ export default function Index() {
         }
         .pr-orb-1 {
           width: 480px; height: 480px;
-          background: radial-gradient(circle at center, rgba(249,115,22,0.20), transparent 68%);
+          background: radial-gradient(circle at center, rgba(249,115,22,0.22), transparent 68%);
           top: -180px; left: -180px;
         }
         .pr-orb-2 {
           width: 400px; height: 400px;
-          background: radial-gradient(circle at center, rgba(234,88,12,0.17), transparent 68%);
+          background: radial-gradient(circle at center, rgba(234,88,12,0.18), transparent 68%);
           bottom: -130px; right: -130px;
           animation-delay: -5.5s;
         }
@@ -255,12 +258,12 @@ export default function Index() {
           gap: 7px;
           padding: 5px 14px;
           border-radius: 50px;
-          background: rgba(249,115,22,0.09);
-          border: 1px solid rgba(249,115,22,0.22);
+          background: rgba(249,115,22,0.10);
+          border: 1px solid rgba(249,115,22,0.35);
           font-size: 10px;
           font-weight: 700;
           letter-spacing: 0.11em;
-          color: rgba(253,186,116,0.8);
+          color: #c2410c;
           margin-bottom: 16px;
         }
         .pr-dot {
@@ -274,13 +277,13 @@ export default function Index() {
           font-family: 'Syne', sans-serif;
           font-size: clamp(24px, 5.5vw, 46px);
           font-weight: 800;
-          color: #fff;
+          color: #111111;
           line-height: 1.15;
           letter-spacing: -0.02em;
           margin-bottom: 6px;
         }
         .pr-title-accent {
-          background: linear-gradient(90deg, #f97316, #fdba74, #ea580c);
+          background: linear-gradient(90deg, #f97316, #ea580c, #fb923c);
           -webkit-background-clip: text;
           -webkit-text-fill-color: transparent;
           background-clip: text;
@@ -288,11 +291,11 @@ export default function Index() {
         }
         .pr-subtitle {
           font-size: 13.5px;
-          color: rgba(255,255,255,0.36);
+          color: #444444;
           max-width: 400px;
           margin: 10px auto 0;
           line-height: 1.65;
-          font-weight: 300;
+          font-weight: 400;
         }
 
         /* ── CAROUSEL WRAPPER ── */
@@ -301,18 +304,15 @@ export default function Index() {
           animation: fade-up 0.55s 0.12s ease both;
         }
 
-        /* Viewport — overflow:hidden clips slides */
         .pr-viewport {
           width: 100%;
           overflow: hidden;
-          /* Allow vertical scroll pass-through */
           touch-action: pan-y;
           cursor: grab;
           -webkit-tap-highlight-color: transparent;
         }
         .pr-viewport:active { cursor: grabbing; }
 
-        /* Track — GPU translate only, NO layout props change */
         .pr-track {
           display: flex;
           will-change: transform;
@@ -325,7 +325,7 @@ export default function Index() {
           padding: 0 18px 6px;
         }
 
-        /* ── DESKTOP: 3-col grid (no carousel) ── */
+        /* ── DESKTOP: 3-col grid ── */
         @media (min-width: 1024px) {
           .pr-hero { padding-top: 56px; }
           .pr-viewport { overflow: visible; cursor: default !important; }
@@ -335,7 +335,6 @@ export default function Index() {
             gap: 22px;
             max-width: 1160px;
             margin: 0 auto;
-            /* Override inline transform from JS */
             transform: none !important;
             transition: none !important;
           }
@@ -344,7 +343,6 @@ export default function Index() {
           .pr-swipe-hint { display: none !important; }
         }
 
-        /* Tablet: wider padding */
         @media (min-width: 600px) and (max-width: 1023px) {
           .pr-slide { padding: 0 40px 6px; }
         }
@@ -355,28 +353,26 @@ export default function Index() {
           max-width: 430px;
           border-radius: 18px;
           overflow: hidden;
-          border: 1px solid rgba(255,255,255,0.08);
-          /* Dark semi-opaque bg — single backdrop-filter is cheap */
-          background: rgba(10, 6, 2, 0.75);
+          border: 1px solid rgba(249,115,22,0.20);
+          background: rgba(255,255,255,0.88);
           -webkit-backdrop-filter: blur(10px);
           backdrop-filter: blur(10px);
           display: flex;
           flex-direction: column;
-          /* Own GPU layer */
           transform: translateZ(0);
           transition: border-color 0.3s ease, box-shadow 0.3s ease, transform 0.3s ease;
+          box-shadow: 0 4px 20px rgba(249,115,22,0.08);
         }
-        /* Shimmer top line — zero cost */
         .pr-card::before {
           content: '';
           display: block;
           height: 1px;
-          background: linear-gradient(90deg, transparent, rgba(255,255,255,0.16), transparent);
+          background: linear-gradient(90deg, transparent, rgba(249,115,22,0.45), transparent);
           flex-shrink: 0;
         }
         .pr-card:hover {
-          border-color: rgba(249,115,22,0.26);
-          box-shadow: 0 22px 48px rgba(0,0,0,0.55), 0 0 0 1px rgba(249,115,22,0.07);
+          border-color: rgba(249,115,22,0.50);
+          box-shadow: 0 22px 48px rgba(249,115,22,0.14), 0 0 0 1px rgba(249,115,22,0.12);
           transform: translateY(-5px) translateZ(0);
         }
 
@@ -386,7 +382,7 @@ export default function Index() {
           align-items: center;
           justify-content: space-between;
           padding: 13px 17px;
-          border-bottom: 1px solid rgba(255,255,255,0.07);
+          border-bottom: 1px solid rgba(249,115,22,0.14);
         }
         .pr-card-head-left { display: flex; align-items: center; gap: 10px; }
         .pr-head-icon { padding: 7px; border-radius: 9px; }
@@ -413,7 +409,7 @@ export default function Index() {
           width: 100%;
           height: 210px;
           overflow: hidden;
-          border-bottom: 1px solid rgba(255,255,255,0.07);
+          border-bottom: 1px solid rgba(249,115,22,0.12);
           flex-shrink: 0;
         }
         @media (min-width: 600px) { .pr-img-wrap { height: 250px; } }
@@ -432,11 +428,10 @@ export default function Index() {
         }
         .pr-card:hover .pr-img-wrap img { transform: scale(1.04) translateZ(0); }
 
-        /* Gradient overlay — NO filter:blur */
         .pr-img-overlay {
           position: absolute;
           inset: 0;
-          background: linear-gradient(to top, rgba(8,4,1,0.88) 0%, rgba(8,4,1,0.18) 52%, transparent 100%);
+          background: linear-gradient(to top, rgba(255,247,237,0.75) 0%, rgba(255,247,237,0.10) 52%, transparent 100%);
         }
         .pr-img-label {
           position: absolute;
@@ -446,13 +441,14 @@ export default function Index() {
           gap: 6px;
           padding: 6px 12px;
           border-radius: 50px;
-          background: rgba(0,0,0,0.44);
-          border: 1px solid rgba(249,115,22,0.2);
+          background: rgba(255,255,255,0.88);
+          border: 1px solid rgba(249,115,22,0.35);
           font-size: 12.5px;
           font-weight: 700;
           font-family: 'Syne', sans-serif;
-          color: #fff;
+          color: #111111;
           white-space: nowrap;
+          box-shadow: 0 2px 8px rgba(249,115,22,0.12);
         }
 
         /* Card body */
@@ -461,14 +457,15 @@ export default function Index() {
           display: flex;
           flex-direction: column;
           flex: 1;
+          background: rgba(255,255,255,0.60);
         }
         .pr-desc {
           font-size: 12px;
-          color: rgba(255,255,255,0.36);
+          color: #444444;
           text-align: center;
           margin-bottom: 14px;
           line-height: 1.65;
-          font-weight: 300;
+          font-weight: 400;
         }
 
         /* Features */
@@ -479,19 +476,19 @@ export default function Index() {
           gap: 10px;
           padding: 9px 11px;
           border-radius: 10px;
-          border: 1px solid rgba(255,255,255,0.06);
-          background: rgba(255,255,255,0.025);
+          border: 1px solid rgba(249,115,22,0.18);
+          background: rgba(249,115,22,0.04);
           transition: background 0.2s, border-color 0.2s;
         }
         .pr-card:hover .pr-feature {
-          background: rgba(249,115,22,0.045);
-          border-color: rgba(249,115,22,0.13);
+          background: rgba(249,115,22,0.08);
+          border-color: rgba(249,115,22,0.30);
         }
         .pr-feat-icon { padding: 7px; border-radius: 8px; flex-shrink: 0; }
-        .pr-feat-title { font-size: 12px; font-weight: 600; color: rgba(255,255,255,0.82); line-height: 1.3; }
-        .pr-feat-sub   { font-size: 10.5px; color: rgba(255,255,255,0.3); margin-top: 2px; }
+        .pr-feat-title { font-size: 12px; font-weight: 600; color: #111111; line-height: 1.3; }
+        .pr-feat-sub   { font-size: 10.5px; color: #666666; margin-top: 2px; }
 
-        /* CTA Button — NO backdrop-filter, just gradient */
+        /* CTA Button */
         .pr-btn {
           display: flex;
           align-items: center;
@@ -516,7 +513,7 @@ export default function Index() {
           content: '';
           position: absolute;
           inset: 0;
-          background: linear-gradient(135deg, rgba(255,255,255,0.13) 0%, transparent 55%);
+          background: linear-gradient(135deg, rgba(255,255,255,0.16) 0%, transparent 55%);
           opacity: 0;
           transition: opacity 0.22s;
         }
@@ -534,33 +531,33 @@ export default function Index() {
         .pr-nav-btn {
           width: 38px; height: 38px;
           border-radius: 50%;
-          border: 1px solid rgba(249,115,22,0.22);
-          background: rgba(249,115,22,0.07);
-          color: rgba(253,186,116,0.85);
+          border: 1px solid rgba(249,115,22,0.35);
+          background: rgba(249,115,22,0.08);
+          color: #ea580c;
           display: flex; align-items: center; justify-content: center;
           cursor: pointer;
           transition: background 0.2s, border-color 0.2s, box-shadow 0.2s;
           -webkit-tap-highlight-color: transparent;
         }
         .pr-nav-btn:hover {
-          background: rgba(249,115,22,0.17);
-          border-color: rgba(249,115,22,0.44);
-          box-shadow: 0 0 12px rgba(249,115,22,0.24);
+          background: rgba(249,115,22,0.18);
+          border-color: rgba(249,115,22,0.60);
+          box-shadow: 0 0 12px rgba(249,115,22,0.22);
         }
-        .pr-nav-btn:disabled { opacity: 0.22; cursor: not-allowed; }
+        .pr-nav-btn:disabled { opacity: 0.25; cursor: not-allowed; }
 
         .pr-dots { display: flex; gap: 7px; align-items: center; }
         .pr-dot-item {
           height: 5px;
           border-radius: 50px;
-          background: rgba(249,115,22,0.22);
+          background: rgba(249,115,22,0.25);
           cursor: pointer;
           transition: width 0.3s ease, background 0.3s ease, box-shadow 0.3s ease;
         }
         .pr-dot-item.on {
           width: 22px;
           background: #f97316;
-          box-shadow: 0 0 8px rgba(249,115,22,0.48);
+          box-shadow: 0 0 8px rgba(249,115,22,0.40);
         }
         .pr-dot-item:not(.on) { width: 5px; }
 
@@ -570,7 +567,7 @@ export default function Index() {
           font-size: 9.5px;
           letter-spacing: 0.13em;
           text-transform: uppercase;
-          color: rgba(249,115,22,0.32);
+          color: rgba(234,88,12,0.55);
           padding: 6px 0 4px;
         }
 
@@ -581,7 +578,7 @@ export default function Index() {
           font-size: 10px;
           letter-spacing: 0.14em;
           text-transform: uppercase;
-          color: rgba(255,255,255,0.15);
+          color: #888888;
           animation: fade-up 0.55s 0.22s ease both;
         }
       `}</style>
@@ -627,7 +624,7 @@ export default function Index() {
                     <div className="pr-card">
 
                       {/* Header */}
-                      <div className="pr-card-head" style={{ background: `linear-gradient(135deg, ${c.accentDim}, transparent)` }}>
+                      <div className="pr-card-head" style={{ background: `linear-gradient(135deg, ${c.accentDim}, rgba(255,255,255,0))` }}>
                         <div className="pr-card-head-left">
                           <div className="pr-head-icon" style={{ background: c.accentDim, border: `1px solid ${c.accentBorder}` }}>
                             {c.headerIcon}
