@@ -69,12 +69,12 @@ export default function AdminLogin() {
   }
 
   const featureSlides = [
-    { icon: <Users    className="w-4 h-4" style={{ color: '#f97316' }} />, bg: 'rgba(249,115,22,0.10)',  border: 'rgba(249,115,22,0.22)', title: 'Employee Directory', desc: 'Centralized workforce database management' },
-    { icon: <BarChart3 className="w-4 h-4" style={{ color: '#ea580c' }} />, bg: 'rgba(234,88,12,0.10)',  border: 'rgba(234,88,12,0.22)',  title: 'Analytics Suite',     desc: 'Real-time insights & advanced reporting' },
-    { icon: <FileText  className="w-4 h-4" style={{ color: '#fb923c' }} />, bg: 'rgba(251,146,60,0.10)', border: 'rgba(251,146,60,0.22)', title: 'Payroll Engine',      desc: 'Automated processing & compliance' },
-    { icon: <Settings  className="w-4 h-4" style={{ color: '#c2410c' }} />, bg: 'rgba(194,65,12,0.10)',  border: 'rgba(194,65,12,0.22)',  title: 'System Config',      desc: 'Customizable policies & workflows' },
-    { icon: <Shield    className="w-4 h-4" style={{ color: '#f97316' }} />, bg: 'rgba(249,115,22,0.10)', border: 'rgba(249,115,22,0.22)', title: 'Access Control',     desc: 'Role-based permissions & audit logs' },
-    { icon: <CheckCircle2 className="w-4 h-4" style={{ color: '#ea580c' }} />, bg: 'rgba(234,88,12,0.10)', border: 'rgba(234,88,12,0.22)', title: 'Compliance',       desc: 'Regulatory reporting & documentation' },
+    { icon: <Users    className="w-4 h-4" style={{ color: '#fff' }} />, bg: 'rgba(249,115,22,0.75)',  border: 'rgba(249,115,22,0.90)', title: 'Employee Directory', desc: 'Centralized workforce database management' },
+    { icon: <BarChart3 className="w-4 h-4" style={{ color: '#fff' }} />, bg: 'rgba(234,88,12,0.75)',  border: 'rgba(234,88,12,0.90)',  title: 'Analytics Suite',     desc: 'Real-time insights & advanced reporting' },
+    { icon: <FileText  className="w-4 h-4" style={{ color: '#fff' }} />, bg: 'rgba(251,146,60,0.75)', border: 'rgba(251,146,60,0.90)', title: 'Payroll Engine',      desc: 'Automated processing & compliance' },
+    { icon: <Settings  className="w-4 h-4" style={{ color: '#fff' }} />, bg: 'rgba(249,115,22,0.65)', border: 'rgba(249,115,22,0.80)', title: 'System Config',      desc: 'Customizable policies & workflows' },
+    { icon: <Shield    className="w-4 h-4" style={{ color: '#fff' }} />, bg: 'rgba(234,88,12,0.75)',  border: 'rgba(234,88,12,0.90)', title: 'Access Control',     desc: 'Role-based permissions & audit logs' },
+    { icon: <CheckCircle2 className="w-4 h-4" style={{ color: '#fff' }} />, bg: 'rgba(251,146,60,0.75)', border: 'rgba(251,146,60,0.90)', title: 'Compliance',     desc: 'Regulatory reporting & documentation' },
   ];
 
   const tickerItems = [
@@ -174,7 +174,7 @@ export default function AdminLogin() {
           display: none; flex-direction: column; justify-content: space-between;
           padding: 36px 44px;
           border-right: 1px solid rgba(249,115,22,0.18);
-          background: rgba(255,255,255,0.82);
+          background: rgba(255,252,248,0.90);
           -webkit-backdrop-filter: blur(10px);
           backdrop-filter: blur(10px);
           overflow-y: auto;
@@ -186,12 +186,12 @@ export default function AdminLogin() {
         .al-brand { display: flex; align-items: center; gap: 12px; margin-bottom: 28px; }
         .al-brand-icon {
           width: 42px; height: 42px; border-radius: 11px;
-          background: rgba(249,115,22,0.12); border: 1px solid rgba(249,115,22,0.28);
+          background: rgba(249,115,22,0.60); border: 1px solid rgba(249,115,22,0.80);
           display: flex; align-items: center; justify-content: center;
-          box-shadow: 0 0 18px rgba(249,115,22,0.18);
+          box-shadow: 0 0 18px rgba(249,115,22,0.30);
         }
         .al-brand-name { font-family: 'Syne', sans-serif; font-size: 17px; font-weight: 700; color: #111111; }
-        .al-brand-sub  { font-size: 9px; font-weight: 700; letter-spacing: 0.13em; text-transform: uppercase; color: #c2410c; margin-top: 2px; opacity: 1; }
+        .al-brand-sub  { font-size: 9px; font-weight: 700; letter-spacing: 0.13em; text-transform: uppercase; color: #f97316; margin-top: 2px; opacity: 1; }
 
         /* ── Headline ── */
         .al-headline { font-family: 'Syne', sans-serif; font-size: 26px; font-weight: 700; color: #111111; line-height: 1.22; margin-bottom: 8px; }
@@ -218,12 +218,12 @@ export default function AdminLogin() {
         .al-slide {
           flex-shrink: 0; width: 192px;
           padding: 15px; border-radius: 13px;
-          background: rgba(255,255,255,0.80); border: 1px solid rgba(249,115,22,0.30);
+          background: rgba(255,255,255,0.90); border: 1px solid rgba(249,115,22,0.55);
           display: flex; flex-direction: column; gap: 9px;
-          box-shadow: 0 2px 10px rgba(249,115,22,0.08);
+          box-shadow: 0 2px 12px rgba(249,115,22,0.15);
           transition: border-color 0.2s, background 0.2s, box-shadow 0.2s;
         }
-        .al-slide:hover { border-color: rgba(249,115,22,0.38); background: rgba(255,255,255,0.92); box-shadow: 0 4px 18px rgba(249,115,22,0.14); }
+        .al-slide:hover { border-color: rgba(249,115,22,0.80); background: rgba(255,255,255,0.98); box-shadow: 0 4px 20px rgba(249,115,22,0.25); }
         .al-slide-icon  { width: 34px; height: 34px; border-radius: 9px; display: flex; align-items: center; justify-content: center; }
         .al-slide-title { font-size: 12.5px; font-weight: 600; color: #111111; }
         .al-slide-desc  { font-size: 11px; color: #333333; line-height: 1.45; opacity: 1; }
@@ -232,8 +232,8 @@ export default function AdminLogin() {
         .al-stats { display: flex; gap: 10px; margin-bottom: 20px; }
         .al-stat {
           flex: 1; padding: 11px 12px; border-radius: 11px; text-align: center;
-          background: rgba(255,255,255,0.80); border: 1px solid rgba(249,115,22,0.28);
-          box-shadow: 0 2px 8px rgba(249,115,22,0.07);
+          background: rgba(255,255,255,0.90); border: 1px solid rgba(249,115,22,0.55);
+          box-shadow: 0 2px 12px rgba(249,115,22,0.15);
         }
         .al-stat-num   { font-family: 'Syne', sans-serif; font-size: 19px; font-weight: 700; line-height: 1; }
         .al-stat-label { font-size: 9.5px; color: #222222; margin-top: 4px; letter-spacing: 0.07em; text-transform: uppercase; opacity: 1; }
@@ -241,7 +241,7 @@ export default function AdminLogin() {
         /* ── Ticker ── */
         .al-ticker {
           overflow: hidden; padding: 8px 0; margin-bottom: 18px;
-          border-top: 1px solid rgba(249,115,22,0.30); border-bottom: 1px solid rgba(249,115,22,0.30);
+          border-top: 1px solid rgba(249,115,22,0.55); border-bottom: 1px solid rgba(249,115,22,0.55);
           position: relative;
         }
         .al-ticker::before, .al-ticker::after {
@@ -260,7 +260,7 @@ export default function AdminLogin() {
           padding: 0 18px; font-size: 11px; font-weight: 500;
           color: #222222; white-space: nowrap; opacity: 1;
         }
-        .al-ticker-dot { width: 4px; height: 4px; border-radius: 50%; flex-shrink: 0; }
+        .al-ticker-dot { width: 6px; height: 6px; border-radius: 50%; flex-shrink: 0; }
 
         /* ── Alert ── */
         .al-alert {
@@ -275,7 +275,7 @@ export default function AdminLogin() {
         .al-footer {
           display: flex; align-items: center; gap: 7px;
           padding-top: 16px; margin-top: 16px;
-          border-top: 1px solid rgba(249,115,22,0.14);
+          border-top: 1px solid rgba(249,115,22,0.40);
           font-size: 11px; color: #222222; opacity: 1;
         }
 
@@ -451,7 +451,7 @@ export default function AdminLogin() {
               <div className="al-ticker-track">
                 {[...tickerItems, ...tickerItems].map((t, i) => (
                   <span className="al-ticker-item" key={i}>
-                    <span className="al-ticker-dot" style={{ background: t.color, boxShadow: `0 0 5px ${t.color}` }} />
+                    <span className="al-ticker-dot" style={{ background: t.color }} />
                     {t.label}
                   </span>
                 ))}
