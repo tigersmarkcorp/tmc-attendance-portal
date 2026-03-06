@@ -65,33 +65,33 @@ export default function EmployeeLogin() {
 
   if (authLoading) {
     return (
-      <div style={{ minHeight: '100vh', display: 'flex', alignItems: 'center', justifyContent: 'center', background: '#f0f4ff' }}>
+      <div style={{ minHeight: '100vh', display: 'flex', alignItems: 'center', justifyContent: 'center', background: '#fff7ed' }}>
         <div style={{ textAlign: 'center' }}>
-          <Loader2 className="w-8 h-8 animate-spin" style={{ color: '#3b6ef8', margin: '0 auto 12px' }} />
-          <p style={{ fontSize: 12, color: '#6b7eb8', letterSpacing: '0.15em', textTransform: 'uppercase' }}>Loading authentication...</p>
+          <Loader2 className="w-8 h-8 animate-spin" style={{ color: '#f97316', margin: '0 auto 12px' }} />
+          <p style={{ fontSize: 12, color: '#c2410c', letterSpacing: '0.15em', textTransform: 'uppercase', fontFamily: 'sans-serif' }}>Loading authentication...</p>
         </div>
       </div>
     );
   }
 
   const slides = [
-    { icon: <Clock className="w-4 h-4" style={{ color: '#3b6ef8' }} />,     bg: 'rgba(59,110,248,0.1)',  border: 'rgba(59,110,248,0.22)',  title: 'Clock In / Out',    desc: 'Selfie-verified time tracking for secure attendance' },
-    { icon: <FileText className="w-4 h-4" style={{ color: '#7c3bf8' }} />,   bg: 'rgba(124,59,248,0.1)',  border: 'rgba(124,59,248,0.22)',  title: 'View Timesheets',   desc: 'Work hours, overtime and earnings history' },
-    { icon: <Calendar className="w-4 h-4" style={{ color: '#6366f1' }} />,   bg: 'rgba(99,102,241,0.1)', border: 'rgba(99,102,241,0.22)', title: 'Leave Requests',    desc: 'Submit and track leave applications easily' },
-    { icon: <Wallet className="w-4 h-4" style={{ color: '#3b6ef8' }} />,     bg: 'rgba(59,110,248,0.1)',  border: 'rgba(59,110,248,0.22)',  title: 'Payslip Access',    desc: 'View and download your monthly payslips' },
-    { icon: <BarChart3 className="w-4 h-4" style={{ color: '#7c3bf8' }} />,  bg: 'rgba(124,59,248,0.1)',  border: 'rgba(124,59,248,0.22)',  title: 'Attendance Report', desc: 'Personal attendance summary and analytics' },
-    { icon: <UserCircle className="w-4 h-4" style={{ color: '#6366f1' }} />, bg: 'rgba(99,102,241,0.1)', border: 'rgba(99,102,241,0.22)', title: 'My Profile',        desc: 'Update personal info and preferences' },
+    { icon: <Clock       className="w-4 h-4" style={{ color: '#fff' }} />, bg: 'rgba(249,115,22,0.75)',  border: 'rgba(249,115,22,0.90)', title: 'Clock In / Out',    desc: 'Selfie-verified time tracking for secure attendance' },
+    { icon: <FileText    className="w-4 h-4" style={{ color: '#fff' }} />, bg: 'rgba(234,88,12,0.75)',   border: 'rgba(234,88,12,0.90)',  title: 'View Timesheets',   desc: 'Work hours, overtime and earnings history' },
+    { icon: <Calendar    className="w-4 h-4" style={{ color: '#fff' }} />, bg: 'rgba(251,146,60,0.75)',  border: 'rgba(251,146,60,0.90)', title: 'Leave Requests',    desc: 'Submit and track leave applications easily' },
+    { icon: <Wallet      className="w-4 h-4" style={{ color: '#fff' }} />, bg: 'rgba(249,115,22,0.65)',  border: 'rgba(249,115,22,0.80)', title: 'Payslip Access',    desc: 'View and download your monthly payslips' },
+    { icon: <BarChart3   className="w-4 h-4" style={{ color: '#fff' }} />, bg: 'rgba(234,88,12,0.75)',   border: 'rgba(234,88,12,0.90)',  title: 'Attendance Report', desc: 'Personal attendance summary and analytics' },
+    { icon: <UserCircle  className="w-4 h-4" style={{ color: '#fff' }} />, bg: 'rgba(251,146,60,0.75)',  border: 'rgba(251,146,60,0.90)', title: 'My Profile',        desc: 'Update personal info and preferences' },
   ];
 
   const tickers = [
-    { label: 'Real-Time Clock In/Out',      color: '#3b6ef8' },
-    { label: 'Selfie Verification',          color: '#7c3bf8' },
-    { label: 'Leave Management',             color: '#6366f1' },
-    { label: 'Timesheet Access',             color: '#3b6ef8' },
-    { label: 'Payslip Downloads',            color: '#7c3bf8' },
-    { label: 'Overtime Tracking',            color: '#6366f1' },
-    { label: 'Attendance Summary',           color: '#3b6ef8' },
-    { label: 'Personal Document Vault',      color: '#7c3bf8' },
+    { label: 'Real-Time Clock In/Out',   color: '#f97316' },
+    { label: 'Selfie Verification',      color: '#ea580c' },
+    { label: 'Leave Management',         color: '#fb923c' },
+    { label: 'Timesheet Access',         color: '#fdba74' },
+    { label: 'Payslip Downloads',        color: '#f97316' },
+    { label: 'Overtime Tracking',        color: '#ea580c' },
+    { label: 'Attendance Summary',       color: '#fb923c' },
+    { label: 'Personal Document Vault',  color: '#fdba74' },
   ];
 
   return (
@@ -99,159 +99,206 @@ export default function EmployeeLogin() {
       <style>{`
         @import url('https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:wght@300;400;500;600&display=swap');
 
-        *, *::before, *::after { box-sizing: border-box; }
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
-        .el-root {
-          font-family: 'DM Sans', sans-serif;
-          height: 100vh; width: 100vw;
-          display: flex; overflow: hidden;
-          position: relative; background: #f5f7ff;
-        }
-
-        .el-bg {
-          position: fixed; inset: 0; z-index: 0;
-          background-image: url('https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=1920&q=80');
-          background-size: cover; background-position: center;
-        }
-        .el-bg::after {
-          content: ''; position: absolute; inset: 0;
-          background: linear-gradient(135deg, rgba(240,245,255,0.96) 0%, rgba(235,242,255,0.94) 50%, rgba(242,238,255,0.96) 100%);
-        }
-
-        .el-grid {
-          position: fixed; inset: 0; z-index: 1; pointer-events: none;
-          background-image:
-            linear-gradient(rgba(59,110,248,0.04) 1px, transparent 1px),
-            linear-gradient(90deg, rgba(59,110,248,0.04) 1px, transparent 1px);
-          background-size: 56px 56px;
-        }
-
-        .el-orb { position: fixed; border-radius: 50%; pointer-events: none; z-index: 1; filter: blur(100px); opacity: 0.18; }
-        .el-orb-1 { width: 600px; height: 600px; top: -200px; left: -150px; background: radial-gradient(circle, #93b4ff, transparent); }
-        .el-orb-2 { width: 450px; height: 450px; bottom: -150px; right: -100px; background: radial-gradient(circle, #c4b5fd, transparent); }
-        .el-orb-3 { width: 350px; height: 350px; top: 40%; right: 20%; background: radial-gradient(circle, #a5b4fc, transparent); opacity: 0.12; }
-
-        /* ── LEFT ── */
-        .el-left {
-          position: relative; z-index: 10;
-          width: 55%; height: 100vh;
-          display: none; flex-direction: column; justify-content: center;
-          padding: 40px 48px;
-          border-right: 1px solid rgba(59,110,248,0.12);
-          background: linear-gradient(160deg, rgba(59,110,248,0.06) 0%, rgba(255,255,255,0.5) 50%, rgba(124,59,248,0.04) 100%);
-          backdrop-filter: blur(8px);
-          overflow-y: auto; gap: 0;
-        }
-        @media (min-width: 1024px) { .el-left { display: flex; } }
-
-        .el-brand { display: flex; align-items: center; gap: 12px; margin-bottom: 32px; }
-        .el-brand-icon {
-          width: 42px; height: 42px; border-radius: 11px;
-          background: rgba(59,110,248,0.12); border: 1px solid rgba(59,110,248,0.25);
-          display: flex; align-items: center; justify-content: center;
-          box-shadow: 0 0 22px rgba(59,110,248,0.12);
-        }
-        .el-brand-name { font-family: 'Syne', sans-serif; font-size: 17px; font-weight: 700; color: #1a2563; }
-        .el-brand-sub  { font-size: 9px; font-weight: 700; letter-spacing: 0.13em; text-transform: uppercase; color: #7b8cc4; margin-top: 2px; }
-
-        .el-headline { font-family: 'Syne', sans-serif; font-size: 28px; font-weight: 700; color: #1a2563; line-height: 1.22; margin-bottom: 8px; }
-        .el-headline span {
-          background: linear-gradient(90deg, #3b6ef8, #7c3bf8, #059669);
-          -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
-        }
-        .el-desc { font-size: 13px; font-weight: 300; color: #6b7eb8; line-height: 1.65; margin-bottom: 28px; }
-
-        /* ── Carousel ── */
-        .el-carousel { position: relative; width: 100%; overflow: hidden; margin-bottom: 24px; }
-        .el-carousel-track {
-          display: flex; gap: 14px;
-          animation: el-carousel-slide 18s linear infinite;
-          width: max-content;
-        }
-        .el-carousel:hover .el-carousel-track { animation-play-state: paused; }
+        @keyframes spin { to { transform: rotate(360deg); } }
         @keyframes el-carousel-slide {
           0%   { transform: translateX(0); }
           100% { transform: translateX(-50%); }
         }
-        .el-carousel::before, .el-carousel::after {
-          content: ''; position: absolute; top: 0; bottom: 0; width: 60px; z-index: 2; pointer-events: none;
-        }
-        .el-carousel::before { left: 0;  background: linear-gradient(to right, rgba(240,244,255,0.9), transparent); }
-        .el-carousel::after  { right: 0; background: linear-gradient(to left,  rgba(240,244,255,0.9), transparent); }
-
-        .el-slide {
-          flex-shrink: 0; width: 200px; padding: 16px; border-radius: 14px;
-          background: rgba(255,255,255,0.7); border: 1px solid rgba(59,110,248,0.12);
-          backdrop-filter: blur(12px);
-          display: flex; flex-direction: column; gap: 10px;
-          transition: all 0.2s ease;
-          box-shadow: 0 2px 12px rgba(59,110,248,0.06);
-        }
-        .el-slide:hover { border-color: rgba(59,110,248,0.28); background: rgba(255,255,255,0.9); box-shadow: 0 4px 20px rgba(59,110,248,0.1); }
-        .el-slide-icon  { width: 36px; height: 36px; border-radius: 9px; display: flex; align-items: center; justify-content: center; }
-        .el-slide-title { font-size: 13px; font-weight: 600; color: #1a2563; }
-        .el-slide-desc  { font-size: 11px; color: #7b8cc4; line-height: 1.45; }
-
-        /* ── Stats ── */
-        .el-stats { display: flex; gap: 10px; margin-bottom: 22px; }
-        .el-stat {
-          flex: 1; padding: 12px 14px; border-radius: 12px;
-          background: rgba(255,255,255,0.7); border: 1px solid rgba(59,110,248,0.1);
-          backdrop-filter: blur(10px); text-align: center;
-          box-shadow: 0 2px 8px rgba(59,110,248,0.05);
-        }
-        .el-stat-num   { font-family: 'Syne', sans-serif; font-size: 20px; font-weight: 700; color: #1a2563; line-height: 1; }
-        .el-stat-label { font-size: 10px; color: #7b8cc4; margin-top: 4px; letter-spacing: 0.06em; text-transform: uppercase; }
-
-        /* ── Ticker ── */
-        .el-ticker { overflow: hidden; border-top: 1px solid rgba(59,110,248,0.1); border-bottom: 1px solid rgba(59,110,248,0.1); padding: 9px 0; margin-bottom: 20px; position: relative; }
-        .el-ticker::before, .el-ticker::after {
-          content: ''; position: absolute; top: 0; bottom: 0; width: 40px; z-index: 2; pointer-events: none;
-        }
-        .el-ticker::before { left: 0;  background: linear-gradient(to right, rgba(240,244,255,0.95), transparent); }
-        .el-ticker::after  { right: 0; background: linear-gradient(to left,  rgba(240,244,255,0.95), transparent); }
-        .el-ticker-track {
-          display: flex; gap: 0;
-          animation: el-ticker-scroll 22s linear infinite;
-          width: max-content;
-        }
-        .el-ticker:hover .el-ticker-track { animation-play-state: paused; }
         @keyframes el-ticker-scroll {
           0%   { transform: translateX(0); }
           100% { transform: translateX(-50%); }
         }
+        @keyframes orb-pulse {
+          0%, 100% { opacity: 0.18; transform: scale(1) translateZ(0); }
+          50%       { opacity: 0.28; transform: scale(1.06) translateZ(0); }
+        }
+        @keyframes fade-up {
+          from { opacity: 0; transform: translate3d(0, 16px, 0); }
+          to   { opacity: 1; transform: translate3d(0, 0, 0); }
+        }
+
+        /* ── ROOT ── */
+        .el-root {
+          font-family: 'DM Sans', sans-serif;
+          height: 100vh; width: 100vw;
+          display: flex; overflow: hidden;
+          position: relative;
+          background: #fff7ed;
+          isolation: isolate;
+        }
+
+        /* ── BG — no background-attachment:fixed ── */
+        .el-bg {
+          position: fixed; inset: 0; z-index: -3;
+          background-image: url('https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=1400&q=55');
+          background-size: cover; background-position: center;
+          transform: translateZ(0);
+        }
+        .el-bg::after {
+          content: ''; position: absolute; inset: 0;
+          background: linear-gradient(
+            160deg,
+            rgba(255,252,248,0.97) 0%,
+            rgba(255,248,240,0.97) 50%,
+            rgba(255,244,232,0.97) 100%
+          );
+        }
+
+        /* ── GRID ── */
+        .el-grid {
+          position: fixed; inset: 0; z-index: -2; pointer-events: none;
+          background-image:
+            linear-gradient(rgba(249,115,22,0.07) 1px, transparent 1px),
+            linear-gradient(90deg, rgba(249,115,22,0.07) 1px, transparent 1px);
+          background-size: 56px 56px;
+        }
+
+        /* ── ORBS — no filter:blur ── */
+        .el-orb {
+          position: fixed; border-radius: 50%; pointer-events: none; z-index: -1;
+          transform: translateZ(0);
+          animation: orb-pulse 11s ease-in-out infinite;
+        }
+        .el-orb-1 {
+          width: 560px; height: 560px; top: -200px; left: -160px;
+          background: radial-gradient(circle at center, rgba(249,115,22,0.22), transparent 68%);
+        }
+        .el-orb-2 {
+          width: 440px; height: 440px; bottom: -150px; right: -110px;
+          background: radial-gradient(circle at center, rgba(251,146,60,0.18), transparent 68%);
+          animation-delay: -5.5s;
+        }
+        .el-orb-3 {
+          width: 340px; height: 340px; top: 40%; right: 20%;
+          background: radial-gradient(circle at center, rgba(253,186,116,0.14), transparent 68%);
+          animation-delay: -3s;
+        }
+
+        /* ── LEFT PANEL ── */
+        .el-left {
+          position: relative; z-index: 10;
+          width: 55%; height: 100vh;
+          display: none; flex-direction: column; justify-content: space-between;
+          padding: 36px 44px;
+          border-right: 1px solid rgba(249,115,22,0.18);
+          background: rgba(255,252,248,0.90);
+          -webkit-backdrop-filter: blur(10px);
+          backdrop-filter: blur(10px);
+          overflow-y: auto;
+          animation: fade-up 0.55s ease both;
+        }
+        @media (min-width: 1024px) { .el-left { display: flex; } }
+
+        /* ── Brand ── */
+        .el-brand { display: flex; align-items: center; gap: 12px; margin-bottom: 28px; }
+        .el-brand-icon {
+          width: 42px; height: 42px; border-radius: 11px;
+          background: rgba(249,115,22,0.60); border: 1px solid rgba(249,115,22,0.80);
+          display: flex; align-items: center; justify-content: center;
+          box-shadow: 0 0 18px rgba(249,115,22,0.25);
+        }
+        .el-brand-name { font-family: 'Syne', sans-serif; font-size: 17px; font-weight: 700; color: #111111; }
+        .el-brand-sub  { font-size: 9px; font-weight: 700; letter-spacing: 0.13em; text-transform: uppercase; color: #f97316; margin-top: 2px; }
+
+        /* ── Headline ── */
+        .el-headline { font-family: 'Syne', sans-serif; font-size: 26px; font-weight: 700; color: #111111; line-height: 1.22; margin-bottom: 8px; }
+        .el-headline span {
+          background: linear-gradient(90deg, #f97316, #ea580c, #fb923c);
+          -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+        }
+        .el-desc { font-size: 13px; font-weight: 400; color: #222222; line-height: 1.65; margin-bottom: 24px; }
+
+        /* ── Carousel ── */
+        .el-carousel { position: relative; width: 100%; overflow: hidden; margin-bottom: 22px; }
+        .el-carousel-track {
+          display: flex; gap: 13px;
+          animation: el-carousel-slide 18s linear infinite;
+          width: max-content;
+        }
+        .el-carousel:hover .el-carousel-track { animation-play-state: paused; }
+        .el-carousel::before, .el-carousel::after {
+          content: ''; position: absolute; top: 0; bottom: 0; width: 55px; z-index: 2; pointer-events: none;
+        }
+        .el-carousel::before { left: 0;  background: linear-gradient(to right, rgba(255,252,248,0.95), transparent); }
+        .el-carousel::after  { right: 0; background: linear-gradient(to left,  rgba(255,252,248,0.95), transparent); }
+
+        .el-slide {
+          flex-shrink: 0; width: 192px;
+          padding: 15px; border-radius: 13px;
+          background: rgba(255,255,255,0.90); border: 1px solid rgba(249,115,22,0.55);
+          display: flex; flex-direction: column; gap: 9px;
+          box-shadow: 0 2px 12px rgba(249,115,22,0.12);
+          transition: border-color 0.2s, background 0.2s, box-shadow 0.2s;
+        }
+        .el-slide:hover { border-color: rgba(249,115,22,0.80); background: rgba(255,255,255,0.98); box-shadow: 0 4px 20px rgba(249,115,22,0.22); }
+        .el-slide-icon  { width: 34px; height: 34px; border-radius: 9px; display: flex; align-items: center; justify-content: center; }
+        .el-slide-title { font-size: 12.5px; font-weight: 600; color: #111111; }
+        .el-slide-desc  { font-size: 11px; color: #333333; line-height: 1.45; }
+
+        /* ── Stats ── */
+        .el-stats { display: flex; gap: 10px; margin-bottom: 20px; }
+        .el-stat {
+          flex: 1; padding: 11px 12px; border-radius: 11px; text-align: center;
+          background: rgba(255,255,255,0.90); border: 1px solid rgba(249,115,22,0.55);
+          box-shadow: 0 2px 12px rgba(249,115,22,0.12);
+        }
+        .el-stat-num   { font-family: 'Syne', sans-serif; font-size: 19px; font-weight: 700; line-height: 1; }
+        .el-stat-label { font-size: 9.5px; color: #222222; margin-top: 4px; letter-spacing: 0.07em; text-transform: uppercase; }
+
+        /* ── Ticker ── */
+        .el-ticker {
+          overflow: hidden; padding: 8px 0; margin-bottom: 18px;
+          border-top: 1px solid rgba(249,115,22,0.55); border-bottom: 1px solid rgba(249,115,22,0.55);
+          position: relative;
+        }
+        .el-ticker::before, .el-ticker::after {
+          content: ''; position: absolute; top: 0; bottom: 0; width: 36px; z-index: 2; pointer-events: none;
+        }
+        .el-ticker::before { left: 0;  background: linear-gradient(to right, rgba(255,252,248,0.95), transparent); }
+        .el-ticker::after  { right: 0; background: linear-gradient(to left,  rgba(255,252,248,0.95), transparent); }
+        .el-ticker-track {
+          display: flex;
+          animation: el-ticker-scroll 22s linear infinite;
+          width: max-content;
+        }
+        .el-ticker:hover .el-ticker-track { animation-play-state: paused; }
         .el-ticker-item {
           display: inline-flex; align-items: center; gap: 6px;
-          padding: 0 20px; font-size: 11px; font-weight: 500;
-          color: #7b8cc4; white-space: nowrap;
+          padding: 0 18px; font-size: 11px; font-weight: 500;
+          color: #222222; white-space: nowrap;
         }
-        .el-ticker-dot { width: 4px; height: 4px; border-radius: 50%; flex-shrink: 0; }
+        .el-ticker-dot { width: 6px; height: 6px; border-radius: 50%; flex-shrink: 0; }
 
         /* ── Info note ── */
         .el-note {
           display: flex; align-items: flex-start; gap: 10px; padding: 13px;
           border-radius: 11px;
-          background: rgba(59,110,248,0.06); border: 1px solid rgba(59,110,248,0.16);
-          backdrop-filter: blur(10px);
+          background: rgba(249,115,22,0.08); border: 1px solid rgba(249,115,22,0.35);
         }
-        .el-note-title { font-size: 12px; font-weight: 600; color: #7c3bf8; margin-bottom: 3px; }
-        .el-note-desc  { font-size: 11px; color: #6b7eb8; line-height: 1.5; }
+        .el-note-title { font-size: 12px; font-weight: 700; color: #ea580c; margin-bottom: 3px; }
+        .el-note-desc  { font-size: 11px; color: #222222; line-height: 1.5; }
 
+        /* ── Left Footer ── */
         .el-footer {
           display: flex; align-items: center; gap: 7px;
-          padding-top: 16px; border-top: 1px solid rgba(59,110,248,0.1);
-          font-size: 11px; color: #7b8cc4; margin-top: 16px;
+          padding-top: 16px; margin-top: 16px;
+          border-top: 1px solid rgba(249,115,22,0.40);
+          font-size: 11px; color: #222222;
         }
 
-        /* ── RIGHT ── */
+        /* ── RIGHT PANEL ── */
         .el-right {
           position: relative; z-index: 10;
           flex: 1; height: 100vh;
           display: flex; flex-direction: column; justify-content: center;
-          padding: 36px 44px; overflow-y: auto;
-          background: linear-gradient(160deg, rgba(255,255,255,0.85) 0%, rgba(248,250,255,0.9) 40%, rgba(252,248,255,0.85) 100%);
-          backdrop-filter: blur(16px);
-          border-left: 1px solid rgba(59,110,248,0.1);
+          padding: 36px 40px; overflow-y: auto;
+          background: rgba(255,255,255,0.88);
+          -webkit-backdrop-filter: blur(14px);
+          backdrop-filter: blur(14px);
+          border-left: 1px solid rgba(249,115,22,0.14);
+          animation: fade-up 0.55s 0.08s ease both;
         }
 
         .el-mobile-brand {
@@ -263,110 +310,118 @@ export default function EmployeeLogin() {
         .el-form-header { text-align: center; margin-bottom: 26px; }
         .el-icon-wrap {
           width: 62px; height: 62px; border-radius: 16px;
-          background: linear-gradient(135deg, rgba(59,110,248,0.14), rgba(37,80,220,0.08));
-          border: 1px solid rgba(59,110,248,0.22);
+          background: linear-gradient(135deg, rgba(249,115,22,0.14), rgba(234,88,12,0.08));
+          border: 1px solid rgba(249,115,22,0.28);
           display: flex; align-items: center; justify-content: center;
           margin: 0 auto 14px;
-          box-shadow: 0 4px 24px rgba(59,110,248,0.14);
+          box-shadow: 0 4px 24px rgba(249,115,22,0.18);
         }
-        .el-title    { font-family: 'Syne', sans-serif; font-size: 23px; font-weight: 700; color: #1a2563; margin-bottom: 5px; }
-        .el-subtitle { font-size: 13px; color: #7b8cc4; font-weight: 300; }
+
+        .el-title    { font-family: 'Syne', sans-serif; font-size: 22px; font-weight: 700; color: #111111; margin-bottom: 5px; }
+        .el-subtitle { font-size: 13px; color: #333333; font-weight: 400; }
 
         .el-field { margin-bottom: 14px; }
         .el-label {
           display: block; font-size: 10px; font-weight: 600;
           letter-spacing: 0.09em; text-transform: uppercase;
-          color: #7b8cc4; margin-bottom: 6px;
+          color: #111111; margin-bottom: 6px;
         }
         .el-input-wrap { position: relative; }
         .el-input-wrap svg {
           position: absolute; left: 13px; top: 50%; transform: translateY(-50%);
-          width: 14px; height: 14px; color: #a0b0d8; pointer-events: none;
+          width: 14px; height: 14px; color: rgba(249,115,22,0.55); pointer-events: none;
         }
         .el-input {
           width: 100%; height: 46px; padding: 0 14px 0 38px;
-          background: rgba(255,255,255,0.9); border: 1px solid rgba(59,110,248,0.18);
-          border-radius: 10px; color: #1a2563; font-size: 14px; font-family: 'DM Sans', sans-serif;
+          background: rgba(255,255,255,0.90); border: 1px solid rgba(249,115,22,0.35);
+          border-radius: 10px; color: #111111; font-size: 14px; font-family: 'DM Sans', sans-serif;
           outline: none; transition: all 0.2s ease;
-          box-shadow: 0 1px 4px rgba(59,110,248,0.06);
+          box-shadow: 0 1px 4px rgba(249,115,22,0.07);
         }
-        .el-input::placeholder { color: #b0bedd; }
+        .el-input::placeholder { color: rgba(0,0,0,0.35); }
         .el-input:focus {
-          background: #fff; border-color: rgba(59,110,248,0.5);
-          box-shadow: 0 0 0 3px rgba(59,110,248,0.1);
+          background: #fff; border-color: rgba(249,115,22,0.60);
+          box-shadow: 0 0 0 3px rgba(249,115,22,0.12);
         }
 
+        /* CTA button */
         .el-btn {
           width: 100%; height: 47px; border-radius: 10px; border: none; cursor: pointer;
-          background: linear-gradient(135deg, #3b6ef8, #2550dc);
+          background: linear-gradient(135deg, #f97316, #ea580c);
           color: #fff; font-size: 14px; font-weight: 600; font-family: 'DM Sans', sans-serif;
           display: flex; align-items: center; justify-content: center; gap: 8px;
-          margin-top: 18px; transition: all 0.25s ease;
-          box-shadow: 0 6px 26px rgba(37,80,220,0.28);
+          margin-top: 18px; transition: box-shadow 0.25s ease, transform 0.2s ease;
+          box-shadow: 0 6px 26px rgba(249,115,22,0.35);
           position: relative; overflow: hidden;
+          transform: translateZ(0);
         }
         .el-btn::after {
           content: ''; position: absolute; inset: 0;
-          background: linear-gradient(135deg, rgba(255,255,255,0.15), transparent);
+          background: linear-gradient(135deg, rgba(255,255,255,0.16), transparent);
           opacity: 0; transition: opacity 0.25s;
         }
-        .el-btn:hover { transform: translateY(-1px); box-shadow: 0 10px 34px rgba(37,80,220,0.38); }
+        .el-btn:hover { transform: translateY(-1px) translateZ(0); box-shadow: 0 10px 34px rgba(249,115,22,0.48); }
         .el-btn:hover::after { opacity: 1; }
-        .el-btn:disabled { opacity: 0.55; cursor: not-allowed; transform: none; }
+        .el-btn:disabled { opacity: 0.5; cursor: not-allowed; transform: none; }
 
+        /* Divider */
         .el-divider { position: relative; margin: 20px 0; text-align: center; }
         .el-divider::before {
           content: ''; position: absolute; top: 50%; left: 0; right: 0;
-          height: 1px; background: rgba(59,110,248,0.1);
+          height: 1px; background: rgba(249,115,22,0.20);
         }
         .el-divider span {
           position: relative; padding: 0 12px;
-          font-size: 10px; color: #a0b0d8; text-transform: uppercase; letter-spacing: 0.1em;
-          background: rgba(248,250,255,0.9);
+          font-size: 10px; color: #444444; text-transform: uppercase; letter-spacing: 0.1em;
+          background: rgba(255,255,255,0.88);
         }
 
+        /* Note box */
         .el-note-box {
           padding: 11px 14px; border-radius: 10px; margin-bottom: 14px;
-          background: rgba(255,255,255,0.6); border: 1px solid rgba(59,110,248,0.1);
-          font-size: 12px; color: #7b8cc4; text-align: center; line-height: 1.5;
+          background: rgba(255,255,255,0.80); border: 1px solid rgba(249,115,22,0.25);
+          font-size: 12px; color: #222222; text-align: center; line-height: 1.5;
         }
 
+        /* Admin box */
         .el-admin-box {
           padding: 11px 14px; border-radius: 10px; margin-bottom: 14px;
-          background: rgba(59,110,248,0.05); border: 1px solid rgba(59,110,248,0.14);
-          font-size: 12px; text-align: center; line-height: 1.5;
+          background: rgba(249,115,22,0.06); border: 1px solid rgba(249,115,22,0.22);
+          font-size: 12px; text-align: center; line-height: 1.5; color: #222222;
         }
-        .el-admin-box span { color: #7c3bf8; font-weight: 600; }
-        .el-admin-box a { color: #3b6ef8; font-weight: 600; text-decoration: none; }
-        .el-admin-box a:hover { color: #2550dc; text-decoration: underline; }
+        .el-admin-box span { color: #f97316; font-weight: 600; }
+        .el-admin-box a { color: #ea580c; font-weight: 600; text-decoration: none; }
+        .el-admin-box a:hover { color: #c2410c; text-decoration: underline; }
 
+        /* Back link */
         .el-back {
           display: flex; align-items: center; justify-content: center; gap: 6px;
-          font-size: 12px; color: #7b8cc4; text-decoration: none;
+          font-size: 12px; color: #222222; text-decoration: none;
           padding: 8px 16px; border-radius: 9px; width: fit-content; margin: 0 auto;
-          border: 1px solid rgba(59,110,248,0.14); background: rgba(255,255,255,0.6);
+          border: 1px solid rgba(249,115,22,0.25); background: rgba(249,115,22,0.07);
           transition: all 0.2s ease;
         }
-        .el-back:hover { color: #3b6ef8; background: rgba(59,110,248,0.06); border-color: rgba(59,110,248,0.25); }
+        .el-back:hover { color: #ea580c; background: rgba(249,115,22,0.14); border-color: rgba(249,115,22,0.45); }
 
+        /* Secure badge */
         .el-secure {
           display: flex; align-items: center; justify-content: center; gap: 6px;
           margin: 14px auto 0; padding: 4px 14px; border-radius: 50px; width: fit-content;
-          background: rgba(59,110,248,0.06); border: 1px solid rgba(59,110,248,0.16);
-          font-size: 11px; color: #6366f1; font-weight: 500;
+          background: rgba(249,115,22,0.08); border: 1px solid rgba(249,115,22,0.25);
+          font-size: 11px; color: #c2410c; font-weight: 700;
         }
 
         .el-copyright {
-          text-align: center; font-size: 11px; color: #a0b0d8; margin-top: 14px;
+          text-align: center; font-size: 11px; color: #888888; margin-top: 14px;
         }
       `}</style>
 
       <div className="el-root">
-        <div className="el-bg"></div>
-        <div className="el-grid"></div>
-        <div className="el-orb el-orb-1"></div>
-        <div className="el-orb el-orb-2"></div>
-        <div className="el-orb el-orb-3"></div>
+        <div className="el-bg" />
+        <div className="el-grid" />
+        <div className="el-orb el-orb-1" />
+        <div className="el-orb el-orb-2" />
+        <div className="el-orb el-orb-3" />
 
         {/* ── LEFT PANEL ── */}
         <div className="el-left">
@@ -374,7 +429,7 @@ export default function EmployeeLogin() {
             {/* Brand */}
             <div className="el-brand">
               <div className="el-brand-icon">
-                <Clock className="w-5 h-5" style={{ color: '#3b6ef8' }} />
+                <Clock className="w-5 h-5" style={{ color: '#fff' }} />
               </div>
               <div>
                 <div className="el-brand-name">TMC TimeTrack Pro</div>
@@ -403,15 +458,15 @@ export default function EmployeeLogin() {
             {/* Stats */}
             <div className="el-stats">
               <div className="el-stat">
-                <div className="el-stat-num" style={{ color: '#3b6ef8' }}>Live</div>
+                <div className="el-stat-num" style={{ color: '#f97316' }}>Live</div>
                 <div className="el-stat-label">Attendance</div>
               </div>
               <div className="el-stat">
-                <div className="el-stat-num" style={{ color: '#7c3bf8' }}>24/7</div>
+                <div className="el-stat-num" style={{ color: '#fb923c' }}>24/7</div>
                 <div className="el-stat-label">Access</div>
               </div>
               <div className="el-stat">
-                <div className="el-stat-num" style={{ color: '#059669' }}>L2</div>
+                <div className="el-stat-num" style={{ color: '#ea580c' }}>L2</div>
                 <div className="el-stat-label">Access Level</div>
               </div>
             </div>
@@ -421,7 +476,7 @@ export default function EmployeeLogin() {
               <div className="el-ticker-track">
                 {[...tickers, ...tickers].map((t, i) => (
                   <span className="el-ticker-item" key={i}>
-                    <span className="el-ticker-dot" style={{ background: t.color, boxShadow: `0 0 6px ${t.color}` }}></span>
+                    <span className="el-ticker-dot" style={{ background: t.color }}></span>
                     {t.label}
                   </span>
                 ))}
@@ -430,7 +485,7 @@ export default function EmployeeLogin() {
 
             {/* Info note */}
             <div className="el-note">
-              <UserCircle className="w-4 h-4" style={{ color: '#7c3bf8', flexShrink: 0, marginTop: 1 }} />
+              <UserCircle className="w-4 h-4" style={{ color: '#f97316', flexShrink: 0, marginTop: 1 }} />
               <div>
                 <div className="el-note-title">Employee Self-Service</div>
                 <div className="el-note-desc">Your credentials were provided by your administrator. Contact HR if you have any login issues.</div>
@@ -439,9 +494,9 @@ export default function EmployeeLogin() {
           </div>
 
           <div className="el-footer">
-            <CheckCircle2 className="w-3.5 h-3.5" style={{ color: '#059669', flexShrink: 0 }} />
+            <CheckCircle2 className="w-3.5 h-3.5" style={{ color: '#f97316', flexShrink: 0 }} />
             <span>Secure Connection Established</span>
-            <span style={{ opacity: 0.4 }}>·</span>
+            <span style={{ opacity: 0.35 }}>·</span>
             <span>TLS 1.3 Encrypted</span>
           </div>
         </div>
@@ -451,7 +506,7 @@ export default function EmployeeLogin() {
           {/* Mobile brand */}
           <div className="el-mobile-brand">
             <div className="el-brand-icon">
-              <Clock className="w-5 h-5" style={{ color: '#3b6ef8' }} />
+              <Clock className="w-5 h-5" style={{ color: '#fff' }} />
             </div>
             <div>
               <div className="el-brand-name">TimeTrack Pro</div>
@@ -462,7 +517,7 @@ export default function EmployeeLogin() {
           {/* Header */}
           <div className="el-form-header">
             <div className="el-icon-wrap">
-              <UserCircle className="w-7 h-7" style={{ color: '#3b6ef8' }} />
+              <UserCircle className="w-7 h-7" style={{ color: '#f97316' }} />
             </div>
             <h1 className="el-title">Employee Login</h1>
             <p className="el-subtitle">Sign in with your company credentials</p>
@@ -529,11 +584,10 @@ export default function EmployeeLogin() {
           </Link>
 
           <div className="el-secure">
-            <CheckCircle2 className="w-3 h-3" style={{ color: '#059669' }} />
+            <CheckCircle2 className="w-3 h-3" style={{ color: '#f97316' }} />
             Secure · Encrypted · Monitored
           </div>
 
-         
         </div>
       </div>
     </>
