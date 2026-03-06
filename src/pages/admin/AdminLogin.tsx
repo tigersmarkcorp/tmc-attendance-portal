@@ -136,9 +136,9 @@ export default function AdminLogin() {
           content: ''; position: absolute; inset: 0;
           background: linear-gradient(
             160deg,
-            rgba(255,247,237,0.96) 0%,
-            rgba(255,237,213,0.93) 50%,
-            rgba(254,215,170,0.95) 100%
+            rgba(255,252,248,0.97) 0%,
+            rgba(255,248,240,0.97) 50%,
+            rgba(255,244,232,0.97) 100%
           );
         }
 
@@ -174,7 +174,7 @@ export default function AdminLogin() {
           display: none; flex-direction: column; justify-content: space-between;
           padding: 36px 44px;
           border-right: 1px solid rgba(249,115,22,0.18);
-          background: rgba(255,255,255,0.55);
+          background: rgba(255,255,255,0.82);
           -webkit-backdrop-filter: blur(10px);
           backdrop-filter: blur(10px);
           overflow-y: auto;
@@ -190,16 +190,16 @@ export default function AdminLogin() {
           display: flex; align-items: center; justify-content: center;
           box-shadow: 0 0 18px rgba(249,115,22,0.18);
         }
-        .al-brand-name { font-family: 'Syne', sans-serif; font-size: 17px; font-weight: 700; color: #1c0a00; }
-        .al-brand-sub  { font-size: 9px; font-weight: 700; letter-spacing: 0.13em; text-transform: uppercase; color: #7c2d12; margin-top: 2px; opacity: 1; }
+        .al-brand-name { font-family: 'Syne', sans-serif; font-size: 17px; font-weight: 700; color: #111111; }
+        .al-brand-sub  { font-size: 9px; font-weight: 700; letter-spacing: 0.13em; text-transform: uppercase; color: #c2410c; margin-top: 2px; opacity: 1; }
 
         /* ── Headline ── */
-        .al-headline { font-family: 'Syne', sans-serif; font-size: 26px; font-weight: 700; color: #1c0a00; line-height: 1.22; margin-bottom: 8px; }
+        .al-headline { font-family: 'Syne', sans-serif; font-size: 26px; font-weight: 700; color: #111111; line-height: 1.22; margin-bottom: 8px; }
         .al-headline span {
           background: linear-gradient(90deg, #f97316, #ea580c, #fb923c);
           -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
         }
-        .al-desc { font-size: 13px; font-weight: 400; color: #3a0f00; line-height: 1.65; margin-bottom: 24px; opacity: 1; }
+        .al-desc { font-size: 13px; font-weight: 400; color: #222222; line-height: 1.65; margin-bottom: 24px; opacity: 1; }
 
         /* ── Feature carousel ── */
         .al-carousel { position: relative; width: 100%; overflow: hidden; margin-bottom: 22px; }
@@ -218,30 +218,30 @@ export default function AdminLogin() {
         .al-slide {
           flex-shrink: 0; width: 192px;
           padding: 15px; border-radius: 13px;
-          background: rgba(255,255,255,0.75); border: 1px solid rgba(249,115,22,0.18);
+          background: rgba(255,255,255,0.80); border: 1px solid rgba(249,115,22,0.30);
           display: flex; flex-direction: column; gap: 9px;
           box-shadow: 0 2px 10px rgba(249,115,22,0.08);
           transition: border-color 0.2s, background 0.2s, box-shadow 0.2s;
         }
         .al-slide:hover { border-color: rgba(249,115,22,0.38); background: rgba(255,255,255,0.92); box-shadow: 0 4px 18px rgba(249,115,22,0.14); }
         .al-slide-icon  { width: 34px; height: 34px; border-radius: 9px; display: flex; align-items: center; justify-content: center; }
-        .al-slide-title { font-size: 12.5px; font-weight: 600; color: #1c0a00; }
-        .al-slide-desc  { font-size: 11px; color: #5c1a00; line-height: 1.45; opacity: 1; }
+        .al-slide-title { font-size: 12.5px; font-weight: 600; color: #111111; }
+        .al-slide-desc  { font-size: 11px; color: #333333; line-height: 1.45; opacity: 1; }
 
         /* ── Stats row ── */
         .al-stats { display: flex; gap: 10px; margin-bottom: 20px; }
         .al-stat {
           flex: 1; padding: 11px 12px; border-radius: 11px; text-align: center;
-          background: rgba(255,255,255,0.70); border: 1px solid rgba(249,115,22,0.16);
+          background: rgba(255,255,255,0.80); border: 1px solid rgba(249,115,22,0.28);
           box-shadow: 0 2px 8px rgba(249,115,22,0.07);
         }
         .al-stat-num   { font-family: 'Syne', sans-serif; font-size: 19px; font-weight: 700; line-height: 1; }
-        .al-stat-label { font-size: 9.5px; color: #3a0f00; margin-top: 4px; letter-spacing: 0.07em; text-transform: uppercase; opacity: 1; }
+        .al-stat-label { font-size: 9.5px; color: #222222; margin-top: 4px; letter-spacing: 0.07em; text-transform: uppercase; opacity: 1; }
 
         /* ── Ticker ── */
         .al-ticker {
           overflow: hidden; padding: 8px 0; margin-bottom: 18px;
-          border-top: 1px solid rgba(249,115,22,0.15); border-bottom: 1px solid rgba(249,115,22,0.15);
+          border-top: 1px solid rgba(249,115,22,0.30); border-bottom: 1px solid rgba(249,115,22,0.30);
           position: relative;
         }
         .al-ticker::before, .al-ticker::after {
@@ -258,7 +258,7 @@ export default function AdminLogin() {
         .al-ticker-item {
           display: inline-flex; align-items: center; gap: 6px;
           padding: 0 18px; font-size: 11px; font-weight: 500;
-          color: #3a0f00; white-space: nowrap; opacity: 1;
+          color: #222222; white-space: nowrap; opacity: 1;
         }
         .al-ticker-dot { width: 4px; height: 4px; border-radius: 50%; flex-shrink: 0; }
 
@@ -269,14 +269,14 @@ export default function AdminLogin() {
           background: rgba(254,226,226,0.5); border: 1px solid rgba(239,68,68,0.2);
         }
         .al-alert-title { font-size: 12px; font-weight: 600; color: #dc2626; margin-bottom: 3px; }
-        .al-alert-desc  { font-size: 11px; color: #3a0f00; line-height: 1.5; opacity: 1; }
+        .al-alert-desc  { font-size: 11px; color: #222222; line-height: 1.5; opacity: 1; }
 
         /* ── Left Footer ── */
         .al-footer {
           display: flex; align-items: center; gap: 7px;
           padding-top: 16px; margin-top: 16px;
           border-top: 1px solid rgba(249,115,22,0.14);
-          font-size: 11px; color: #3a0f00; opacity: 1;
+          font-size: 11px; color: #222222; opacity: 1;
         }
 
         /* ── RIGHT PANEL ── */
@@ -286,7 +286,7 @@ export default function AdminLogin() {
           display: flex; flex-direction: column; justify-content: center;
           padding: 36px 40px;
           overflow-y: auto;
-          background: rgba(255,255,255,0.70);
+          background: rgba(255,255,255,0.88);
           -webkit-backdrop-filter: blur(14px);
           backdrop-filter: blur(14px);
           border-left: 1px solid rgba(249,115,22,0.14);
@@ -309,14 +309,14 @@ export default function AdminLogin() {
           box-shadow: 0 4px 24px rgba(249,115,22,0.18);
         }
 
-        .al-title    { font-family: 'Syne', sans-serif; font-size: 22px; font-weight: 700; color: #1c0a00; margin-bottom: 5px; }
-        .al-subtitle { font-size: 13px; color: #3a0f00; font-weight: 400; opacity: 1; }
+        .al-title    { font-family: 'Syne', sans-serif; font-size: 22px; font-weight: 700; color: #111111; margin-bottom: 5px; }
+        .al-subtitle { font-size: 13px; color: #333333; font-weight: 400; opacity: 1; }
 
         .al-field { margin-bottom: 14px; }
         .al-label {
           display: block; font-size: 10px; font-weight: 600;
           letter-spacing: 0.09em; text-transform: uppercase;
-          color: #7c2d12; margin-bottom: 6px; opacity: 1;
+          color: #111111; margin-bottom: 6px; opacity: 1;
         }
         .al-input-wrap { position: relative; }
         .al-input-wrap svg {
@@ -325,12 +325,12 @@ export default function AdminLogin() {
         }
         .al-input {
           width: 100%; height: 46px; padding: 0 14px 0 38px;
-          background: rgba(255,255,255,0.85); border: 1px solid rgba(249,115,22,0.22);
-          border-radius: 10px; color: #1c0a00; font-size: 14px; font-family: 'DM Sans', sans-serif;
+          background: rgba(255,255,255,0.90); border: 1px solid rgba(249,115,22,0.35);
+          border-radius: 10px; color: #111111; font-size: 14px; font-family: 'DM Sans', sans-serif;
           outline: none; transition: all 0.2s ease;
           box-shadow: 0 1px 4px rgba(249,115,22,0.07);
         }
-        .al-input::placeholder { color: rgba(92,26,0,0.45); }
+        .al-input::placeholder { color: rgba(0,0,0,0.35); }
         .al-input:focus {
           background: #fff;
           border-color: rgba(249,115,22,0.55);
@@ -365,31 +365,31 @@ export default function AdminLogin() {
         }
         .al-divider span {
           position: relative; padding: 0 12px;
-          font-size: 10px; color: #7c2d12; text-transform: uppercase; letter-spacing: 0.1em;
-          background: rgba(255,255,255,0.70); opacity: 0.65;
+          font-size: 10px; color: #444444; text-transform: uppercase; letter-spacing: 0.1em;
+          background: rgba(255,255,255,0.88);
         }
 
         /* Employee link */
-        .al-emp-link { text-align: center; font-size: 13px; color: #3a0f00; margin-bottom: 12px; opacity: 1; }
+        .al-emp-link { text-align: center; font-size: 13px; color: #222222; margin-bottom: 12px; opacity: 1; }
         .al-emp-link a { color: #f97316; font-weight: 600; text-decoration: none; }
         .al-emp-link a:hover { color: #ea580c; text-decoration: underline; }
 
         /* Back link */
         .al-back {
           display: flex; align-items: center; justify-content: center; gap: 6px;
-          font-size: 12px; color: #3a0f00; text-decoration: none;
+          font-size: 12px; color: #222222; text-decoration: none;
           padding: 8px 16px; border-radius: 9px; width: fit-content; margin: 0 auto;
-          border: 1px solid rgba(249,115,22,0.2); background: rgba(249,115,22,0.06);
+          border: 1px solid rgba(249,115,22,0.25); background: rgba(249,115,22,0.07);
           transition: all 0.2s ease; opacity: 1;
         }
-        .al-back:hover { color: #f97316; background: rgba(249,115,22,0.12); border-color: rgba(249,115,22,0.35); opacity: 1; }
+        .al-back:hover { color: #ea580c; background: rgba(249,115,22,0.14); border-color: rgba(249,115,22,0.4); }
 
         /* Secure badge */
         .al-secure {
           display: flex; align-items: center; justify-content: center; gap: 6px;
           margin: 14px auto 0; padding: 4px 14px; border-radius: 50px; width: fit-content;
           background: rgba(249,115,22,0.08); border: 1px solid rgba(249,115,22,0.20);
-          font-size: 11px; color: #7c2d12; font-weight: 600;
+          font-size: 11px; color: #c2410c; font-weight: 700;
         }
       `}</style>
 
@@ -484,7 +484,7 @@ export default function AdminLogin() {
               <Shield className="w-5 h-5" style={{ color: '#f97316' }} />
             </div>
             <div>
-              <div style={{ fontFamily: 'Syne, sans-serif', fontWeight: 700, fontSize: 16, color: '#1c0a00' }}>TimeTrack Pro</div>
+              <div style={{ fontFamily: 'Syne, sans-serif', fontWeight: 700, fontSize: 16, color: '#111111' }}>TimeTrack Pro</div>
               <div className="al-brand-sub">Administration Portal</div>
             </div>
           </div>
