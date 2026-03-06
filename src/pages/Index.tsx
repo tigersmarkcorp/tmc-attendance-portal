@@ -1,15 +1,12 @@
-import { useEffect, useState, useRef } from 'react';
+import { useEffect, useState, useRef, useCallback } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
 import { useAuth } from '@/lib/auth';
 import { 
-  Clock, 
   Loader2, 
   ArrowRight,
   Shield,
   Users,
   UserCheck,
-  Building2,
-  Lock,
   ChevronRight,
   ChevronLeft,
   CheckCircle,
@@ -28,32 +25,43 @@ export default function Index() {
   const { user, role, loading } = useAuth();
   const navigate = useNavigate();
 
-  // ── Swipe / carousel state ──────────────────────────────────────────────
   const [activeIndex, setActiveIndex] = useState(0);
-  const trackRef = useRef(null);
   const startXRef = useRef(null);
   const isDraggingRef = useRef(false);
   const TOTAL = 3;
 
-  const goTo = (idx) => {
-    const clamped = Math.max(0, Math.min(TOTAL - 1, idx));
-    setActiveIndex(clamped);
-  };
+  const goTo = useCallback((idx) => {
+    setActiveIndex(Math.max(0, Math.min(TOTAL - 1, idx)));
+  }, []);
 
-  // Touch & mouse drag handlers
-  const onPointerDown = (e) => {
-    startXRef.current = e.touches ? e.touches[0].clientX : e.clientX;
+  const onTouchStart = useCallback((e) => {
+    startXRef.current = e.touches[0].clientX;
     isDraggingRef.current = true;
-  };
-  const onPointerUp = (e) => {
+  }, []);
+
+  const onTouchEnd = useCallback((e) => {
     if (!isDraggingRef.current) return;
     isDraggingRef.current = false;
-    const endX = e.changedTouches ? e.changedTouches[0].clientX : e.clientX;
-    const diff = startXRef.current - endX;
-    if (Math.abs(diff) > 50) goTo(activeIndex + (diff > 0 ? 1 : -1));
-  };
+    const diff = startXRef.current - e.changedTouches[0].clientX;
+    if (Math.abs(diff) > 40) {
+      setActiveIndex(prev => Math.max(0, Math.min(TOTAL - 1, prev + (diff > 0 ? 1 : -1))));
+    }
+  }, []);
 
-  // ── Auth redirect (logic untouched) ────────────────────────────────────
+  const onMouseDown = useCallback((e) => {
+    startXRef.current = e.clientX;
+    isDraggingRef.current = true;
+  }, []);
+
+  const onMouseUp = useCallback((e) => {
+    if (!isDraggingRef.current) return;
+    isDraggingRef.current = false;
+    const diff = startXRef.current - e.clientX;
+    if (Math.abs(diff) > 40) {
+      setActiveIndex(prev => Math.max(0, Math.min(TOTAL - 1, prev + (diff > 0 ? 1 : -1))));
+    }
+  }, []);
+
   useEffect(() => {
     if (!loading && user && role) {
       if (role === 'admin') navigate('/admin');
@@ -64,14 +72,12 @@ export default function Index() {
 
   if (loading) {
     return (
-      <div className="min-h-screen flex items-center justify-center" style={{ background: 'linear-gradient(135deg, #0f0c29, #302b63, #24243e)' }}>
-        <div className="text-center">
-          <div className="relative inline-block mb-4">
-            <div className="absolute inset-0 bg-orange-400/20 rounded-full animate-ping"></div>
-            <div className="absolute inset-0 bg-orange-400/30 rounded-full animate-pulse delay-700"></div>
-            <Loader2 className="w-8 h-8 animate-spin text-orange-300 relative" />
-          </div>
-          <p className="text-sm text-orange-200/70 font-light tracking-widest uppercase">Establishing secure session...</p>
+      <div style={{ minHeight: '100vh', display: 'flex', alignItems: 'center', justifyContent: 'center', background: '#0a0500' }}>
+        <div style={{ textAlign: 'center' }}>
+          <Loader2 style={{ width: 32, height: 32, color: '#f97316', animation: 'spin 1s linear infinite', margin: '0 auto 12px' }} />
+          <p style={{ fontSize: 11, color: 'rgba(253,186,116,0.6)', letterSpacing: '0.15em', textTransform: 'uppercase', fontFamily: 'sans-serif' }}>
+            Establishing secure session...
+          </p>
         </div>
       </div>
     );
@@ -81,631 +87,640 @@ export default function Index() {
     {
       role: 'System Administrator',
       level: 'L4 ACCESS',
-      levelColor: { bg: 'rgba(239,68,68,0.15)', border: 'rgba(239,68,68,0.3)', text: '#fca5a5' },
-      accentRgb: '249,115,22',
-      accentHex: '#f97316',
-      accentLight: '#fdba74',
-      headerBg: 'linear-gradient(135deg, rgba(249,115,22,0.14), rgba(234,88,12,0.08))',
-      image: adminPortalIcon,
-      imageAlt: 'System Administrator Workspace',
-      overlayBg: 'linear-gradient(to top, rgba(40,12,4,0.92) 0%, rgba(40,12,4,0.3) 60%, transparent 100%)',
+      levelBg: 'rgba(239,68,68,0.15)', levelBorder: 'rgba(239,68,68,0.3)', levelText: '#fca5a5',
+      accent: '#f97316', accentDim: 'rgba(249,115,22,0.18)', accentBorder: 'rgba(249,115,22,0.3)',
+      accentText: '#fdba74',
+      image: adminPortalIcon, imageAlt: 'Administrator',
       label: 'TMC System Control',
-      labelIcon: <Shield className="w-4 h-4" style={{ color: '#fdba74' }} />,
-      headerIcon: <Shield className="w-4 h-4" style={{ color: '#fdba74' }} />,
+      labelIcon: <Shield size={15} color="#fdba74" />,
+      headerIcon: <Shield size={15} color="#fdba74" />,
       description: 'Enterprise-wide governance, security policy enforcement, and organizational oversight',
       features: [
-        { icon: <UserCog className="w-3.5 h-3.5" style={{ color: '#fdba74' }} />, title: 'User & Permission Management', sub: 'Global directory administration' },
-        { icon: <Database className="w-3.5 h-3.5" style={{ color: '#fdba74' }} />, title: 'System Analytics Dashboard', sub: 'Real-time operational intelligence' },
-        { icon: <FileText className="w-3.5 h-3.5" style={{ color: '#fdba74' }} />, title: 'Compliance Reporting', sub: 'Audit-ready documentation' },
+        { icon: <UserCog size={13} color="#fdba74" />, title: 'User & Permission Management', sub: 'Global directory administration' },
+        { icon: <Database size={13} color="#fdba74" />, title: 'System Analytics Dashboard', sub: 'Real-time operational intelligence' },
+        { icon: <FileText size={13} color="#fdba74" />, title: 'Compliance Reporting', sub: 'Audit-ready documentation' },
       ],
-      btnClass: 'btn-orange',
+      btnFrom: '#f97316', btnTo: '#ea580c', btnShadow: 'rgba(249,115,22,0.4)',
       btnLabel: 'Access Administrator Portal',
       to: '/admin/login',
+      isAdmin: true,
     },
     {
       role: 'TMC Site Admin Officer',
       level: 'L3 ACCESS',
-      levelColor: { bg: 'rgba(249,115,22,0.15)', border: 'rgba(249,115,22,0.3)', text: '#fdba74' },
-      accentRgb: '234,88,12',
-      accentHex: '#ea580c',
-      accentLight: '#fb923c',
-      headerBg: 'linear-gradient(135deg, rgba(234,88,12,0.14), rgba(194,65,12,0.08))',
-      image: saoPortalIcon,
-      imageAlt: 'Site Operations Workspace',
-      overlayBg: 'linear-gradient(to top, rgba(35,10,2,0.92) 0%, rgba(35,10,2,0.3) 60%, transparent 100%)',
+      levelBg: 'rgba(249,115,22,0.15)', levelBorder: 'rgba(249,115,22,0.3)', levelText: '#fdba74',
+      accent: '#ea580c', accentDim: 'rgba(234,88,12,0.18)', accentBorder: 'rgba(234,88,12,0.3)',
+      accentText: '#fb923c',
+      image: saoPortalIcon, imageAlt: 'Site Operations',
       label: 'TMC Site Operations Hub',
-      labelIcon: <MapPin className="w-4 h-4" style={{ color: '#fb923c' }} />,
-      headerIcon: <MapPin className="w-4 h-4" style={{ color: '#fb923c' }} />,
+      labelIcon: <MapPin size={15} color="#fb923c" />,
+      headerIcon: <MapPin size={15} color="#fb923c" />,
       description: 'Multi-site management, workforce coordination, and field compliance oversight',
       features: [
-        { icon: <MapPin className="w-3.5 h-3.5" style={{ color: '#fb923c' }} />, title: 'Multi-Site Dashboard', sub: 'Real-time location monitoring' },
-        { icon: <Users className="w-3.5 h-3.5" style={{ color: '#fb923c' }} />, title: 'Workforce Allocation', sub: 'Resource optimization tools' },
-        { icon: <CalendarCheck className="w-3.5 h-3.5" style={{ color: '#fb923c' }} />, title: 'Compliance Auditing', sub: 'Field operation verification' },
+        { icon: <MapPin size={13} color="#fb923c" />, title: 'Multi-Site Dashboard', sub: 'Real-time location monitoring' },
+        { icon: <Users size={13} color="#fb923c" />, title: 'Workforce Allocation', sub: 'Resource optimization tools' },
+        { icon: <CalendarCheck size={13} color="#fb923c" />, title: 'Compliance Auditing', sub: 'Field operation verification' },
       ],
-      btnClass: 'btn-deeporange',
+      btnFrom: '#ea580c', btnTo: '#c2410c', btnShadow: 'rgba(234,88,12,0.4)',
       btnLabel: 'Access Site Operations Portal',
       to: '/sao/login',
+      isAdmin: false,
     },
     {
       role: 'Employee Self-Service',
       level: 'L2 ACCESS',
-      levelColor: { bg: 'rgba(249,115,22,0.15)', border: 'rgba(249,115,22,0.3)', text: '#fed7aa' },
-      accentRgb: '253,186,116',
-      accentHex: '#fdba74',
-      accentLight: '#fff7ed',
-      headerBg: 'linear-gradient(135deg, rgba(253,186,116,0.10), rgba(249,115,22,0.06))',
-      image: employeePortalIcon,
-      imageAlt: 'Employee Workspace',
-      overlayBg: 'linear-gradient(to top, rgba(40,20,5,0.92) 0%, rgba(40,20,5,0.3) 60%, transparent 100%)',
+      levelBg: 'rgba(249,115,22,0.15)', levelBorder: 'rgba(249,115,22,0.3)', levelText: '#fed7aa',
+      accent: '#fb923c', accentDim: 'rgba(251,146,60,0.18)', accentBorder: 'rgba(251,146,60,0.3)',
+      accentText: '#fed7aa',
+      image: employeePortalIcon, imageAlt: 'Employee',
       label: 'TMC Personal Workspace',
-      labelIcon: <UserCheck className="w-4 h-4" style={{ color: '#fed7aa' }} />,
-      headerIcon: <UserCheck className="w-4 h-4" style={{ color: '#fed7aa' }} />,
+      labelIcon: <UserCheck size={15} color="#fed7aa" />,
+      headerIcon: <UserCheck size={15} color="#fed7aa" />,
       description: 'Attendance management, leave requests, and personal records access',
       features: [
-        { icon: <CalendarCheck className="w-3.5 h-3.5" style={{ color: '#fed7aa' }} />, title: 'Attendance Tracking', sub: 'Biometric & mobile check-in' },
-        { icon: <FileText className="w-3.5 h-3.5" style={{ color: '#fed7aa' }} />, title: 'Leave Management', sub: 'Digital request workflow' },
-        { icon: <Database className="w-3.5 h-3.5" style={{ color: '#fed7aa' }} />, title: 'Personal Document Vault', sub: 'Secure record storage' },
+        { icon: <CalendarCheck size={13} color="#fed7aa" />, title: 'Attendance Tracking', sub: 'Biometric & mobile check-in' },
+        { icon: <FileText size={13} color="#fed7aa" />, title: 'Leave Management', sub: 'Digital request workflow' },
+        { icon: <Database size={13} color="#fed7aa" />, title: 'Personal Document Vault', sub: 'Secure record storage' },
       ],
-      btnClass: 'btn-amber',
+      btnFrom: '#fb923c', btnTo: '#f97316', btnShadow: 'rgba(251,146,60,0.4)',
       btnLabel: 'Access Employee Portal',
       to: '/employee/login',
+      isAdmin: false,
     },
   ];
 
   return (
     <>
       <style>{`
-        @import url('https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=DM+Sans:wght@300;400;500&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=DM+Sans:wght@300;400;500;600&display=swap');
 
-        .portal-root {
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+        @keyframes spin { to { transform: rotate(360deg); } }
+        @keyframes orb-pulse {
+          0%, 100% { opacity: 0.13; transform: scale(1) translateZ(0); }
+          50%       { opacity: 0.21; transform: scale(1.07) translateZ(0); }
+        }
+        @keyframes pulse-dot {
+          0%, 100% { opacity: 1; transform: scale(1); }
+          50%       { opacity: 0.4; transform: scale(1.5); }
+        }
+        @keyframes fade-up {
+          from { opacity: 0; transform: translate3d(0, 20px, 0); }
+          to   { opacity: 1; transform: translate3d(0, 0, 0); }
+        }
+
+        /* ── ROOT ── */
+        .pr-root {
           font-family: 'DM Sans', sans-serif;
           min-height: 100vh;
-          background-color: #050814;
-          background-image: url('https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=1920&q=80');
-          background-size: cover;
-          background-position: center;
-          background-attachment: fixed;
+          background: #080501;
           position: relative;
+          overflow-x: hidden;
           display: flex;
           flex-direction: column;
-          overflow-x: hidden;
+          /* Establish stacking context once */
+          isolation: isolate;
         }
 
-        .portal-root::before {
-          content: '';
+        /* ── STATIC BG — no background-attachment:fixed (destroys mobile perf) ── */
+        .pr-bg {
           position: fixed;
           inset: 0;
-          background: linear-gradient(
-            135deg,
-            rgba(5, 8, 20, 0.90) 0%,
-            rgba(20, 10, 5, 0.85) 40%,
-            rgba(15, 8, 3, 0.90) 100%
-          );
-          z-index: 0;
+          background-image: url('https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=1400&q=55');
+          background-size: cover;
+          background-position: center;
+          /* Single GPU-composited layer */
+          transform: translateZ(0);
+          z-index: -3;
+        }
+        .pr-bg::after {
+          content: '';
+          position: absolute;
+          inset: 0;
+          background: linear-gradient(160deg, rgba(8,5,1,0.93) 0%, rgba(14,8,2,0.87) 50%, rgba(8,5,1,0.94) 100%);
         }
 
-        /* Ambient orbs — orange palette */
-        .orb {
+        /* ── GRID — opacity only, no blur ── */
+        .pr-grid {
+          position: fixed;
+          inset: 0;
+          background-image:
+            linear-gradient(rgba(249,115,22,0.03) 1px, transparent 1px),
+            linear-gradient(90deg, rgba(249,115,22,0.03) 1px, transparent 1px);
+          background-size: 56px 56px;
+          pointer-events: none;
+          z-index: -2;
+        }
+
+        /* ── ORBS — radial gradient only (no filter:blur = no repaint) ── */
+        .pr-orb {
           position: fixed;
           border-radius: 50%;
-          filter: blur(80px);
-          opacity: 0.16;
           pointer-events: none;
-          z-index: 0;
-          animation: orb-float 12s ease-in-out infinite;
+          z-index: -1;
+          transform: translateZ(0);
+          animation: orb-pulse 11s ease-in-out infinite;
         }
-        .orb-1 {
-          width: 600px; height: 600px;
-          background: radial-gradient(circle, #f97316, transparent);
-          top: -200px; left: -200px;
-          animation-delay: 0s;
+        .pr-orb-1 {
+          width: 480px; height: 480px;
+          background: radial-gradient(circle at center, rgba(249,115,22,0.20), transparent 68%);
+          top: -180px; left: -180px;
         }
-        .orb-2 {
-          width: 500px; height: 500px;
-          background: radial-gradient(circle, #ea580c, transparent);
-          bottom: -150px; right: -150px;
-          animation-delay: -4s;
-        }
-        .orb-3 {
+        .pr-orb-2 {
           width: 400px; height: 400px;
-          background: radial-gradient(circle, #fdba74, transparent);
-          top: 40%; left: 50%;
-          transform: translate(-50%, -50%);
-          animation-delay: -8s;
-        }
-        @keyframes orb-float {
-          0%, 100% { transform: translateY(0px) scale(1); }
-          50% { transform: translateY(-30px) scale(1.05); }
+          background: radial-gradient(circle at center, rgba(234,88,12,0.17), transparent 68%);
+          bottom: -130px; right: -130px;
+          animation-delay: -5.5s;
         }
 
-        .grid-pattern {
-          position: fixed;
-          inset: 0;
-          background-image: 
-            linear-gradient(rgba(249,115,22,0.025) 1px, transparent 1px),
-            linear-gradient(90deg, rgba(249,115,22,0.025) 1px, transparent 1px);
-          background-size: 60px 60px;
-          pointer-events: none;
-          z-index: 0;
-        }
-
-        /* ── CAROUSEL ─────────────────────────────────────── */
-        .carousel-viewport {
-          width: 100%;
-          overflow: hidden;
+        /* ── CONTENT ── */
+        .pr-content {
           position: relative;
-          /* allow click-drag on desktop */
-          user-select: none;
-          cursor: grab;
-        }
-        .carousel-viewport:active { cursor: grabbing; }
-
-        .carousel-track {
-          display: flex;
-          transition: transform 0.5s cubic-bezier(0.23, 1, 0.32, 1);
-          will-change: transform;
-        }
-
-        .carousel-slide {
-          flex: 0 0 100%;
-          width: 100%;
-          display: flex;
-          justify-content: center;
-          padding: 0 16px;
-          box-sizing: border-box;
-        }
-
-        /* On desktop show 3-up grid instead of carousel */
-        @media (min-width: 1024px) {
-          .carousel-viewport { overflow: visible; cursor: default; }
-          .carousel-track {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 24px;
-            transform: none !important;
-            max-width: 1200px;
-            margin: 0 auto;
-          }
-          .carousel-slide {
-            padding: 0;
-          }
-          .carousel-nav { display: none !important; }
-          .carousel-dots { display: none !important; }
-        }
-
-        /* ── GLASS CARD ───────────────────────────────────── */
-        .glass-card {
-          background: rgba(255, 255, 255, 0.04);
-          backdrop-filter: blur(20px) saturate(180%);
-          -webkit-backdrop-filter: blur(20px) saturate(180%);
-          border: 1px solid rgba(255, 255, 255, 0.10);
-          border-radius: 20px;
-          transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
-          overflow: hidden;
-          position: relative;
-          width: 100%;
-          max-width: 400px;
-        }
-        .glass-card::before {
-          content: '';
-          position: absolute;
-          top: 0; left: 0; right: 0;
-          height: 1px;
-          background: linear-gradient(90deg, transparent, rgba(255,255,255,0.25), transparent);
           z-index: 1;
-        }
-        .glass-card:hover {
-          background: rgba(255, 255, 255, 0.07);
-          border-color: rgba(249,115,22,0.25);
-          transform: translateY(-6px);
-          box-shadow: 
-            0 30px 60px rgba(0, 0, 0, 0.5),
-            0 0 0 1px rgba(249,115,22,0.10),
-            inset 0 1px 0 rgba(255, 255, 255, 0.15);
+          flex: 1;
+          display: flex;
+          flex-direction: column;
         }
 
-        .card-header-glass {
-          backdrop-filter: blur(10px);
-          padding: 16px 20px;
-          border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+        /* ── HERO ── */
+        .pr-hero {
+          text-align: center;
+          padding: 44px 20px 0;
+          animation: fade-up 0.55s ease both;
         }
-        .access-badge {
+        .pr-badge {
           display: inline-flex;
           align-items: center;
-          gap: 5px;
+          gap: 7px;
+          padding: 5px 14px;
+          border-radius: 50px;
+          background: rgba(249,115,22,0.09);
+          border: 1px solid rgba(249,115,22,0.22);
           font-size: 10px;
           font-weight: 700;
-          letter-spacing: 0.08em;
-          padding: 3px 10px;
-          border-radius: 50px;
-          backdrop-filter: blur(8px);
+          letter-spacing: 0.11em;
+          color: rgba(253,186,116,0.8);
+          margin-bottom: 16px;
         }
-        .feature-glass {
-          display: flex;
-          align-items: flex-start;
-          gap: 12px;
-          padding: 12px 14px;
-          background: rgba(255, 255, 255, 0.04);
-          border: 1px solid rgba(255, 255, 255, 0.07);
-          border-radius: 12px;
-          transition: all 0.25s ease;
-          margin-bottom: 10px;
-        }
-        .feature-glass:last-child { margin-bottom: 0; }
-        .glass-card:hover .feature-glass {
-          background: rgba(249,115,22,0.06);
-          border-color: rgba(249,115,22,0.15);
-        }
-        .feature-icon-wrap {
-          padding: 8px;
-          border-radius: 10px;
-          flex-shrink: 0;
-          backdrop-filter: blur(8px);
-        }
-
-        /* ── CTA BUTTONS ──────────────────────────────────── */
-        .btn-glass {
-          width: 100%;
-          height: 48px;
-          border-radius: 12px;
-          font-size: 13px;
-          font-weight: 600;
-          letter-spacing: 0.03em;
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          gap: 10px;
-          transition: all 0.3s ease;
-          position: relative;
-          overflow: hidden;
-          backdrop-filter: blur(10px);
-          border: 1px solid rgba(255,255,255,0.15);
-          cursor: pointer;
-          text-decoration: none;
-        }
-        .btn-glass::after {
-          content: '';
-          position: absolute;
-          inset: 0;
-          background: linear-gradient(135deg, rgba(255,255,255,0.12), transparent);
-          opacity: 0;
-          transition: opacity 0.3s;
-        }
-        .btn-glass:hover::after { opacity: 1; }
-        .btn-glass:hover { transform: translateY(-1px); }
-
-        .btn-orange {
-          background: linear-gradient(135deg, rgba(249,115,22,0.80), rgba(234,88,12,0.80));
-          box-shadow: 0 8px 32px rgba(249,115,22,0.35);
-          color: white;
-        }
-        .btn-orange:hover { box-shadow: 0 12px 40px rgba(249,115,22,0.55); }
-
-        .btn-deeporange {
-          background: linear-gradient(135deg, rgba(234,88,12,0.80), rgba(194,65,12,0.80));
-          box-shadow: 0 8px 32px rgba(234,88,12,0.35);
-          color: white;
-        }
-        .btn-deeporange:hover { box-shadow: 0 12px 40px rgba(234,88,12,0.55); }
-
-        .btn-amber {
-          background: linear-gradient(135deg, rgba(251,146,60,0.80), rgba(249,115,22,0.80));
-          box-shadow: 0 8px 32px rgba(251,146,60,0.35);
-          color: white;
-        }
-        .btn-amber:hover { box-shadow: 0 12px 40px rgba(251,146,60,0.55); }
-
-        /* ── CARD IMAGE ───────────────────────────────────── */
-        .card-image {
-          position: relative;
-          width: 100%;
-          height: 300px;
-          overflow: hidden;
-          border-bottom: 1px solid rgba(255,255,255,0.08);
-        }
-        .card-image img {
-          width: 100%; height: 100%;
-          object-fit: cover;
-          object-position: center top;
-          transition: transform 0.7s cubic-bezier(0.23, 1, 0.32, 1);
-        }
-        .glass-card:hover .card-image img { transform: scale(1.04); }
-        .card-image-overlay {
-          position: absolute;
-          inset: 0;
-          transition: opacity 0.3s;
-        }
-        .glass-card:hover .card-image-overlay { opacity: 0.75; }
-        .card-image-label {
-          position: absolute;
-          bottom: 14px; left: 14px; right: 14px;
-          display: inline-flex;
-          align-items: center;
-          gap: 8px;
-          padding: 8px 14px;
-          border-radius: 50px;
-          backdrop-filter: blur(16px) saturate(180%);
-          background: rgba(0,0,0,0.35);
-          border: 1px solid rgba(249,115,22,0.25);
-          font-size: 14px;
-          font-weight: 700;
-          color: white;
-          font-family: 'Syne', sans-serif;
-          width: fit-content;
-          transition: all 0.3s ease;
-        }
-        .glass-card:hover .card-image-label {
-          background: rgba(0,0,0,0.5);
-          border-color: rgba(249,115,22,0.45);
-        }
-
-        /* ── HERO BADGE ───────────────────────────────────── */
-        .hero-badge {
-          display: inline-flex;
-          align-items: center;
-          gap: 8px;
-          padding: 6px 16px;
-          border-radius: 50px;
-          background: rgba(249,115,22,0.08);
-          border: 1px solid rgba(249,115,22,0.22);
-          backdrop-filter: blur(12px);
-          font-size: 11px;
-          font-weight: 700;
-          letter-spacing: 0.1em;
-          color: rgba(253,186,116,0.85);
-          margin-bottom: 20px;
-        }
-        .pulse-dot {
+        .pr-dot {
           width: 6px; height: 6px;
           border-radius: 50%;
           background: #f97316;
-          animation: pulse-anim 2s ease-in-out infinite;
+          flex-shrink: 0;
+          animation: pulse-dot 2s ease-in-out infinite;
         }
-        @keyframes pulse-anim {
-          0%, 100% { opacity: 1; transform: scale(1); }
-          50% { opacity: 0.5; transform: scale(1.4); }
+        .pr-title {
+          font-family: 'Syne', sans-serif;
+          font-size: clamp(24px, 5.5vw, 46px);
+          font-weight: 800;
+          color: #fff;
+          line-height: 1.15;
+          letter-spacing: -0.02em;
+          margin-bottom: 6px;
+        }
+        .pr-title-accent {
+          background: linear-gradient(90deg, #f97316, #fdba74, #ea580c);
+          -webkit-background-clip: text;
+          -webkit-text-fill-color: transparent;
+          background-clip: text;
+          display: block;
+        }
+        .pr-subtitle {
+          font-size: 13.5px;
+          color: rgba(255,255,255,0.36);
+          max-width: 400px;
+          margin: 10px auto 0;
+          line-height: 1.65;
+          font-weight: 300;
         }
 
-        /* ── CAROUSEL NAVIGATION ──────────────────────────── */
-        .carousel-nav {
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          gap: 12px;
-          margin-top: 28px;
+        /* ── CAROUSEL WRAPPER ── */
+        .pr-carousel-wrap {
+          padding: 32px 0 0;
+          animation: fade-up 0.55s 0.12s ease both;
         }
-        .nav-btn {
-          width: 40px; height: 40px;
-          border-radius: 50%;
-          border: 1px solid rgba(249,115,22,0.25);
-          background: rgba(249,115,22,0.08);
+
+        /* Viewport — overflow:hidden clips slides */
+        .pr-viewport {
+          width: 100%;
+          overflow: hidden;
+          /* Allow vertical scroll pass-through */
+          touch-action: pan-y;
+          cursor: grab;
+          -webkit-tap-highlight-color: transparent;
+        }
+        .pr-viewport:active { cursor: grabbing; }
+
+        /* Track — GPU translate only, NO layout props change */
+        .pr-track {
+          display: flex;
+          will-change: transform;
+          transition: transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+        .pr-slide {
+          flex: 0 0 100%;
+          display: flex;
+          justify-content: center;
+          padding: 0 18px 6px;
+        }
+
+        /* ── DESKTOP: 3-col grid (no carousel) ── */
+        @media (min-width: 1024px) {
+          .pr-hero { padding-top: 56px; }
+          .pr-viewport { overflow: visible; cursor: default !important; }
+          .pr-track {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 22px;
+            max-width: 1160px;
+            margin: 0 auto;
+            /* Override inline transform from JS */
+            transform: none !important;
+            transition: none !important;
+          }
+          .pr-slide { padding: 0 0 6px; }
+          .pr-nav,
+          .pr-swipe-hint { display: none !important; }
+        }
+
+        /* Tablet: wider padding */
+        @media (min-width: 600px) and (max-width: 1023px) {
+          .pr-slide { padding: 0 40px 6px; }
+        }
+
+        /* ── CARD ── */
+        .pr-card {
+          width: 100%;
+          max-width: 430px;
+          border-radius: 18px;
+          overflow: hidden;
+          border: 1px solid rgba(255,255,255,0.08);
+          /* Dark semi-opaque bg — single backdrop-filter is cheap */
+          background: rgba(10, 6, 2, 0.75);
+          -webkit-backdrop-filter: blur(10px);
           backdrop-filter: blur(10px);
-          color: rgba(253,186,116,0.85);
           display: flex;
-          align-items: center;
-          justify-content: center;
-          cursor: pointer;
-          transition: all 0.25s ease;
+          flex-direction: column;
+          /* Own GPU layer */
+          transform: translateZ(0);
+          transition: border-color 0.3s ease, box-shadow 0.3s ease, transform 0.3s ease;
         }
-        .nav-btn:hover {
-          background: rgba(249,115,22,0.22);
-          border-color: rgba(249,115,22,0.5);
-          box-shadow: 0 0 16px rgba(249,115,22,0.3);
-          color: #fdba74;
+        /* Shimmer top line — zero cost */
+        .pr-card::before {
+          content: '';
+          display: block;
+          height: 1px;
+          background: linear-gradient(90deg, transparent, rgba(255,255,255,0.16), transparent);
+          flex-shrink: 0;
         }
-        .nav-btn:disabled {
-          opacity: 0.25;
-          cursor: not-allowed;
+        .pr-card:hover {
+          border-color: rgba(249,115,22,0.26);
+          box-shadow: 0 22px 48px rgba(0,0,0,0.55), 0 0 0 1px rgba(249,115,22,0.07);
+          transform: translateY(-5px) translateZ(0);
         }
 
-        /* ── DOTS ─────────────────────────────────────────── */
-        .carousel-dots {
+        /* Card header */
+        .pr-card-head {
           display: flex;
+          align-items: center;
+          justify-content: space-between;
+          padding: 13px 17px;
+          border-bottom: 1px solid rgba(255,255,255,0.07);
+        }
+        .pr-card-head-left { display: flex; align-items: center; gap: 10px; }
+        .pr-head-icon { padding: 7px; border-radius: 9px; }
+        .pr-role-label {
+          font-size: 9.5px;
+          font-weight: 700;
+          letter-spacing: 0.13em;
+          text-transform: uppercase;
+        }
+        .pr-badge-pill {
+          display: inline-flex;
+          align-items: center;
+          gap: 4px;
+          font-size: 9px;
+          font-weight: 800;
+          letter-spacing: 0.09em;
+          padding: 3px 9px;
+          border-radius: 50px;
+        }
+
+        /* Card image */
+        .pr-img-wrap {
+          position: relative;
+          width: 100%;
+          height: 210px;
+          overflow: hidden;
+          border-bottom: 1px solid rgba(255,255,255,0.07);
+          flex-shrink: 0;
+        }
+        @media (min-width: 600px) { .pr-img-wrap { height: 250px; } }
+        @media (min-width: 1024px) { .pr-img-wrap { height: 230px; } }
+
+        .pr-img-wrap img {
+          width: 100%; height: 100%;
+          object-fit: cover;
+          object-position: center top;
+          pointer-events: none;
+          user-select: none;
+          -webkit-user-drag: none;
+          transform: translateZ(0);
+          transition: transform 0.55s ease;
+          display: block;
+        }
+        .pr-card:hover .pr-img-wrap img { transform: scale(1.04) translateZ(0); }
+
+        /* Gradient overlay — NO filter:blur */
+        .pr-img-overlay {
+          position: absolute;
+          inset: 0;
+          background: linear-gradient(to top, rgba(8,4,1,0.88) 0%, rgba(8,4,1,0.18) 52%, transparent 100%);
+        }
+        .pr-img-label {
+          position: absolute;
+          bottom: 11px; left: 11px;
+          display: inline-flex;
+          align-items: center;
+          gap: 6px;
+          padding: 6px 12px;
+          border-radius: 50px;
+          background: rgba(0,0,0,0.44);
+          border: 1px solid rgba(249,115,22,0.2);
+          font-size: 12.5px;
+          font-weight: 700;
+          font-family: 'Syne', sans-serif;
+          color: #fff;
+          white-space: nowrap;
+        }
+
+        /* Card body */
+        .pr-body {
+          padding: 16px 16px 16px;
+          display: flex;
+          flex-direction: column;
+          flex: 1;
+        }
+        .pr-desc {
+          font-size: 12px;
+          color: rgba(255,255,255,0.36);
+          text-align: center;
+          margin-bottom: 14px;
+          line-height: 1.65;
+          font-weight: 300;
+        }
+
+        /* Features */
+        .pr-features { flex: 1; margin-bottom: 14px; display: flex; flex-direction: column; gap: 7px; }
+        .pr-feature {
+          display: flex;
+          align-items: flex-start;
+          gap: 10px;
+          padding: 9px 11px;
+          border-radius: 10px;
+          border: 1px solid rgba(255,255,255,0.06);
+          background: rgba(255,255,255,0.025);
+          transition: background 0.2s, border-color 0.2s;
+        }
+        .pr-card:hover .pr-feature {
+          background: rgba(249,115,22,0.045);
+          border-color: rgba(249,115,22,0.13);
+        }
+        .pr-feat-icon { padding: 7px; border-radius: 8px; flex-shrink: 0; }
+        .pr-feat-title { font-size: 12px; font-weight: 600; color: rgba(255,255,255,0.82); line-height: 1.3; }
+        .pr-feat-sub   { font-size: 10.5px; color: rgba(255,255,255,0.3); margin-top: 2px; }
+
+        /* CTA Button — NO backdrop-filter, just gradient */
+        .pr-btn {
+          display: flex;
+          align-items: center;
           justify-content: center;
           gap: 8px;
-          margin-top: 18px;
-        }
-        .dot {
-          height: 6px;
-          border-radius: 50px;
-          background: rgba(249,115,22,0.25);
-          transition: all 0.35s ease;
-          cursor: pointer;
-        }
-        .dot.active {
-          width: 28px;
-          background: #f97316;
-          box-shadow: 0 0 10px rgba(249,115,22,0.5);
-        }
-        .dot:not(.active) {
-          width: 6px;
-        }
-        .dot:hover:not(.active) {
-          background: rgba(249,115,22,0.5);
-        }
-
-        /* ── SWIPE HINT ───────────────────────────────────── */
-        .swipe-hint {
-          font-size: 10px;
-          letter-spacing: 0.12em;
-          text-transform: uppercase;
-          color: rgba(249,115,22,0.4);
-          text-align: center;
-          margin-top: 10px;
-        }
-
-        h1, h2, .syne { font-family: 'Syne', sans-serif; }
-        .section-label {
-          font-size: 10px;
+          width: 100%;
+          height: 44px;
+          border-radius: 10px;
+          font-size: 12.5px;
           font-weight: 700;
-          letter-spacing: 0.15em;
+          letter-spacing: 0.025em;
+          color: #fff;
+          text-decoration: none;
+          border: none;
+          cursor: pointer;
+          position: relative;
+          overflow: hidden;
+          transition: box-shadow 0.22s ease, transform 0.18s ease;
+          transform: translateZ(0);
+        }
+        .pr-btn::before {
+          content: '';
+          position: absolute;
+          inset: 0;
+          background: linear-gradient(135deg, rgba(255,255,255,0.13) 0%, transparent 55%);
+          opacity: 0;
+          transition: opacity 0.22s;
+        }
+        .pr-btn:hover::before { opacity: 1; }
+        .pr-btn:hover { transform: translateY(-1px) translateZ(0); }
+
+        /* ── NAVIGATION ── */
+        .pr-nav {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          gap: 14px;
+          padding: 20px 0 6px;
+        }
+        .pr-nav-btn {
+          width: 38px; height: 38px;
+          border-radius: 50%;
+          border: 1px solid rgba(249,115,22,0.22);
+          background: rgba(249,115,22,0.07);
+          color: rgba(253,186,116,0.85);
+          display: flex; align-items: center; justify-content: center;
+          cursor: pointer;
+          transition: background 0.2s, border-color 0.2s, box-shadow 0.2s;
+          -webkit-tap-highlight-color: transparent;
+        }
+        .pr-nav-btn:hover {
+          background: rgba(249,115,22,0.17);
+          border-color: rgba(249,115,22,0.44);
+          box-shadow: 0 0 12px rgba(249,115,22,0.24);
+        }
+        .pr-nav-btn:disabled { opacity: 0.22; cursor: not-allowed; }
+
+        .pr-dots { display: flex; gap: 7px; align-items: center; }
+        .pr-dot-item {
+          height: 5px;
+          border-radius: 50px;
+          background: rgba(249,115,22,0.22);
+          cursor: pointer;
+          transition: width 0.3s ease, background 0.3s ease, box-shadow 0.3s ease;
+        }
+        .pr-dot-item.on {
+          width: 22px;
+          background: #f97316;
+          box-shadow: 0 0 8px rgba(249,115,22,0.48);
+        }
+        .pr-dot-item:not(.on) { width: 5px; }
+
+        /* Swipe hint */
+        .pr-swipe-hint {
+          text-align: center;
+          font-size: 9.5px;
+          letter-spacing: 0.13em;
           text-transform: uppercase;
-          color: rgba(255,255,255,0.35);
-          font-family: 'DM Sans', sans-serif;
+          color: rgba(249,115,22,0.32);
+          padding: 6px 0 4px;
+        }
+
+        /* Footer */
+        .pr-footer {
+          text-align: center;
+          padding: 26px 20px 34px;
+          font-size: 10px;
+          letter-spacing: 0.14em;
+          text-transform: uppercase;
+          color: rgba(255,255,255,0.15);
+          animation: fade-up 0.55s 0.22s ease both;
         }
       `}</style>
 
-      <div className="portal-root">
-        {/* Ambient Effects */}
-        <div className="orb orb-1"></div>
-        <div className="orb orb-2"></div>
-        <div className="orb orb-3"></div>
-        <div className="grid-pattern"></div>
+      <div className="pr-root">
+        <div className="pr-bg" aria-hidden="true" />
+        <div className="pr-grid" aria-hidden="true" />
+        <div className="pr-orb pr-orb-1" aria-hidden="true" />
+        <div className="pr-orb pr-orb-2" aria-hidden="true" />
 
-        {/* Content */}
-        <div className="relative z-10 flex-1 flex flex-col">
-          <section className="container mx-auto px-4 sm:px-6 py-10 sm:py-14 lg:py-16 flex flex-col items-center justify-center">
+        <div className="pr-content">
 
-            {/* Hero Header */}
-            <div className="text-center max-w-2xl mx-auto mb-12 sm:mb-14">
-              <div className="hero-badge">
-                <span className="pulse-dot"></span>
-                NEW ENTERPRISE INTERFACE &nbsp;·&nbsp; v3.2
-              </div>
-              <h2 className="syne text-3xl md:text-4xl lg:text-5xl font-800 mb-4 text-white tracking-tight leading-tight">
-                Unified Workspace
-                <span style={{ 
-                  background: 'linear-gradient(90deg, #f97316, #fdba74, #ea580c)', 
-                  WebkitBackgroundClip: 'text', 
-                  WebkitTextFillColor: 'transparent',
-                  backgroundClip: 'text',
-                  display: 'block'
-                }}>
-                  Tiger's Mark Corp Portal
-                </span>
-              </h2>
+          {/* Hero */}
+          <div className="pr-hero">
+            <div className="pr-badge">
+              <span className="pr-dot" />
+              NEW ENTERPRISE INTERFACE &nbsp;·&nbsp; v3.2
             </div>
+            <h2 className="pr-title">
+              Unified Workspace
+              <span className="pr-title-accent">Tiger's Mark Corp Portal</span>
+            </h2>
+            <p className="pr-subtitle">
+              Securely access your role-specific environment with enterprise-grade governance and compliance controls
+            </p>
+          </div>
 
-            {/* ── CAROUSEL / 3-up grid ─────────────────────────────────────── */}
-            <div className="w-full">
+          {/* Carousel */}
+          <div className="pr-carousel-wrap">
+            <div
+              className="pr-viewport"
+              onMouseDown={onMouseDown}
+              onMouseUp={onMouseUp}
+              onTouchStart={onTouchStart}
+              onTouchEnd={onTouchEnd}
+            >
               <div
-                className="carousel-viewport"
-                ref={trackRef}
-                onMouseDown={onPointerDown}
-                onMouseUp={onPointerUp}
-                onTouchStart={onPointerDown}
-                onTouchEnd={onPointerUp}
+                className="pr-track"
+                style={{ transform: `translate3d(-${activeIndex * 100}%, 0, 0)` }}
               >
-                <div
-                  className="carousel-track"
-                  style={{ transform: `translateX(-${activeIndex * 100}%)` }}
-                >
-                  {cards.map((card, i) => (
-                    <div className="carousel-slide" key={i}>
-                      <div className="glass-card group flex flex-col">
+                {cards.map((c, i) => (
+                  <div className="pr-slide" key={i}>
+                    <div className="pr-card">
 
-                        {/* Card Header */}
-                        <div className="card-header-glass" style={{ background: card.headerBg }}>
-                          <div className="flex items-center justify-between">
-                            <div className="flex items-center gap-2.5">
-                              <div style={{
-                                background: `rgba(${card.accentRgb},0.2)`,
-                                padding: '8px', borderRadius: '10px',
-                                backdropFilter: 'blur(8px)',
-                                border: `1px solid rgba(${card.accentRgb},0.3)`
-                              }}>
-                                {card.headerIcon}
+                      {/* Header */}
+                      <div className="pr-card-head" style={{ background: `linear-gradient(135deg, ${c.accentDim}, transparent)` }}>
+                        <div className="pr-card-head-left">
+                          <div className="pr-head-icon" style={{ background: c.accentDim, border: `1px solid ${c.accentBorder}` }}>
+                            {c.headerIcon}
+                          </div>
+                          <span className="pr-role-label" style={{ color: c.accentText }}>{c.role}</span>
+                        </div>
+                        <span className="pr-badge-pill" style={{ background: c.levelBg, border: `1px solid ${c.levelBorder}`, color: c.levelText }}>
+                          {c.isAdmin ? <AlertCircle size={9} /> : <CheckCircle size={9} />}
+                          {c.level}
+                        </span>
+                      </div>
+
+                      {/* Image */}
+                      <div className="pr-img-wrap">
+                        <img src={c.image} alt={c.imageAlt} loading="lazy" />
+                        <div className="pr-img-overlay" />
+                        <div className="pr-img-label">
+                          {c.labelIcon}
+                          {c.label}
+                        </div>
+                      </div>
+
+                      {/* Body */}
+                      <div className="pr-body">
+                        <p className="pr-desc">{c.description}</p>
+
+                        <div className="pr-features">
+                          {c.features.map((f, fi) => (
+                            <div className="pr-feature" key={fi}>
+                              <div className="pr-feat-icon" style={{ background: c.accentDim, border: `1px solid ${c.accentBorder}` }}>
+                                {f.icon}
                               </div>
-                              <span className="section-label" style={{ color: `rgba(${card.accentRgb},0.85)` }}>{card.role}</span>
+                              <div>
+                                <div className="pr-feat-title">{f.title}</div>
+                                <div className="pr-feat-sub">{f.sub}</div>
+                              </div>
                             </div>
-                            <span className="access-badge" style={{
-                              background: card.levelColor.bg,
-                              border: `1px solid ${card.levelColor.border}`,
-                              color: card.levelColor.text
-                            }}>
-                              {i === 0 ? <AlertCircle className="w-2.5 h-2.5" /> : <CheckCircle className="w-2.5 h-2.5" />}
-                              {card.level}
-                            </span>
-                          </div>
+                          ))}
                         </div>
 
-                        {/* Image */}
-                        <div className="card-image">
-                          <img src={card.image} alt={card.imageAlt} draggable={false} />
-                          <div className="card-image-overlay" style={{ background: card.overlayBg }}></div>
-                          <div className="card-image-label">
-                            {card.labelIcon}
-                            {card.label}
-                          </div>
-                        </div>
-
-                        {/* Body */}
-                        <div className="p-5 flex flex-col flex-1">
-                          <p className="text-sm text-white/40 text-center mb-5 leading-relaxed font-light">
-                            {card.description}
-                          </p>
-
-                          <div className="flex flex-col flex-1 mb-5">
-                            {card.features.map((f, fi) => (
-                              <div className="feature-glass" key={fi}>
-                                <div className="feature-icon-wrap" style={{
-                                  background: `rgba(${card.accentRgb},0.15)`,
-                                  border: `1px solid rgba(${card.accentRgb},0.25)`
-                                }}>
-                                  {f.icon}
-                                </div>
-                                <div>
-                                  <p className="text-sm font-medium text-white/80">{f.title}</p>
-                                  <p className="text-xs text-white/35 mt-0.5">{f.sub}</p>
-                                </div>
-                              </div>
-                            ))}
-                          </div>
-
-                          <Link to={card.to} className={`btn-glass ${card.btnClass}`}>
-                            {card.btnLabel}
-                            <ArrowRight className="w-4 h-4" />
-                          </Link>
-                        </div>
-
+                        <Link
+                          to={c.to}
+                          className="pr-btn"
+                          style={{
+                            background: `linear-gradient(135deg, ${c.btnFrom}, ${c.btnTo})`,
+                            boxShadow: `0 7px 24px ${c.btnShadow}`,
+                          }}
+                        >
+                          {c.btnLabel}
+                          <ArrowRight size={14} />
+                        </Link>
                       </div>
                     </div>
-                  ))}
-                </div>
+                  </div>
+                ))}
               </div>
-
-              {/* Prev / Next arrows — mobile only */}
-              <div className="carousel-nav">
-                <button
-                  className="nav-btn"
-                  onClick={() => goTo(activeIndex - 1)}
-                  disabled={activeIndex === 0}
-                  aria-label="Previous portal"
-                >
-                  <ChevronLeft className="w-4 h-4" />
-                </button>
-
-                {/* Dots */}
-                <div className="carousel-dots" style={{ margin: 0 }}>
-                  {cards.map((_, i) => (
-                    <div
-                      key={i}
-                      className={`dot${activeIndex === i ? ' active' : ''}`}
-                      onClick={() => goTo(i)}
-                    />
-                  ))}
-                </div>
-
-                <button
-                  className="nav-btn"
-                  onClick={() => goTo(activeIndex + 1)}
-                  disabled={activeIndex === TOTAL - 1}
-                  aria-label="Next portal"
-                >
-                  <ChevronRight className="w-4 h-4" />
-                </button>
-              </div>
-
-              {/* Swipe hint — mobile only */}
-              <p className="swipe-hint lg:hidden">Swipe to explore portals</p>
             </div>
 
-            {/* Footer note */}
-            <p className="mt-10 text-xs text-white/20 tracking-widest uppercase text-center">
-              Secured by enterprise-grade encryption &nbsp;·&nbsp; All access is logged and monitored
-            </p>
+            {/* Nav controls */}
+            <div className="pr-nav">
+              <button
+                className="pr-nav-btn"
+                onClick={() => goTo(activeIndex - 1)}
+                disabled={activeIndex === 0}
+                aria-label="Previous portal"
+              >
+                <ChevronLeft size={15} />
+              </button>
+              <div className="pr-dots">
+                {cards.map((_, i) => (
+                  <div
+                    key={i}
+                    className={`pr-dot-item${activeIndex === i ? ' on' : ''}`}
+                    onClick={() => goTo(i)}
+                  />
+                ))}
+              </div>
+              <button
+                className="pr-nav-btn"
+                onClick={() => goTo(activeIndex + 1)}
+                disabled={activeIndex === TOTAL - 1}
+                aria-label="Next portal"
+              >
+                <ChevronRight size={15} />
+              </button>
+            </div>
 
-          </section>
+            <p className="pr-swipe-hint">Swipe to explore portals</p>
+          </div>
+
+          <p className="pr-footer">
+            Secured by enterprise-grade encryption &nbsp;·&nbsp; All access is logged and monitored
+          </p>
         </div>
       </div>
     </>
