@@ -71,33 +71,33 @@ export default function SAOLogin() {
 
   if (authLoading) {
     return (
-      <div style={{ minHeight: '100vh', display: 'flex', alignItems: 'center', justifyContent: 'center', background: '#f0f4ff' }}>
+      <div style={{ minHeight: '100vh', display: 'flex', alignItems: 'center', justifyContent: 'center', background: '#fff7ed' }}>
         <div style={{ textAlign: 'center' }}>
-          <Loader2 className="w-8 h-8 animate-spin" style={{ color: '#3b6ef8', margin: '0 auto 12px' }} />
-          <p style={{ fontSize: 12, color: '#6b7eb8', letterSpacing: '0.15em', textTransform: 'uppercase' }}>Loading authentication...</p>
+          <Loader2 className="w-8 h-8 animate-spin" style={{ color: '#f97316', margin: '0 auto 12px' }} />
+          <p style={{ fontSize: 12, color: '#c2410c', letterSpacing: '0.15em', textTransform: 'uppercase', fontFamily: 'sans-serif' }}>Loading authentication...</p>
         </div>
       </div>
     );
   }
 
   const slides = [
-    { icon: <Clock className="w-4 h-4" style={{ color: '#3b6ef8' }} />, bg: 'rgba(59,110,248,0.1)', border: 'rgba(59,110,248,0.22)', title: 'Clock In / Out', desc: 'Selfie-verified time tracking for secure attendance' },
-    { icon: <MapPin className="w-4 h-4" style={{ color: '#7c3bf8' }} />, bg: 'rgba(99,102,241,0.1)', border: 'rgba(99,102,241,0.22)', title: 'Site Management', desc: 'Oversee operations and attendance compliance' },
-    { icon: <FileText className="w-4 h-4" style={{ color: '#6366f1' }} />, bg: 'rgba(59,110,248,0.08)', border: 'rgba(59,110,248,0.18)', title: 'Timesheets', desc: 'Work hours, overtime and earnings history' },
-    { icon: <Calendar className="w-4 h-4" style={{ color: '#3b6ef8' }} />, bg: 'rgba(139,92,246,0.08)', border: 'rgba(139,92,246,0.2)', title: 'Leave Requests', desc: 'Submit and track leave applications easily' },
-    { icon: <Users className="w-4 h-4" style={{ color: '#3b6ef8' }} />, bg: 'rgba(59,110,248,0.1)', border: 'rgba(59,110,248,0.22)', title: 'Workforce View', desc: 'Monitor and coordinate on-site personnel' },
-    { icon: <BarChart3 className="w-4 h-4" style={{ color: '#7c3bf8' }} />, bg: 'rgba(99,102,241,0.1)', border: 'rgba(99,102,241,0.22)', title: 'Site Analytics', desc: 'Real-time field operation insights' },
+    { icon: <Clock      className="w-4 h-4" style={{ color: '#fff' }} />, bg: 'rgba(249,115,22,0.75)',  border: 'rgba(249,115,22,0.90)', title: 'Clock In / Out',    desc: 'Selfie-verified time tracking for secure attendance' },
+    { icon: <MapPin     className="w-4 h-4" style={{ color: '#fff' }} />, bg: 'rgba(234,88,12,0.75)',   border: 'rgba(234,88,12,0.90)',  title: 'Site Management',  desc: 'Oversee operations and attendance compliance' },
+    { icon: <FileText   className="w-4 h-4" style={{ color: '#fff' }} />, bg: 'rgba(251,146,60,0.75)',  border: 'rgba(251,146,60,0.90)', title: 'Timesheets',       desc: 'Work hours, overtime and earnings history' },
+    { icon: <Calendar   className="w-4 h-4" style={{ color: '#fff' }} />, bg: 'rgba(249,115,22,0.65)',  border: 'rgba(249,115,22,0.80)', title: 'Leave Requests',   desc: 'Submit and track leave applications easily' },
+    { icon: <Users      className="w-4 h-4" style={{ color: '#fff' }} />, bg: 'rgba(234,88,12,0.75)',   border: 'rgba(234,88,12,0.90)', title: 'Workforce View',   desc: 'Monitor and coordinate on-site personnel' },
+    { icon: <BarChart3  className="w-4 h-4" style={{ color: '#fff' }} />, bg: 'rgba(251,146,60,0.75)',  border: 'rgba(251,146,60,0.90)', title: 'Site Analytics',   desc: 'Real-time field operation insights' },
   ];
 
   const tickers = [
-    { label: 'Real-Time Clock In/Out', color: '#3b6ef8' },
-    { label: 'Selfie Verification', color: '#7c3bf8' },
-    { label: 'Multi-Site Monitoring', color: '#3b6ef8' },
-    { label: 'Leave Management', color: '#6366f1' },
-    { label: 'Timesheet Access', color: '#3b6ef8' },
-    { label: 'Compliance Auditing', color: '#7c3bf8' },
-    { label: 'Field Operation Reports', color: '#3b6ef8' },
-    { label: 'Attendance Sync', color: '#6366f1' },
+    { label: 'Real-Time Clock In/Out',    color: '#f97316' },
+    { label: 'Selfie Verification',       color: '#ea580c' },
+    { label: 'Multi-Site Monitoring',     color: '#fb923c' },
+    { label: 'Leave Management',          color: '#fdba74' },
+    { label: 'Timesheet Access',          color: '#f97316' },
+    { label: 'Compliance Auditing',       color: '#ea580c' },
+    { label: 'Field Operation Reports',   color: '#fb923c' },
+    { label: 'Attendance Sync',           color: '#fdba74' },
   ];
 
   return (
@@ -105,157 +105,201 @@ export default function SAOLogin() {
       <style>{`
         @import url('https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:wght@300;400;500;600&display=swap');
 
-        *, *::before, *::after { box-sizing: border-box; }
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
-        .sl-root {
-          font-family: 'DM Sans', sans-serif;
-          height: 100vh; width: 100vw;
-          display: flex; overflow: hidden;
-          position: relative; background: #f5f7ff;
-        }
-
-        .sl-bg {
-          position: fixed; inset: 0; z-index: 0;
-          background-image: url('https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=1920&q=80');
-          background-size: cover; background-position: center;
-        }
-        .sl-bg::after {
-          content: ''; position: absolute; inset: 0;
-          background: linear-gradient(135deg, rgba(240,245,255,0.96) 0%, rgba(235,242,255,0.94) 50%, rgba(242,238,255,0.96) 100%);
-        }
-
-        .sl-grid {
-          position: fixed; inset: 0; z-index: 1; pointer-events: none;
-          background-image:
-            linear-gradient(rgba(59,110,248,0.04) 1px, transparent 1px),
-            linear-gradient(90deg, rgba(59,110,248,0.04) 1px, transparent 1px);
-          background-size: 56px 56px;
-        }
-
-        .sl-orb { position: fixed; border-radius: 50%; pointer-events: none; z-index: 1; filter: blur(100px); opacity: 0.18; }
-        .sl-orb-1 { width: 600px; height: 600px; top: -200px; left: -150px; background: radial-gradient(circle, #93b4ff, transparent); }
-        .sl-orb-2 { width: 450px; height: 450px; bottom: -150px; right: -100px; background: radial-gradient(circle, #c4b5fd, transparent); }
-
-        /* ── LEFT ── */
-        .sl-left {
-          position: relative; z-index: 10;
-          width: 55%; height: 100vh;
-          display: none; flex-direction: column; justify-content: center;
-          padding: 40px 48px;
-          border-right: 1px solid rgba(59,110,248,0.12);
-          background: linear-gradient(160deg, rgba(59,110,248,0.06) 0%, rgba(255,255,255,0.5) 50%, rgba(124,59,248,0.04) 100%);
-          backdrop-filter: blur(8px);
-          overflow-y: auto; gap: 0;
-        }
-        @media (min-width: 1024px) { .sl-left { display: flex; } }
-
-        .sl-brand { display: flex; align-items: center; gap: 12px; margin-bottom: 32px; }
-        .sl-brand-icon {
-          width: 42px; height: 42px; border-radius: 11px;
-          background: rgba(59,110,248,0.12); border: 1px solid rgba(59,110,248,0.25);
-          display: flex; align-items: center; justify-content: center;
-          box-shadow: 0 0 20px rgba(59,110,248,0.12);
-        }
-        .sl-brand-name { font-family: 'Syne', sans-serif; font-size: 17px; font-weight: 700; color: #1a2563; }
-        .sl-brand-sub  { font-size: 9px; font-weight: 700; letter-spacing: 0.13em; text-transform: uppercase; color: #7b8cc4; margin-top: 2px; }
-
-        .sl-headline { font-family: 'Syne', sans-serif; font-size: 28px; font-weight: 700; color: #1a2563; line-height: 1.22; margin-bottom: 8px; }
-        .sl-headline span {
-          background: linear-gradient(90deg, #3b6ef8, #7c3bf8, #059669);
-          -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
-        }
-        .sl-desc { font-size: 13px; font-weight: 300; color: #6b7eb8; line-height: 1.65; margin-bottom: 28px; }
-
-        /* ── Carousel ── */
-        .sl-carousel { position: relative; width: 100%; overflow: hidden; margin-bottom: 24px; }
-        .sl-carousel-track {
-          display: flex; gap: 14px;
-          animation: sl-carousel-slide 18s linear infinite;
-          width: max-content;
-        }
-        .sl-carousel:hover .sl-carousel-track { animation-play-state: paused; }
+        @keyframes spin { to { transform: rotate(360deg); } }
         @keyframes sl-carousel-slide {
           0%   { transform: translateX(0); }
           100% { transform: translateX(-50%); }
         }
-        .sl-carousel::before, .sl-carousel::after {
-          content: ''; position: absolute; top: 0; bottom: 0; width: 60px; z-index: 2; pointer-events: none;
-        }
-        .sl-carousel::before { left: 0;  background: linear-gradient(to right, rgba(240,244,255,0.9), transparent); }
-        .sl-carousel::after  { right: 0; background: linear-gradient(to left,  rgba(240,244,255,0.9), transparent); }
-
-        .sl-slide {
-          flex-shrink: 0; width: 200px; padding: 16px; border-radius: 14px;
-          background: rgba(255,255,255,0.7); border: 1px solid rgba(59,110,248,0.12);
-          backdrop-filter: blur(12px);
-          display: flex; flex-direction: column; gap: 10px;
-          transition: all 0.2s ease;
-          box-shadow: 0 2px 12px rgba(59,110,248,0.06);
-        }
-        .sl-slide:hover { border-color: rgba(59,110,248,0.28); background: rgba(255,255,255,0.9); box-shadow: 0 4px 20px rgba(59,110,248,0.1); }
-        .sl-slide-icon  { width: 36px; height: 36px; border-radius: 9px; display: flex; align-items: center; justify-content: center; }
-        .sl-slide-title { font-size: 13px; font-weight: 600; color: #1a2563; }
-        .sl-slide-desc  { font-size: 11px; color: #7b8cc4; line-height: 1.45; }
-
-        /* ── Stats ── */
-        .sl-stats { display: flex; gap: 10px; margin-bottom: 22px; }
-        .sl-stat {
-          flex: 1; padding: 12px 14px; border-radius: 12px;
-          background: rgba(255,255,255,0.7); border: 1px solid rgba(59,110,248,0.1);
-          backdrop-filter: blur(10px); text-align: center;
-          box-shadow: 0 2px 8px rgba(59,110,248,0.05);
-        }
-        .sl-stat-num   { font-family: 'Syne', sans-serif; font-size: 20px; font-weight: 700; color: #1a2563; line-height: 1; }
-        .sl-stat-label { font-size: 10px; color: #7b8cc4; margin-top: 4px; letter-spacing: 0.06em; text-transform: uppercase; }
-
-        /* ── Ticker ── */
-        .sl-ticker { overflow: hidden; border-top: 1px solid rgba(59,110,248,0.1); border-bottom: 1px solid rgba(59,110,248,0.1); padding: 9px 0; margin-bottom: 20px; position: relative; }
-        .sl-ticker::before, .sl-ticker::after {
-          content: ''; position: absolute; top: 0; bottom: 0; width: 40px; z-index: 2; pointer-events: none;
-        }
-        .sl-ticker::before { left: 0;  background: linear-gradient(to right, rgba(240,244,255,0.95), transparent); }
-        .sl-ticker::after  { right: 0; background: linear-gradient(to left,  rgba(240,244,255,0.95), transparent); }
-        .sl-ticker-track {
-          display: flex; gap: 0;
-          animation: sl-ticker-scroll 22s linear infinite;
-          width: max-content;
-        }
-        .sl-ticker:hover .sl-ticker-track { animation-play-state: paused; }
         @keyframes sl-ticker-scroll {
           0%   { transform: translateX(0); }
           100% { transform: translateX(-50%); }
         }
+        @keyframes orb-pulse {
+          0%, 100% { opacity: 0.18; transform: scale(1) translateZ(0); }
+          50%       { opacity: 0.28; transform: scale(1.06) translateZ(0); }
+        }
+        @keyframes fade-up {
+          from { opacity: 0; transform: translate3d(0, 16px, 0); }
+          to   { opacity: 1; transform: translate3d(0, 0, 0); }
+        }
+
+        /* ── ROOT ── */
+        .sl-root {
+          font-family: 'DM Sans', sans-serif;
+          height: 100vh; width: 100vw;
+          display: flex; overflow: hidden;
+          position: relative;
+          background: #fff7ed;
+          isolation: isolate;
+        }
+
+        /* ── BG — no background-attachment:fixed ── */
+        .sl-bg {
+          position: fixed; inset: 0; z-index: -3;
+          background-image: url('https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=1400&q=55');
+          background-size: cover; background-position: center;
+          transform: translateZ(0);
+        }
+        .sl-bg::after {
+          content: ''; position: absolute; inset: 0;
+          background: linear-gradient(
+            160deg,
+            rgba(255,252,248,0.97) 0%,
+            rgba(255,248,240,0.97) 50%,
+            rgba(255,244,232,0.97) 100%
+          );
+        }
+
+        /* ── GRID ── */
+        .sl-grid {
+          position: fixed; inset: 0; z-index: -2; pointer-events: none;
+          background-image:
+            linear-gradient(rgba(249,115,22,0.07) 1px, transparent 1px),
+            linear-gradient(90deg, rgba(249,115,22,0.07) 1px, transparent 1px);
+          background-size: 56px 56px;
+        }
+
+        /* ── ORBS — no filter:blur ── */
+        .sl-orb {
+          position: fixed; border-radius: 50%; pointer-events: none; z-index: -1;
+          transform: translateZ(0);
+          animation: orb-pulse 11s ease-in-out infinite;
+        }
+        .sl-orb-1 {
+          width: 560px; height: 560px; top: -200px; left: -160px;
+          background: radial-gradient(circle at center, rgba(249,115,22,0.22), transparent 68%);
+        }
+        .sl-orb-2 {
+          width: 440px; height: 440px; bottom: -150px; right: -110px;
+          background: radial-gradient(circle at center, rgba(251,146,60,0.18), transparent 68%);
+          animation-delay: -5.5s;
+        }
+
+        /* ── LEFT PANEL ── */
+        .sl-left {
+          position: relative; z-index: 10;
+          width: 55%; height: 100vh;
+          display: none; flex-direction: column; justify-content: space-between;
+          padding: 36px 44px;
+          border-right: 1px solid rgba(249,115,22,0.18);
+          background: rgba(255,252,248,0.90);
+          -webkit-backdrop-filter: blur(10px);
+          backdrop-filter: blur(10px);
+          overflow-y: auto;
+          animation: fade-up 0.55s ease both;
+        }
+        @media (min-width: 1024px) { .sl-left { display: flex; } }
+
+        /* ── Brand ── */
+        .sl-brand { display: flex; align-items: center; gap: 12px; margin-bottom: 28px; }
+        .sl-brand-icon {
+          width: 42px; height: 42px; border-radius: 11px;
+          background: rgba(249,115,22,0.60); border: 1px solid rgba(249,115,22,0.80);
+          display: flex; align-items: center; justify-content: center;
+          box-shadow: 0 0 18px rgba(249,115,22,0.25);
+        }
+        .sl-brand-name { font-family: 'Syne', sans-serif; font-size: 17px; font-weight: 700; color: #111111; }
+        .sl-brand-sub  { font-size: 9px; font-weight: 700; letter-spacing: 0.13em; text-transform: uppercase; color: #f97316; margin-top: 2px; }
+
+        /* ── Headline ── */
+        .sl-headline { font-family: 'Syne', sans-serif; font-size: 26px; font-weight: 700; color: #111111; line-height: 1.22; margin-bottom: 8px; }
+        .sl-headline span {
+          background: linear-gradient(90deg, #f97316, #ea580c, #fb923c);
+          -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+        }
+        .sl-desc { font-size: 13px; font-weight: 400; color: #222222; line-height: 1.65; margin-bottom: 24px; }
+
+        /* ── Carousel ── */
+        .sl-carousel { position: relative; width: 100%; overflow: hidden; margin-bottom: 22px; }
+        .sl-carousel-track {
+          display: flex; gap: 13px;
+          animation: sl-carousel-slide 18s linear infinite;
+          width: max-content;
+        }
+        .sl-carousel:hover .sl-carousel-track { animation-play-state: paused; }
+        .sl-carousel::before, .sl-carousel::after {
+          content: ''; position: absolute; top: 0; bottom: 0; width: 55px; z-index: 2; pointer-events: none;
+        }
+        .sl-carousel::before { left: 0;  background: linear-gradient(to right, rgba(255,252,248,0.95), transparent); }
+        .sl-carousel::after  { right: 0; background: linear-gradient(to left,  rgba(255,252,248,0.95), transparent); }
+
+        .sl-slide {
+          flex-shrink: 0; width: 192px;
+          padding: 15px; border-radius: 13px;
+          background: rgba(255,255,255,0.90); border: 1px solid rgba(249,115,22,0.55);
+          display: flex; flex-direction: column; gap: 9px;
+          box-shadow: 0 2px 12px rgba(249,115,22,0.12);
+          transition: border-color 0.2s, background 0.2s, box-shadow 0.2s;
+        }
+        .sl-slide:hover { border-color: rgba(249,115,22,0.80); background: rgba(255,255,255,0.98); box-shadow: 0 4px 20px rgba(249,115,22,0.22); }
+        .sl-slide-icon  { width: 34px; height: 34px; border-radius: 9px; display: flex; align-items: center; justify-content: center; }
+        .sl-slide-title { font-size: 12.5px; font-weight: 600; color: #111111; }
+        .sl-slide-desc  { font-size: 11px; color: #333333; line-height: 1.45; }
+
+        /* ── Stats ── */
+        .sl-stats { display: flex; gap: 10px; margin-bottom: 20px; }
+        .sl-stat {
+          flex: 1; padding: 11px 12px; border-radius: 11px; text-align: center;
+          background: rgba(255,255,255,0.90); border: 1px solid rgba(249,115,22,0.55);
+          box-shadow: 0 2px 12px rgba(249,115,22,0.12);
+        }
+        .sl-stat-num   { font-family: 'Syne', sans-serif; font-size: 19px; font-weight: 700; line-height: 1; }
+        .sl-stat-label { font-size: 9.5px; color: #222222; margin-top: 4px; letter-spacing: 0.07em; text-transform: uppercase; }
+
+        /* ── Ticker ── */
+        .sl-ticker {
+          overflow: hidden; padding: 8px 0; margin-bottom: 18px;
+          border-top: 1px solid rgba(249,115,22,0.55); border-bottom: 1px solid rgba(249,115,22,0.55);
+          position: relative;
+        }
+        .sl-ticker::before, .sl-ticker::after {
+          content: ''; position: absolute; top: 0; bottom: 0; width: 36px; z-index: 2; pointer-events: none;
+        }
+        .sl-ticker::before { left: 0;  background: linear-gradient(to right, rgba(255,252,248,0.95), transparent); }
+        .sl-ticker::after  { right: 0; background: linear-gradient(to left,  rgba(255,252,248,0.95), transparent); }
+        .sl-ticker-track {
+          display: flex;
+          animation: sl-ticker-scroll 22s linear infinite;
+          width: max-content;
+        }
+        .sl-ticker:hover .sl-ticker-track { animation-play-state: paused; }
         .sl-ticker-item {
           display: inline-flex; align-items: center; gap: 6px;
-          padding: 0 20px; font-size: 11px; font-weight: 500;
-          color: #7b8cc4; white-space: nowrap;
+          padding: 0 18px; font-size: 11px; font-weight: 500;
+          color: #222222; white-space: nowrap;
         }
-        .sl-ticker-dot { width: 4px; height: 4px; border-radius: 50%; flex-shrink: 0; }
+        .sl-ticker-dot { width: 6px; height: 6px; border-radius: 50%; flex-shrink: 0; }
 
         /* ── Info note ── */
         .sl-note {
           display: flex; align-items: flex-start; gap: 10px; padding: 13px;
-          border-radius: 11px; background: rgba(59,110,248,0.06); border: 1px solid rgba(59,110,248,0.16);
-          backdrop-filter: blur(10px);
+          border-radius: 11px;
+          background: rgba(249,115,22,0.08); border: 1px solid rgba(249,115,22,0.35);
         }
-        .sl-note-title { font-size: 12px; font-weight: 600; color: #3b6ef8; margin-bottom: 3px; }
-        .sl-note-desc  { font-size: 11px; color: #6b7eb8; line-height: 1.5; }
+        .sl-note-title { font-size: 12px; font-weight: 700; color: #ea580c; margin-bottom: 3px; }
+        .sl-note-desc  { font-size: 11px; color: #222222; line-height: 1.5; }
 
+        /* ── Left Footer ── */
         .sl-footer {
           display: flex; align-items: center; gap: 7px;
-          padding-top: 16px; border-top: 1px solid rgba(59,110,248,0.1);
-          font-size: 11px; color: #7b8cc4; margin-top: 16px;
+          padding-top: 16px; margin-top: 16px;
+          border-top: 1px solid rgba(249,115,22,0.40);
+          font-size: 11px; color: #222222;
         }
 
-        /* ── RIGHT ── */
+        /* ── RIGHT PANEL ── */
         .sl-right {
           position: relative; z-index: 10;
           flex: 1; height: 100vh;
           display: flex; flex-direction: column; justify-content: center;
-          padding: 36px 44px; overflow-y: auto;
-          background: linear-gradient(160deg, rgba(255,255,255,0.85) 0%, rgba(248,250,255,0.9) 40%, rgba(252,248,255,0.85) 100%);
-          backdrop-filter: blur(16px);
-          border-left: 1px solid rgba(59,110,248,0.1);
+          padding: 36px 40px; overflow-y: auto;
+          background: rgba(255,255,255,0.88);
+          -webkit-backdrop-filter: blur(14px);
+          backdrop-filter: blur(14px);
+          border-left: 1px solid rgba(249,115,22,0.14);
+          animation: fade-up 0.55s 0.08s ease both;
         }
 
         .sl-mobile-brand {
@@ -267,66 +311,70 @@ export default function SAOLogin() {
         .sl-form-header { text-align: center; margin-bottom: 26px; }
         .sl-icon-wrap {
           width: 62px; height: 62px; border-radius: 16px;
-          background: linear-gradient(135deg, rgba(59,110,248,0.14), rgba(37,80,220,0.08));
-          border: 1px solid rgba(59,110,248,0.22);
+          background: linear-gradient(135deg, rgba(249,115,22,0.14), rgba(234,88,12,0.08));
+          border: 1px solid rgba(249,115,22,0.28);
           display: flex; align-items: center; justify-content: center;
           margin: 0 auto 14px;
-          box-shadow: 0 4px 24px rgba(59,110,248,0.14);
+          box-shadow: 0 4px 24px rgba(249,115,22,0.18);
         }
-        .sl-title    { font-family: 'Syne', sans-serif; font-size: 23px; font-weight: 700; color: #1a2563; margin-bottom: 5px; }
-        .sl-subtitle { font-size: 13px; color: #7b8cc4; font-weight: 300; }
+
+        .sl-title    { font-family: 'Syne', sans-serif; font-size: 22px; font-weight: 700; color: #111111; margin-bottom: 5px; }
+        .sl-subtitle { font-size: 13px; color: #333333; font-weight: 400; }
 
         .sl-field { margin-bottom: 14px; }
         .sl-label {
           display: block; font-size: 10px; font-weight: 600;
           letter-spacing: 0.09em; text-transform: uppercase;
-          color: #7b8cc4; margin-bottom: 6px;
+          color: #111111; margin-bottom: 6px;
         }
         .sl-input-wrap { position: relative; }
         .sl-input-wrap svg {
           position: absolute; left: 13px; top: 50%; transform: translateY(-50%);
-          width: 14px; height: 14px; color: #a0b0d8; pointer-events: none;
+          width: 14px; height: 14px; color: rgba(249,115,22,0.55); pointer-events: none;
         }
         .sl-input {
           width: 100%; height: 46px; padding: 0 14px 0 38px;
-          background: rgba(255,255,255,0.9); border: 1px solid rgba(59,110,248,0.18);
-          border-radius: 10px; color: #1a2563; font-size: 14px; font-family: 'DM Sans', sans-serif;
+          background: rgba(255,255,255,0.90); border: 1px solid rgba(249,115,22,0.35);
+          border-radius: 10px; color: #111111; font-size: 14px; font-family: 'DM Sans', sans-serif;
           outline: none; transition: all 0.2s ease;
-          box-shadow: 0 1px 4px rgba(59,110,248,0.06);
+          box-shadow: 0 1px 4px rgba(249,115,22,0.07);
         }
-        .sl-input::placeholder { color: #b0bedd; }
+        .sl-input::placeholder { color: rgba(0,0,0,0.35); }
         .sl-input:focus {
-          background: #fff; border-color: rgba(59,110,248,0.5);
-          box-shadow: 0 0 0 3px rgba(59,110,248,0.1);
+          background: #fff; border-color: rgba(249,115,22,0.60);
+          box-shadow: 0 0 0 3px rgba(249,115,22,0.12);
         }
 
+        /* CTA button */
         .sl-btn {
           width: 100%; height: 47px; border-radius: 10px; border: none; cursor: pointer;
-          background: linear-gradient(135deg, #3b6ef8, #2550dc);
+          background: linear-gradient(135deg, #f97316, #ea580c);
           color: #fff; font-size: 14px; font-weight: 600; font-family: 'DM Sans', sans-serif;
           display: flex; align-items: center; justify-content: center; gap: 8px;
-          margin-top: 18px; transition: all 0.25s ease;
-          box-shadow: 0 6px 26px rgba(59,110,248,0.28);
+          margin-top: 18px; transition: box-shadow 0.25s ease, transform 0.2s ease;
+          box-shadow: 0 6px 26px rgba(249,115,22,0.35);
           position: relative; overflow: hidden;
+          transform: translateZ(0);
         }
         .sl-btn::after {
           content: ''; position: absolute; inset: 0;
-          background: linear-gradient(135deg, rgba(255,255,255,0.15), transparent);
+          background: linear-gradient(135deg, rgba(255,255,255,0.16), transparent);
           opacity: 0; transition: opacity 0.25s;
         }
-        .sl-btn:hover { transform: translateY(-1px); box-shadow: 0 10px 34px rgba(59,110,248,0.38); }
+        .sl-btn:hover { transform: translateY(-1px) translateZ(0); box-shadow: 0 10px 34px rgba(249,115,22,0.48); }
         .sl-btn:hover::after { opacity: 1; }
-        .sl-btn:disabled { opacity: 0.55; cursor: not-allowed; transform: none; }
+        .sl-btn:disabled { opacity: 0.5; cursor: not-allowed; transform: none; }
 
+        /* Divider */
         .sl-divider { position: relative; margin: 20px 0; text-align: center; }
         .sl-divider::before {
           content: ''; position: absolute; top: 50%; left: 0; right: 0;
-          height: 1px; background: rgba(59,110,248,0.1);
+          height: 1px; background: rgba(249,115,22,0.20);
         }
         .sl-divider span {
           position: relative; padding: 0 12px;
-          font-size: 10px; color: #a0b0d8; text-transform: uppercase; letter-spacing: 0.1em;
-          background: rgba(248,250,255,0.9);
+          font-size: 10px; color: #444444; text-transform: uppercase; letter-spacing: 0.1em;
+          background: rgba(255,255,255,0.88);
         }
 
         /* Portal switch links */
@@ -335,45 +383,48 @@ export default function SAOLogin() {
           display: flex; align-items: center; justify-content: center;
           padding: 10px 12px; border-radius: 9px; text-decoration: none;
           font-size: 12px; font-weight: 600; transition: all 0.2s ease;
-          border: 1px solid; backdrop-filter: blur(8px);
+          border: 1px solid;
         }
         .sl-portal-admin {
-          background: rgba(239,68,68,0.06); border-color: rgba(239,68,68,0.18); color: #dc2626;
+          background: rgba(239,68,68,0.07); border-color: rgba(239,68,68,0.25); color: #dc2626;
         }
-        .sl-portal-admin:hover { background: rgba(239,68,68,0.1); border-color: rgba(239,68,68,0.3); }
+        .sl-portal-admin:hover { background: rgba(239,68,68,0.13); border-color: rgba(239,68,68,0.40); }
         .sl-portal-emp {
-          background: rgba(59,110,248,0.06); border-color: rgba(59,110,248,0.18); color: #3b6ef8;
+          background: rgba(249,115,22,0.08); border-color: rgba(249,115,22,0.30); color: #ea580c;
         }
-        .sl-portal-emp:hover { background: rgba(59,110,248,0.1); border-color: rgba(59,110,248,0.3); }
+        .sl-portal-emp:hover { background: rgba(249,115,22,0.15); border-color: rgba(249,115,22,0.50); }
 
+        /* Note box */
         .sl-note-box {
           padding: 11px 14px; border-radius: 10px; margin-bottom: 14px;
-          background: rgba(255,255,255,0.6); border: 1px solid rgba(59,110,248,0.1);
-          font-size: 12px; color: #7b8cc4; text-align: center; line-height: 1.5;
+          background: rgba(255,255,255,0.80); border: 1px solid rgba(249,115,22,0.25);
+          font-size: 12px; color: #222222; text-align: center; line-height: 1.5;
         }
 
+        /* Back link */
         .sl-back {
           display: flex; align-items: center; justify-content: center; gap: 6px;
-          font-size: 12px; color: #7b8cc4; text-decoration: none;
+          font-size: 12px; color: #222222; text-decoration: none;
           padding: 8px 16px; border-radius: 9px; width: fit-content; margin: 0 auto;
-          border: 1px solid rgba(59,110,248,0.14); background: rgba(255,255,255,0.6);
+          border: 1px solid rgba(249,115,22,0.25); background: rgba(249,115,22,0.07);
           transition: all 0.2s ease;
         }
-        .sl-back:hover { color: #3b6ef8; background: rgba(59,110,248,0.06); border-color: rgba(59,110,248,0.25); }
+        .sl-back:hover { color: #ea580c; background: rgba(249,115,22,0.14); border-color: rgba(249,115,22,0.45); }
 
+        /* Secure badge */
         .sl-secure {
           display: flex; align-items: center; justify-content: center; gap: 6px;
           margin: 14px auto 0; padding: 4px 14px; border-radius: 50px; width: fit-content;
-          background: rgba(16,185,129,0.07); border: 1px solid rgba(16,185,129,0.18);
-          font-size: 11px; color: #059669; font-weight: 500;
+          background: rgba(249,115,22,0.08); border: 1px solid rgba(249,115,22,0.25);
+          font-size: 11px; color: #c2410c; font-weight: 700;
         }
       `}</style>
 
       <div className="sl-root">
-        <div className="sl-bg"></div>
-        <div className="sl-grid"></div>
-        <div className="sl-orb sl-orb-1"></div>
-        <div className="sl-orb sl-orb-2"></div>
+        <div className="sl-bg" />
+        <div className="sl-grid" />
+        <div className="sl-orb sl-orb-1" />
+        <div className="sl-orb sl-orb-2" />
 
         {/* ── LEFT PANEL ── */}
         <div className="sl-left">
@@ -381,7 +432,7 @@ export default function SAOLogin() {
             {/* Brand */}
             <div className="sl-brand">
               <div className="sl-brand-icon">
-                <ShieldCheck className="w-5 h-5" style={{ color: '#3b6ef8' }} />
+                <ShieldCheck className="w-5 h-5" style={{ color: '#fff' }} />
               </div>
               <div>
                 <div className="sl-brand-name">TMC TimeTrack Pro</div>
@@ -410,15 +461,15 @@ export default function SAOLogin() {
             {/* Stats */}
             <div className="sl-stats">
               <div className="sl-stat">
-                <div className="sl-stat-num" style={{ color: '#3b6ef8' }}>Live</div>
+                <div className="sl-stat-num" style={{ color: '#f97316' }}>Live</div>
                 <div className="sl-stat-label">Site Sync</div>
               </div>
               <div className="sl-stat">
-                <div className="sl-stat-num" style={{ color: '#7c3bf8' }}>GPS</div>
+                <div className="sl-stat-num" style={{ color: '#fb923c' }}>GPS</div>
                 <div className="sl-stat-label">Verified</div>
               </div>
               <div className="sl-stat">
-                <div className="sl-stat-num" style={{ color: '#3b6ef8' }}>L3</div>
+                <div className="sl-stat-num" style={{ color: '#ea580c' }}>L3</div>
                 <div className="sl-stat-label">Access Level</div>
               </div>
             </div>
@@ -428,7 +479,7 @@ export default function SAOLogin() {
               <div className="sl-ticker-track">
                 {[...tickers, ...tickers].map((t, i) => (
                   <span className="sl-ticker-item" key={i}>
-                    <span className="sl-ticker-dot" style={{ background: t.color, boxShadow: `0 0 6px ${t.color}` }}></span>
+                    <span className="sl-ticker-dot" style={{ background: t.color }}></span>
                     {t.label}
                   </span>
                 ))}
@@ -437,7 +488,7 @@ export default function SAOLogin() {
 
             {/* Info note */}
             <div className="sl-note">
-              <ShieldCheck className="w-4 h-4" style={{ color: '#3b6ef8', flexShrink: 0, marginTop: 1 }} />
+              <ShieldCheck className="w-4 h-4" style={{ color: '#f97316', flexShrink: 0, marginTop: 1 }} />
               <div>
                 <div className="sl-note-title">Site Administration Access</div>
                 <div className="sl-note-desc">Your credentials were provided by your administrator. Contact HR if you have any login issues.</div>
@@ -446,9 +497,9 @@ export default function SAOLogin() {
           </div>
 
           <div className="sl-footer">
-            <CheckCircle2 className="w-3.5 h-3.5" style={{ color: '#059669', flexShrink: 0 }} />
+            <CheckCircle2 className="w-3.5 h-3.5" style={{ color: '#f97316', flexShrink: 0 }} />
             <span>Secure Connection Established</span>
-            <span style={{ opacity: 0.4 }}>·</span>
+            <span style={{ opacity: 0.35 }}>·</span>
             <span>TLS 1.3 Encrypted</span>
           </div>
         </div>
@@ -458,7 +509,7 @@ export default function SAOLogin() {
           {/* Mobile brand */}
           <div className="sl-mobile-brand">
             <div className="sl-brand-icon">
-              <ShieldCheck className="w-5 h-5" style={{ color: '#3b6ef8' }} />
+              <ShieldCheck className="w-5 h-5" style={{ color: '#fff' }} />
             </div>
             <div>
               <div className="sl-brand-name">TimeTrack Pro</div>
@@ -469,7 +520,7 @@ export default function SAOLogin() {
           {/* Header */}
           <div className="sl-form-header">
             <div className="sl-icon-wrap">
-              <ShieldCheck className="w-7 h-7" style={{ color: '#3b6ef8' }} />
+              <ShieldCheck className="w-7 h-7" style={{ color: '#f97316' }} />
             </div>
             <h1 className="sl-title">SAO Login</h1>
             <p className="sl-subtitle">Sign in with your site officer credentials</p>
@@ -540,7 +591,7 @@ export default function SAOLogin() {
           </Link>
 
           <div className="sl-secure">
-            <CheckCircle2 className="w-3 h-3" style={{ color: '#059669' }} />
+            <CheckCircle2 className="w-3 h-3" style={{ color: '#f97316' }} />
             Secure · Encrypted · Monitored
           </div>
         </div>
