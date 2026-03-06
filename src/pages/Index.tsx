@@ -7,12 +7,22 @@ import {
   Loader2, 
   ArrowRight,
   Shield,
-  MapPin,
+  Users,
   UserCheck,
+  Building2,
+  Lock,
+  ChevronRight,
+  CheckCircle,
+  AlertCircle,
+  Database,
+  FileText,
+  MapPin,
+  CalendarCheck,
+  UserCog
 } from 'lucide-react';
-import adminPortalIcon from '@/assets/admin-portal-icon.png';
-import saoPortalIcon from '@/assets/sao-portal-icon.png';
-import employeePortalIcon from '@/assets/employee-portal-icon.png';
+import adminPortalIcon from '@/assets/Frontadmin.png';
+import saoPortalIcon from '@/assets/FrontSite.png';
+import employeePortalIcon from '@/assets/FrontEmployeet.png';
 
 export default function Index() {
   const { user, role, loading } = useAuth();
@@ -32,128 +42,594 @@ export default function Index() {
 
   if (loading) {
     return (
-      <div className="min-h-screen flex items-center justify-center bg-background">
+      <div className="min-h-screen flex items-center justify-center" style={{ background: 'linear-gradient(135deg, #0f0c29, #302b63, #24243e)' }}>
         <div className="text-center">
-          <Loader2 className="w-10 h-10 animate-spin text-primary mx-auto mb-4" />
-          <p className="text-muted-foreground">Loading...</p>
+          <div className="relative inline-block mb-4">
+            <div className="absolute inset-0 bg-blue-400/20 rounded-full animate-ping"></div>
+            <div className="absolute inset-0 bg-blue-400/30 rounded-full animate-pulse delay-700"></div>
+            <Loader2 className="w-8 h-8 animate-spin text-blue-300 relative" />
+          </div>
+          <p className="text-sm text-blue-200/70 font-light tracking-widest uppercase">Establishing secure session...</p>
         </div>
       </div>
     );
   }
 
-  const portals = [
-    {
-      title: 'Administrator',
-      description: 'Full system access & HR management',
-      icon: <Shield className="w-6 h-6" />,
-      image: adminPortalIcon,
-      link: '/admin/login',
-      gradient: 'from-primary to-orange-600',
-      glowColor: 'group-hover:shadow-[0_8px_40px_-8px_hsl(var(--primary)/0.4)]',
-    },
-    {
-      title: 'Site Admin Officer',
-      description: 'Site operations & worker oversight',
-      icon: <MapPin className="w-6 h-6" />,
-      image: saoPortalIcon,
-      link: '/sao/login',
-      gradient: 'from-orange-500 to-amber-500',
-      glowColor: 'group-hover:shadow-[0_8px_40px_-8px_hsl(var(--primary)/0.35)]',
-    },
-    {
-      title: 'Employee',
-      description: 'Self-service attendance & leave',
-      icon: <UserCheck className="w-6 h-6" />,
-      image: employeePortalIcon,
-      link: '/employee/login',
-      gradient: 'from-amber-500 to-yellow-500',
-      glowColor: 'group-hover:shadow-[0_8px_40px_-8px_hsl(38_92%_50%/0.35)]',
-    },
-  ];
-
   return (
-    <div className="min-h-screen bg-background flex flex-col portal-zoom">
-      {/* Decorative blurs */}
-      <div className="fixed inset-0 pointer-events-none overflow-hidden">
-        <div className="absolute -top-40 -left-40 w-96 h-96 bg-primary/20 rounded-full blur-[120px]" />
-        <div className="absolute top-1/3 -right-32 w-80 h-80 bg-warning/15 rounded-full blur-[100px]" />
-        <div className="absolute -bottom-20 left-1/3 w-72 h-72 bg-primary/10 rounded-full blur-[80px]" />
-      </div>
+    <>
+      <style>{`
+        @import url('https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=DM+Sans:wght@300;400;500&display=swap');
 
-      {/* Hero Section */}
-      <section className="relative flex-1 container mx-auto px-4 py-16 flex flex-col justify-center">
-        {/* Header */}
-        <div className="text-center max-w-2xl mx-auto mb-16">
-          <div className="inline-flex items-center gap-3 mb-8">
-            <div className="p-3 rounded-2xl gradient-primary shadow-glow">
-              <Clock className="w-8 h-8 text-primary-foreground" />
-            </div>
-            <div className="text-left">
-              <h1 className="text-2xl font-bold tracking-tight text-foreground">TimeTrack Pro</h1>
-              <p className="text-xs font-medium text-muted-foreground uppercase tracking-wider">Enterprise Workforce Management</p>
-            </div>
-          </div>
-          <h2 className="text-3xl md:text-5xl font-bold mb-4 text-foreground tracking-tight">
-            Welcome Back
-          </h2>
-          <p className="text-muted-foreground text-lg">
-            Select your portal to continue
-          </p>
-        </div>
+        .portal-root {
+          font-family: 'DM Sans', sans-serif;
+          min-height: 100vh;
+          background-color: #050814;
+          background-image: 
+            url('https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=1920&q=80');
+          background-size: cover;
+          background-position: center;
+          background-attachment: fixed;
+          position: relative;
+          display: flex;
+          flex-direction: column;
+        }
 
-        {/* Portal Cards */}
-        <div className="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto w-full">
-          {portals.map((portal) => (
-            <div
-              key={portal.title}
-              className={`group relative glass-card rounded-2xl overflow-hidden transition-all duration-500 hover:-translate-y-2 ${portal.glowColor}`}
-            >
-              {/* Top accent bar */}
-              <div className={`h-1 w-full bg-gradient-to-r ${portal.gradient}`} />
-              
-              <div className="relative p-8 flex flex-col items-center text-center">
-                {/* Icon background */}
-                <div className="mb-6 relative">
-                  <div className="absolute inset-0 bg-primary/10 rounded-2xl blur-xl scale-110" />
-                  <div className="relative p-4 rounded-2xl bg-card/80 backdrop-blur-md border border-border/50 shadow-soft">
-                    <img 
-                      src={portal.image} 
-                      alt={portal.title} 
-                      className="w-24 h-24 md:w-28 md:h-28 object-contain group-hover:scale-110 transition-transform duration-500"
-                    />
+        .portal-root::before {
+          content: '';
+          position: fixed;
+          inset: 0;
+          background: linear-gradient(
+            135deg,
+            rgba(5, 8, 20, 0.88) 0%,
+            rgba(10, 15, 40, 0.82) 40%,
+            rgba(15, 10, 35, 0.88) 100%
+          );
+          z-index: 0;
+        }
+
+        /* Ambient orbs */
+        .orb {
+          position: fixed;
+          border-radius: 50%;
+          filter: blur(80px);
+          opacity: 0.18;
+          pointer-events: none;
+          z-index: 0;
+          animation: orb-float 12s ease-in-out infinite;
+        }
+        .orb-1 {
+          width: 600px; height: 600px;
+          background: radial-gradient(circle, #3b6ef8, transparent);
+          top: -200px; left: -200px;
+          animation-delay: 0s;
+        }
+        .orb-2 {
+          width: 500px; height: 500px;
+          background: radial-gradient(circle, #6c3bf8, transparent);
+          bottom: -150px; right: -150px;
+          animation-delay: -4s;
+        }
+        .orb-3 {
+          width: 400px; height: 400px;
+          background: radial-gradient(circle, #38bdf8, transparent);
+          top: 40%; left: 50%;
+          transform: translate(-50%, -50%);
+          animation-delay: -8s;
+        }
+
+        @keyframes orb-float {
+          0%, 100% { transform: translateY(0px) scale(1); }
+          50% { transform: translateY(-30px) scale(1.05); }
+        }
+
+        /* Glass cards */
+        .glass-card {
+          background: rgba(255, 255, 255, 0.04);
+          backdrop-filter: blur(20px) saturate(180%);
+          -webkit-backdrop-filter: blur(20px) saturate(180%);
+          border: 1px solid rgba(255, 255, 255, 0.10);
+          border-radius: 20px;
+          transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+          overflow: hidden;
+          position: relative;
+        }
+
+        .glass-card::before {
+          content: '';
+          position: absolute;
+          top: 0; left: 0; right: 0;
+          height: 1px;
+          background: linear-gradient(90deg, transparent, rgba(255,255,255,0.25), transparent);
+          z-index: 1;
+        }
+
+        .glass-card:hover {
+          background: rgba(255, 255, 255, 0.07);
+          border-color: rgba(255, 255, 255, 0.18);
+          transform: translateY(-6px);
+          box-shadow: 
+            0 30px 60px rgba(0, 0, 0, 0.5),
+            0 0 0 1px rgba(255, 255, 255, 0.08),
+            inset 0 1px 0 rgba(255, 255, 255, 0.15);
+        }
+
+        /* Card header glass */
+        .card-header-glass {
+          backdrop-filter: blur(10px);
+          padding: 16px 20px;
+          border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+        }
+
+        /* Badge pill */
+        .access-badge {
+          display: inline-flex;
+          align-items: center;
+          gap: 5px;
+          font-size: 10px;
+          font-weight: 700;
+          letter-spacing: 0.08em;
+          padding: 3px 10px;
+          border-radius: 50px;
+          backdrop-filter: blur(8px);
+        }
+
+        /* Feature item glass */
+        .feature-glass {
+          display: flex;
+          align-items: flex-start;
+          gap: 12px;
+          padding: 12px 14px;
+          background: rgba(255, 255, 255, 0.04);
+          border: 1px solid rgba(255, 255, 255, 0.07);
+          border-radius: 12px;
+          transition: all 0.25s ease;
+          margin-bottom: 10px;
+        }
+
+        .feature-glass:last-child { margin-bottom: 0; }
+
+        .glass-card:hover .feature-glass {
+          background: rgba(255, 255, 255, 0.06);
+          border-color: rgba(255, 255, 255, 0.12);
+        }
+
+        .feature-icon-wrap {
+          padding: 8px;
+          border-radius: 10px;
+          flex-shrink: 0;
+          backdrop-filter: blur(8px);
+        }
+
+        /* CTA buttons */
+        .btn-glass {
+          width: 100%;
+          height: 48px;
+          border-radius: 12px;
+          font-size: 13px;
+          font-weight: 600;
+          letter-spacing: 0.03em;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          gap: 10px;
+          transition: all 0.3s ease;
+          position: relative;
+          overflow: hidden;
+          backdrop-filter: blur(10px);
+          border: 1px solid rgba(255,255,255,0.15);
+          cursor: pointer;
+          text-decoration: none;
+        }
+
+        .btn-glass::after {
+          content: '';
+          position: absolute;
+          inset: 0;
+          background: linear-gradient(135deg, rgba(255,255,255,0.12), transparent);
+          opacity: 0;
+          transition: opacity 0.3s;
+        }
+        .btn-glass:hover::after { opacity: 1; }
+        .btn-glass:hover { transform: translateY(-1px); }
+
+        .btn-blue {
+          background: linear-gradient(135deg, rgba(59,110,248,0.75), rgba(37,80,220,0.75));
+          box-shadow: 0 8px 32px rgba(59,110,248,0.3);
+          color: white;
+        }
+        .btn-blue:hover { box-shadow: 0 12px 40px rgba(59,110,248,0.5); }
+
+        .btn-emerald {
+          background: linear-gradient(135deg, rgba(16,185,129,0.75), rgba(5,150,105,0.75));
+          box-shadow: 0 8px 32px rgba(16,185,129,0.3);
+          color: white;
+        }
+        .btn-emerald:hover { box-shadow: 0 12px 40px rgba(16,185,129,0.5); }
+
+        .btn-violet {
+          background: linear-gradient(135deg, rgba(139,92,246,0.75), rgba(109,40,217,0.75));
+          box-shadow: 0 8px 32px rgba(139,92,246,0.3);
+          color: white;
+        }
+        .btn-violet:hover { box-shadow: 0 12px 40px rgba(139,92,246,0.5); }
+
+        /* Image overlay */
+        .card-image {
+          position: relative;
+          width: 100%;
+          height: 300px;
+          overflow: hidden;
+          border-bottom: 1px solid rgba(255,255,255,0.08);
+        }
+        .card-image img {
+          width: 100%; height: 100%;
+          object-fit: cover;
+          object-position: center top;
+          transition: transform 0.7s cubic-bezier(0.23, 1, 0.32, 1);
+        }
+        .glass-card:hover .card-image img { transform: scale(1.04); }
+
+        .card-image-overlay {
+          position: absolute;
+          inset: 0;
+          transition: opacity 0.3s;
+        }
+        .glass-card:hover .card-image-overlay { opacity: 0.75; }
+
+        .card-image-label {
+          position: absolute;
+          bottom: 14px; left: 14px; right: 14px;
+          display: inline-flex;
+          align-items: center;
+          gap: 8px;
+          padding: 8px 14px;
+          border-radius: 50px;
+          backdrop-filter: blur(16px) saturate(180%);
+          background: rgba(0,0,0,0.35);
+          border: 1px solid rgba(255,255,255,0.15);
+          font-size: 14px;
+          font-weight: 700;
+          color: white;
+          font-family: 'Syne', sans-serif;
+          width: fit-content;
+          transition: all 0.3s ease;
+        }
+        .glass-card:hover .card-image-label {
+          background: rgba(0,0,0,0.5);
+          border-color: rgba(255,255,255,0.25);
+        }
+
+        /* Hero badge */
+        .hero-badge {
+          display: inline-flex;
+          align-items: center;
+          gap: 8px;
+          padding: 6px 16px;
+          border-radius: 50px;
+          background: rgba(255,255,255,0.06);
+          border: 1px solid rgba(255,255,255,0.12);
+          backdrop-filter: blur(12px);
+          font-size: 11px;
+          font-weight: 700;
+          letter-spacing: 0.1em;
+          color: rgba(255,255,255,0.7);
+          margin-bottom: 20px;
+        }
+
+        .pulse-dot {
+          width: 6px; height: 6px;
+          border-radius: 50%;
+          background: #f59e0b;
+          animation: pulse-anim 2s ease-in-out infinite;
+        }
+        @keyframes pulse-anim {
+          0%, 100% { opacity: 1; transform: scale(1); }
+          50% { opacity: 0.5; transform: scale(1.4); }
+        }
+
+        /* Decorative grid */
+        .grid-pattern {
+          position: fixed;
+          inset: 0;
+          background-image: 
+            linear-gradient(rgba(255,255,255,0.015) 1px, transparent 1px),
+            linear-gradient(90deg, rgba(255,255,255,0.015) 1px, transparent 1px);
+          background-size: 60px 60px;
+          pointer-events: none;
+          z-index: 0;
+        }
+
+        /* Portal grid */
+        .portal-grid {
+          display: grid;
+          grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+          gap: 24px;
+          max-width: 1200px;
+          margin: 0 auto;
+          width: 100%;
+        }
+
+        @media (min-width: 1024px) {
+          .portal-grid { grid-template-columns: repeat(3, 1fr); }
+        }
+
+        /* Syne for headings */
+        h1, h2, .syne { font-family: 'Syne', sans-serif; }
+
+        /* Divider line */
+        .glass-divider {
+          height: 1px;
+          background: linear-gradient(90deg, transparent, rgba(255,255,255,0.12), transparent);
+          margin: 0;
+        }
+
+        /* Section label */
+        .section-label {
+          font-size: 10px;
+          font-weight: 700;
+          letter-spacing: 0.15em;
+          text-transform: uppercase;
+          color: rgba(255,255,255,0.35);
+          font-family: 'DM Sans', sans-serif;
+        }
+      `}</style>
+
+      <div className="portal-root">
+        {/* Ambient Effects */}
+        <div className="orb orb-1"></div>
+        <div className="orb orb-2"></div>
+        <div className="orb orb-3"></div>
+        <div className="grid-pattern"></div>
+
+        {/* Content */}
+        <div className="relative z-10 flex-1 flex flex-col">
+          <section className="container mx-auto px-4 sm:px-6 py-10 sm:py-14 lg:py-16 flex flex-col items-center justify-center">
+
+            {/* Hero Header */}
+            <div className="text-center max-w-2xl mx-auto mb-12 sm:mb-14">
+              <div className="hero-badge">
+                <span className="pulse-dot"></span>
+                NEW ENTERPRISE INTERFACE &nbsp;·&nbsp; v3.2
+              </div>
+
+              <h2 className="syne text-3xl md:text-4xl lg:text-5xl font-800 mb-4 text-white tracking-tight leading-tight">
+                Unified Workspace
+                <span style={{ 
+                  background: 'linear-gradient(90deg, #60a5fa, #a78bfa, #34d399)', 
+                  WebkitBackgroundClip: 'text', 
+                  WebkitTextFillColor: 'transparent',
+                  backgroundClip: 'text',
+                  display: 'block'
+                }}>
+                  Tiger's Mark Corp Portal
+                </span>
+              </h2>
+
+              <p className="text-base text-white/45 max-w-lg mx-auto leading-relaxed font-light">
+                Securely access your role-specific environment with enterprise-grade governance and compliance controls
+              </p>
+            </div>
+
+            {/* Portal Cards */}
+            <div className="portal-grid w-full">
+
+              {/* ─── ADMIN PORTAL ─── */}
+              <div className="glass-card group flex flex-col">
+                {/* Header */}
+                <div className="card-header-glass" style={{ background: 'linear-gradient(135deg, rgba(59,110,248,0.12), rgba(37,80,220,0.08))' }}>
+                  <div className="flex items-center justify-between">
+                    <div className="flex items-center gap-2.5">
+                      <div style={{ background: 'rgba(59,110,248,0.2)', padding: '8px', borderRadius: '10px', backdropFilter: 'blur(8px)', border: '1px solid rgba(59,110,248,0.3)' }}>
+                        <Shield className="w-4 h-4" style={{ color: '#93b4ff' }} />
+                      </div>
+                      <span className="section-label" style={{ color: 'rgba(147,180,255,0.8)' }}>System Administrator</span>
+                    </div>
+                    <span className="access-badge" style={{ background: 'rgba(239,68,68,0.15)', border: '1px solid rgba(239,68,68,0.3)', color: '#fca5a5' }}>
+                      <AlertCircle className="w-2.5 h-2.5" />
+                      L4 ACCESS
+                    </span>
                   </div>
                 </div>
 
-                <div className={`inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-primary/10 text-primary text-xs font-semibold mb-3`}>
-                  {portal.icon}
-                  <span className="uppercase tracking-wider">{portal.title}</span>
+                {/* Image */}
+                <div className="card-image">
+                  <img src={adminPortalIcon} alt="System Administrator Workspace" />
+                  <div className="card-image-overlay" style={{ background: 'linear-gradient(to top, rgba(10,20,60,0.9) 0%, rgba(10,20,60,0.3) 60%, transparent 100%)' }}></div>
+                  <div className="card-image-label">
+                    <Shield className="w-4 h-4" style={{ color: '#93b4ff' }} />
+                    TMC System Control
+                  </div>
                 </div>
 
-                <p className="text-sm text-muted-foreground mb-8">{portal.description}</p>
+                {/* Body */}
+                <div className="p-5 flex flex-col flex-1">
+                  <p className="text-sm text-white/40 text-center mb-5 leading-relaxed font-light">
+                    Enterprise-wide governance, security policy enforcement, and organizational oversight
+                  </p>
 
-                <Button 
-                  asChild 
-                  className={`w-full h-12 bg-gradient-to-r ${portal.gradient} text-primary-foreground shadow-lg hover:shadow-xl hover:opacity-95 transition-all duration-300 rounded-xl font-semibold`}
-                >
-                  <Link to={portal.link} className="flex items-center justify-center gap-2">
-                    Access Portal
-                    <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                  <div className="flex flex-col flex-1 mb-5">
+                    <div className="feature-glass">
+                      <div className="feature-icon-wrap" style={{ background: 'rgba(59,110,248,0.15)', border: '1px solid rgba(59,110,248,0.25)' }}>
+                        <UserCog className="w-3.5 h-3.5" style={{ color: '#93b4ff' }} />
+                      </div>
+                      <div>
+                        <p className="text-sm font-medium text-white/80">User & Permission Management</p>
+                        <p className="text-xs text-white/35 mt-0.5">Global directory administration</p>
+                      </div>
+                    </div>
+                    <div className="feature-glass">
+                      <div className="feature-icon-wrap" style={{ background: 'rgba(59,110,248,0.15)', border: '1px solid rgba(59,110,248,0.25)' }}>
+                        <Database className="w-3.5 h-3.5" style={{ color: '#93b4ff' }} />
+                      </div>
+                      <div>
+                        <p className="text-sm font-medium text-white/80">System Analytics Dashboard</p>
+                        <p className="text-xs text-white/35 mt-0.5">Real-time operational intelligence</p>
+                      </div>
+                    </div>
+                    <div className="feature-glass">
+                      <div className="feature-icon-wrap" style={{ background: 'rgba(59,110,248,0.15)', border: '1px solid rgba(59,110,248,0.25)' }}>
+                        <FileText className="w-3.5 h-3.5" style={{ color: '#93b4ff' }} />
+                      </div>
+                      <div>
+                        <p className="text-sm font-medium text-white/80">Compliance Reporting</p>
+                        <p className="text-xs text-white/35 mt-0.5">Audit-ready documentation</p>
+                      </div>
+                    </div>
+                  </div>
+
+                  <Link to="/admin/login" className="btn-glass btn-blue">
+                    Access Administrator Portal
+                    <ArrowRight className="w-4 h-4" />
                   </Link>
-                </Button>
+                </div>
               </div>
-            </div>
-          ))}
-        </div>
-      </section>
 
-      {/* Footer */}
-      <footer className="relative border-t border-border/50 bg-card/30 backdrop-blur-xl py-6">
-        <div className="container mx-auto px-4 text-center">
-          <p className="text-sm text-muted-foreground">
-            © 2025 TimeTrack Pro — Enterprise Workforce Management System
-          </p>
+              {/* ─── SAO PORTAL ─── */}
+              <div className="glass-card group flex flex-col">
+                <div className="card-header-glass" style={{ background: 'linear-gradient(135deg, rgba(16,185,129,0.12), rgba(5,150,105,0.08))' }}>
+                  <div className="flex items-center justify-between">
+                    <div className="flex items-center gap-2.5">
+                      <div style={{ background: 'rgba(16,185,129,0.2)', padding: '8px', borderRadius: '10px', backdropFilter: 'blur(8px)', border: '1px solid rgba(16,185,129,0.3)' }}>
+                        <MapPin className="w-4 h-4" style={{ color: '#6ee7b7' }} />
+                      </div>
+                      <span className="section-label" style={{ color: 'rgba(110,231,183,0.8)' }}>TMC Site Admin Officer</span>
+                    </div>
+                    <span className="access-badge" style={{ background: 'rgba(16,185,129,0.15)', border: '1px solid rgba(16,185,129,0.3)', color: '#6ee7b7' }}>
+                      <CheckCircle className="w-2.5 h-2.5" />
+                      L3 ACCESS
+                    </span>
+                  </div>
+                </div>
+
+                <div className="card-image">
+                  <img src={saoPortalIcon} alt="Site Operations Workspace" />
+                  <div className="card-image-overlay" style={{ background: 'linear-gradient(to top, rgba(5,30,20,0.9) 0%, rgba(5,30,20,0.3) 60%, transparent 100%)' }}></div>
+                  <div className="card-image-label">
+                    <MapPin className="w-4 h-4" style={{ color: '#6ee7b7' }} />
+                   TMC Site Operations Hub
+                  </div>
+                </div>
+
+                <div className="p-5 flex flex-col flex-1">
+                  <p className="text-sm text-white/40 text-center mb-5 leading-relaxed font-light">
+                    Multi-site management, workforce coordination, and field compliance oversight
+                  </p>
+
+                  <div className="flex flex-col flex-1 mb-5">
+                    <div className="feature-glass">
+                      <div className="feature-icon-wrap" style={{ background: 'rgba(16,185,129,0.15)', border: '1px solid rgba(16,185,129,0.25)' }}>
+                        <MapPin className="w-3.5 h-3.5" style={{ color: '#6ee7b7' }} />
+                      </div>
+                      <div>
+                        <p className="text-sm font-medium text-white/80">Multi-Site Dashboard</p>
+                        <p className="text-xs text-white/35 mt-0.5">Real-time location monitoring</p>
+                      </div>
+                    </div>
+                    <div className="feature-glass">
+                      <div className="feature-icon-wrap" style={{ background: 'rgba(16,185,129,0.15)', border: '1px solid rgba(16,185,129,0.25)' }}>
+                        <Users className="w-3.5 h-3.5" style={{ color: '#6ee7b7' }} />
+                      </div>
+                      <div>
+                        <p className="text-sm font-medium text-white/80">Workforce Allocation</p>
+                        <p className="text-xs text-white/35 mt-0.5">Resource optimization tools</p>
+                      </div>
+                    </div>
+                    <div className="feature-glass">
+                      <div className="feature-icon-wrap" style={{ background: 'rgba(16,185,129,0.15)', border: '1px solid rgba(16,185,129,0.25)' }}>
+                        <CalendarCheck className="w-3.5 h-3.5" style={{ color: '#6ee7b7' }} />
+                      </div>
+                      <div>
+                        <p className="text-sm font-medium text-white/80">Compliance Auditing</p>
+                        <p className="text-xs text-white/35 mt-0.5">Field operation verification</p>
+                      </div>
+                    </div>
+                  </div>
+
+                  <Link to="/sao/login" className="btn-glass btn-emerald">
+                    Access Site Operations Portal
+                    <ArrowRight className="w-4 h-4" />
+                  </Link>
+                </div>
+              </div>
+
+              {/* ─── EMPLOYEE PORTAL ─── */}
+              <div className="glass-card group flex flex-col">
+                <div className="card-header-glass" style={{ background: 'linear-gradient(135deg, rgba(139,92,246,0.12), rgba(109,40,217,0.08))' }}>
+                  <div className="flex items-center justify-between">
+                    <div className="flex items-center gap-2.5">
+                      <div style={{ background: 'rgba(139,92,246,0.2)', padding: '8px', borderRadius: '10px', backdropFilter: 'blur(8px)', border: '1px solid rgba(139,92,246,0.3)' }}>
+                        <UserCheck className="w-4 h-4" style={{ color: '#c4b5fd' }} />
+                      </div>
+                      <span className="section-label" style={{ color: 'rgba(196,181,253,0.8)' }}>Employee Self-Service</span>
+                    </div>
+                    <span className="access-badge" style={{ background: 'rgba(139,92,246,0.15)', border: '1px solid rgba(139,92,246,0.3)', color: '#c4b5fd' }}>
+                      <CheckCircle className="w-2.5 h-2.5" />
+                      L2 ACCESS
+                    </span>
+                  </div>
+                </div>
+
+                <div className="card-image">
+                  <img src={employeePortalIcon} alt="Employee Workspace" />
+                  <div className="card-image-overlay" style={{ background: 'linear-gradient(to top, rgba(20,10,50,0.9) 0%, rgba(20,10,50,0.3) 60%, transparent 100%)' }}></div>
+                  <div className="card-image-label">
+                    <UserCheck className="w-4 h-4" style={{ color: '#c4b5fd' }} />
+                    TMC Personal Workspace
+                  </div>
+                </div>
+
+                <div className="p-5 flex flex-col flex-1">
+                  <p className="text-sm text-white/40 text-center mb-5 leading-relaxed font-light">
+                    Attendance management, leave requests, and personal records access
+                  </p>
+
+                  <div className="flex flex-col flex-1 mb-5">
+                    <div className="feature-glass">
+                      <div className="feature-icon-wrap" style={{ background: 'rgba(139,92,246,0.15)', border: '1px solid rgba(139,92,246,0.25)' }}>
+                        <CalendarCheck className="w-3.5 h-3.5" style={{ color: '#c4b5fd' }} />
+                      </div>
+                      <div>
+                        <p className="text-sm font-medium text-white/80">Attendance Tracking</p>
+                        <p className="text-xs text-white/35 mt-0.5">Biometric & mobile check-in</p>
+                      </div>
+                    </div>
+                    <div className="feature-glass">
+                      <div className="feature-icon-wrap" style={{ background: 'rgba(139,92,246,0.15)', border: '1px solid rgba(139,92,246,0.25)' }}>
+                        <FileText className="w-3.5 h-3.5" style={{ color: '#c4b5fd' }} />
+                      </div>
+                      <div>
+                        <p className="text-sm font-medium text-white/80">Leave Management</p>
+                        <p className="text-xs text-white/35 mt-0.5">Digital request workflow</p>
+                      </div>
+                    </div>
+                    <div className="feature-glass">
+                      <div className="feature-icon-wrap" style={{ background: 'rgba(139,92,246,0.15)', border: '1px solid rgba(139,92,246,0.25)' }}>
+                        <Database className="w-3.5 h-3.5" style={{ color: '#c4b5fd' }} />
+                      </div>
+                      <div>
+                        <p className="text-sm font-medium text-white/80">Personal Document Vault</p>
+                        <p className="text-xs text-white/35 mt-0.5">Secure record storage</p>
+                      </div>
+                    </div>
+                  </div>
+
+                  <Link to="/employee/login" className="btn-glass btn-violet">
+                    Access Employee Portal
+                    <ArrowRight className="w-4 h-4" />
+                  </Link>
+                </div>
+              </div>
+
+            </div>{/* /portal-grid */}
+
+            {/* Footer note */}
+            <p className="mt-10 text-xs text-white/20 tracking-widest uppercase text-center">
+              Secured by enterprise-grade encryption &nbsp;·&nbsp; All access is logged and monitored
+            </p>
+
+          </section>
         </div>
-      </footer>
-    </div>
+      </div>
+    </>
   );
 }
