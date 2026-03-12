@@ -774,10 +774,10 @@ export default function AdminLogin() {
           <div className="al-form-header">
             <div className="al-icon-wrap">
               <Lock className="w-7 h-7" style={{ color: '#f97316' }} />
-            </div>
-            <h1 className="al-title">Administrator Access</h1>
-            <p className="al-subtitle">Enter your credentials to access the admin dashboard</p>
-          </div>
+          <div>
+  <span className="mob-notice-text">Restricted Access — </span>
+  <span className="mob-notice-sub">Authorized admins only. Contact IT Support to request an account.</span>
+</div>
 
           <form onSubmit={handleLogin}>
             <div className="al-field">
