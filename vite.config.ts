@@ -21,7 +21,7 @@ export default defineConfig(({ mode }) => ({
         short_name: "TMC Attendance Portal",
         description: "Enterprise-grade employee attendance management and payroll system",
         theme_color: "#ea580c",
-        background_color: "#ffffff",
+        background_color: "#ea580c",
         display: "standalone",
         orientation: "portrait",
         scope: "/",
