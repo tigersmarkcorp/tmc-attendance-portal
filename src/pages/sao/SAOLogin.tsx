@@ -888,10 +888,7 @@ export default function SAOLogin() {
 
             {/* Bottom strip */}
             <div className="mob-bottom-strip">
-              <div className="mob-portals">
-                <Link to="/admin/login" className="mob-portal-btn mob-portal-admin">Admin Login</Link>
-                <Link to="/employee/login" className="mob-portal-btn mob-portal-emp">Employee Login</Link>
-              </div>
+            
               <div className="mob-notice">
                 <ShieldCheck size={14} style={{ color: '#f97316', flexShrink: 0 }} />
                 <div>
@@ -968,15 +965,7 @@ export default function SAOLogin() {
             Don't have an account? Your administrator will create one for you.
           </div>
 
-          <div className="sl-portals">
-            <Link to="/admin/login" className="sl-portal-btn sl-portal-admin">
-              Admin Login
-            </Link>
-            <Link to="/employee/login" className="sl-portal-btn sl-portal-emp">
-              Employee Login
-            </Link>
-          </div>
-
+         
           <Link to="/" className="sl-back">
             <Building2 className="w-3.5 h-3.5" />
             Back to Portal Selection
