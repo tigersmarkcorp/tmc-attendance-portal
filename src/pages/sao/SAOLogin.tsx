@@ -107,6 +107,7 @@ export default function SAOLogin() {
 
         *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
+        /* ── DESKTOP KEYFRAMES ── */
         @keyframes spin { to { transform: rotate(360deg); } }
         @keyframes sl-carousel-slide {
           0%   { transform: translateX(0); }
@@ -125,7 +126,27 @@ export default function SAOLogin() {
           to   { opacity: 1; transform: translate3d(0, 0, 0); }
         }
 
-        /* ── ROOT ── */
+        /* ── MOBILE KEYFRAMES ── */
+        @keyframes mob-sheet-up {
+          from { opacity: 0; transform: translateY(30px); }
+          to   { opacity: 1; transform: translateY(0); }
+        }
+        @keyframes mob-hero-in {
+          from { opacity: 0; transform: translateY(-8px); }
+          to   { opacity: 1; transform: translateY(0); }
+        }
+        @keyframes mob-btn-shimmer {
+          0%   { left: -120%; }
+          100% { left: 200%; }
+        }
+        @keyframes mob-dot-live {
+          0%, 100% { opacity: 1; transform: scale(1); }
+          50%       { opacity: 0.4; transform: scale(0.65); }
+        }
+
+        /* ══════════════════════════════════════
+           SHARED ROOT
+        ══════════════════════════════════════ */
         .sl-root {
           font-family: 'DM Sans', sans-serif;
           height: 100vh; width: 100vw;
@@ -135,7 +156,6 @@ export default function SAOLogin() {
           isolation: isolate;
         }
 
-        /* ── BG — no background-attachment:fixed ── */
         .sl-bg {
           position: fixed; inset: 0; z-index: -3;
           background-image: url('https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=1400&q=55');
@@ -152,7 +172,6 @@ export default function SAOLogin() {
           );
         }
 
-        /* ── GRID ── */
         .sl-grid {
           position: fixed; inset: 0; z-index: -2; pointer-events: none;
           background-image:
@@ -161,7 +180,6 @@ export default function SAOLogin() {
           background-size: 56px 56px;
         }
 
-        /* ── ORBS — no filter:blur ── */
         .sl-orb {
           position: fixed; border-radius: 50%; pointer-events: none; z-index: -1;
           transform: translateZ(0);
@@ -177,7 +195,9 @@ export default function SAOLogin() {
           animation-delay: -5.5s;
         }
 
-        /* ── LEFT PANEL ── */
+        /* ══════════════════════════════════════
+           DESKTOP LEFT PANEL
+        ══════════════════════════════════════ */
         .sl-left {
           position: relative; z-index: 10;
           width: 55%; height: 100vh;
@@ -192,7 +212,6 @@ export default function SAOLogin() {
         }
         @media (min-width: 1024px) { .sl-left { display: flex; } }
 
-        /* ── Brand ── */
         .sl-brand { display: flex; align-items: center; gap: 12px; margin-bottom: 28px; }
         .sl-brand-icon {
           width: 42px; height: 42px; border-radius: 11px;
@@ -203,7 +222,6 @@ export default function SAOLogin() {
         .sl-brand-name { font-family: 'Syne', sans-serif; font-size: 17px; font-weight: 700; color: #111111; }
         .sl-brand-sub  { font-size: 9px; font-weight: 700; letter-spacing: 0.13em; text-transform: uppercase; color: #f97316; margin-top: 2px; }
 
-        /* ── Headline ── */
         .sl-headline { font-family: 'Syne', sans-serif; font-size: 26px; font-weight: 700; color: #111111; line-height: 1.22; margin-bottom: 8px; }
         .sl-headline span {
           background: linear-gradient(90deg, #f97316, #ea580c, #fb923c);
@@ -211,7 +229,6 @@ export default function SAOLogin() {
         }
         .sl-desc { font-size: 13px; font-weight: 400; color: #222222; line-height: 1.65; margin-bottom: 24px; }
 
-        /* ── Carousel ── */
         .sl-carousel { position: relative; width: 100%; overflow: hidden; margin-bottom: 22px; }
         .sl-carousel-track {
           display: flex; gap: 13px;
@@ -238,7 +255,6 @@ export default function SAOLogin() {
         .sl-slide-title { font-size: 12.5px; font-weight: 600; color: #111111; }
         .sl-slide-desc  { font-size: 11px; color: #333333; line-height: 1.45; }
 
-        /* ── Stats ── */
         .sl-stats { display: flex; gap: 10px; margin-bottom: 20px; }
         .sl-stat {
           flex: 1; padding: 11px 12px; border-radius: 11px; text-align: center;
@@ -248,7 +264,6 @@ export default function SAOLogin() {
         .sl-stat-num   { font-family: 'Syne', sans-serif; font-size: 19px; font-weight: 700; line-height: 1; }
         .sl-stat-label { font-size: 9.5px; color: #222222; margin-top: 4px; letter-spacing: 0.07em; text-transform: uppercase; }
 
-        /* ── Ticker ── */
         .sl-ticker {
           overflow: hidden; padding: 8px 0; margin-bottom: 18px;
           border-top: 1px solid rgba(249,115,22,0.55); border-bottom: 1px solid rgba(249,115,22,0.55);
@@ -272,7 +287,6 @@ export default function SAOLogin() {
         }
         .sl-ticker-dot { width: 6px; height: 6px; border-radius: 50%; flex-shrink: 0; }
 
-        /* ── Info note ── */
         .sl-note {
           display: flex; align-items: flex-start; gap: 10px; padding: 13px;
           border-radius: 11px;
@@ -281,7 +295,6 @@ export default function SAOLogin() {
         .sl-note-title { font-size: 12px; font-weight: 700; color: #ea580c; margin-bottom: 3px; }
         .sl-note-desc  { font-size: 11px; color: #222222; line-height: 1.5; }
 
-        /* ── Left Footer ── */
         .sl-footer {
           display: flex; align-items: center; gap: 7px;
           padding-top: 16px; margin-top: 16px;
@@ -289,7 +302,9 @@ export default function SAOLogin() {
           font-size: 11px; color: #222222;
         }
 
-        /* ── RIGHT PANEL ── */
+        /* ══════════════════════════════════════
+           DESKTOP RIGHT PANEL
+        ══════════════════════════════════════ */
         .sl-right {
           position: relative; z-index: 10;
           flex: 1; height: 100vh;
@@ -345,7 +360,6 @@ export default function SAOLogin() {
           box-shadow: 0 0 0 3px rgba(249,115,22,0.12);
         }
 
-        /* CTA button */
         .sl-btn {
           width: 100%; height: 47px; border-radius: 10px; border: none; cursor: pointer;
           background: linear-gradient(135deg, #f97316, #ea580c);
@@ -365,7 +379,6 @@ export default function SAOLogin() {
         .sl-btn:hover::after { opacity: 1; }
         .sl-btn:disabled { opacity: 0.5; cursor: not-allowed; transform: none; }
 
-        /* Divider */
         .sl-divider { position: relative; margin: 20px 0; text-align: center; }
         .sl-divider::before {
           content: ''; position: absolute; top: 50%; left: 0; right: 0;
@@ -377,7 +390,6 @@ export default function SAOLogin() {
           background: rgba(255,255,255,0.88);
         }
 
-        /* Portal switch links */
         .sl-portals { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-bottom: 14px; }
         .sl-portal-btn {
           display: flex; align-items: center; justify-content: center;
@@ -394,14 +406,12 @@ export default function SAOLogin() {
         }
         .sl-portal-emp:hover { background: rgba(249,115,22,0.15); border-color: rgba(249,115,22,0.50); }
 
-        /* Note box */
         .sl-note-box {
           padding: 11px 14px; border-radius: 10px; margin-bottom: 14px;
           background: rgba(255,255,255,0.80); border: 1px solid rgba(249,115,22,0.25);
           font-size: 12px; color: #222222; text-align: center; line-height: 1.5;
         }
 
-        /* Back link */
         .sl-back {
           display: flex; align-items: center; justify-content: center; gap: 6px;
           font-size: 12px; color: #222222; text-decoration: none;
@@ -411,12 +421,296 @@ export default function SAOLogin() {
         }
         .sl-back:hover { color: #ea580c; background: rgba(249,115,22,0.14); border-color: rgba(249,115,22,0.45); }
 
-        /* Secure badge */
         .sl-secure {
           display: flex; align-items: center; justify-content: center; gap: 6px;
           margin: 14px auto 0; padding: 4px 14px; border-radius: 50px; width: fit-content;
           background: rgba(249,115,22,0.08); border: 1px solid rgba(249,115,22,0.25);
           font-size: 11px; color: #c2410c; font-weight: 700;
+        }
+
+        /* ═══════════════════════════════════════════════════════════════
+           ███  MOBILE  ≤ 1023px  —  NO SCROLL. FITS 100vh EXACTLY.
+        ═══════════════════════════════════════════════════════════════ */
+        @media (max-width: 1023px) {
+
+          /* Kill ALL desktop layers */
+          .sl-bg, .sl-grid, .sl-orb-1, .sl-orb-2 { display: none !important; }
+
+          /* ── Root: locked to viewport, no overflow ── */
+          .sl-root {
+            background: #f97316;
+            width: 100vw;
+            height: 100vh;
+            height: 100dvh;
+            overflow: hidden;
+            align-items: stretch;
+            display: flex;
+            flex-direction: column;
+          }
+
+          /* Right panel fills root, no scroll */
+          .sl-right {
+            width: 100%;
+            height: 100%;
+            flex: 1;
+            overflow: hidden;
+            justify-content: flex-start;
+            padding: 0;
+            background: transparent;
+            border-left: none;
+            -webkit-backdrop-filter: none;
+            backdrop-filter: none;
+            display: flex;
+            flex-direction: column;
+          }
+
+          /* Hide all desktop children */
+          .sl-right > .sl-mobile-brand,
+          .sl-right > .sl-form-header,
+          .sl-right > form,
+          .sl-right > .sl-divider,
+          .sl-right > .sl-note-box,
+          .sl-right > .sl-portals,
+          .sl-right > .sl-back,
+          .sl-right > .sl-secure { display: none !important; }
+
+          /* ══════════════════════════════════
+             HERO  — compact, fixed proportion
+          ══════════════════════════════════ */
+          .mob-hero {
+            flex-shrink: 0;
+            height: 28vh;
+            min-height: 190px;
+            max-height: 240px;
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 0 24px 16px;
+            text-align: center;
+            animation: mob-hero-in 0.45s ease both;
+          }
+          .mob-hero::before {
+            content: '';
+            position: absolute; top: -60px; left: -60px;
+            width: 200px; height: 200px; border-radius: 50%;
+            background: rgba(255,255,255,0.12); pointer-events: none;
+          }
+          .mob-hero::after {
+            content: '';
+            position: absolute; top: -40px; right: -65px;
+            width: 185px; height: 185px; border-radius: 50%;
+            background: rgba(255,255,255,0.09); pointer-events: none;
+          }
+          .mob-hero-circle3 {
+            position: absolute; bottom: -30px; left: -45px;
+            width: 145px; height: 145px; border-radius: 50%;
+            background: rgba(255,255,255,0.08); pointer-events: none;
+          }
+          .mob-hero-circle4 {
+            position: absolute; bottom: -20px; right: -35px;
+            width: 120px; height: 120px; border-radius: 50%;
+            background: rgba(255,255,255,0.07); pointer-events: none;
+          }
+          .mob-hero-title {
+            font-family: 'Syne', sans-serif;
+            font-size: 26px; font-weight: 800; color: #fff;
+            line-height: 1.12; margin-bottom: 6px;
+            position: relative; z-index: 1;
+            letter-spacing: -0.3px;
+          }
+          .mob-hero-sub {
+            font-size: 13px; color: rgba(255,255,255,0.78);
+            line-height: 1.5; max-width: 280px;
+            position: relative; z-index: 1;
+          }
+
+          /* ══════════════════════════════════
+             WHITE SHEET  — fills remaining space
+          ══════════════════════════════════ */
+          .mob-sheet {
+            flex: 1;
+            background: #ffffff;
+            border-radius: 26px 26px 0 0;
+            display: flex;
+            flex-direction: column;
+            padding: 0 22px;
+            padding-bottom: env(safe-area-inset-bottom, 0px);
+            animation: mob-sheet-up 0.45s 0.06s cubic-bezier(0.22,1,0.36,1) both;
+            box-shadow: 0 -8px 36px rgba(0,0,0,0.13);
+            overflow: hidden;
+          }
+          .mob-handle {
+            width: 38px; height: 4px; border-radius: 2px;
+            background: #e5e7eb;
+            margin: 10px auto 16px;
+            flex-shrink: 0;
+          }
+          .mob-label {
+            display: block; font-size: 13px; font-weight: 700;
+            color: #111827; margin-bottom: 7px;
+            font-family: 'DM Sans', sans-serif;
+          }
+          .mob-field { flex-shrink: 0; margin-bottom: 12px; }
+          .mob-input-wrap { position: relative; }
+          .mob-input-icon {
+            position: absolute; left: 14px; top: 50%;
+            transform: translateY(-50%);
+            color: #f97316;
+            pointer-events: none;
+            display: flex; align-items: center;
+            transition: color 0.18s;
+          }
+          .mob-input {
+            width: 100%; height: 52px;
+            padding: 0 44px 0 46px;
+            background: #fff;
+            border: 2px solid #e2e8f0;
+            border-radius: 14px;
+            color: #111827; font-size: 15px;
+            font-family: 'DM Sans', sans-serif;
+            outline: none;
+            transition: border-color 0.18s, box-shadow 0.18s, background 0.18s;
+            -webkit-appearance: none;
+            box-shadow: 0 1px 4px rgba(0,0,0,0.06);
+          }
+          .mob-input::placeholder { color: #b0b8c4; font-size: 13.5px; }
+          .mob-input:hover {
+            border-color: #fdba74;
+            background: #fffaf7;
+            box-shadow: 0 0 0 4px rgba(249,115,22,0.08), 0 2px 8px rgba(249,115,22,0.10);
+          }
+          .mob-input:focus {
+            border-color: #f97316;
+            background: #fff;
+            box-shadow: 0 0 0 4px rgba(249,115,22,0.18), 0 2px 12px rgba(249,115,22,0.20);
+          }
+          .mob-input-wrap:focus-within .mob-input-icon { color: #f97316; }
+
+          /* Sign In button */
+          .mob-btn {
+            flex-shrink: 0;
+            width: 100%; height: 54px;
+            border-radius: 50px; border: none; cursor: pointer;
+            background: linear-gradient(135deg, #f97316 0%, #ea580c 100%);
+            color: #fff; font-size: 16px; font-weight: 700;
+            font-family: 'DM Sans', sans-serif;
+            display: flex; align-items: center; justify-content: center; gap: 10px;
+            margin-top: 4px;
+            position: relative; overflow: hidden;
+            box-shadow: 0 8px 24px rgba(249,115,22,0.40);
+            transition: transform 0.14s ease, box-shadow 0.16s ease;
+            -webkit-tap-highlight-color: transparent;
+            letter-spacing: 0.01em;
+          }
+          .mob-btn::before {
+            content: '';
+            position: absolute; top: 0; left: -120%; width: 55%; height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.22), transparent);
+            animation: mob-btn-shimmer 2.6s ease-in-out infinite;
+          }
+          .mob-btn-bubble {
+            width: 38px; height: 38px; border-radius: 50%;
+            background: rgba(255,255,255,0.22);
+            display: flex; align-items: center; justify-content: center;
+            flex-shrink: 0; position: relative; z-index: 1;
+          }
+          .mob-btn:active { transform: scale(0.97); }
+          .mob-btn:disabled { opacity: 0.50; cursor: not-allowed; transform: none; }
+          .mob-btn:disabled::before { display: none; }
+          .mob-btn-label { position: relative; z-index: 1; }
+
+          /* Divider */
+          .mob-divider {
+            flex-shrink: 0;
+            display: flex; align-items: center; gap: 10px;
+            margin: 14px 0 12px;
+          }
+          .mob-divider-line { flex: 1; height: 1px; background: #f0f0f0; }
+          .mob-divider-text {
+            font-size: 11.5px; color: #adb5bd; font-weight: 500;
+            font-family: 'DM Sans', sans-serif;
+          }
+
+          /* Back link */
+          .mob-back {
+            flex-shrink: 0;
+            display: flex; align-items: center; justify-content: center; gap: 8px;
+            width: 100%; height: 50px; border-radius: 14px;
+            background: #f9fafb; border: 1.5px solid #e9ecef;
+            text-decoration: none; font-size: 14px; font-weight: 600;
+            color: #374151; font-family: 'DM Sans', sans-serif;
+            transition: background 0.15s, border-color 0.15s;
+            -webkit-tap-highlight-color: transparent;
+          }
+          .mob-back:active { background: #f3f4f6; }
+
+          /* Portal switch grid */
+          .mob-portals {
+            flex-shrink: 0;
+            display: grid; grid-template-columns: 1fr 1fr; gap: 7px;
+            margin-bottom: 0;
+          }
+          .mob-portal-btn {
+            display: flex; align-items: center; justify-content: center;
+            padding: 10px 6px; border-radius: 11px; text-decoration: none;
+            font-size: 12px; font-weight: 600;
+            border: 1.5px solid; text-align: center;
+            font-family: 'DM Sans', sans-serif;
+            transition: background 0.15s;
+            -webkit-tap-highlight-color: transparent;
+          }
+          .mob-portal-admin {
+            background: rgba(239,68,68,0.06); border-color: rgba(239,68,68,0.22); color: #dc2626;
+          }
+          .mob-portal-emp {
+            background: rgba(249,115,22,0.07); border-color: rgba(249,115,22,0.28); color: #ea580c;
+          }
+
+          /* Bottom strip */
+          .mob-bottom-strip {
+            flex-shrink: 0;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            margin-top: 12px;
+          }
+          .mob-notice {
+            display: flex; align-items: center; gap: 8px;
+            padding: 9px 12px; border-radius: 11px;
+            background: rgba(249,115,22,0.07); border: 1px solid rgba(249,115,22,0.22);
+          }
+          .mob-notice-text {
+            font-size: 11.5px; font-weight: 600; color: #ea580c;
+            font-family: 'DM Sans', sans-serif;
+          }
+          .mob-notice-sub {
+            font-size: 10.5px; color: #9ca3af;
+            font-family: 'DM Sans', sans-serif;
+          }
+          .mob-secure {
+            display: flex; align-items: center; justify-content: center;
+            gap: 6px;
+            font-size: 10.5px; color: #adb5bd; font-weight: 500;
+            font-family: 'DM Sans', sans-serif;
+            padding-bottom: 4px;
+          }
+          .mob-secure-sep { color: #dee2e6; }
+          .mob-secure-dot {
+            width: 5px; height: 5px; border-radius: 50%;
+            background: #22c55e;
+            box-shadow: 0 0 4px rgba(34,197,94,0.65);
+            animation: mob-dot-live 2s ease-in-out infinite;
+            flex-shrink: 0;
+          }
+        }
+
+        /* Hide mobile-only on desktop */
+        @media (min-width: 1024px) {
+          .mob-hero,
+          .mob-sheet { display: none !important; }
         }
       `}</style>
 
@@ -426,10 +720,11 @@ export default function SAOLogin() {
         <div className="sl-orb sl-orb-1" />
         <div className="sl-orb sl-orb-2" />
 
-        {/* ── LEFT PANEL ── */}
+        {/* ══════════════════════════════════
+            LEFT PANEL — desktop, unchanged
+        ══════════════════════════════════ */}
         <div className="sl-left">
           <div>
-            {/* Brand */}
             <div className="sl-brand">
               <div className="sl-brand-icon">
                 <ShieldCheck className="w-5 h-5" style={{ color: '#fff' }} />
@@ -445,7 +740,6 @@ export default function SAOLogin() {
               Manage site operations, track attendance with selfie verification, and oversee daily field activities from one central hub.
             </p>
 
-            {/* Carousel */}
             <div className="sl-carousel">
               <div className="sl-carousel-track">
                 {[...slides, ...slides].map((s, i) => (
@@ -458,7 +752,6 @@ export default function SAOLogin() {
               </div>
             </div>
 
-            {/* Stats */}
             <div className="sl-stats">
               <div className="sl-stat">
                 <div className="sl-stat-num" style={{ color: '#f97316' }}>Live</div>
@@ -474,7 +767,6 @@ export default function SAOLogin() {
               </div>
             </div>
 
-            {/* Ticker */}
             <div className="sl-ticker">
               <div className="sl-ticker-track">
                 {[...tickers, ...tickers].map((t, i) => (
@@ -486,7 +778,6 @@ export default function SAOLogin() {
               </div>
             </div>
 
-            {/* Info note */}
             <div className="sl-note">
               <ShieldCheck className="w-4 h-4" style={{ color: '#f97316', flexShrink: 0, marginTop: 1 }} />
               <div>
@@ -504,20 +795,124 @@ export default function SAOLogin() {
           </div>
         </div>
 
-        {/* ── RIGHT PANEL ── */}
+        {/* ══════════════════════════════════
+            RIGHT PANEL
+        ══════════════════════════════════ */}
         <div className="sl-right">
-          {/* Mobile brand */}
-          <div className="sl-mobile-brand">
-            <div className="sl-brand-icon">
-              <ShieldCheck className="w-5 h-5" style={{ color: '#fff' }} />
+
+          {/* ████  MOBILE LAYOUT  ████ */}
+
+          {/* Orange hero */}
+          <div className="mob-hero">
+            <div className="mob-hero-circle3" />
+            <div className="mob-hero-circle4" />
+            <h1 className="mob-hero-title">Welcome Back</h1>
+            <p className="mob-hero-sub">Sign in to manage site operations, attendance, and field activities.</p>
+          </div>
+
+          {/* White bottom sheet */}
+          <div className="mob-sheet">
+            <div className="mob-handle" />
+
+            {/* Email */}
+            <div className="mob-field">
+              <label className="mob-label" htmlFor="mob-email">Email</label>
+              <div className="mob-input-wrap">
+                <span className="mob-input-icon"><Mail size={17} /></span>
+                <input
+                  id="mob-email"
+                  type="email"
+                  placeholder="Enter your email"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                  required
+                  className="mob-input"
+                  form="mob-form"
+                />
+              </div>
             </div>
-            <div>
-              <div className="sl-brand-name">TimeTrack Pro</div>
-              <div className="sl-brand-sub">Site Admin Officer Portal</div>
+
+            {/* Password */}
+            <div className="mob-field">
+              <label className="mob-label" htmlFor="mob-password">Password</label>
+              <div className="mob-input-wrap">
+                <span className="mob-input-icon"><Lock size={17} /></span>
+                <input
+                  id="mob-password"
+                  type="password"
+                  placeholder="Enter your password"
+                  value={password}
+                  onChange={(e) => setPassword(e.target.value)}
+                  required
+                  className="mob-input"
+                  form="mob-form"
+                />
+              </div>
+            </div>
+
+            {/* Form submit */}
+            <form id="mob-form" onSubmit={handleLogin} style={{ display: 'contents' }}>
+              <button type="submit" className="mob-btn" disabled={loading}>
+                {loading ? (
+                  <>
+                    <div className="mob-btn-bubble">
+                      <Loader2 size={17} className="animate-spin" style={{ color: '#fff' }} />
+                    </div>
+                    <span className="mob-btn-label">Authenticating...</span>
+                  </>
+                ) : (
+                  <>
+                    <div className="mob-btn-bubble">
+                      <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                        <path d="M5 12h14M12 5l7 7-7 7"/>
+                      </svg>
+                    </div>
+                    <span className="mob-btn-label">Sign In to Portal</span>
+                  </>
+                )}
+              </button>
+            </form>
+
+            {/* Divider */}
+            <div className="mob-divider">
+              <div className="mob-divider-line" />
+              <span className="mob-divider-text">or</span>
+              <div className="mob-divider-line" />
+            </div>
+
+            {/* Back link */}
+            <Link to="/" className="mob-back">
+              <Building2 size={16} />
+              Return to Portal Selection
+            </Link>
+
+            {/* Bottom strip */}
+            <div className="mob-bottom-strip">
+              <div className="mob-portals">
+                <Link to="/admin/login" className="mob-portal-btn mob-portal-admin">Admin Login</Link>
+                <Link to="/employee/login" className="mob-portal-btn mob-portal-emp">Employee Login</Link>
+              </div>
+              <div className="mob-notice">
+                <ShieldCheck size={14} style={{ color: '#f97316', flexShrink: 0 }} />
+                <div>
+                  <span className="mob-notice-text">SAO Access — </span>
+                  <span className="mob-notice-sub">Credentials provided by your administrator. Contact HR for help.</span>
+                </div>
+              </div>
+              <div className="mob-secure">
+                <span className="mob-secure-dot" />
+                <span>Secure</span>
+                <span className="mob-secure-sep">·</span>
+                <span>TLS 1.3</span>
+                <span className="mob-secure-sep">·</span>
+                <span>Encrypted</span>
+              </div>
             </div>
           </div>
 
-          {/* Header */}
+          {/* ████  DESKTOP FORM — hidden on mobile via CSS  ████ */}
+          <div className="sl-mobile-brand" />
+
           <div className="sl-form-header">
             <div className="sl-icon-wrap">
               <ShieldCheck className="w-7 h-7" style={{ color: '#f97316' }} />
@@ -526,7 +921,6 @@ export default function SAOLogin() {
             <p className="sl-subtitle">Sign in with your site officer credentials</p>
           </div>
 
-          {/* Form — all logic untouched */}
           <form onSubmit={handleLogin}>
             <div className="sl-field">
               <label className="sl-label" htmlFor="email">Email Address</label>
@@ -570,12 +964,10 @@ export default function SAOLogin() {
 
           <div className="sl-divider"><span>or</span></div>
 
-          {/* Info note */}
           <div className="sl-note-box">
             Don't have an account? Your administrator will create one for you.
           </div>
 
-          {/* Portal switch */}
           <div className="sl-portals">
             <Link to="/admin/login" className="sl-portal-btn sl-portal-admin">
               Admin Login
