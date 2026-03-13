@@ -617,10 +617,7 @@ export default function Index() {
 
           {/* Hero */}
           <div className="pr-hero">
-            <div className="pr-badge">
-              <span className="pr-dot" />
-              NEW ENTERPRISE INTERFACE &nbsp;·&nbsp; v3.2
-            </div>
+            
             <h2 className="pr-title">
               Unified Workspace
               <span className="pr-title-accent">Tiger's Mark Corp Portal</span>
@@ -739,9 +736,7 @@ export default function Index() {
             <p className="pr-swipe-hint">Swipe to explore portals</p>
           </div>
 
-          <p className="pr-footer">
-            Secured by enterprise-grade encryption &nbsp;·&nbsp; All access is logged and monitored
-          </p>
+        
         </div>
       </div>
     </>
