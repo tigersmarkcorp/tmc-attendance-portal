@@ -1111,7 +1111,7 @@ export default function Index() {
 
  <p className="pr-footer">
            User activity is logged and monitored. For technical assistance or to report anomalies, please contact the IT Department.
-          </p> make it have like ! red like for inform or reminder!
+          </p> 
         </div>
       </div>
     </>
