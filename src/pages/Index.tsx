@@ -1109,38 +1109,9 @@ export default function Index() {
             <p className="pr-swipe-hint">Swipe to explore portals</p>
           </div>
 
-{/* Footer - Professional Security Notice */}
-<p className="pr-footer flex items-start gap-2.5 text-xs text-slate-500 leading-relaxed px-4 py-3 bg-white/40 backdrop-blur-sm border-t border-slate-200/60">
-  <svg 
-    className="w-4 h-4 text-rose-600 flex-shrink-0 mt-0.5" 
-    viewBox="0 0 24 24" 
-    fill="none" 
-    stroke="currentColor" 
-    strokeWidth="2" 
-    strokeLinecap="round" 
-    strokeLinejoin="round"
-    aria-hidden="true"
-  >
-    <path d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
-  </svg>
-  <span className="flex-1">
-    <span className="font-semibold text-slate-700">Security Reminder:</span> All user activity is logged and monitored. 
-    For technical assistance or to report system anomalies, please contact{' '}
-    <a 
-      href="mailto:itsupport@company.com" 
-      className="inline-flex items-center font-medium text-rose-700 hover:text-rose-900 hover:underline transition-colors focus:outline-none focus:ring-2 focus:ring-rose-500 focus:ring-offset-1 rounded"
-      onClick={(e) => {
-        // Optional: Add analytics or custom handling here
-        e.stopPropagation();
-      }}
-    >
-      IT Support
-      <svg className="w-3 h-3 ml-1 opacity-70" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-        <path d="M7 17L17 7M17 7H7M17 7V17" strokeLinecap="round" strokeLinejoin="round"/>
-      </svg>
-    </a>.
-  </span>
-</p>
+ <p className="pr-footer">
+           User activity is logged and monitored. For technical assistance or to report anomalies, please contact the IT Department.
+          </p> make it have like ! red like for inform or reminder!
         </div>
       </div>
     </>
