@@ -182,20 +182,20 @@ export default function Index() {
 
         @keyframes spin { to { transform: rotate(360deg); } }
         @keyframes orb-pulse {
-          0%, 100% { opacity: 0.18; transform: scale(1) translateZ(0); }
-          50%       { opacity: 0.28; transform: scale(1.07) translateZ(0); }
+          0%, 100% { opacity: 0.18; transform: scale(1); }
+          50%       { opacity: 0.28; transform: scale(1.07); }
         }
         @keyframes pulse-dot {
           0%, 100% { opacity: 1; transform: scale(1); }
           50%       { opacity: 0.4; transform: scale(1.5); }
         }
         @keyframes fade-up {
-          from { opacity: 0; transform: translate3d(0, 20px, 0); }
-          to   { opacity: 1; transform: translate3d(0, 0, 0); }
+          from { opacity: 0; transform: translateY(20px); }
+          to   { opacity: 1; transform: translateY(0); }
         }
         @keyframes slide-in-bottom {
-          from { opacity: 0; transform: translate3d(0, 30px, 0); }
-          to   { opacity: 1; transform: translate3d(0, 0, 0); }
+          from { opacity: 0; transform: translateY(24px); }
+          to   { opacity: 1; transform: translateY(0); }
         }
         @keyframes float {
           0%, 100% { transform: translateY(0px); }
@@ -221,7 +221,6 @@ export default function Index() {
           background-image: url('https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=1400&q=55');
           background-size: cover;
           background-position: center;
-          transform: translateZ(0);
           z-index: -3;
         }
         .pr-bg::after {
@@ -254,7 +253,6 @@ export default function Index() {
           border-radius: 50%;
           pointer-events: none;
           z-index: -1;
-          transform: translateZ(0);
           animation: orb-pulse 11s ease-in-out infinite;
         }
         .pr-orb-1 {
@@ -352,8 +350,7 @@ export default function Index() {
 
         .pr-track {
           display: flex;
-          will-change: transform;
-          transition: transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+          transition: transform 0.35s cubic-bezier(0.25, 0.46, 0.45, 0.94);
         }
         .pr-slide {
           flex: 0 0 100%;
@@ -392,11 +389,8 @@ export default function Index() {
           overflow: hidden;
           border: 1px solid rgba(249,115,22,0.20);
           background: rgba(255,255,255,0.88);
-          -webkit-backdrop-filter: blur(10px);
-          backdrop-filter: blur(10px);
           display: flex;
           flex-direction: column;
-          transform: translateZ(0);
           transition: border-color 0.3s ease, box-shadow 0.3s ease, transform 0.3s ease;
           box-shadow: 0 4px 20px rgba(249,115,22,0.08);
         }
@@ -410,7 +404,7 @@ export default function Index() {
         .pr-card:hover {
           border-color: rgba(249,115,22,0.50);
           box-shadow: 0 22px 48px rgba(249,115,22,0.14), 0 0 0 1px rgba(249,115,22,0.12);
-          transform: translateY(-5px) translateZ(0);
+          transform: translateY(-5px);
         }
 
         /* Card header */
@@ -459,11 +453,10 @@ export default function Index() {
           pointer-events: none;
           user-select: none;
           -webkit-user-drag: none;
-          transform: translateZ(0);
           transition: transform 0.55s ease;
           display: block;
         }
-        .pr-card:hover .pr-img-wrap img { transform: scale(1.04) translateZ(0); }
+        .pr-card:hover .pr-img-wrap img { transform: scale(1.04); }
 
         .pr-img-overlay {
           position: absolute;
@@ -544,7 +537,6 @@ export default function Index() {
           position: relative;
           overflow: hidden;
           transition: box-shadow 0.22s ease, transform 0.18s ease;
-          transform: translateZ(0);
         }
         .pr-btn::before {
           content: '';
@@ -555,7 +547,7 @@ export default function Index() {
           transition: opacity 0.22s;
         }
         .pr-btn:hover::before { opacity: 1; }
-        .pr-btn:hover { transform: translateY(-1px) translateZ(0); }
+        .pr-btn:hover { transform: translateY(-1px); }
 
         /* ── NAVIGATION ── */
         .pr-nav {
@@ -620,10 +612,10 @@ export default function Index() {
         }
 
         /* ═══════════════════════════════════════════════════════════ */
-        /* 📱 MOBILE APP GLASSMORPHISM UI - ONLY APPLIES BELOW 1024px */
+        /* 📱 MOBILE - ONLY APPLIES BELOW 1024px                      */
         /* ═══════════════════════════════════════════════════════════ */
         @media (max-width: 1023px) {
-          /* Creative Gradient Background */
+          /* Solid gradient BG - no heavy fixed blur layers */
           .pr-root {
             background: linear-gradient(180deg, 
               #fef3e8 0%, 
@@ -633,69 +625,56 @@ export default function Index() {
               #ffb89a 100%);
             padding-top: env(safe-area-inset-top);
             padding-bottom: env(safe-area-inset-bottom);
-            position: relative;
           }
 
-          /* Soft mesh gradient overlay */
+          /* Lightweight mesh overlay - no animation on ::before */
           .pr-root::before {
             content: '';
             position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
+            top: 0; left: 0; right: 0; bottom: 0;
             background: 
-              radial-gradient(circle at 15% 20%, rgba(249,115,22,0.12) 0%, transparent 45%),
-              radial-gradient(circle at 85% 35%, rgba(234,88,12,0.1) 0%, transparent 45%),
-              radial-gradient(circle at 50% 75%, rgba(251,146,60,0.08) 0%, transparent 50%),
-              radial-gradient(circle at 25% 85%, rgba(139,92,246,0.06) 0%, transparent 40%);
+              radial-gradient(circle at 15% 20%, rgba(249,115,22,0.10) 0%, transparent 45%),
+              radial-gradient(circle at 85% 35%, rgba(234,88,12,0.08) 0%, transparent 45%);
             pointer-events: none;
             z-index: 0;
           }
 
-          /* Floating decorative orbs */
+          /* Single floating orb kept but reduced */
           .pr-root::after {
             content: '';
             position: fixed;
-            width: 280px;
-            height: 280px;
-            background: radial-gradient(circle, rgba(249,115,22,0.15) 0%, transparent 70%);
+            width: 240px; height: 240px;
+            background: radial-gradient(circle, rgba(249,115,22,0.12) 0%, transparent 70%);
             border-radius: 50%;
-            top: -80px;
-            right: -80px;
-            animation: float 7s ease-in-out infinite;
+            top: -80px; right: -80px;
+            animation: float 8s ease-in-out infinite;
             pointer-events: none;
             z-index: 0;
           }
 
-          /* Additional floating orb */
-          .pr-orb-mobile-1 {
-            position: fixed;
-            width: 200px;
-            height: 200px;
-            background: radial-gradient(circle, rgba(139,92,246,0.12) 0%, transparent 70%);
-            border-radius: 50%;
-            bottom: -60px;
-            left: -60px;
-            animation: float 8s ease-in-out infinite reverse;
-            pointer-events: none;
-            z-index: 0;
-          }
+          /* Hide the extra mobile orb div entirely on mobile - saves a layer */
+          .pr-orb-mobile-1 { display: none; }
 
-          /* Mobile app header - Clean Glassmorphism */
+          /* Hide desktop bg/grid/orbs on mobile - they're redundant and costly */
+          .pr-bg,
+          .pr-grid,
+          .pr-orb { display: none; }
+
+          /* Mobile header - lighter glass (reduced blur radius) */
           .pr-hero {
             padding: 28px 20px 24px;
-            background: rgba(255, 255, 255, 0.65);
-            backdrop-filter: blur(24px);
-            -webkit-backdrop-filter: blur(24px);
+            background: rgba(255, 255, 255, 0.70);
+            /* Reduced from blur(24px) → blur(12px) for perf */
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
             border-bottom: 1px solid rgba(255, 255, 255, 0.5);
             position: sticky;
             top: env(safe-area-inset-top);
             z-index: 10;
-            box-shadow: 0 4px 24px rgba(249,115,22,0.08);
+            box-shadow: 0 4px 20px rgba(249,115,22,0.07);
           }
 
-          /* Logo Container - SHOW ON MOBILE ONLY */
+          /* Logo */
           .pr-logo-container {
             display: flex;
             justify-content: center;
@@ -703,28 +682,21 @@ export default function Index() {
             margin-bottom: 18px;
             padding: 0 10px;
           }
-
           .pr-logo {
             max-width: 200px;
             height: auto;
             object-fit: contain;
-            filter: drop-shadow(0 3px 10px rgba(249,115,22,0.25));
           }
 
-          /* Hide badge on mobile */
-          .pr-badge {
-            display: none !important;
-          }
+          .pr-badge { display: none !important; }
 
           .pr-title {
             font-size: 32px;
             line-height: 1.15;
             margin-bottom: 8px;
             color: #1a1a1a;
-            text-shadow: 0 1px 2px rgba(0,0,0,0.05);
             font-weight: 800;
           }
-
           .pr-title-accent {
             display: block;
             font-size: 26px;
@@ -734,14 +706,12 @@ export default function Index() {
             background-clip: text;
             margin-top: 4px;
           }
-
           .pr-subtitle {
             font-size: 13.5px;
             max-width: 100%;
             margin: 10px 0 0;
             color: #666;
             line-height: 1.6;
-            font-weight: 400;
           }
 
           .pr-carousel-wrap {
@@ -751,12 +721,12 @@ export default function Index() {
             z-index: 1;
           }
 
+          /* Disable carousel gestures on mobile - straight scroll */
           .pr-viewport {
             padding: 0;
             overflow: visible;
             cursor: default;
           }
-
           .pr-track {
             display: flex;
             flex-direction: column;
@@ -765,61 +735,46 @@ export default function Index() {
             transform: none !important;
             transition: none !important;
           }
-
           .pr-slide {
             flex: 0 0 auto;
             padding: 0;
-            animation: slide-in-bottom 0.5s ease both;
+            animation: slide-in-bottom 0.4s ease both;
           }
+          .pr-slide:nth-child(1) { animation-delay: 0.05s; }
+          .pr-slide:nth-child(2) { animation-delay: 0.12s; }
+          .pr-slide:nth-child(3) { animation-delay: 0.19s; }
+          .pr-slide:nth-child(4) { animation-delay: 0.26s; }
 
-          .pr-slide:nth-child(1) { animation-delay: 0.1s; }
-          .pr-slide:nth-child(2) { animation-delay: 0.2s; }
-          .pr-slide:nth-child(3) { animation-delay: 0.3s; }
-          .pr-slide:nth-child(4) { animation-delay: 0.4s; }
-
-          /* Clean Card Container */
+          /* Cards - no backdrop-filter (major perf win on mobile) */
           .pr-card {
             max-width: 100%;
             border-radius: 20px;
-            border: 1px solid rgba(255, 255, 255, 0.6);
-            background: rgba(255, 255, 255, 0.5);
-            backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
-            box-shadow: 
-              0 8px 32px rgba(249,115,22,0.1),
-              0 2px 8px rgba(0, 0, 0, 0.04);
+            border: 1px solid rgba(255, 255, 255, 0.55);
+            /* Solid semi-transparent bg instead of blur */
+            background: rgba(255, 255, 255, 0.72);
+            backdrop-filter: none;
+            -webkit-backdrop-filter: none;
+            box-shadow: 0 6px 24px rgba(249,115,22,0.09), 0 1px 4px rgba(0,0,0,0.04);
             overflow: visible;
             transform: none !important;
-            transition: box-shadow 0.3s ease, transform 0.3s ease;
+            transition: box-shadow 0.25s ease;
           }
-
           .pr-card::before { display: none; }
-
           .pr-card:active {
-            transform: scale(0.99);
-            box-shadow: 
-              0 4px 20px rgba(249,115,22,0.12),
-              0 1px 4px rgba(0, 0, 0, 0.05);
+            box-shadow: 0 3px 12px rgba(249,115,22,0.10);
           }
 
-          /* Hide header on mobile */
-          .pr-card-head {
-            display: none !important;
-          }
-
-          /* Hide Image, Description, and Features on Mobile */
+          .pr-card-head { display: none !important; }
           .pr-img-wrap,
           .pr-desc,
-          .pr-features {
-            display: none !important;
-          }
+          .pr-features { display: none !important; }
 
           .pr-body {
             padding: 4px;
             background: transparent;
           }
 
-          /* Portal Buttons - Individual Colors */
+          /* Portal Buttons */
           .pr-btn {
             height: 68px;
             border-radius: 18px;
@@ -830,174 +785,122 @@ export default function Index() {
             justify-content: flex-start;
             gap: 18px;
             border: none;
-            box-shadow: 0 6px 24px rgba(0, 0, 0, 0.12);
             color: #fff;
             text-shadow: 0 1px 2px rgba(0,0,0,0.15);
             position: relative;
             overflow: hidden;
           }
 
-          /* Administrator Portal - Orange Gradient */
           .pr-slide:nth-child(1) .pr-btn {
             background: linear-gradient(135deg, #f97316 0%, #ea580c 100%);
-            box-shadow: 0 8px 28px rgba(249,115,22,0.35);
+            box-shadow: 0 7px 22px rgba(249,115,22,0.32);
           }
-
-          /* Site Operations Portal - Deep Orange Gradient */
           .pr-slide:nth-child(2) .pr-btn {
             background: linear-gradient(135deg, #ea580c 0%, #c2410c 100%);
-            box-shadow: 0 8px 28px rgba(234,88,12,0.35);
+            box-shadow: 0 7px 22px rgba(234,88,12,0.32);
           }
-
-          /* Employee Portal - Light Orange Gradient */
           .pr-slide:nth-child(3) .pr-btn {
             background: linear-gradient(135deg, #fb923c 0%, #f97316 100%);
-            box-shadow: 0 8px 28px rgba(251,146,60,0.35);
+            box-shadow: 0 7px 22px rgba(251,146,60,0.32);
           }
-
-          /* Encoder Portal - Purple Gradient */
           .pr-slide:nth-child(4) .pr-btn {
             background: linear-gradient(135deg, #8b5cf6 0%, #7c3aed 100%);
-            box-shadow: 0 8px 28px rgba(139,92,246,0.35);
+            box-shadow: 0 7px 22px rgba(139,92,246,0.32);
           }
 
           .pr-btn::before {
-            background: linear-gradient(135deg, rgba(255,255,255,0.25) 0%, transparent 50%);
+            background: linear-gradient(135deg, rgba(255,255,255,0.22) 0%, transparent 50%);
             opacity: 1;
           }
-
-          .pr-btn::after {
-            content: '';
-            position: absolute;
-            inset: 0;
-            background: linear-gradient(180deg, rgba(255,255,255,0.15) 0%, transparent 50%);
-            pointer-events: none;
-            border-radius: 18px;
-          }
-
           .pr-btn:active {
             transform: scale(0.98) !important;
-            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 3px 12px rgba(0,0,0,0.10) !important;
           }
 
-          .pr-btn svg {
-            transition: transform 0.2s ease;
-            flex-shrink: 0;
-          }
-
-          .pr-btn:active svg:last-child {
-            transform: translateX(4px);
-          }
-
-          /* Icon container in button - MORE VISIBLE */
+          /* Icon container */
           .pr-btn-icon {
             display: flex !important;
             align-items: center;
             justify-content: center;
-            width: 52px;
-            height: 52px;
+            width: 52px; height: 52px;
             border-radius: 14px;
             flex-shrink: 0;
-            background: rgba(255, 255, 255, 0.35);
-            border: 2px solid rgba(255, 255, 255, 0.5);
-            box-shadow: 
-              0 4px 16px rgba(0,0,0,0.15),
-              inset 0 2px 4px rgba(255,255,255,0.3);
-            backdrop-filter: blur(8px);
-            -webkit-backdrop-filter: blur(8px);
+            background: rgba(255, 255, 255, 0.30);
+            border: 2px solid rgba(255, 255, 255, 0.45);
+            box-shadow: 0 3px 10px rgba(0,0,0,0.12), inset 0 1px 3px rgba(255,255,255,0.25);
           }
-
-          /* Make icons larger and more visible */
           .pr-btn-icon svg {
-            width: 26px;
-            height: 26px;
+            width: 26px; height: 26px;
             stroke-width: 2.5;
-            filter: drop-shadow(0 2px 4px rgba(0,0,0,0.15));
           }
-
           .pr-btn-text {
             flex: 1;
             text-align: left;
             font-weight: 700;
             font-size: 15.5px;
-            letter-spacing: 0.01em;
           }
-
           .pr-btn-arrow {
             margin-left: auto;
             opacity: 0.95;
-            width: 22px;
-            height: 22px;
+            width: 22px; height: 22px;
             stroke-width: 2.5;
           }
 
           .pr-nav,
-          .pr-swipe-hint {
-            display: none !important;
-          }
+          .pr-swipe-hint { display: none !important; }
 
-          /* Alert Box Footer - Like the image */
+          /* ── FOOTER ALERT BOX ── */
           .pr-footer {
-            padding: 20px 24px 28px;
-            margin: 0 16px 24px;
+            padding: 18px 20px 20px;
+            margin: 0 16px 28px;
             background: rgba(254, 242, 242, 0.95);
-            border: 1px solid rgba(220, 38, 38, 0.2);
+            border: 1px solid rgba(220, 38, 38, 0.18);
             border-radius: 16px;
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
-            box-shadow: 0 4px 16px rgba(220, 38, 38, 0.08);
-            animation: fade-up 0.55s 0.22s ease both;
+            /* No backdrop-filter here either */
+            backdrop-filter: none;
+            -webkit-backdrop-filter: none;
+            box-shadow: 0 3px 12px rgba(220, 38, 38, 0.07);
+            animation: fade-up 0.4s 0.3s ease both;
+            text-transform: none;
+            letter-spacing: normal;
           }
-
           .pr-footer-content {
             display: flex;
             align-items: flex-start;
             gap: 14px;
           }
-
           .pr-footer-icon {
             flex-shrink: 0;
-            width: 28px;
-            height: 28px;
+            width: 28px; height: 28px;
             display: flex;
             align-items: center;
             justify-content: center;
-            background: rgba(220, 38, 38, 0.12);
+            background: rgba(220, 38, 38, 0.10);
             border-radius: 50%;
             color: #dc2626;
             margin-top: 2px;
           }
+          .pr-footer-text { flex: 1; }
 
-          .pr-footer-text {
-            flex: 1;
-          }
-
+          /* ✅ BIGGER FOOTER TEXT */
           .pr-footer-title {
-            font-size: 14px;
+            font-size: 15px;       /* was 14px */
             font-weight: 700;
             color: #dc2626;
-            margin-bottom: 4px;
+            margin-bottom: 5px;
             line-height: 1.3;
           }
-
           .pr-footer-description {
-            font-size: 12px;
+            font-size: 13.5px;     /* was 12px */
             color: #78716c;
-            line-height: 1.6;
+            line-height: 1.65;
             font-weight: 400;
           }
 
           .pr-card, .pr-btn {
-            -webkit-tap-highlight-color: rgba(249,115,22,0.15);
+            -webkit-tap-highlight-color: rgba(249,115,22,0.12);
             -webkit-user-select: none;
-            -moz-user-select: none;
-            -ms-user-select: none;
             user-select: none;
-          }
-
-          /* Smooth scrolling */
-          .pr-track {
-            -webkit-overflow-scrolling: touch;
           }
         }
       `}</style>
@@ -1011,9 +914,8 @@ export default function Index() {
 
         <div className="pr-content">
 
-          {/* Hero - Greeting Section */}
+          {/* Hero */}
           <div className="pr-hero">
-            {/* Logo - Mobile Only (hidden on desktop by default CSS) */}
             <div className="pr-logo-container">
               <img src="/TMClog0s.png" alt="TMC Logo" className="pr-logo" />
             </div>
@@ -1031,7 +933,7 @@ export default function Index() {
             </p>
           </div>
 
-          {/* Portal Buttons List */}
+          {/* Portal Cards */}
           <div className="pr-carousel-wrap">
             <div
               className="pr-viewport"
@@ -1048,7 +950,7 @@ export default function Index() {
                   <div className="pr-slide" key={i}>
                     <div className="pr-card">
 
-                      {/* Header - Hidden on Mobile */}
+                      {/* Header - Desktop only */}
                       <div className="pr-card-head" style={{ background: `linear-gradient(135deg, ${c.accentDim}, rgba(255,255,255,0))` }}>
                         <div className="pr-card-head-left">
                           <div className="pr-head-icon" style={{ background: c.accentDim, border: `1px solid ${c.accentBorder}` }}>
@@ -1062,7 +964,7 @@ export default function Index() {
                         </span>
                       </div>
 
-                      {/* Image - Hidden on Mobile */}
+                      {/* Image - Desktop only */}
                       <div className="pr-img-wrap">
                         <img src={c.image} alt={c.imageAlt} loading="lazy" />
                         <div className="pr-img-overlay" />
@@ -1098,8 +1000,7 @@ export default function Index() {
                             boxShadow: `0 7px 24px ${c.btnShadow}`,
                           }}
                         >
-                          {/* Icon container - shown on mobile with enhanced visibility */}
-                          <div className="pr-btn-icon" style={{ display: 'none', background: 'rgba(255,255,255,0.35)' }}>
+                          <div className="pr-btn-icon" style={{ display: 'none' }}>
                             {c.headerIcon}
                           </div>
                           <span className="pr-btn-text">{c.btnLabel}</span>
@@ -1112,7 +1013,7 @@ export default function Index() {
               </div>
             </div>
 
-            {/* Nav controls - Hidden on Mobile */}
+            {/* Nav - Desktop only */}
             <div className="pr-nav">
               <button
                 className="pr-nav-btn"
@@ -1144,7 +1045,7 @@ export default function Index() {
             <p className="pr-swipe-hint">Swipe to explore portals</p>
           </div>
 
-          {/* Footer - Alert Box Style */}
+          {/* Footer */}
           <div className="pr-footer">
             <div className="pr-footer-content">
               <div className="pr-footer-icon">
