@@ -691,27 +691,27 @@ export default function Index() {
           .pr-badge { display: none !important; }
 
           .pr-title {
-            font-size: 24px;
-            line-height: 1.2;
-            margin-bottom: 4px;
+            font-size: 32px;
+            line-height: 1.15;
+            margin-bottom: 8px;
             color: #1a1a1a;
             font-weight: 800;
           }
           .pr-title-accent {
             display: block;
-            font-size: 20px;
+            font-size: 26px;
             background: linear-gradient(135deg, #f97316 0%, #ea580c 50%, #fb923c 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
-            margin-top: 2px;
+            margin-top: 4px;
           }
           .pr-subtitle {
-            font-size: 12px;
+            font-size: 13.5px;
             max-width: 100%;
-            margin: 7px 0 0;
+            margin: 10px 0 0;
             color: #666;
-            line-height: 1.55;
+            line-height: 1.6;
           }
 
           .pr-carousel-wrap {
