@@ -1110,7 +1110,7 @@ export default function Index() {
           </div>
 
           <p className="pr-footer">
-            Secured by enterprise-grade encryption &nbsp;·&nbsp; All access is logged and monitored
+           User activity is logged and monitored. For technical assistance or to report anomalies, please contact the IT Department.
           </p>
         </div>
       </div>
