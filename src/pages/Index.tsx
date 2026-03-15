@@ -17,6 +17,9 @@ import {
   CalendarCheck,
   UserCog,
   Keyboard,
+  AlertTriangle,
+  Lock,
+  Eye,
 } from 'lucide-react';
 import adminPortalIcon from '@/assets/Frontadmin.png';
 import saoPortalIcon from '@/assets/FrontSite.png';
@@ -206,6 +209,10 @@ export default function Index() {
           50% { background-position: 100% 50%; }
           100% { background-position: 0% 50%; }
         }
+        @keyframes shimmer {
+          0% { background-position: -1000px 0; }
+          100% { background-position: 1000px 0; }
+        }
 
         /* ── ROOT ── */
         .pr-root {
@@ -241,7 +248,7 @@ export default function Index() {
           );
         }
 
-        /* ── GRID ─ */
+        /* ── GRID ── */
         .pr-grid {
           position: fixed;
           inset: 0;
@@ -274,7 +281,7 @@ export default function Index() {
           animation-delay: -5.5s;
         }
 
-        /* ── CONTENT ─ */
+        /* ── CONTENT ── */
         .pr-content {
           position: relative;
           z-index: 1;
@@ -283,7 +290,7 @@ export default function Index() {
           flex-direction: column;
         }
 
-        /* ── HERO ─ */
+        /* ── HERO ── */
         .pr-hero {
           text-align: center;
           padding: 44px 20px 0;
@@ -335,6 +342,11 @@ export default function Index() {
           font-weight: 400;
         }
 
+        /* Logo Container - HIDDEN ON DESKTOP BY DEFAULT */
+        .pr-logo-container {
+          display: none;
+        }
+
         /* ── CAROUSEL WRAPPER ── */
         .pr-carousel-wrap {
           padding: 32px 0 0;
@@ -362,7 +374,7 @@ export default function Index() {
           padding: 0 18px 6px;
         }
 
-        /* ── DESKTOP: 4-col grid (UNCHANGED) ── */
+        /* ── DESKTOP: 4-col grid ── */
         @media (min-width: 1024px) {
           .pr-hero { padding-top: 56px; }
           .pr-viewport { overflow: visible; cursor: default !important; }
@@ -384,7 +396,7 @@ export default function Index() {
           .pr-slide { padding: 0 40px 6px; }
         }
 
-        /* ── CARD  */
+        /* ── CARD ─ */
         .pr-card {
           width: 100%;
           max-width: 430px;
@@ -608,7 +620,7 @@ export default function Index() {
           padding: 6px 0 4px;
         }
 
-        /* Footer */
+        /* Footer - Desktop Style */
         .pr-footer {
           text-align: center;
           padding: 26px 20px 34px;
@@ -695,7 +707,7 @@ export default function Index() {
             box-shadow: 0 4px 24px rgba(249,115,22,0.08);
           }
 
-          /* Logo Container - Mobile Only */
+          /* Logo Container - SHOW ON MOBILE ONLY */
           .pr-logo-container {
             display: flex;
             justify-content: center;
@@ -936,20 +948,102 @@ export default function Index() {
             display: none !important;
           }
 
-          /* Clean Footer */
+          /* Enhanced Footer with Icons - Mobile Style */
           .pr-footer {
-            padding: 24px 20px 32px;
-            font-size: 10.5px;
-            color: #888;
-            line-height: 1.6;
-            background: rgba(255, 255, 255, 0.4);
+            padding: 28px 20px 36px;
+            background: linear-gradient(135deg, 
+              rgba(254, 243, 227, 0.95) 0%, 
+              rgba(255, 251, 245, 0.9) 100%);
             backdrop-filter: blur(16px);
             -webkit-backdrop-filter: blur(16px);
-            border-top: 1px solid rgba(255, 255, 255, 0.5);
+            border-top: 2px solid rgba(239, 68, 68, 0.3);
             position: relative;
             z-index: 1;
             text-align: center;
-            letter-spacing: 0.08em;
+            overflow: hidden;
+          }
+
+          .pr-footer::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, 
+              transparent 0%, 
+              #ef4444 20%, 
+              #f97316 50%, 
+              #ef4444 80%, 
+              transparent 100%);
+            animation: shimmer 3s linear infinite;
+            background-size: 1000px 100%;
+          }
+
+          .pr-footer-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 12px;
+            position: relative;
+            z-index: 1;
+          }
+
+          .pr-footer-icons {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 4px;
+          }
+
+          .pr-footer-icon {
+            width: 32px;
+            height: 32px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            animation: pulse-dot 2s ease-in-out infinite;
+          }
+
+          .pr-footer-icon:nth-child(1) {
+            background: rgba(239, 68, 68, 0.15);
+            color: #dc2626;
+            animation-delay: 0s;
+          }
+
+          .pr-footer-icon:nth-child(2) {
+            background: rgba(249, 115, 22, 0.15);
+            color: #ea580c;
+            animation-delay: 0.3s;
+          }
+
+          .pr-footer-icon:nth-child(3) {
+            background: rgba(239, 68, 68, 0.15);
+            color: #dc2626;
+            animation-delay: 0.6s;
+          }
+
+          .pr-footer-text {
+            font-size: 10.5px;
+            line-height: 1.7;
+            color: #7c2d12;
+            letter-spacing: 0.05em;
+            font-weight: 500;
+            max-width: 90%;
+          }
+
+          .pr-footer-highlight {
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+            background: rgba(239, 68, 68, 0.12);
+            padding: 4px 10px;
+            border-radius: 6px;
+            font-weight: 600;
+            color: #dc2626;
+            margin-top: 6px;
+            border: 1px solid rgba(239, 68, 68, 0.25);
           }
 
           .pr-card, .pr-btn {
@@ -978,7 +1072,7 @@ export default function Index() {
 
           {/* Hero - Greeting Section */}
           <div className="pr-hero">
-            {/* Logo - Mobile Only */}
+            {/* Logo - Mobile Only (hidden on desktop by default CSS) */}
             <div className="pr-logo-container">
               <img src="/TMClog0s.png" alt="TMC Logo" className="pr-logo" />
             </div>
@@ -1109,9 +1203,31 @@ export default function Index() {
             <p className="pr-swipe-hint">Swipe to explore portals</p>
           </div>
 
- <p className="pr-footer">
-           User activity is logged and monitored. For technical assistance or to report anomalies, please contact the IT Department.
-          </p> 
+          {/* Footer with Icons - Enhanced */}
+          <div className="pr-footer">
+            <div className="pr-footer-content">
+              <div className="pr-footer-icons">
+                <div className="pr-footer-icon">
+                  <AlertTriangle size={18} strokeWidth={2.5} />
+                </div>
+                <div className="pr-footer-icon">
+                  <Lock size={18} strokeWidth={2.5} />
+                </div>
+                <div className="pr-footer-icon">
+                  <Eye size={18} strokeWidth={2.5} />
+                </div>
+              </div>
+              <p className="pr-footer-text">
+                User activity is logged and monitored.<br />
+                For technical assistance or to report anomalies,<br />
+                please contact the IT Department.
+              </p>
+              <div className="pr-footer-highlight">
+                <AlertCircle size={14} />
+                <span>SECURE CONNECTION</span>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </>
