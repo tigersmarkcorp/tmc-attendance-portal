@@ -691,27 +691,27 @@ export default function Index() {
           .pr-badge { display: none !important; }
 
           .pr-title {
-            font-size: 32px;
-            line-height: 1.15;
-            margin-bottom: 8px;
+            font-size: 24px;
+            line-height: 1.2;
+            margin-bottom: 4px;
             color: #1a1a1a;
             font-weight: 800;
           }
           .pr-title-accent {
             display: block;
-            font-size: 26px;
+            font-size: 20px;
             background: linear-gradient(135deg, #f97316 0%, #ea580c 50%, #fb923c 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
-            margin-top: 4px;
+            margin-top: 2px;
           }
           .pr-subtitle {
-            font-size: 13.5px;
+            font-size: 12px;
             max-width: 100%;
-            margin: 10px 0 0;
+            margin: 7px 0 0;
             color: #666;
-            line-height: 1.6;
+            line-height: 1.55;
           }
 
           .pr-carousel-wrap {
@@ -731,7 +731,7 @@ export default function Index() {
             display: flex;
             flex-direction: column;
             gap: 16px;
-            padding: 0 20px 24px;
+            padding: 0 20px 84px;
             transform: none !important;
             transition: none !important;
           }
@@ -849,51 +849,53 @@ export default function Index() {
           .pr-nav,
           .pr-swipe-hint { display: none !important; }
 
-          /* ── FOOTER ALERT BOX ── */
+          /* ── FOOTER REMINDER — sticky at bottom ── */
           .pr-footer {
-            padding: 18px 20px 20px;
-            margin: 0 16px 28px;
-            background: rgba(254, 242, 242, 0.95);
-            border: 1px solid rgba(220, 38, 38, 0.18);
-            border-radius: 16px;
-            /* No backdrop-filter here either */
+            position: sticky;
+            bottom: 0;
+            left: 0; right: 0;
+            margin: 0;
+            padding: 12px 20px;
+            padding-bottom: calc(12px + env(safe-area-inset-bottom));
+            background: rgba(255, 241, 241, 0.97);
+            border-top: 1.5px solid rgba(220, 38, 38, 0.20);
+            box-shadow: 0 -4px 20px rgba(220, 38, 38, 0.09);
             backdrop-filter: none;
             -webkit-backdrop-filter: none;
-            box-shadow: 0 3px 12px rgba(220, 38, 38, 0.07);
-            animation: fade-up 0.4s 0.3s ease both;
+            animation: none;
             text-transform: none;
             letter-spacing: normal;
+            z-index: 20;
           }
           .pr-footer-content {
             display: flex;
-            align-items: flex-start;
-            gap: 14px;
+            align-items: center;
+            gap: 12px;
           }
           .pr-footer-icon {
             flex-shrink: 0;
-            width: 28px; height: 28px;
+            width: 34px; height: 34px;
             display: flex;
             align-items: center;
             justify-content: center;
-            background: rgba(220, 38, 38, 0.10);
-            border-radius: 50%;
+            background: rgba(220, 38, 38, 0.12);
+            border: 1px solid rgba(220, 38, 38, 0.20);
+            border-radius: 10px;
             color: #dc2626;
-            margin-top: 2px;
           }
           .pr-footer-text { flex: 1; }
 
-          /* ✅ BIGGER FOOTER TEXT */
           .pr-footer-title {
-            font-size: 15px;       /* was 14px */
+            font-size: 13px;
             font-weight: 700;
-            color: #dc2626;
-            margin-bottom: 5px;
+            color: #b91c1c;
+            margin-bottom: 2px;
             line-height: 1.3;
           }
           .pr-footer-description {
-            font-size: 13.5px;     /* was 12px */
-            color: #78716c;
-            line-height: 1.65;
+            font-size: 11.5px;
+            color: #9a5252;
+            line-height: 1.5;
             font-weight: 400;
           }
 
@@ -1045,16 +1047,16 @@ export default function Index() {
             <p className="pr-swipe-hint">Swipe to explore portals</p>
           </div>
 
-          {/* Footer */}
+          {/* Footer — sticky reminder bar */}
           <div className="pr-footer">
             <div className="pr-footer-content">
               <div className="pr-footer-icon">
-                <AlertCircle size={18} strokeWidth={2.5} />
+                <AlertCircle size={17} strokeWidth={2.5} />
               </div>
               <div className="pr-footer-text">
-                <div className="pr-footer-title">Restricted Access</div>
+                <div className="pr-footer-title">⚠ Restricted Access</div>
                 <div className="pr-footer-description">
-                  Authorized admins only. Contact IT Support to request an account.
+                  Authorized personnel only. Contact IT Support for access.
                 </div>
               </div>
             </div>
