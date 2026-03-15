@@ -1109,22 +1109,9 @@ export default function Index() {
             <p className="pr-swipe-hint">Swipe to explore portals</p>
           </div>
 
-         <p className="pr-footer">
-  <svg 
-    className="alert-icon" 
-    width="16" 
-    height="16" 
-    viewBox="0 0 24 24" 
-    fill="none" 
-    xmlns="http://www.w3.org/2000/svg"
-  >
-    <path 
-      d="M12 9V11M12 15H12.01M5.07183 19H18.9282C20.4518 19 21.4303 17.3525 20.6869 16.0201L13.7588 3.59262C12.9993 2.23305 11.0007 2.23305 10.2412 3.59262L3.31305 16.0201C2.56973 17.3525 3.54824 19 5.07183 19Z" 
-      stroke="currentColor" 
-      strokeWidth="2" 
-      strokeLinecap="round" 
-      strokeLinejoin="round"
-    />
+<p className="pr-footer flex items-center gap-2 text-sm text-gray-600">
+  <svg className="w-4 h-4 text-red-600 flex-shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+    <path strokeLinecap="round" strokeLinejoin="round" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
   </svg>
   <span>
     User activity is logged and monitored. For technical assistance or to report anomalies, please contact the IT Department.
