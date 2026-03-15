@@ -193,6 +193,19 @@ export default function Index() {
           from { opacity: 0; transform: translate3d(0, 20px, 0); }
           to   { opacity: 1; transform: translate3d(0, 0, 0); }
         }
+        @keyframes slide-in-bottom {
+          from { opacity: 0; transform: translate3d(0, 30px, 0); }
+          to   { opacity: 1; transform: translate3d(0, 0, 0); }
+        }
+        @keyframes float {
+          0%, 100% { transform: translateY(0px); }
+          50% { transform: translateY(-10px); }
+        }
+        @keyframes gradient-shift {
+          0% { background-position: 0% 50%; }
+          50% { background-position: 100% 50%; }
+          100% { background-position: 0% 50%; }
+        }
 
         /* ── ROOT ── */
         .pr-root {
@@ -228,7 +241,7 @@ export default function Index() {
           );
         }
 
-        /* ── GRID ── */
+        /* ── GRID ─ */
         .pr-grid {
           position: fixed;
           inset: 0;
@@ -261,7 +274,7 @@ export default function Index() {
           animation-delay: -5.5s;
         }
 
-        /* ── CONTENT ── */
+        /* ── CONTENT ─ */
         .pr-content {
           position: relative;
           z-index: 1;
@@ -270,7 +283,7 @@ export default function Index() {
           flex-direction: column;
         }
 
-        /* ── HERO ── */
+        /* ── HERO ─ */
         .pr-hero {
           text-align: center;
           padding: 44px 20px 0;
@@ -349,7 +362,7 @@ export default function Index() {
           padding: 0 18px 6px;
         }
 
-        /* ── DESKTOP: 4-col grid ── */
+        /* ── DESKTOP: 4-col grid (UNCHANGED) ── */
         @media (min-width: 1024px) {
           .pr-hero { padding-top: 56px; }
           .pr-viewport { overflow: visible; cursor: default !important; }
@@ -371,7 +384,7 @@ export default function Index() {
           .pr-slide { padding: 0 40px 6px; }
         }
 
-        /* ── CARD ── */
+        /* ── CARD  */
         .pr-card {
           width: 100%;
           max-width: 430px;
@@ -605,6 +618,353 @@ export default function Index() {
           color: #888888;
           animation: fade-up 0.55s 0.22s ease both;
         }
+
+        /* ═══════════════════════════════════════════════════════════ */
+        /* 📱 MOBILE APP GLASSMORPHISM UI - ONLY APPLIES BELOW 1024px */
+        /* ═══════════════════════════════════════════════════════════ */
+        @media (max-width: 1023px) {
+          /* Creative Gradient Background */
+          .pr-root {
+            background: linear-gradient(180deg, 
+              #fef3e8 0%, 
+              #ffe8d4 25%, 
+              #ffd4b8 50%, 
+              #ffc4a8 75%, 
+              #ffb89a 100%);
+            padding-top: env(safe-area-inset-top);
+            padding-bottom: env(safe-area-inset-bottom);
+            position: relative;
+          }
+
+          /* Soft mesh gradient overlay */
+          .pr-root::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: 
+              radial-gradient(circle at 15% 20%, rgba(249,115,22,0.12) 0%, transparent 45%),
+              radial-gradient(circle at 85% 35%, rgba(234,88,12,0.1) 0%, transparent 45%),
+              radial-gradient(circle at 50% 75%, rgba(251,146,60,0.08) 0%, transparent 50%),
+              radial-gradient(circle at 25% 85%, rgba(139,92,246,0.06) 0%, transparent 40%);
+            pointer-events: none;
+            z-index: 0;
+          }
+
+          /* Floating decorative orbs */
+          .pr-root::after {
+            content: '';
+            position: fixed;
+            width: 280px;
+            height: 280px;
+            background: radial-gradient(circle, rgba(249,115,22,0.15) 0%, transparent 70%);
+            border-radius: 50%;
+            top: -80px;
+            right: -80px;
+            animation: float 7s ease-in-out infinite;
+            pointer-events: none;
+            z-index: 0;
+          }
+
+          /* Additional floating orb */
+          .pr-orb-mobile-1 {
+            position: fixed;
+            width: 200px;
+            height: 200px;
+            background: radial-gradient(circle, rgba(139,92,246,0.12) 0%, transparent 70%);
+            border-radius: 50%;
+            bottom: -60px;
+            left: -60px;
+            animation: float 8s ease-in-out infinite reverse;
+            pointer-events: none;
+            z-index: 0;
+          }
+
+          /* Mobile app header - Clean Glassmorphism */
+          .pr-hero {
+            padding: 28px 20px 24px;
+            background: rgba(255, 255, 255, 0.65);
+            backdrop-filter: blur(24px);
+            -webkit-backdrop-filter: blur(24px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.5);
+            position: sticky;
+            top: env(safe-area-inset-top);
+            z-index: 10;
+            box-shadow: 0 4px 24px rgba(249,115,22,0.08);
+          }
+
+          /* Logo Container - Mobile Only */
+          .pr-logo-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-bottom: 18px;
+            padding: 0 10px;
+          }
+
+          .pr-logo {
+            max-width: 200px;
+            height: auto;
+            object-fit: contain;
+            filter: drop-shadow(0 3px 10px rgba(249,115,22,0.25));
+          }
+
+          /* Hide badge on mobile */
+          .pr-badge {
+            display: none !important;
+          }
+
+          .pr-title {
+            font-size: 32px;
+            line-height: 1.15;
+            margin-bottom: 8px;
+            color: #1a1a1a;
+            text-shadow: 0 1px 2px rgba(0,0,0,0.05);
+            font-weight: 800;
+          }
+
+          .pr-title-accent {
+            display: block;
+            font-size: 26px;
+            background: linear-gradient(135deg, #f97316 0%, #ea580c 50%, #fb923c 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-top: 4px;
+          }
+
+          .pr-subtitle {
+            font-size: 13.5px;
+            max-width: 100%;
+            margin: 10px 0 0;
+            color: #666;
+            line-height: 1.6;
+            font-weight: 400;
+          }
+
+          .pr-carousel-wrap {
+            padding: 24px 0 0;
+            flex: 1;
+            position: relative;
+            z-index: 1;
+          }
+
+          .pr-viewport {
+            padding: 0;
+            overflow: visible;
+            cursor: default;
+          }
+
+          .pr-track {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+            padding: 0 20px 24px;
+            transform: none !important;
+            transition: none !important;
+          }
+
+          .pr-slide {
+            flex: 0 0 auto;
+            padding: 0;
+            animation: slide-in-bottom 0.5s ease both;
+          }
+
+          .pr-slide:nth-child(1) { animation-delay: 0.1s; }
+          .pr-slide:nth-child(2) { animation-delay: 0.2s; }
+          .pr-slide:nth-child(3) { animation-delay: 0.3s; }
+          .pr-slide:nth-child(4) { animation-delay: 0.4s; }
+
+          /* Clean Card Container */
+          .pr-card {
+            max-width: 100%;
+            border-radius: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.6);
+            background: rgba(255, 255, 255, 0.5);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            box-shadow: 
+              0 8px 32px rgba(249,115,22,0.1),
+              0 2px 8px rgba(0, 0, 0, 0.04);
+            overflow: visible;
+            transform: none !important;
+            transition: box-shadow 0.3s ease, transform 0.3s ease;
+          }
+
+          .pr-card::before { display: none; }
+
+          .pr-card:active {
+            transform: scale(0.99);
+            box-shadow: 
+              0 4px 20px rgba(249,115,22,0.12),
+              0 1px 4px rgba(0, 0, 0, 0.05);
+          }
+
+          /* Hide header on mobile */
+          .pr-card-head {
+            display: none !important;
+          }
+
+          /* Hide Image, Description, and Features on Mobile */
+          .pr-img-wrap,
+          .pr-desc,
+          .pr-features {
+            display: none !important;
+          }
+
+          .pr-body {
+            padding: 4px;
+            background: transparent;
+          }
+
+          /* Portal Buttons - Individual Colors */
+          .pr-btn {
+            height: 68px;
+            border-radius: 18px;
+            font-size: 15px;
+            font-weight: 700;
+            letter-spacing: 0.01em;
+            padding: 0 24px;
+            justify-content: flex-start;
+            gap: 18px;
+            border: none;
+            box-shadow: 0 6px 24px rgba(0, 0, 0, 0.12);
+            color: #fff;
+            text-shadow: 0 1px 2px rgba(0,0,0,0.15);
+            position: relative;
+            overflow: hidden;
+          }
+
+          /* Administrator Portal - Orange Gradient */
+          .pr-slide:nth-child(1) .pr-btn {
+            background: linear-gradient(135deg, #f97316 0%, #ea580c 100%);
+            box-shadow: 0 8px 28px rgba(249,115,22,0.35);
+          }
+
+          /* Site Operations Portal - Deep Orange Gradient */
+          .pr-slide:nth-child(2) .pr-btn {
+            background: linear-gradient(135deg, #ea580c 0%, #c2410c 100%);
+            box-shadow: 0 8px 28px rgba(234,88,12,0.35);
+          }
+
+          /* Employee Portal - Light Orange Gradient */
+          .pr-slide:nth-child(3) .pr-btn {
+            background: linear-gradient(135deg, #fb923c 0%, #f97316 100%);
+            box-shadow: 0 8px 28px rgba(251,146,60,0.35);
+          }
+
+          /* Encoder Portal - Purple Gradient */
+          .pr-slide:nth-child(4) .pr-btn {
+            background: linear-gradient(135deg, #8b5cf6 0%, #7c3aed 100%);
+            box-shadow: 0 8px 28px rgba(139,92,246,0.35);
+          }
+
+          .pr-btn::before {
+            background: linear-gradient(135deg, rgba(255,255,255,0.25) 0%, transparent 50%);
+            opacity: 1;
+          }
+
+          .pr-btn::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(180deg, rgba(255,255,255,0.15) 0%, transparent 50%);
+            pointer-events: none;
+            border-radius: 18px;
+          }
+
+          .pr-btn:active {
+            transform: scale(0.98) !important;
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+          }
+
+          .pr-btn svg {
+            transition: transform 0.2s ease;
+            flex-shrink: 0;
+          }
+
+          .pr-btn:active svg:last-child {
+            transform: translateX(4px);
+          }
+
+          /* Icon container in button - MORE VISIBLE */
+          .pr-btn-icon {
+            display: flex !important;
+            align-items: center;
+            justify-content: center;
+            width: 52px;
+            height: 52px;
+            border-radius: 14px;
+            flex-shrink: 0;
+            background: rgba(255, 255, 255, 0.35);
+            border: 2px solid rgba(255, 255, 255, 0.5);
+            box-shadow: 
+              0 4px 16px rgba(0,0,0,0.15),
+              inset 0 2px 4px rgba(255,255,255,0.3);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+          }
+
+          /* Make icons larger and more visible */
+          .pr-btn-icon svg {
+            width: 26px;
+            height: 26px;
+            stroke-width: 2.5;
+            filter: drop-shadow(0 2px 4px rgba(0,0,0,0.15));
+          }
+
+          .pr-btn-text {
+            flex: 1;
+            text-align: left;
+            font-weight: 700;
+            font-size: 15.5px;
+            letter-spacing: 0.01em;
+          }
+
+          .pr-btn-arrow {
+            margin-left: auto;
+            opacity: 0.95;
+            width: 22px;
+            height: 22px;
+            stroke-width: 2.5;
+          }
+
+          .pr-nav,
+          .pr-swipe-hint {
+            display: none !important;
+          }
+
+          /* Clean Footer */
+          .pr-footer {
+            padding: 24px 20px 32px;
+            font-size: 10.5px;
+            color: #888;
+            line-height: 1.6;
+            background: rgba(255, 255, 255, 0.4);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border-top: 1px solid rgba(255, 255, 255, 0.5);
+            position: relative;
+            z-index: 1;
+            text-align: center;
+            letter-spacing: 0.08em;
+          }
+
+          .pr-card, .pr-btn {
+            -webkit-tap-highlight-color: rgba(249,115,22,0.15);
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+          }
+
+          /* Smooth scrolling */
+          .pr-track {
+            -webkit-overflow-scrolling: touch;
+          }
+        }
       `}</style>
 
       <div className="pr-root">
@@ -612,22 +972,31 @@ export default function Index() {
         <div className="pr-grid" aria-hidden="true" />
         <div className="pr-orb pr-orb-1" aria-hidden="true" />
         <div className="pr-orb pr-orb-2" aria-hidden="true" />
+        <div className="pr-orb-mobile-1" aria-hidden="true" />
 
         <div className="pr-content">
 
-          {/* Hero */}
+          {/* Hero - Greeting Section */}
           <div className="pr-hero">
+            {/* Logo - Mobile Only */}
+            <div className="pr-logo-container">
+              <img src="/TMClog0s.png" alt="TMC Logo" className="pr-logo" />
+            </div>
             
+            <div className="pr-badge">
+              <span className="pr-dot" />
+              WELCOME TO TMC PORTAL
+            </div>
             <h2 className="pr-title">
-              Unified Workspace
-              <span className="pr-title-accent">Tiger's Mark Corp Portal</span>
+              Good day!
+              <span className="pr-title-accent">Select your portal</span>
             </h2>
             <p className="pr-subtitle">
-              Securely access your role-specific environment with enterprise-grade governance and compliance controls
+              Choose your access level to continue to your workspace
             </p>
           </div>
 
-          {/* Carousel */}
+          {/* Portal Buttons List */}
           <div className="pr-carousel-wrap">
             <div
               className="pr-viewport"
@@ -644,7 +1013,7 @@ export default function Index() {
                   <div className="pr-slide" key={i}>
                     <div className="pr-card">
 
-                      {/* Header */}
+                      {/* Header - Hidden on Mobile */}
                       <div className="pr-card-head" style={{ background: `linear-gradient(135deg, ${c.accentDim}, rgba(255,255,255,0))` }}>
                         <div className="pr-card-head-left">
                           <div className="pr-head-icon" style={{ background: c.accentDim, border: `1px solid ${c.accentBorder}` }}>
@@ -653,12 +1022,12 @@ export default function Index() {
                           <span className="pr-role-label" style={{ color: c.accentText }}>{c.role}</span>
                         </div>
                         <span className="pr-badge-pill" style={{ background: c.levelBg, border: `1px solid ${c.levelBorder}`, color: c.levelText }}>
-                          {c.isAdmin ? <AlertCircle size={9} /> : <CheckCircle size={9} />}
+                          {c.isAdmin ? <AlertCircle size={10} /> : <CheckCircle size={10} />}
                           {c.level}
                         </span>
                       </div>
 
-                      {/* Image */}
+                      {/* Image - Hidden on Mobile */}
                       <div className="pr-img-wrap">
                         <img src={c.image} alt={c.imageAlt} loading="lazy" />
                         <div className="pr-img-overlay" />
@@ -694,8 +1063,12 @@ export default function Index() {
                             boxShadow: `0 7px 24px ${c.btnShadow}`,
                           }}
                         >
-                          {c.btnLabel}
-                          <ArrowRight size={14} />
+                          {/* Icon container - shown on mobile with enhanced visibility */}
+                          <div className="pr-btn-icon" style={{ display: 'none', background: 'rgba(255,255,255,0.35)' }}>
+                            {c.headerIcon}
+                          </div>
+                          <span className="pr-btn-text">{c.btnLabel}</span>
+                          <ArrowRight size={18} className="pr-btn-arrow" />
                         </Link>
                       </div>
                     </div>
@@ -704,7 +1077,7 @@ export default function Index() {
               </div>
             </div>
 
-            {/* Nav controls */}
+            {/* Nav controls - Hidden on Mobile */}
             <div className="pr-nav">
               <button
                 className="pr-nav-btn"
@@ -736,7 +1109,9 @@ export default function Index() {
             <p className="pr-swipe-hint">Swipe to explore portals</p>
           </div>
 
-        
+          <p className="pr-footer">
+            Secured by enterprise-grade encryption &nbsp;·&nbsp; All access is logged and monitored
+          </p>
         </div>
       </div>
     </>
