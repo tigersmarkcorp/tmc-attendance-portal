@@ -17,9 +17,6 @@ import {
   CalendarCheck,
   UserCog,
   Keyboard,
-  AlertTriangle,
-  Lock,
-  Eye,
 } from 'lucide-react';
 import adminPortalIcon from '@/assets/Frontadmin.png';
 import saoPortalIcon from '@/assets/FrontSite.png';
@@ -203,15 +200,6 @@ export default function Index() {
         @keyframes float {
           0%, 100% { transform: translateY(0px); }
           50% { transform: translateY(-10px); }
-        }
-        @keyframes gradient-shift {
-          0% { background-position: 0% 50%; }
-          50% { background-position: 100% 50%; }
-          100% { background-position: 0% 50%; }
-        }
-        @keyframes shimmer {
-          0% { background-position: -1000px 0; }
-          100% { background-position: 1000px 0; }
         }
 
         /* ── ROOT ── */
@@ -948,102 +936,55 @@ export default function Index() {
             display: none !important;
           }
 
-          /* Enhanced Footer with Icons - Mobile Style */
+          /* Alert Box Footer - Like the image */
           .pr-footer {
-            padding: 28px 20px 36px;
-            background: linear-gradient(135deg, 
-              rgba(254, 243, 227, 0.95) 0%, 
-              rgba(255, 251, 245, 0.9) 100%);
-            backdrop-filter: blur(16px);
-            -webkit-backdrop-filter: blur(16px);
-            border-top: 2px solid rgba(239, 68, 68, 0.3);
-            position: relative;
-            z-index: 1;
-            text-align: center;
-            overflow: hidden;
-          }
-
-          .pr-footer::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 3px;
-            background: linear-gradient(90deg, 
-              transparent 0%, 
-              #ef4444 20%, 
-              #f97316 50%, 
-              #ef4444 80%, 
-              transparent 100%);
-            animation: shimmer 3s linear infinite;
-            background-size: 1000px 100%;
+            padding: 20px 24px 28px;
+            margin: 0 16px 24px;
+            background: rgba(254, 242, 242, 0.95);
+            border: 1px solid rgba(220, 38, 38, 0.2);
+            border-radius: 16px;
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            box-shadow: 0 4px 16px rgba(220, 38, 38, 0.08);
+            animation: fade-up 0.55s 0.22s ease both;
           }
 
           .pr-footer-content {
             display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 12px;
-            position: relative;
-            z-index: 1;
-          }
-
-          .pr-footer-icons {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            margin-bottom: 4px;
+            align-items: flex-start;
+            gap: 14px;
           }
 
           .pr-footer-icon {
-            width: 32px;
-            height: 32px;
+            flex-shrink: 0;
+            width: 28px;
+            height: 28px;
             display: flex;
             align-items: center;
             justify-content: center;
+            background: rgba(220, 38, 38, 0.12);
             border-radius: 50%;
-            animation: pulse-dot 2s ease-in-out infinite;
-          }
-
-          .pr-footer-icon:nth-child(1) {
-            background: rgba(239, 68, 68, 0.15);
             color: #dc2626;
-            animation-delay: 0s;
-          }
-
-          .pr-footer-icon:nth-child(2) {
-            background: rgba(249, 115, 22, 0.15);
-            color: #ea580c;
-            animation-delay: 0.3s;
-          }
-
-          .pr-footer-icon:nth-child(3) {
-            background: rgba(239, 68, 68, 0.15);
-            color: #dc2626;
-            animation-delay: 0.6s;
+            margin-top: 2px;
           }
 
           .pr-footer-text {
-            font-size: 10.5px;
-            line-height: 1.7;
-            color: #7c2d12;
-            letter-spacing: 0.05em;
-            font-weight: 500;
-            max-width: 90%;
+            flex: 1;
           }
 
-          .pr-footer-highlight {
-            display: inline-flex;
-            align-items: center;
-            gap: 5px;
-            background: rgba(239, 68, 68, 0.12);
-            padding: 4px 10px;
-            border-radius: 6px;
-            font-weight: 600;
+          .pr-footer-title {
+            font-size: 14px;
+            font-weight: 700;
             color: #dc2626;
-            margin-top: 6px;
-            border: 1px solid rgba(239, 68, 68, 0.25);
+            margin-bottom: 4px;
+            line-height: 1.3;
+          }
+
+          .pr-footer-description {
+            font-size: 12px;
+            color: #78716c;
+            line-height: 1.6;
+            font-weight: 400;
           }
 
           .pr-card, .pr-btn {
@@ -1203,28 +1144,17 @@ export default function Index() {
             <p className="pr-swipe-hint">Swipe to explore portals</p>
           </div>
 
-          {/* Footer with Icons - Enhanced */}
+          {/* Footer - Alert Box Style */}
           <div className="pr-footer">
             <div className="pr-footer-content">
-              <div className="pr-footer-icons">
-                <div className="pr-footer-icon">
-                  <AlertTriangle size={18} strokeWidth={2.5} />
-                </div>
-                <div className="pr-footer-icon">
-                  <Lock size={18} strokeWidth={2.5} />
-                </div>
-                <div className="pr-footer-icon">
-                  <Eye size={18} strokeWidth={2.5} />
-                </div>
+              <div className="pr-footer-icon">
+                <AlertCircle size={18} strokeWidth={2.5} />
               </div>
-              <p className="pr-footer-text">
-                User activity is logged and monitored.<br />
-                For technical assistance or to report anomalies,<br />
-                please contact the IT Department.
-              </p>
-              <div className="pr-footer-highlight">
-                <AlertCircle size={14} />
-                <span>SECURE CONNECTION</span>
+              <div className="pr-footer-text">
+                <div className="pr-footer-title">Restricted Access</div>
+                <div className="pr-footer-description">
+                  Authorized admins only. Contact IT Support to request an account.
+                </div>
               </div>
             </div>
           </div>
