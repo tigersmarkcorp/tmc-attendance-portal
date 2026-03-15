@@ -731,7 +731,7 @@ export default function Index() {
             display: flex;
             flex-direction: column;
             gap: 16px;
-            padding: 0 20px 84px;
+            padding: 0 20px 20px;
             transform: none !important;
             transition: none !important;
           }
@@ -849,17 +849,15 @@ export default function Index() {
           .pr-nav,
           .pr-swipe-hint { display: none !important; }
 
-          /* ── FOOTER REMINDER — sticky at bottom ── */
+          /* ── FOOTER REMINDER — sits naturally below cards ── */
           .pr-footer {
-            position: sticky;
-            bottom: 0;
-            left: 0; right: 0;
-            margin: 0;
-            padding: 12px 20px;
-            padding-bottom: calc(12px + env(safe-area-inset-bottom));
+            position: static;
+            margin: 0 16px 24px;
+            padding: 12px 16px;
             background: rgba(255, 241, 241, 0.97);
-            border-top: 1.5px solid rgba(220, 38, 38, 0.20);
-            box-shadow: 0 -4px 20px rgba(220, 38, 38, 0.09);
+            border: 1.5px solid rgba(220, 38, 38, 0.20);
+            border-radius: 14px;
+            box-shadow: 0 2px 12px rgba(220, 38, 38, 0.08);
             backdrop-filter: none;
             -webkit-backdrop-filter: none;
             animation: none;
