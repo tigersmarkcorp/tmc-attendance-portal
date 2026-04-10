@@ -623,7 +623,7 @@ export default function Employees() {
                                   setPayrollEmployee(emp);
                                   setPayrollOpen(true);
                                 }}>
-                                  <DollarSign className="w-4 h-4 mr-2 text-success" />
+                                  <span className="w-4 h-4 mr-2 text-success flex items-center justify-center">₱</span>
                                   View Payroll
                                 </DropdownMenuItem>
                                 <DropdownMenuSeparator />
