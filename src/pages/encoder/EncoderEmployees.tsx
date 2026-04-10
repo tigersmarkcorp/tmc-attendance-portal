@@ -68,6 +68,11 @@ interface Employee {
   special_skills: string | null;
   languages: string | null;
   position_desired: string | null;
+  sss_number: string | null;
+  tin_id: string | null;
+  pagibig_id: string | null;
+  philhealth_id: string | null;
+  nbi_id: string | null;
 }
 
 export default function EncoderEmployees() {
