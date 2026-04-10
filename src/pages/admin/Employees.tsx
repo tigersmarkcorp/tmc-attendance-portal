@@ -113,6 +113,11 @@ interface Employee {
   special_skills: string | null;
   languages: string | null;
   position_desired: string | null;
+  sss_number: string | null;
+  tin_id: string | null;
+  pagibig_id: string | null;
+  philhealth_id: string | null;
+  nbi_id: string | null;
 }
 
 export default function Employees() {
@@ -618,7 +623,7 @@ export default function Employees() {
                                   setPayrollEmployee(emp);
                                   setPayrollOpen(true);
                                 }}>
-<span className="w-4 h-4 mr-2 text-success flex items-center justify-center">₱</span>
+                                  <DollarSign className="w-4 h-4 mr-2 text-success" />
                                   View Payroll
                                 </DropdownMenuItem>
                                 <DropdownMenuSeparator />
