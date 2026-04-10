@@ -17,7 +17,7 @@ export default defineConfig(({ mode }) => ({
       registerType: "autoUpdate",
       includeAssets: ["favicon.ico", "robots.txt"],
       manifest: {
-        name: "TMC - Employee Attendance & Payroll",
+        name: "TMC AT",
         short_name: "TMC AT",
         description: "Enterprise-grade employee attendance management and payroll system",
         theme_color: "#f97316",
