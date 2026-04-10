@@ -17,28 +17,28 @@ export default defineConfig(({ mode }) => ({
       registerType: "autoUpdate",
       includeAssets: ["favicon.ico", "robots.txt"],
       manifest: {
-        name: "TimeTrack Pro - Employee Attendance & Payroll",
-        short_name: "TimeTrack Pro",
+        name: "TMC - Employee Attendance & Payroll",
+        short_name: "TMC Attendance Portal",
         description: "Enterprise-grade employee attendance management and payroll system",
-        theme_color: "#3b82f6",
-        background_color: "#ffffff",
+        theme_color: "#f97316",
+        background_color: "#ea580c",
         display: "standalone",
         orientation: "portrait",
         scope: "/",
         start_url: "/",
         icons: [
           {
-            src: "/pwa-192x192.png",
+            src: "/ad.png",
             sizes: "192x192",
             type: "image/png",
           },
           {
-            src: "/pwa-512x512.png",
+            src: "/ad.png",
             sizes: "512x512",
             type: "image/png",
           },
           {
-            src: "/pwa-512x512.png",
+            src: "/ad.png",
             sizes: "512x512",
             type: "image/png",
             purpose: "maskable",
@@ -69,3 +69,4 @@ export default defineConfig(({ mode }) => ({
     },
   },
 }));
+
