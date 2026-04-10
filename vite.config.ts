@@ -18,7 +18,7 @@ export default defineConfig(({ mode }) => ({
       includeAssets: ["favicon.ico", "robots.txt"],
       manifest: {
         name: "TMC - Employee Attendance & Payroll",
-        short_name: "TMC Attendance Portal",
+        short_name: "TMC AT",
         description: "Enterprise-grade employee attendance management and payroll system",
         theme_color: "#f97316",
         background_color: "#ea580c",
