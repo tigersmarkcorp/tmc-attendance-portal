@@ -81,12 +81,6 @@ export function AddEmployeeForm({ onSuccess, onCancel }: AddEmployeeFormProps) {
     department: '',
     position: '',
     hourlyRate: '',
-    // Government IDs
-    sssNumber: '',
-    tinId: '',
-    pagibigId: '',
-    philhealthId: '',
-    nbiId: '',
     // Account
     username: '',
     password: '',
@@ -275,11 +269,6 @@ export function AddEmployeeForm({ onSuccess, onCancel }: AddEmployeeFormProps) {
         degree_received: formData.degreeReceived || null,
         special_skills: formData.specialSkills || null,
         employment_records: employmentRecords.length > 0 ? employmentRecords : [],
-        sss_number: formData.sssNumber || null,
-        tin_id: formData.tinId || null,
-        pagibig_id: formData.pagibigId || null,
-        philhealth_id: formData.philhealthId || null,
-        nbi_id: formData.nbiId || null,
       };
 
       const { error: employeeError } = await supabase
@@ -639,32 +628,6 @@ export function AddEmployeeForm({ onSuccess, onCancel }: AddEmployeeFormProps) {
             <div className="space-y-2">
               <Label>Hourly Rate ($) *</Label>
               <Input type="number" step="0.01" min="0" value={formData.hourlyRate} onChange={(e) => handleChange('hourlyRate', e.target.value)} required />
-            </div>
-          </div>
-
-          <div className="pt-4 border-t space-y-4">
-            <h4 className="font-semibold">Government IDs</h4>
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-              <div className="space-y-2">
-                <Label>SSS Number</Label>
-                <Input value={formData.sssNumber} onChange={(e) => handleChange('sssNumber', e.target.value)} placeholder="e.g., 01-2345678-9" />
-              </div>
-              <div className="space-y-2">
-                <Label>TIN ID</Label>
-                <Input value={formData.tinId} onChange={(e) => handleChange('tinId', e.target.value)} placeholder="e.g., 123-456-789-000" />
-              </div>
-              <div className="space-y-2">
-                <Label>Pag-IBIG ID</Label>
-                <Input value={formData.pagibigId} onChange={(e) => handleChange('pagibigId', e.target.value)} placeholder="e.g., 1234-5678-9012" />
-              </div>
-              <div className="space-y-2">
-                <Label>PhilHealth ID</Label>
-                <Input value={formData.philhealthId} onChange={(e) => handleChange('philhealthId', e.target.value)} placeholder="e.g., 01-234567890-1" />
-              </div>
-              <div className="space-y-2 sm:col-span-2">
-                <Label>NBI Clearance ID</Label>
-                <Input value={formData.nbiId} onChange={(e) => handleChange('nbiId', e.target.value)} placeholder="e.g., N-12-34-567890" />
-              </div>
             </div>
           </div>
         </TabsContent>
