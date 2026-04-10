@@ -89,11 +89,6 @@ interface Employee {
   special_skills: string | null;
   languages: string | null;
   position_desired: string | null;
-  sss_number: string | null;
-  tin_id: string | null;
-  pagibig_id: string | null;
-  philhealth_id: string | null;
-  nbi_id: string | null;
 }
 
 interface TimeEntry {
@@ -228,11 +223,6 @@ export function EmployeeDetailSheet({
         special_skills: formData.special_skills,
         languages: formData.languages,
         position_desired: formData.position_desired,
-        sss_number: formData.sss_number,
-        tin_id: formData.tin_id,
-        pagibig_id: formData.pagibig_id,
-        philhealth_id: formData.philhealth_id,
-        nbi_id: formData.nbi_id,
       })
       .eq('id', employee.id);
 
@@ -739,58 +729,6 @@ export function EmployeeDetailSheet({
                         />
                       ) : (
                         <p className="text-sm font-medium">{employee.position_desired || '-'}</p>
-                      )}
-                    </div>
-                  </div>
-                </div>
-
-                <Separator />
-
-                {/* Government IDs */}
-                <div>
-                  <h3 className="text-sm font-semibold text-foreground mb-4 flex items-center gap-2">
-                    <Shield className="w-4 h-4 text-primary" />
-                    Government IDs
-                  </h3>
-                  <div className="grid grid-cols-2 gap-4">
-                    <div>
-                      <Label className="text-xs text-muted-foreground">SSS Number</Label>
-                      {isEditing ? (
-                        <Input value={formData.sss_number || ''} onChange={(e) => setFormData({ ...formData, sss_number: e.target.value })} className="mt-1" />
-                      ) : (
-                        <p className="text-sm font-medium">{employee.sss_number || '-'}</p>
-                      )}
-                    </div>
-                    <div>
-                      <Label className="text-xs text-muted-foreground">TIN ID</Label>
-                      {isEditing ? (
-                        <Input value={formData.tin_id || ''} onChange={(e) => setFormData({ ...formData, tin_id: e.target.value })} className="mt-1" />
-                      ) : (
-                        <p className="text-sm font-medium">{employee.tin_id || '-'}</p>
-                      )}
-                    </div>
-                    <div>
-                      <Label className="text-xs text-muted-foreground">Pag-IBIG ID</Label>
-                      {isEditing ? (
-                        <Input value={formData.pagibig_id || ''} onChange={(e) => setFormData({ ...formData, pagibig_id: e.target.value })} className="mt-1" />
-                      ) : (
-                        <p className="text-sm font-medium">{employee.pagibig_id || '-'}</p>
-                      )}
-                    </div>
-                    <div>
-                      <Label className="text-xs text-muted-foreground">PhilHealth ID</Label>
-                      {isEditing ? (
-                        <Input value={formData.philhealth_id || ''} onChange={(e) => setFormData({ ...formData, philhealth_id: e.target.value })} className="mt-1" />
-                      ) : (
-                        <p className="text-sm font-medium">{employee.philhealth_id || '-'}</p>
-                      )}
-                    </div>
-                    <div className="col-span-2">
-                      <Label className="text-xs text-muted-foreground">NBI Clearance ID</Label>
-                      {isEditing ? (
-                        <Input value={formData.nbi_id || ''} onChange={(e) => setFormData({ ...formData, nbi_id: e.target.value })} className="mt-1" />
-                      ) : (
-                        <p className="text-sm font-medium">{employee.nbi_id || '-'}</p>
                       )}
                     </div>
                   </div>
