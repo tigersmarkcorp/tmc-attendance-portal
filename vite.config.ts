@@ -16,16 +16,19 @@ export default defineConfig(({ mode }) => ({
     VitePWA({
       registerType: "autoUpdate",
       includeAssets: ["favicon.ico", "robots.txt"],
+
       manifest: {
         name: "TMC AT",
         short_name: "TMC AT",
-        description: "Enterprise-grade employee attendance management and payroll system",
+        description:
+          "Enterprise-grade employee attendance management and payroll system",
         theme_color: "#f97316",
         background_color: "#ea580c",
         display: "standalone",
         orientation: "portrait",
         scope: "/",
         start_url: "/",
+
         icons: [
           {
             src: "/ad.png",
@@ -45,8 +48,13 @@ export default defineConfig(({ mode }) => ({
           },
         ],
       },
+
       workbox: {
+        // ✅ Increase the precache file size limit from 2 MB to 5 MB
+        maximumFileSizeToCacheInBytes: 5 * 1024 * 1024,
+
         globPatterns: ["**/*.{js,css,html,ico,png,svg,woff2}"],
+
         runtimeCaching: [
           {
             urlPattern: /^https:\/\/.*\.supabase\.co\/.*/i,
@@ -63,6 +71,7 @@ export default defineConfig(({ mode }) => ({
       },
     }),
   ].filter(Boolean),
+
   resolve: {
     alias: {
       "@": path.resolve(__dirname, "./src"),
