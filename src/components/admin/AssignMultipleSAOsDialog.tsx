@@ -99,10 +99,11 @@ export function AssignMultipleSAOsDialog({
     setSaving(true);
     try {
       // Reset junction
-      await supabase
+      const { error: deleteError } = await supabase
         .from('worker_sao_assignments')
         .delete()
         .eq('worker_id', workerId);
+      if (deleteError) throw deleteError;
 
       if (selectedIds.length > 0) {
         const rows = selectedIds.map(sao_employee_id => ({
@@ -116,10 +117,11 @@ export function AssignMultipleSAOsDialog({
       }
 
       // Mirror first selected as legacy primary (for backward compatibility)
-      await supabase
+      const { error: workerError } = await supabase
         .from('workers')
         .update({ assigned_sao_id: selectedIds[0] ?? null })
         .eq('id', workerId);
+      if (workerError) throw workerError;
 
       toast.success(
         selectedIds.length > 0
@@ -177,6 +179,7 @@ export function AssignMultipleSAOsDialog({
                       <Checkbox
                         checked={isSelected}
                         onCheckedChange={() => toggle(sao.id)}
+                        onClick={(event) => event.stopPropagation()}
                         className="mt-0.5"
                       />
                       <div className="flex-1 min-w-0">
