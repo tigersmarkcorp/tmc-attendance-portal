@@ -140,6 +140,9 @@ export default function SiteOfficers() {
       .on('postgres_changes', { event: '*', schema: 'public', table: 'workers' }, () => {
         fetchWorkerCounts();
       })
+      .on('postgres_changes', { event: '*', schema: 'public', table: 'worker_sao_assignments' }, () => {
+        fetchWorkerCounts();
+      })
       .on('postgres_changes', { event: '*', schema: 'public', table: 'employee_location_assignments' }, () => {
         fetchSAOList();
       })
@@ -194,19 +197,59 @@ export default function SiteOfficers() {
   };
 
   const fetchWorkerCounts = async () => {
-    const { data } = await supabase
-      .from('workers')
-      .select('assigned_sao_id');
-    
-    if (data) {
-      const counts: WorkerCount = {};
-      data.forEach(worker => {
-        if (worker.assigned_sao_id) {
-          counts[worker.assigned_sao_id] = (counts[worker.assigned_sao_id] || 0) + 1;
-        }
-      });
-      setWorkerCounts(counts);
-    }
+    // Count via both legacy assigned_sao_id and the multi-assignment junction table.
+    // A worker assigned to multiple SAOs counts once per SAO, but a worker assigned
+    // to the same SAO via both methods is only counted once.
+    const pageSize = 1000;
+
+    const fetchAllWorkers = async () => {
+      const rows: { id: string; assigned_sao_id: string | null }[] = [];
+      for (let from = 0; ; from += pageSize) {
+        const { data, error } = await supabase
+          .from('workers')
+          .select('id, assigned_sao_id')
+          .range(from, from + pageSize - 1);
+        if (error || !data) break;
+        rows.push(...data);
+        if (data.length < pageSize) break;
+      }
+      return rows;
+    };
+
+    const fetchAllAssignments = async () => {
+      const rows: { worker_id: string; sao_employee_id: string }[] = [];
+      for (let from = 0; ; from += pageSize) {
+        const { data, error } = await supabase
+          .from('worker_sao_assignments')
+          .select('worker_id, sao_employee_id')
+          .range(from, from + pageSize - 1);
+        if (error || !data) break;
+        rows.push(...data);
+        if (data.length < pageSize) break;
+      }
+      return rows;
+    };
+
+    const [workers, assignments] = await Promise.all([
+      fetchAllWorkers(),
+      fetchAllAssignments(),
+    ]);
+
+    const saoToWorkers: Record<string, Set<string>> = {};
+    workers.forEach(w => {
+      if (w.assigned_sao_id) {
+        (saoToWorkers[w.assigned_sao_id] ||= new Set()).add(w.id);
+      }
+    });
+    assignments.forEach(a => {
+      (saoToWorkers[a.sao_employee_id] ||= new Set()).add(a.worker_id);
+    });
+
+    const counts: WorkerCount = {};
+    Object.entries(saoToWorkers).forEach(([saoId, set]) => {
+      counts[saoId] = set.size;
+    });
+    setWorkerCounts(counts);
   };
 
   const handleSAOCreated = () => {
@@ -411,7 +454,26 @@ export default function SiteOfficers() {
               </DropdownMenuContent>
             </DropdownMenu>
           </div>
-         
+          <Dialog open={showAddDialog} onOpenChange={setShowAddDialog}>
+            <DialogTrigger asChild>
+              <Button className="gap-2 bg-gradient-to-r from-violet-500 to-indigo-500 hover:from-violet-600 hover:to-indigo-600 shadow-lg hover:shadow-xl transition-shadow">
+                <UserPlus className="w-4 h-4" />
+                Add Site Officer
+              </Button>
+            </DialogTrigger>
+            <DialogContent className="max-w-2xl max-h-[90vh] overflow-y-auto">
+              <DialogHeader>
+                <DialogTitle className="flex items-center gap-2">
+                  <ShieldCheck className="w-5 h-5 text-violet-500" />
+                  Add Site Administration Officer
+                </DialogTitle>
+                <DialogDescription>
+                  Create a new SAO account with portal access for managing workers.
+                </DialogDescription>
+              </DialogHeader>
+              <AddSAOForm onSuccess={handleSAOCreated} />
+            </DialogContent>
+          </Dialog>
         </div>
 
         {/* SAO Cards Carousel */}
@@ -514,7 +576,12 @@ export default function SiteOfficers() {
                     ? 'Try adjusting your search or filter criteria'
                     : 'Get started by adding your first site administration officer'}
                 </p>
-               
+                {!searchQuery && statusFilter === 'all' && (
+                  <Button onClick={() => setShowAddDialog(true)} className="bg-gradient-to-r from-violet-500 to-indigo-500">
+                    <UserPlus className="w-4 h-4 mr-2" />
+                    Add First SAO
+                  </Button>
+                )}
               </div>
             ) : (
               <div className="overflow-x-auto">
@@ -615,7 +682,7 @@ export default function SiteOfficers() {
                                   setPayrollSAO(sao);
                                   setPayrollOpen(true);
                                 }}>
-                                 <span className="w-4 h-4 mr-2 text-success flex items-center justify-center">₱</span>
+                                  <DollarSign className="w-4 h-4 mr-2 text-success" />
                                   View Payroll
                                 </DropdownMenuItem>
                                 <DropdownMenuSeparator />
