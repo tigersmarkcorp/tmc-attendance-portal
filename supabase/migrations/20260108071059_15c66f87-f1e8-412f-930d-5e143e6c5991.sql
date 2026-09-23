@@ -1,0 +1,2 @@
+-- Add 'site_admin_officer' to the app_role enum
+ALTER TYPE public.app_role ADD VALUE IF NOT EXISTS 'site_admin_officer';

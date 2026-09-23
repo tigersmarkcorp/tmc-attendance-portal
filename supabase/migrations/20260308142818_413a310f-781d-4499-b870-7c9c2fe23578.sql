@@ -1,0 +1,1 @@
+ALTER TABLE public.leave_requests ADD COLUMN IF NOT EXISTS undertime_hours numeric DEFAULT NULL;
