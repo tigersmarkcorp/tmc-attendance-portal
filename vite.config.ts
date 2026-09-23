@@ -30,17 +30,17 @@ export default defineConfig(({ mode }) => ({
           {
             src: "/tmclg.jpg",
             sizes: "192x192",
-            type: "image/png",
+            type: "image/jpg",
           },
           {
             src: "/tmclg.jpg",
             sizes: "512x512",
-            type: "image/png",
+            type: "image/jpg",
           },
           {
             src: "/tmclg.jpg",
             sizes: "512x512",
-            type: "image/png",
+            type: "image/jpg",
             purpose: "maskable",
           },
         ],
