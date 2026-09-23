@@ -28,17 +28,17 @@ export default defineConfig(({ mode }) => ({
         start_url: "/",
         icons: [
           {
-            src: "/TMClog0s.png",
+            src: "/tmclg.jpg",
             sizes: "192x192",
             type: "image/png",
           },
           {
-            src: "/TMClog0s.png",
+            src: "/tmclg.jpg",
             sizes: "512x512",
             type: "image/png",
           },
           {
-            src: "/TMClog0s.png",
+            src: "/tmclg.jpg",
             sizes: "512x512",
             type: "image/png",
             purpose: "maskable",
