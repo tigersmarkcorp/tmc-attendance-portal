@@ -83,36 +83,13 @@ export default function EmployeeLogin() {
         className="hidden lg:flex lg:w-1/2 relative overflow-hidden bg-cover bg-center"
         style={{ backgroundImage: `url(${loginImage})` }}
       >
-        {/* Gradient overlay for text legibility */}
-        <div className="absolute inset-0 bg-gradient-to-t from-slate-950/90 via-slate-950/30 to-slate-950/60" />
-
+       
         <div className="relative z-10 flex flex-col justify-between w-full p-12 text-white">
           {/* Top brand mark */}
-          <div className="flex items-center gap-3">
-            <div className="p-2.5 rounded-lg bg-white/10 backdrop-blur-sm border border-white/20">
-              <Clock className="w-6 h-6" />
-            </div>
-            <div>
-              <p className="text-lg font-semibold tracking-tight">TimeTrack Pro</p>
-              <p className="text-xs text-white/60">Employee Portal</p>
-            </div>
-          </div>
+         
 
           {/* Bottom messaging */}
-          <div className="max-w-md space-y-4">
-            <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-white/10 backdrop-blur-sm border border-white/20 text-xs font-medium">
-              <Clock className="w-3.5 h-3.5" />
-              Employee Self-Service
-            </div>
-            <h2 className="text-3xl font-bold leading-tight">
-              Manage your time, all in one place
-            </h2>
-            <p className="text-sm text-white/70 leading-relaxed">
-              Clock in and out, view your timesheets, and submit leave requests.
-              Your credentials were provided by your administrator — contact HR
-              if you have any login issues.
-            </p>
-          </div>
+          
         </div>
       </div>
 
