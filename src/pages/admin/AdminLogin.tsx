@@ -7,7 +7,7 @@ import { Label } from '@/components/ui/label';
 import { useToast } from '@/hooks/use-toast';
 import { Shield, Loader2, Lock, Mail } from 'lucide-react';
 import { z } from 'zod';
-import loginImage from '@/assets/model8.png';
+import loginImage from '@/assets/modellogin1.png';
 import tmcLogo from '/TMClog0s.png';
 
 const loginSchema = z.object({
@@ -84,18 +84,19 @@ export default function AdminLogin() {
         className="hidden lg:flex lg:w-1/2 relative overflow-hidden bg-cover bg-center"
         style={{ backgroundImage: `url(${loginImage})` }}
       >
-    
-
-      
+       
+        <div className="relative z-10 flex flex-col justify-between w-full p-12 text-white">
+          {/* Top brand mark */}
+          
 
           {/* Bottom messaging */}
-         
+          
         </div>
       </div>
 
       {/* Right Panel - Login Form */}
       <div className="flex-1 flex items-center justify-center px-4 py-6 sm:px-6 sm:py-8 bg-background">
-        <div className="w-full max-w-sm text-center">
+        <div className="w-full max-w-sm text-center"> 
           {/* Header */}
           <div className="mb-6 flex flex-col items-center">
             <img
