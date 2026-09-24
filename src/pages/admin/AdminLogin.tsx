@@ -7,7 +7,7 @@ import { Label } from '@/components/ui/label';
 import { useToast } from '@/hooks/use-toast';
 import { Shield, Loader2, Lock, Mail } from 'lucide-react';
 import { z } from 'zod';
-import loginImage from '@/assets/modellogin1.png';
+import loginImage from '@/assets/model8.png';
 import tmcLogo from '/TMClog0s.png';
 
 const loginSchema = z.object({
