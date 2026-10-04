@@ -423,6 +423,32 @@ const FAQS = [
   },
 ];
 
+const GooglePlayIcon = ({ size = 24 }) => (
+  <svg width={size} height={Math.round((size * 26) / 24)} viewBox="0 0 24 26" aria-hidden="true">
+    <path d="M1.2 1.1C.9 1.4.8 1.9.8 2.5v21c0 .6.1 1.1.5 1.4l.1.1L13.2 13v-.3L1.3 1z" fill="#00D7FE" />
+    <path d="M17.1 16.9 13.2 13v-.3l3.9-3.9.1.1 4.7 2.7c1.3.8 1.3 2 0 2.7l-4.7 2.7z" fill="#FFCE00" />
+    <path d="M17.2 16.8 13.2 12.9 1.2 24.9c.4.5 1.2.5 2 .1z" fill="#FF3A44" />
+    <path d="M17.2 9 3.2.9C2.4.4 1.6.5 1.2 1.1l12 11.8z" fill="#00F076" />
+  </svg>
+);
+
+const AppleIcon = ({ size = 24 }) => (
+  <svg width={size} height={size} viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+    <path d="M12.152 6.896c-.948 0-2.415-1.078-3.96-1.04-2.04.027-3.91 1.183-4.961 3.014-2.117 3.675-.546 9.103 1.519 12.09 1.013 1.454 2.208 3.09 3.792 3.039 1.52-.065 2.09-.987 3.935-.987 1.831 0 2.35.987 3.96.948 1.637-.026 2.676-1.48 3.676-2.948 1.156-1.688 1.636-3.325 1.662-3.415-.039-.013-3.182-1.221-3.22-4.857-.026-3.04 2.48-4.494 2.597-4.559-1.429-2.09-3.623-2.324-4.39-2.376-2-.156-3.675 1.09-4.61 1.09zM15.53 3.83c.843-1.012 1.4-2.427 1.245-3.83-1.207.052-2.662.805-3.532 1.818-.78.896-1.454 2.338-1.273 3.714 1.338.104 2.715-.688 3.559-1.701" />
+  </svg>
+);
+
+const STORE_INFO = {
+  google: {
+    title: 'Not available on Google Play yet',
+    text: 'The TMC Portal app is not listed on Google Play right now. Please download the APK file to install it on your Android device.',
+  },
+  apple: {
+    title: 'Not available on the App Store yet',
+    text: 'The TMC Portal app is not listed on the App Store right now. Android users can download the APK file, and iPhone users can open the web app in their browser.',
+  },
+};
+
 const peso = new Intl.NumberFormat('en-PH', { style: 'currency', currency: 'PHP', maximumFractionDigits: 0 });
 const WORKING_DAYS = 260;
 
@@ -445,7 +471,7 @@ export default function Index() {
   const [plan, setPlan] = useState('business');
   const [form, setForm] = useState({ company: '', email: '', size: '' });
   const [submitted, setSubmitted] = useState(false);
-  const [showPlayModal, setShowPlayModal] = useState(false);
+  const [storeModal, setStoreModal] = useState(null); // 'google' | 'apple' | null
 
   useEffect(() => {
     if (!loading && user && role) {
@@ -482,13 +508,18 @@ export default function Index() {
     };
   }, [openMenu, mobileOpen]);
 
-  // Close the Google Play popup with Escape
+  // Store popup: close with Escape and lock page scroll while open
   useEffect(() => {
-    if (!showPlayModal) return;
-    const onKey = (e) => { if (e.key === 'Escape') setShowPlayModal(false); };
+    if (!storeModal) return;
+    const onKey = (e) => { if (e.key === 'Escape') setStoreModal(null); };
+    const prevOverflow = document.body.style.overflow;
+    document.body.style.overflow = 'hidden';
     document.addEventListener('keydown', onKey);
-    return () => document.removeEventListener('keydown', onKey);
-  }, [showPlayModal]);
+    return () => {
+      document.removeEventListener('keydown', onKey);
+      document.body.style.overflow = prevOverflow;
+    };
+  }, [storeModal]);
 
   // Scroll-reveal motion: fade/slide elements with .tp-reveal (or .tp-reveal-zoom) into view once, on scroll.
   useEffect(() => {
@@ -1037,17 +1068,98 @@ html { scroll-behavior: smooth; }
   .tp-footer-grid { grid-template-columns: 1fr; gap: 36px; }
 }
 
-/* ── GOOGLE PLAY BUTTON + POPUP ── */
-.tp-play-btn { display: inline-flex; align-items: center; gap: 10px; height: 50px; padding: 0 20px 0 16px; background: #000; color: #fff; border: 1.5px solid #a6a6a6; border-radius: 10px; cursor: pointer; transition: transform .18s ease, box-shadow .18s ease, background-color .18s ease; }
-.tp-play-btn:hover { transform: translateY(-2px); box-shadow: 0 10px 22px rgba(11,31,58,0.16); background: #111; }
-.tp-play-btn:active { transform: translateY(0); box-shadow: none; }
-.tp-play-text { display: flex; flex-direction: column; align-items: flex-start; line-height: 1; text-align: left; }
-.tp-play-text small { font-size: 0.6rem; font-weight: 500; letter-spacing: 0.06em; margin-bottom: 3px; }
-.tp-play-text strong { font-size: 1.1rem; font-weight: 600; letter-spacing: -0.01em; }
-.tp-modal-backdrop { position: fixed; inset: 0; z-index: 100; display: flex; align-items: center; justify-content: center; padding: 20px; background: rgba(11,31,58,0.55); animation: tp-menu-in .16s ease-out both; }
-.tp-modal { position: relative; width: 100%; max-width: 420px; display: flex; flex-direction: column; align-items: flex-start; gap: 14px; padding: 32px; background: var(--white); border-radius: 20px; box-shadow: 0 24px 60px rgba(11,31,58,0.3); }
-.tp-modal-x { position: absolute; top: 14px; right: 14px; width: 36px; height: 36px; display: flex; align-items: center; justify-content: center; background: var(--grey-50); border: 1px solid var(--grey-200); border-radius: 50%; color: var(--navy); cursor: pointer; }
-.tp-modal-actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 6px; }
+/* ── MOBILE APP + STORE BUTTONS ── */
+.tp-role-actions { flex-direction: column; align-items: flex-start; gap: 24px; }
+.tp-get-app { width: 100%; padding-top: 22px; border-top: 1px solid var(--grey-200); }
+.tp-get-app-label { margin-bottom: 12px; font-size: 0.85rem; font-weight: 600; color: var(--grey-500); }
+.tp-store-row { display: flex; flex-wrap: wrap; gap: 12px; }
+.tp-root .tp-store-btn {
+  display: inline-flex; align-items: center; gap: 10px; min-width: 168px; height: 54px; padding: 0 20px 0 16px;
+  background: #000; color: #fff; border: 1.5px solid #3a3f4a; border-radius: 12px;
+  font-family: inherit; text-align: left; text-decoration: none; cursor: pointer;
+  transition: transform .18s ease, box-shadow .18s ease, background-color .18s ease, color .18s ease;
+}
+.tp-root .tp-store-btn:hover { transform: translateY(-2px); box-shadow: 0 10px 22px rgba(11,31,58,0.18); background: #14181f; }
+.tp-root .tp-store-btn:active { transform: translateY(0); box-shadow: none; }
+.tp-root .tp-store-btn svg { flex-shrink: 0; }
+.tp-root .tp-store-apk { background: var(--white); color: var(--navy); border-color: var(--navy); }
+.tp-root .tp-store-apk:hover { background: var(--navy); color: var(--white); }
+.tp-store-text { display: flex; flex-direction: column; align-items: flex-start; line-height: 1; }
+.tp-store-text small { margin-bottom: 4px; font-size: 0.6rem; font-weight: 500; letter-spacing: 0.07em; opacity: 0.85; }
+.tp-store-text strong { font-size: 1.02rem; font-weight: 600; letter-spacing: -0.01em; white-space: nowrap; }
+
+/* ── STORE POPUP ── */
+.tp-modal-backdrop {
+  position: fixed; inset: 0; z-index: 100; display: flex; align-items: center; justify-content: center; padding: 20px;
+  background: rgba(11,31,58,0.62); -webkit-backdrop-filter: blur(4px); backdrop-filter: blur(4px);
+  animation: tp-fade .18s ease-out both;
+}
+.tp-modal {
+  position: relative; width: 100%; max-width: 440px; max-height: calc(100vh - 40px); overflow-y: auto;
+  background: var(--white); border-radius: 22px; box-shadow: 0 30px 80px rgba(11,31,58,0.38);
+  animation: tp-modal-in .24s cubic-bezier(.22,.61,.36,1) both;
+}
+.tp-modal-hero {
+  display: flex; align-items: center; justify-content: center; padding: 36px 24px 44px;
+  background: linear-gradient(135deg, var(--navy) 0%, var(--navy-soft) 100%);
+}
+.tp-modal-tile {
+  width: 72px; height: 72px; display: flex; align-items: center; justify-content: center;
+  background: var(--white); color: var(--navy); border-radius: 20px; box-shadow: 0 12px 28px rgba(0,0,0,0.28);
+}
+.tp-modal-x {
+  position: absolute; top: 14px; right: 14px; width: 36px; height: 36px; display: flex; align-items: center; justify-content: center;
+  background: rgba(255,255,255,0.12); border: 1px solid rgba(255,255,255,0.22); border-radius: 50%; color: var(--white); cursor: pointer;
+  transition: background-color .15s ease;
+}
+.tp-modal-x:hover { background: rgba(255,255,255,0.22); }
+.tp-modal-body { padding: 26px 28px 8px; text-align: center; }
+.tp-modal-pill {
+  display: inline-block; margin-bottom: 14px; padding: 5px 14px; border-radius: 999px;
+  background: var(--orange-tint); color: var(--orange-deep); font-size: 0.8rem; font-weight: 600;
+}
+.tp-modal-title { margin-bottom: 10px; font-family: 'Space Grotesk', sans-serif; font-size: 1.35rem; font-weight: 600; line-height: 1.25; letter-spacing: -0.02em; color: var(--navy); }
+.tp-modal-text { font-size: 0.97rem; line-height: 1.6; color: var(--grey-500); }
+.tp-modal-actions { display: flex; gap: 12px; padding: 24px 28px 28px; }
+.tp-modal-actions .tp-btn { flex: 1; padding: 0 16px; }
+.tp-root .tp-modal .tp-btn-primary { color: var(--navy); }
+.tp-root .tp-modal .tp-btn-outline { color: var(--navy); }
+.tp-root .tp-modal .tp-btn-outline:hover { color: var(--white); }
+@keyframes tp-fade { from { opacity: 0; } to { opacity: 1; } }
+@keyframes tp-modal-in { from { opacity: 0; transform: translateY(14px) scale(0.97); } to { opacity: 1; transform: none; } }
+
+/* ── EXTRA RESPONSIVE FIXES ── */
+.tp-root { overflow-x: clip; }
+.tp-hero-grid > *, .tp-feat-grid > *, .tp-ind-grid > *, .tp-apps-grid > *, .tp-faq-grid > *, .tp-start-grid > *, .tp-role-grid > * { min-width: 0; }
+
+@media (max-width: 640px) {
+  .tp-role-actions { align-items: stretch; gap: 20px; }
+  .tp-role-login { width: 100%; }
+  .tp-store-row { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+  .tp-root .tp-store-btn { min-width: 0; width: 100%; padding: 0 14px 0 12px; }
+  .tp-root .tp-store-apk { grid-column: 1 / -1; justify-content: center; }
+}
+@media (max-width: 520px) {
+  .tp-h1 { font-size: 2.2rem; }
+  .tp-section-head { margin-bottom: 32px; }
+  .tp-hero-photo img { max-height: 340px; }
+  .tp-role-grid { gap: 36px; }
+  .tp-plan { padding: 26px 22px; }
+  .tp-plan-badge { left: 22px; }
+  .tp-seg { gap: 20px; }
+  .tp-faq-item summary { font-size: 1rem; }
+  .tp-footer-bottom { flex-direction: column; }
+  .tp-modal-backdrop { align-items: flex-end; padding: 12px; }
+  .tp-modal-body { padding: 22px 22px 6px; }
+  .tp-modal-actions { flex-direction: column; padding: 20px 22px 22px; }
+}
+@media (max-width: 360px) {
+  .tp-store-row { grid-template-columns: 1fr; }
+  .tp-root .tp-store-apk { grid-column: auto; justify-content: flex-start; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .tp-modal, .tp-modal-backdrop { animation: none; }
+}
 
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
@@ -1468,26 +1580,37 @@ html { scroll-behavior: smooth; }
                     </ul>
 
                     <div className="tp-role-actions">
-                      <Link to={p.to} className="tp-btn tp-btn-primary">
+                      <Link to={p.to} className="tp-btn tp-btn-primary tp-role-login">
                         {p.cta}
                         <ArrowRight size={18} aria-hidden="true" />
                       </Link>
-                      <a href="#" className="tp-btn tp-btn-outline" download>
-                        <Download size={18} aria-hidden="true" />
-                        Install APK file
-                      </a>
-                      <button type="button" className="tp-play-btn" onClick={() => setShowPlayModal(true)} aria-label="Get it on Google Play">
-                        <svg width="24" height="26" viewBox="0 0 24 26" aria-hidden="true">
-                          <path d="M1.2 1.1C.9 1.4.8 1.9.8 2.5v21c0 .6.1 1.1.5 1.4l.1.1L13.2 13v-.3L1.3 1z" fill="#00D7FE" />
-                          <path d="M17.1 16.9 13.2 13v-.3l3.9-3.9.1.1 4.7 2.7c1.3.8 1.3 2 0 2.7l-4.7 2.7z" fill="#FFCE00" />
-                          <path d="M17.2 16.8 13.2 12.9 1.2 24.9c.4.5 1.2.5 2 .1z" fill="#FF3A44" />
-                          <path d="M17.2 9 3.2.9C2.4.4 1.6.5 1.2 1.1l12 11.8z" fill="#00F076" />
-                        </svg>
-                        <span className="tp-play-text">
-                          <small>GET IT ON</small>
-                          <strong>Google Play</strong>
-                        </span>
-                      </button>
+
+                      <div className="tp-get-app">
+                        <p className="tp-get-app-label">Get the mobile app</p>
+                        <div className="tp-store-row">
+                          <a href="#" className="tp-store-btn tp-store-apk" download>
+                            <Download size={22} aria-hidden="true" />
+                            <span className="tp-store-text">
+                              <small>ANDROID</small>
+                              <strong>Install APK file</strong>
+                            </span>
+                          </a>
+                          <button type="button" className="tp-store-btn" onClick={() => setStoreModal('google')} aria-label="Get it on Google Play">
+                            <GooglePlayIcon size={22} />
+                            <span className="tp-store-text">
+                              <small>GET IT ON</small>
+                              <strong>Google Play</strong>
+                            </span>
+                          </button>
+                          <button type="button" className="tp-store-btn" onClick={() => setStoreModal('apple')} aria-label="Download on the App Store">
+                            <AppleIcon size={24} />
+                            <span className="tp-store-text">
+                              <small>DOWNLOAD ON THE</small>
+                              <strong>App Store</strong>
+                            </span>
+                          </button>
+                        </div>
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -1664,22 +1787,39 @@ html { scroll-behavior: smooth; }
           </section>
         </main>
 
-        {/* ═════════ GOOGLE PLAY POPUP ═════════ */}
-        {showPlayModal && (
-          <div className="tp-modal-backdrop" onClick={() => setShowPlayModal(false)}>
-            <div className="tp-modal" role="dialog" aria-modal="true" aria-labelledby="play-modal-title" onClick={(e) => e.stopPropagation()}>
-              <button type="button" className="tp-modal-x" aria-label="Close" onClick={() => setShowPlayModal(false)}>
+        {/* ═════════ APP STORE POPUP ═════════ */}
+        {storeModal && (
+          <div className="tp-modal-backdrop" onClick={() => setStoreModal(null)}>
+            <div
+              className="tp-modal"
+              role="dialog"
+              aria-modal="true"
+              aria-labelledby="store-modal-title"
+              aria-describedby="store-modal-desc"
+              onClick={(e) => e.stopPropagation()}
+            >
+              <button type="button" className="tp-modal-x" aria-label="Close" onClick={() => setStoreModal(null)}>
                 <X size={18} aria-hidden="true" />
               </button>
-              <span className="tp-done-icon"><Smartphone size={24} aria-hidden="true" /></span>
-              <h3 className="tp-h3" id="play-modal-title" style={{ fontSize: '1.25rem' }}>Not available right now</h3>
-              <p>The app is not on Google Play yet. Please download the APK file instead.</p>
+
+              <div className="tp-modal-hero">
+                <span className="tp-modal-tile">
+                  {storeModal === 'google' ? <GooglePlayIcon size={34} /> : <AppleIcon size={38} />}
+                </span>
+              </div>
+
+              <div className="tp-modal-body">
+                <span className="tp-modal-pill">Not available yet</span>
+                <h3 className="tp-modal-title" id="store-modal-title">{STORE_INFO[storeModal].title}</h3>
+                <p className="tp-modal-text" id="store-modal-desc">{STORE_INFO[storeModal].text}</p>
+              </div>
+
               <div className="tp-modal-actions">
-                <a href="#" className="tp-btn tp-btn-primary" download onClick={() => setShowPlayModal(false)}>
+                <a href="#" className="tp-btn tp-btn-primary" download onClick={() => setStoreModal(null)}>
                   <Download size={18} aria-hidden="true" />
                   Download APK file
                 </a>
-                <button type="button" className="tp-btn tp-btn-outline" onClick={() => setShowPlayModal(false)}>Close</button>
+                <button type="button" className="tp-btn tp-btn-outline" onClick={() => setStoreModal(null)}>Close</button>
               </div>
             </div>
           </div>
