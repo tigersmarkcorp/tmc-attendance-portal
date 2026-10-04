@@ -445,6 +445,7 @@ export default function Index() {
   const [plan, setPlan] = useState('business');
   const [form, setForm] = useState({ company: '', email: '', size: '' });
   const [submitted, setSubmitted] = useState(false);
+  const [showPlayModal, setShowPlayModal] = useState(false);
 
   useEffect(() => {
     if (!loading && user && role) {
@@ -480,6 +481,14 @@ export default function Index() {
       document.removeEventListener('keydown', onKey);
     };
   }, [openMenu, mobileOpen]);
+
+  // Close the Google Play popup with Escape
+  useEffect(() => {
+    if (!showPlayModal) return;
+    const onKey = (e) => { if (e.key === 'Escape') setShowPlayModal(false); };
+    document.addEventListener('keydown', onKey);
+    return () => document.removeEventListener('keydown', onKey);
+  }, [showPlayModal]);
 
   // Scroll-reveal motion: fade/slide elements with .tp-reveal (or .tp-reveal-zoom) into view once, on scroll.
   useEffect(() => {
@@ -1027,6 +1036,19 @@ html { scroll-behavior: smooth; }
   .tp-hero-actions .tp-btn { width: 100%; }
   .tp-footer-grid { grid-template-columns: 1fr; gap: 36px; }
 }
+
+/* ── GOOGLE PLAY BUTTON + POPUP ── */
+.tp-play-btn { display: inline-flex; align-items: center; gap: 10px; height: 50px; padding: 0 20px 0 16px; background: #000; color: #fff; border: 1.5px solid #a6a6a6; border-radius: 10px; cursor: pointer; transition: transform .18s ease, box-shadow .18s ease, background-color .18s ease; }
+.tp-play-btn:hover { transform: translateY(-2px); box-shadow: 0 10px 22px rgba(11,31,58,0.16); background: #111; }
+.tp-play-btn:active { transform: translateY(0); box-shadow: none; }
+.tp-play-text { display: flex; flex-direction: column; align-items: flex-start; line-height: 1; text-align: left; }
+.tp-play-text small { font-size: 0.6rem; font-weight: 500; letter-spacing: 0.06em; margin-bottom: 3px; }
+.tp-play-text strong { font-size: 1.1rem; font-weight: 600; letter-spacing: -0.01em; }
+.tp-modal-backdrop { position: fixed; inset: 0; z-index: 100; display: flex; align-items: center; justify-content: center; padding: 20px; background: rgba(11,31,58,0.55); animation: tp-menu-in .16s ease-out both; }
+.tp-modal { position: relative; width: 100%; max-width: 420px; display: flex; flex-direction: column; align-items: flex-start; gap: 14px; padding: 32px; background: var(--white); border-radius: 20px; box-shadow: 0 24px 60px rgba(11,31,58,0.3); }
+.tp-modal-x { position: absolute; top: 14px; right: 14px; width: 36px; height: 36px; display: flex; align-items: center; justify-content: center; background: var(--grey-50); border: 1px solid var(--grey-200); border-radius: 50%; color: var(--navy); cursor: pointer; }
+.tp-modal-actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 6px; }
+
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
   .tp-hero-copy, .tp-menu, .tp-mega, .tp-topbar, .tp-topbar-badge { animation: none; }
@@ -1454,6 +1476,18 @@ html { scroll-behavior: smooth; }
                         <Download size={18} aria-hidden="true" />
                         Install APK file
                       </a>
+                      <button type="button" className="tp-play-btn" onClick={() => setShowPlayModal(true)} aria-label="Get it on Google Play">
+                        <svg width="24" height="26" viewBox="0 0 24 26" aria-hidden="true">
+                          <path d="M1.2 1.1C.9 1.4.8 1.9.8 2.5v21c0 .6.1 1.1.5 1.4l.1.1L13.2 13v-.3L1.3 1z" fill="#00D7FE" />
+                          <path d="M17.1 16.9 13.2 13v-.3l3.9-3.9.1.1 4.7 2.7c1.3.8 1.3 2 0 2.7l-4.7 2.7z" fill="#FFCE00" />
+                          <path d="M17.2 16.8 13.2 12.9 1.2 24.9c.4.5 1.2.5 2 .1z" fill="#FF3A44" />
+                          <path d="M17.2 9 3.2.9C2.4.4 1.6.5 1.2 1.1l12 11.8z" fill="#00F076" />
+                        </svg>
+                        <span className="tp-play-text">
+                          <small>GET IT ON</small>
+                          <strong>Google Play</strong>
+                        </span>
+                      </button>
                     </div>
                   </div>
                 </div>
@@ -1629,6 +1663,27 @@ html { scroll-behavior: smooth; }
             </div>
           </section>
         </main>
+
+        {/* ═════════ GOOGLE PLAY POPUP ═════════ */}
+        {showPlayModal && (
+          <div className="tp-modal-backdrop" onClick={() => setShowPlayModal(false)}>
+            <div className="tp-modal" role="dialog" aria-modal="true" aria-labelledby="play-modal-title" onClick={(e) => e.stopPropagation()}>
+              <button type="button" className="tp-modal-x" aria-label="Close" onClick={() => setShowPlayModal(false)}>
+                <X size={18} aria-hidden="true" />
+              </button>
+              <span className="tp-done-icon"><Smartphone size={24} aria-hidden="true" /></span>
+              <h3 className="tp-h3" id="play-modal-title" style={{ fontSize: '1.25rem' }}>Not available right now</h3>
+              <p>The app is not on Google Play yet. Please download the APK file instead.</p>
+              <div className="tp-modal-actions">
+                <a href="#" className="tp-btn tp-btn-primary" download onClick={() => setShowPlayModal(false)}>
+                  <Download size={18} aria-hidden="true" />
+                  Download APK file
+                </a>
+                <button type="button" className="tp-btn tp-btn-outline" onClick={() => setShowPlayModal(false)}>Close</button>
+              </div>
+            </div>
+          </div>
+        )}
 
         {/* ═════════ FOOTER ═════════ */}
         <footer className="tp-footer">
